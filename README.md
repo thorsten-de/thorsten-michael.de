@@ -8,7 +8,7 @@ Why do you have a personal web page at all, you may ask? And what's your reasoni
 
 > Das erste Haus baust du für deinen Feind, das zweite für deinen Freund und das dritte für dich selbst
 
-This german saying, sometimes attributed to the famous philosopher Confucius, which translates roughly into:
+This german saying, sometimes attributed to the famous philosopher Confucius, translates roughly into:
 
 > You will build the first house for your foe, the second for your friend and the third one for yourself
 
