@@ -43,6 +43,7 @@ Though there might not be great benefit in cloning this repo and just using it a
 
 To start your Phoenix server:
 
+- Start a Docker PostgreSQL service container as defined in `docker-compose.yml` with `docker-compose up -d`
 - Install dependencies with `mix deps.get`
 - Create and migrate your database with `mix ecto.setup`
 - Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
@@ -58,6 +59,5 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 - Docs: https://hexdocs.pm/phoenix
 - Forum: https://elixirforum.com/c/phoenix-forum
 - Source: https://github.com/phoenixframework/phoenix
-
 
 [^note]: Although this sounds like a joke about net neutrality: The mail servers at t-online reject legitimate e-mails from a mail server on a domain that doesn't have a website with a proper imprint. For that, I'm forced to reveal my private address, which puts data privacy upside down. Of course, I don't want to display an otherwise blank website just to have an imprint. Fun fact: Even DENIC, which registers all top level ".de" domains, conceals my personal data from the public for privacy reasons.
