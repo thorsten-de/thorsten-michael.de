@@ -42,7 +42,7 @@ config :esbuild,
 config :dart_sass,
   version: "1.49.11",
   default: [
-    args: ~w[css:../priv/static/assets],
+    args: ~w(--load-path=../deps/bulma css/app.scss ../priv/static/assets/app.css),
     cd: Path.expand("../assets", __DIR__)
   ]
 
