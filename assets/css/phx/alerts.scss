@@ -1,0 +1,10 @@
+/* Alerts and form errors used by phx.new */
+
+.notification:empty {
+  display: none;
+}
+.invalid-feedback {
+  color: #a94442;
+  display: block;
+  margin: -1rem 0 2rem;
+}
