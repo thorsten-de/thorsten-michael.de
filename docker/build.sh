@@ -1,4 +1,6 @@
 #!/bin/bash
+# Builds the release image and tags it with :staging, so it can be tested locally
+# and deployed in the production later
 
 REGISTRY="docker.thorsten-michael.de"
 IMAGE=tmde
