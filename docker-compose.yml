@@ -12,6 +12,20 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
 
+  # Use this service to simulate running the release image on this development system.
+  # To make sure PORT configurations are in place, it is not running on port 4000.
+  release:
+    image: docker.thorsten-michael.de/tmde:prod
+    ports:
+      - 8080:8080
+    environment:
+      - DATABASE_URL=ecto://postgres:postgres@db/tmde_dev
+      - SECRET_KEY_BASE=PtApWjeuuk6XNDIxpNc9HBQRKowJv/LOgkNjR9z2rxiIvwm3+FDzSNtypGe1/+tq
+      - PORT=8080
+    depends_on:
+      - db
+
+
 volumes:
   db_data:
 
