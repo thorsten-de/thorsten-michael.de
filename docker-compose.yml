@@ -15,7 +15,7 @@ services:
   # Use this service to simulate running the release image on this development system.
   # To make sure PORT configurations are in place, it is not running on port 4000.
   release:
-    image: docker.thorsten-michael.de/tmde:prod
+    image: docker.thorsten-michael.de/tmde:staging
     ports:
       - 8080:8080
     environment:
