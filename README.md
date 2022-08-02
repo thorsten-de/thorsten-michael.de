@@ -1,3 +1,5 @@
+![Logo and Name: Thorsten-Michael Deinert](priv/static/images/tmde-slogan.png?raw=true)
+
 # thorsten-michael.de
 
 This repository contains the source code for my personal website, https://thorsten-michael.de. It is based on the amazing [Phoenix web framework](https://phoenixframework.org) which is build on Elixir/Erlang. See the section about [technical decisions](#technical-decisions) for more detail about this.
