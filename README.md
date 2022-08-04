@@ -44,7 +44,7 @@ Does this website change the world for the better? Probably not. Is it helpful t
 - [x] Configure release for deployment with Docker
 - [x] Prepare web server to host and serve the website from a docker image
 - [x] Switch to Bulma.css
-- [ ] Build a minimal index page by reusing this README file
+- [x] Build a minimal index page by reusing this README file
 - [ ] Deploy a minimal website with proper imprint and a personalized layout
 - [ ] Build a (static) blog engine that serves markdown files
 - [ ] Build a dynamic LiveView component for Bulma tables
