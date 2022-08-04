@@ -33,7 +33,18 @@ Does this website change the world for the better? Probably not. Is it helpful t
 
 ## Goals
 
-TBD
+- [x] Bootstrap a website with Phoenix
+- [x] Setup development environment with Docker
+- [x] Configure release for deployment with Docker
+- [x] Prepare web server to host and serve the website from a docker image
+- [x] Switch to Bulma.css
+- [] Build a minimal index page by reusing this README file
+- [] Deploy a minimal website with proper imprint and a personalized layout
+- [] Build a (static) blog engine that serves markdown files
+- [] Build a dynamic LiveView component for Bulma tables
+- [] Use that component to show a list of the books I've read recently
+- [] Provide UI and content in multiple languages (German and English, as far as I am concerned)
+- [] Think about adding more interesting stuff
 
 ## Technical decisions
 
