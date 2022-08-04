@@ -46,6 +46,7 @@ defmodule Tmde.MixProject do
       {:dart_sass, "~> 0.5", runtime: Mix.env() == :dev},
       # forked from kevinlang/bulma-elixir (bulma in hex) to support v0.9.4
       {:bulma, "0.9.4", github: "thorsten-de/bulma-elixir"},
+      {:earmark, "~> 1.4"},
       {:swoosh, "~> 1.3"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
