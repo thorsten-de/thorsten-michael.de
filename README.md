@@ -4,6 +4,8 @@
 
 This repository contains the source code for my personal website, https://thorsten-michael.de. It is based on the amazing [Phoenix web framework](https://phoenixframework.org) which is build on Elixir/Erlang. See the section about [technical decisions](#technical-decisions) for more detail about this.
 
+<!-- INDEX_START -->
+
 ## Motivation
 
 Why do you have a personal web page at all, you may ask? And what's your reasoning behind making the repository public?
@@ -20,7 +22,7 @@ But until now, I never build **my** personal web page. And for good reason: I di
 
 This point in time has come now, and these are the reasons:
 
-- I would like to continue sending e-mails to my friends with the mail address @t-online.de from my own mail server with the address @thorsten-michael.de.[^note]
+- I would like to continue sending e-mails to my friends with the mail address @t-online.de from my own mail server with the address @thorsten-michael.de.[^1]
 
 - I need to apply for new jobs. This is by far the deeper reason why I have to reach out and show off some expertise and qualities.
 
@@ -30,6 +32,10 @@ So, I decided to **create my personal website** that is going to be _the house f
 - I have to be **careful about sensitive data**. The application obviously has to be designed to store secrets outside the source code. This can be accomplished by storing all application configuration in the environment, as suggested in [The twelve-factor App](https://12factor.net/config).
 
 Does this website change the world for the better? Probably not. Is it helpful to others? Maybe, I hope so. But for sure, this is about something substantial that I deeply care about.
+
+[^1]: Although this sounds like a joke about net neutrality: The mail servers at t-online reject legitimate e-mails from a mail server on a domain that doesn't have a website with a proper imprint. For that, I'm forced to reveal my private address, which puts data privacy upside down. Of course, I don't want to display an otherwise blank website just to have an imprint. Fun fact: Even DENIC, which registers all top level ".de" domains, conceals my personal data from the public for privacy reasons.
+
+<!-- INDEX_END -->
 
 ## Goals
 
@@ -72,5 +78,3 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 - Docs: https://hexdocs.pm/phoenix
 - Forum: https://elixirforum.com/c/phoenix-forum
 - Source: https://github.com/phoenixframework/phoenix
-
-[^note]: Although this sounds like a joke about net neutrality: The mail servers at t-online reject legitimate e-mails from a mail server on a domain that doesn't have a website with a proper imprint. For that, I'm forced to reveal my private address, which puts data privacy upside down. Of course, I don't want to display an otherwise blank website just to have an imprint. Fun fact: Even DENIC, which registers all top level ".de" domains, conceals my personal data from the public for privacy reasons.

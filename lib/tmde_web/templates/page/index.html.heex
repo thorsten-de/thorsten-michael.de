@@ -1,8 +1,12 @@
-<section class="hero is-primary is-fullheight">
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <h1 class="title"><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
-      <p class="subtitle">Peace of mind from prototype to production</p>
+<section class="section">
+<div class="container">
+  <h1 class="title is-1"><%= gettext("Welcome to my personal website") %></h1>
+</div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="content">
+      <%= raw(@readme_content) %>
     </div>
   </div>
 </section>
