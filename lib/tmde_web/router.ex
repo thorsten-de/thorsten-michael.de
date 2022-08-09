@@ -18,6 +18,7 @@ defmodule TmdeWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/impressum", PageController, :imprint
   end
 
   # Other scopes may use custom stacks.
