@@ -34,6 +34,9 @@ defmodule TmdeWeb.PageController do
   end
 
   def imprint(conn, _params) do
-    render(conn, "imprint.html", privacy_policy: @privacy_policies[:de])
+    render(conn, "imprint.html",
+      page_title: gettext("Imprint"),
+      privacy_policy: @privacy_policies[:de]
+    )
   end
 end
