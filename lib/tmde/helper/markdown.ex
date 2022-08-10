@@ -2,6 +2,24 @@ defmodule Tmde.Helper.Markdown do
   @moduledoc """
   Helper functions to work with markdown files
   """
+  @type filename :: binary()
+  @type html_content :: binary()
+
+  @spec content_to_html!(keyword(filename), keyword) ::
+          keyword(%{path: filename, html: html_content})
+  @doc """
+  given a keyword list of locales and markdown file paths, it converts the markdown files
+  to html and returns a keyword list of %{path: _, html: _} maps for each local file.
+  """
+  def content_to_html!(contents, opts \\ []) do
+    for {lang, path} <- contents do
+      {lang,
+       %{
+         path: path,
+         html: file_to_html!(path, opts)
+       }}
+    end
+  end
 
   @doc """
   Reads a markdown file and converts it to html.
@@ -13,6 +31,7 @@ defmodule Tmde.Helper.Markdown do
     not found.
    - for other options, refer to `Earmark.Options`
   """
+  @spec file_to_html!(filename, keyword) :: html_content
   def file_to_html!(path, opts \\ []) do
     {splitter, opts} = opts |> Keyword.pop(:splitter)
 

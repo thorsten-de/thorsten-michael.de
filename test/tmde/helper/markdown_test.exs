@@ -53,4 +53,29 @@ defmodule Tmde.Helper.MarkdownTest do
       end
     end
   end
+
+  describe "content_to_html!/2" do
+    test "given a keyword list of files by locale, returns a keyword list of content by locale",
+         %{
+           html_full: html
+         } do
+      result =
+        Markdown.content_to_html!(
+          de: @markdown_file,
+          en: @bad_splitter_file
+        )
+
+      assert [
+               de: %{path: @markdown_file, html: ^html},
+               en: %{path: @bad_splitter_file}
+             ] = result
+
+      assert result[:de].html != result[:en].html
+    end
+
+    test "delegates splitter and options correctly", %{html_splitted: html} do
+      assert [de: %{html: ^html}] =
+               Markdown.content_to_html!([de: @markdown_file], splitter: "TEST")
+    end
+  end
 end
