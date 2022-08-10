@@ -6,15 +6,30 @@ defmodule TmdeWeb.PageController do
   alias Tmde.Helper.Markdown
 
   # Include part of repo's README as external resource and convert it into html on compile time
-  @external_resource Path.expand("README.md")
+  @readme_contents Markdown.content_to_html!(
+                     [de: "content/pages/de/README.md.eex", en: "README.md"],
+                     splitter: "INDEX",
+                     footnotes: true
+                   )
 
-  @readme_content Markdown.file_to_html(Path.expand("README.md"),
-                    splitter: "INDEX",
-                    footnotes: true
-                  )
+  @privacy_policies Markdown.content_to_html!(
+                      de: "content/pages/de/datenschutzerklärung.md.eex",
+                      en: "content/pages/en/privacy_policy.md.eex"
+                    )
+
+  for %{path: path} <- Keyword.values(@privacy_policies) ++ Keyword.values(@readme_contents) do
+    @external_resource path
+  end
 
   @doc "Homepage"
   def index(conn, _params) do
-    render(conn, "index.html", readme_content: @readme_content)
+    render(conn, "index.html", readme_content: @readme_contents[:de].html)
+  end
+
+  def imprint(conn, _params) do
+    render(conn, "imprint.html",
+      page_title: gettext("Imprint"),
+      privacy_policy: @privacy_policies[:de].html
+    )
   end
 end
