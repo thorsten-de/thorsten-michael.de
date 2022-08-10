@@ -19,7 +19,10 @@ defmodule TmdeWeb.PageController do
                         )}
                    end)
 
-  @privacy_policies [de: "content/pages/de/datenschutzerklärung.md.eex"]
+  @privacy_policies [
+                      de: "content/pages/de/datenschutzerklärung.md.eex",
+                      en: "content/pages/en/privacy_policy.md.eex"
+                    ]
                     |> Enum.map(fn
                       {lang, file} ->
                         path = Path.expand(file)
