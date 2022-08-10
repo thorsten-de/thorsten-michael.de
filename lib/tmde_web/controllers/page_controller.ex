@@ -13,7 +13,7 @@ defmodule TmdeWeb.PageController do
                        path = Path.expand(file)
                        @external_resource path
                        {lang,
-                        Markdown.file_to_html(path,
+                        Markdown.file_to_html!(path,
                           splitter: "INDEX",
                           footnotes: true
                         )}
@@ -28,7 +28,7 @@ defmodule TmdeWeb.PageController do
                         path = Path.expand(file)
 
                         @external_resource path
-                        {lang, Markdown.file_to_html(path)}
+                        {lang, Markdown.file_to_html!(path)}
                     end)
 
   @doc "Homepage"
