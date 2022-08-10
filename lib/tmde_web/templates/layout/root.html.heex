@@ -28,6 +28,9 @@
     <meta name="theme-color" content="#ffffff">
   </head>
   <body>
+    <%= render "navbar.html", assigns %>
+    
     <%= @inner_content %>
+    <%= render "footer.html", assigns %>
   </body>
 </html>
