@@ -1,0 +1,15 @@
+blockquote p {
+  font-family: $family-serif;
+  font-weight: $weight-light;
+}
+
+.content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $family-serif;
+  }
+}

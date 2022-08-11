@@ -1,16 +1,11 @@
 /* This file is for your main application CSS */
 
-$orange: #e6611a;
-$green: #89b34d;
-$blue: #508caf;
-$primary: $orange;
-$footer-background-color: white;
-
+@import "fonts";
+@import "override_bulma_variables";
 @import "bulma";
+
 @import "phx/alerts";
 @import "phx/liveview";
 
-.navbar-brand img {
-  max-height: none;
-  margin: 0 ($navbar-padding-vertical/2) 0 0;
-}
+@import "typography";
+@import "layout";
