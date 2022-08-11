@@ -6,3 +6,8 @@ $footer-background-color: white;
 @import "bulma";
 @import "phx/alerts";
 @import "phx/liveview";
+
+.navbar-brand img {
+  max-height: none;
+  margin: 0 ($navbar-padding-vertical/2) 0 0;
+}
