@@ -1,8 +1,11 @@
 /* This file is for your main application CSS */
 
-$phx-orange: #f05423;
-$primary: $phx-orange;
+$orange: #e6611a;
+$green: #89b34d;
+$blue: #508caf;
+$primary: $orange;
 $footer-background-color: white;
+
 @import "bulma";
 @import "phx/alerts";
 @import "phx/liveview";
