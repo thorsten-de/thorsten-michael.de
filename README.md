@@ -1,4 +1,4 @@
-![Logo and Name: Thorsten-Michael Deinert](priv/static/images/tmde-slogan.png?raw=true)
+![Logo and Name: Thorsten-Michael Deinert](priv/static/images/logos/tmd-slogan.png?raw=true)
 
 # thorsten-michael.de
 
