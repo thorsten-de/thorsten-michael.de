@@ -37,7 +37,7 @@ Does this website change the world for the better? Probably not. Is it helpful t
 
 <!-- INDEX_END -->
 
-## Goals
+## Roadmap
 
 - [x] Bootstrap a website with Phoenix
 - [x] Setup development environment with Docker
@@ -45,7 +45,8 @@ Does this website change the world for the better? Probably not. Is it helpful t
 - [x] Prepare web server to host and serve the website from a docker image
 - [x] Switch to Bulma.css
 - [x] Build a minimal index page by reusing this README file
-- [ ] Deploy a minimal website with proper imprint and a personalized layout
+- [x] Deploy a minimal website with proper imprint and a personalized layout
+- [ ] Add some nice error pages :D
 - [ ] Build a (static) blog engine that serves markdown files
 - [ ] Build a dynamic LiveView component for Bulma tables
 - [ ] Use that component to show a list of the books I've read recently
