@@ -1,0 +1,28 @@
+.navbar-brand img {
+  max-height: none;
+  margin: 0 calc($navbar-padding-vertical/2) 0 0;
+}
+
+.footer {
+  .title {
+    font-weight: 300;
+    font-size: $size-medium;
+    margin-bottom: 1rem;
+  }
+  blockquote p {
+    font-family: $family-serif;
+    font-size: $size-medium;
+    font-weight: $weight-light;
+  }
+}
+
+.content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $family-serif;
+  }
+}

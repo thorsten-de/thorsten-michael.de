@@ -1,0 +1,36 @@
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <div class="columm is-narrow">
+        <figure class="mr-6">
+          <img src="/images/logos/tmd-footer.png" alt="Thorsten-Michael Deinert (Footer Logo)">
+        </figure>
+      </div>
+
+      <div class="column">
+        <h4 class="title">thorsten-michael.de</h4>
+        <ul>
+          <li><%= link gettext("Home"), to: Routes.page_path(@conn,:index) %></li>
+          <li><%= link gettext("Imprint"), to: Routes.page_path(@conn, :imprint)%></li>
+          <li><a target="_blank" href="https://github.com/thorsten-de/thorsten-michael.de"><%= gettext("Code auf GitHub")%></a></li>
+        </ul>
+      </div>    
+
+      <div class="column">
+        <h4 class="title">Blog-Artikel</h4>
+        <ul>
+          <li>Noch keine angelegt</li>
+        </ul>
+      </div>
+
+      <div class="column">
+        <h4 class="title">Meine Profile im Web</h4>
+        <ul>
+          <li><a target="_blank" href="https://github.com/thorsten-de">GitHub thorsten-de</a></li>
+          <li><a target="_blank" href="https://www.xing.com/profile/Thorsten_Deinert2">XING</a></li>
+          <li><a target="_blank" href="https://www.linkedin.com/in/thorsten-deinert-57a832247">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,7 +1,11 @@
 /* This file is for your main application CSS */
 
-$phx-orange: #f05423;
-$primary: $phx-orange;
+@import "fonts";
+@import "override_bulma_variables";
 @import "bulma";
+
 @import "phx/alerts";
 @import "phx/liveview";
+
+@import "typography";
+@import "layout";

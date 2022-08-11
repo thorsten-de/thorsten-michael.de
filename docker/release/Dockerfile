@@ -52,6 +52,10 @@ COPY lib lib
 
 COPY assets assets
 
+# Copy static content to build system
+COPY README.md README.md
+COPY content content
+
 # compile assets
 RUN mix assets.deploy
 
