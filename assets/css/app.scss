@@ -9,3 +9,19 @@
 
 @import "typography";
 @import "layout";
+
+dl.property-list {
+  @extend %block;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: calc($gap / 4);
+
+  dt {
+    font-weight: 700;
+    grid-column: 1;
+  }
+  dd {
+    grid-column: 2;
+    word-break: break-all;
+  }
+}

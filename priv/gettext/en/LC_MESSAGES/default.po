@@ -16,7 +16,8 @@ msgstr ""
 msgid "Contact Information"
 msgstr ""
 
-#: lib/tmde_web/controllers/page_controller.ex:38
+#: lib/tmde_web/controllers/page_controller.ex:33
+#: lib/tmde_web/templates/layout/footer.html.heex:14
 #: lib/tmde_web/templates/page/imprint.html.heex:3
 #, elixir-autogen, elixir-format
 msgid "Imprint"
@@ -32,7 +33,37 @@ msgstr ""
 msgid "Welcome"
 msgstr ""
 
-#: lib/tmde_web/templates/page/index.html.heex:3
+#: lib/tmde_web/templates/page/index.html.heex:6
 #, elixir-autogen, elixir-format
 msgid "Welcome to my personal website"
+msgstr ""
+
+#: lib/tmde_web/templates/page/imprint.html.heex:21
+#, elixir-autogen, elixir-format
+msgid "A little more detail, please?"
+msgstr ""
+
+#: lib/tmde_web/templates/layout/footer.html.heex:15
+#, elixir-autogen, elixir-format
+msgid "Code auf GitHub"
+msgstr "Source code on GitHub"
+
+#: lib/tmde_web/templates/layout/footer.html.heex:13
+#, elixir-autogen, elixir-format
+msgid "Home"
+msgstr ""
+
+#: lib/tmde_web/templates/page/imprint.html.heex:32
+#, elixir-autogen, elixir-format
+msgid "Your current client data"
+msgstr ""
+
+#: lib/tmde_web/templates/page/imprint.html.heex:25
+#, elixir-autogen, elixir-format
+msgid "Your current cookies"
+msgstr ""
+
+#: lib/tmde_web/templates/page/imprint.html.heex:28
+#, elixir-autogen, elixir-format
+msgid "Your current session information"
 msgstr ""

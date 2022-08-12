@@ -17,5 +17,22 @@
     <div class="content">
       <%= raw(@privacy_policy) %> 
     </div>
+    <aside class="message is-light">
+      <h3 class="message-header"><%= gettext("A little more detail, please?") %></h3>
+      <div class="message-body">
+        <div class="columns">
+          <div class="column">
+            <h4 class="subtitle is-5"><%= gettext("Your current cookies") %></h4>
+            <%= render_dl(@cookie_data) %>
+            <h4 class="subtitle is-5"><%= gettext("Your current session information") %></h4>
+            <%= render_dl(@session_data) %>
+          </div>
+          <div class="column">
+            <h4 class="subtitle is-5"><%= gettext("Your current client data") %></h4>
+              <%= render_dl(@request_data) %>
+          </div>        
+        </div>
+      </div>
+    </aside>
   </div>
 </div>
