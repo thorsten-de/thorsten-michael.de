@@ -13,14 +13,6 @@ defmodule Tmde.Helper.MarkdownTest do
   @markdown_file "test/support/markdown/input.md"
   @bad_splitter_file "test/support/markdown/bad_splitter.md"
 
-  describe "Earmark.from_file!/2" do
-    test "due to a bug, it fails when not reading .eex files with Earmark.from_file!" do
-      assert_raise ArgumentError, ~r/:sys_interface/, fn ->
-        Earmark.from_file!(@markdown_file)
-      end
-    end
-  end
-
   describe "file_to_html!/2" do
     test "reads and converts a whole markdown file", %{html_full: output} do
       result = Markdown.file_to_html!(@markdown_file)
@@ -36,9 +28,7 @@ defmodule Tmde.Helper.MarkdownTest do
     end
 
     test "fails if file is not found" do
-      assert_raise File.Error, fn ->
-        Markdown.file_to_html!("bad_filename.md")
-      end
+      assert catch_error(Markdown.file_to_html!("BAD_FILENAME.md"))
     end
 
     test "fails if splitter is given, but start comment not found in file" do

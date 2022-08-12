@@ -43,10 +43,7 @@ defmodule Tmde.Helper.Markdown do
       |> Earmark.as_html!(opts)
     else
       path
-      |> File.read!()
-      |> Earmark.as_html!(opts)
-
-      # TODO as Earmark.from_file!(path, opts) currently won't work properly
+      |> Earmark.from_file!(opts)
     end
   end
 
