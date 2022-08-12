@@ -7,14 +7,14 @@ defmodule TmdeWeb.PageController do
 
   # Include part of repo's README as external resource and convert it into html on compile time
   @readme_contents Markdown.content_to_html!(
-                     [de: "content/pages/de/README.md.eex", en: "README.md"],
+                     [de: "content/pages/de/README.md", en: "README.md"],
                      splitter: "INDEX",
                      footnotes: true
                    )
 
   @privacy_policies Markdown.content_to_html!(
-                      de: "content/pages/de/datenschutzerklärung.md.eex",
-                      en: "content/pages/en/privacy_policy.md.eex"
+                      de: "content/pages/de/datenschutzerklärung.md",
+                      en: "content/pages/en/privacy_policy.md"
                     )
 
   for %{path: path} <- Keyword.values(@privacy_policies) ++ Keyword.values(@readme_contents) do

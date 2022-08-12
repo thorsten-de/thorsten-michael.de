@@ -3,14 +3,13 @@
 
 Vielleicht fragst du dich: Warum hast du überhaupt eine persönliche Webseite? Und was steckt dahinter, das Git-Repository öffentlich verfügbar zu machen?
 
-> Das erste Haus baust du für deinen Feind, das zweite für deinen Freund und das dritte für dich selbst
+> Das erste Haus baust du für deinen Feind, das zweite für deinen Freund, und das dritte für dich selbst.
 
-Bisher habe ich keine Häuser gebaut, aber im Laufe der letzten Jahre so einige Webseiten und Anwendungen. Manche davon waren Teil meines Berufes, andere waren für Freunde. Einige Anwendungen dienten als Spielwiese für mich selbst, um ein Gefühl für eine  Programmiersprache, ein neues Framework oder eine Technologie zu bekommen. Dann gab es Projekte, die mir geholfen haben, anstehende Dinge zu erledigen. Vielleicht kennst du das: Man erhofft sich, dass Sie einem bald eine Menge Arbeit abnehmen, aber bis es soweit ist, sind so viele Stunden ins Land gegangen.
+Bisher habe ich keine Häuser gebaut, aber im Laufe der letzten Jahre so einige Webseiten und Anwendungen. Manche davon waren Teil meines Berufes, andere waren für Freunde. Einige Anwendungen dienten als Spielwiese für mich selbst, um ein Gefühl für eine  Programmiersprache, ein neues Framework oder eine Technologie zu bekommen. Dann gab es Projekte, die mir geholfen haben, anstehende Dinge zu erledigen. Vielleicht kennst du das: Man erhofft sich, dass sie einem bald eine Menge Arbeit abnehmen, aber bis es soweit ist, sind so viele Stunden ins Land gegangen.
 
 Aber bis heute habe ich nie **meine persönliche Webseite** gebaut. Und das aus gutem Grund: Ich wusste nicht, welche Geschichte ich erzählen soll. Es gibt im Web _n_ langweilige Webseiten, die niemanden interessieren (dabei _n_ sei eine ausreichend große Zahl), warum also die Zeit damit verschwenden, das Web mit der Nummer _n+1_ zu bereichern? Das würde die Welt auch nicht besser machen.
 
-Auf der anderen Seite gibt es da draußen so viele professionelle Portfolios von Personen, die Werbung für sich selbst machen. Damit kann und möchte ich nicht konkurrieren. Also habe ich das Erstellen meiner eigenen Webseite verschoben, bis ich etwas **Grundlegendes zu sagen habe** dass mir **wirklich wichtig ist**, **andere weiterbringt**, und **ehrlich über
-mich selber** ist.
+Auf der anderen Seite gibt es da draußen so viele professionelle Portfolios von Personen, die Werbung für sich selbst machen. Damit kann und möchte ich nicht konkurrieren. Also habe ich das Erstellen meiner eigenen Webseite verschoben, bis ich etwas **Grundlegendes zu sagen habe** dass mir **wirklich wichtig ist**, **andere weiterbringt**, und **ehrlich über mich selber** ist.
 
 Dieser Zeitpunkt ist nun gekommen, und zwar aus folgenden Gründen:
 
@@ -28,6 +27,5 @@ Möglichkeit ist hier, die Konfiguration der Anwendung in Umgebungsvariablen abz
 
 Macht diese Webseite die Welt wirklich besser? Wahrscheinlich nicht. Bringt sie andere weiter? Mag sein, ich hoffe es zumindest. Auf jeden Fall geht es um etwas Grundlegendes, das mir wirklich wichtig ist.
 
-[^1]: Aus Sicht der Netzneutralität klingt das vielleicht wie ein Scherz: Die Mailserver von T-Online weisen legitime E-Mails von einem Mailserver ab, wenn auf der Domäne
-keine Webseite mit einem ordnungsgemäßen Impressum vorhanden ist. Ein Abuse-Kontakt im WhoIs reicht offensichtlich nicht. Dadurch bin ich gezwungen, meine private Adresse der Öffentlichkeit preiszugeben, was den Datenschutz auf den Kopf stellt. Und natürlich möchte ich keine leere Webseite hosten, nur um ein Impressum zu haben. Am Rande: Sogar DENIC, der Registrar für alle Top-Level ".de" Domains, gibt meine persönlichen Angaben aus Datenschutzgründen nicht preis.
+[^1]: Aus Sicht der Netzneutralität klingt das vielleicht wie ein Scherz: Die Mailserver von T-Online weisen legitime E-Mails von einem Mailserver ab, wenn auf der Domäne keine Webseite mit einem ordnungsgemäßen Impressum vorhanden ist. Ein Abuse-Kontakt im WhoIs reicht offensichtlich nicht. Dadurch bin ich gezwungen, meine private Adresse der Öffentlichkeit preiszugeben, was den Datenschutz auf den Kopf stellt. Und natürlich möchte ich keine leere Webseite hosten, nur um ein Impressum zu haben. Am Rande: Sogar DENIC, der Registrar für alle Top-Level ".de" Domains, gibt meine persönlichen Angaben aus Datenschutzgründen nicht preis.
 <!-- INDEX_END -->
