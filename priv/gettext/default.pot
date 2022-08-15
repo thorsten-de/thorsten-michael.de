@@ -15,7 +15,7 @@ msgstr ""
 msgid "Contact Information"
 msgstr ""
 
-#: lib/tmde_web/controllers/page_controller.ex:33
+#: lib/tmde_web/controllers/page_controller.ex:31
 #: lib/tmde_web/templates/layout/footer.html.heex:14
 #: lib/tmde_web/templates/page/imprint.html.heex:3
 #, elixir-autogen, elixir-format
@@ -52,7 +52,7 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: lib/tmde_web/templates/page/imprint.html.heex:32
+#: lib/tmde_web/templates/page/imprint.html.heex:31
 #, elixir-autogen, elixir-format
 msgid "Your current client data"
 msgstr ""
@@ -62,7 +62,17 @@ msgstr ""
 msgid "Your current cookies"
 msgstr ""
 
-#: lib/tmde_web/templates/page/imprint.html.heex:28
+#: lib/tmde_web/templates/page/imprint.html.heex:27
 #, elixir-autogen, elixir-format
 msgid "Your current session information"
+msgstr ""
+
+#: lib/tmde_web/templates/error/404.html.eex:8
+#, elixir-autogen, elixir-format
+msgid "Page not found"
+msgstr ""
+
+#: lib/tmde_web/templates/error/404.html.eex:35
+#, elixir-autogen, elixir-format
+msgid "Sorry, the page does not exist."
 msgstr ""
