@@ -4,6 +4,7 @@ defmodule TmdeWeb.PageController do
   """
   use TmdeWeb, :controller
   alias Tmde.Helper.Markdown
+  alias TmdeWeb.Plugs.Page
 
   # Include part of repo's README as external resource and convert it into html on compile time
   @readme_contents Markdown.content_to_html!(
@@ -23,12 +24,26 @@ defmodule TmdeWeb.PageController do
 
   @doc "Homepage"
   def index(conn, _params) do
-    render(conn, "index.html", readme_content: @readme_contents[:de].html)
+    render(conn, "index.html",
+      page: %Page{
+        description:
+          gettext(
+            "Personal homepage of Thorsten-Michael Deinert. Passionate computer scientist, software developer, and programming languages polyglot."
+          )
+      },
+      readme_content: @readme_contents[:de].html
+    )
   end
 
   def imprint(conn, _params) do
     render(conn, "imprint.html",
       page_title: gettext("Imprint"),
+      page: %Page{
+        description:
+          gettext(
+            "Imprint and privacy policy for thorsten-michael.de, the personal homepage of Thorsten-Michael Deinert."
+          )
+      },
       privacy_policy: @privacy_policies[:de].html,
       cookie_data: conn.req_cookies,
       session_data: get_session(conn),
