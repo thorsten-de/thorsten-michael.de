@@ -16,7 +16,7 @@ msgstr ""
 msgid "Contact Information"
 msgstr ""
 
-#: lib/tmde_web/controllers/page_controller.ex:31
+#: lib/tmde_web/controllers/page_controller.ex:40
 #: lib/tmde_web/templates/layout/footer.html.heex:14
 #: lib/tmde_web/templates/page/imprint.html.heex:3
 #, elixir-autogen, elixir-format
@@ -28,7 +28,7 @@ msgstr ""
 msgid "Privacy Policy"
 msgstr ""
 
-#: lib/tmde_web/templates/layout/root.html.heex:8
+#: lib/tmde_web/templates/layout/root.html.heex:10
 #, elixir-autogen, elixir-format
 msgid "Welcome"
 msgstr ""
@@ -76,4 +76,14 @@ msgstr ""
 #: lib/tmde_web/templates/error/404.html.eex:35
 #, elixir-autogen, elixir-format
 msgid "Sorry, the page does not exist."
+msgstr ""
+
+#: lib/tmde_web/controllers/page_controller.ex:43
+#, elixir-autogen, elixir-format
+msgid "Imprint and privacy policy for thorsten-michael.de, the personal homepage of Thorsten-Michael Deinert."
+msgstr ""
+
+#: lib/tmde_web/controllers/page_controller.ex:30
+#, elixir-autogen, elixir-format
+msgid "Personal homepage of Thorsten-Michael Deinert. Passionate computer scientist, software developer, and programming languages polyglot."
 msgstr ""
