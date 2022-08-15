@@ -16,7 +16,7 @@ msgstr ""
 msgid "Contact Information"
 msgstr "Verantwortlich im Sinne des §5 TMG"
 
-#: lib/tmde_web/controllers/page_controller.ex:33
+#: lib/tmde_web/controllers/page_controller.ex:31
 #: lib/tmde_web/templates/layout/footer.html.heex:14
 #: lib/tmde_web/templates/page/imprint.html.heex:3
 #, elixir-autogen, elixir-format
@@ -53,7 +53,7 @@ msgstr "Code auf GitHub"
 msgid "Home"
 msgstr "Home"
 
-#: lib/tmde_web/templates/page/imprint.html.heex:32
+#: lib/tmde_web/templates/page/imprint.html.heex:31
 #, elixir-autogen, elixir-format
 msgid "Your current client data"
 msgstr "Ihre aktuellen Anfragedaten"
@@ -63,7 +63,17 @@ msgstr "Ihre aktuellen Anfragedaten"
 msgid "Your current cookies"
 msgstr "Ihre übermittelten Cookies"
 
-#: lib/tmde_web/templates/page/imprint.html.heex:28
+#: lib/tmde_web/templates/page/imprint.html.heex:27
 #, elixir-autogen, elixir-format
 msgid "Your current session information"
 msgstr "Informationen in Ihrer Session"
+
+#: lib/tmde_web/templates/error/404.html.eex:8
+#, elixir-autogen, elixir-format
+msgid "Page not found"
+msgstr "Seite nicht gefunden"
+
+#: lib/tmde_web/templates/error/404.html.eex:35
+#, elixir-autogen, elixir-format
+msgid "Sorry, the page does not exist."
+msgstr "Es tut mir leid, die Seite gibt es nicht."
