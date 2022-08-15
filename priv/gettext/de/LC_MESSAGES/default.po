@@ -75,5 +75,5 @@ msgstr "Seite nicht gefunden"
 
 #: lib/tmde_web/templates/error/404.html.eex:35
 #, elixir-autogen, elixir-format
-msgid "Es tut mir leid, die Seite gibt es nicht."
-msgstr ""
+msgid "Sorry, the page does not exist."
+msgstr "Es tut mir leid, die Seite gibt es nicht."
