@@ -1,5 +1,6 @@
 defmodule TmdeWeb.Router do
   use TmdeWeb, :router
+  alias TmdeWeb.Plugs
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -8,6 +9,11 @@ defmodule TmdeWeb.Router do
     plug :put_root_layout, {TmdeWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+
+    plug Plugs.Page,
+      locale: Application.get_env(:gettext, :default_locale),
+      author: "Thorsten-Michael Deinert",
+      description: "Persönliche Homepage von Thorsten-Michael Deinert."
   end
 
   pipeline :api do
