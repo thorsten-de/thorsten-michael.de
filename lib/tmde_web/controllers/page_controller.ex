@@ -4,7 +4,6 @@ defmodule TmdeWeb.PageController do
   """
   use TmdeWeb, :controller
   alias Tmde.Helper.Markdown
-  import TmdeWeb.Plugs.Page, only: [set_metadata: 2]
 
   # Include part of repo's README as external resource and convert it into html on compile time
   @readme_contents Markdown.content_to_html!(
