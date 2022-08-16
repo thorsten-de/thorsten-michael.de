@@ -23,12 +23,29 @@ defmodule TmdeWeb.PageController do
 
   @doc "Homepage"
   def index(conn, _params) do
-    render(conn, "index.html", readme_content: @readme_contents[:de].html)
+    conn
+    |> set_metadata(
+      title: "Thorsten-Michael",
+      description:
+        gettext(
+          "Personal homepage of Thorsten-Michael Deinert. Passionate computer scientist, software developer, and programming languages polyglot."
+        )
+    )
+    |> render("index.html",
+      readme_content: @readme_contents[:de].html
+    )
   end
 
   def imprint(conn, _params) do
-    render(conn, "imprint.html",
-      page_title: gettext("Imprint"),
+    conn
+    |> set_metadata(
+      title: gettext("Imprint"),
+      description:
+        gettext(
+          "Imprint and privacy policy for thorsten-michael.de, the personal homepage of Thorsten-Michael Deinert."
+        )
+    )
+    |> render("imprint.html",
       privacy_policy: @privacy_policies[:de].html,
       cookie_data: conn.req_cookies,
       session_data: get_session(conn),

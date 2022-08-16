@@ -23,6 +23,7 @@ defmodule TmdeWeb do
 
       import Plug.Conn
       import TmdeWeb.Gettext
+      import TmdeWeb.Plugs.Page, only: [set_metadata: 2]
       alias TmdeWeb.Router.Helpers, as: Routes
     end
   end
