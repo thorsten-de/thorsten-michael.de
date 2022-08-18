@@ -55,6 +55,7 @@ defmodule TmdeWeb do
   def live_component do
     quote do
       use Phoenix.LiveComponent
+      import TmdeWeb.ComponentHelpers
 
       unquote(view_helpers())
     end
@@ -63,6 +64,7 @@ defmodule TmdeWeb do
   def component do
     quote do
       use Phoenix.Component
+      import TmdeWeb.ComponentHelpers
 
       unquote(view_helpers())
     end
