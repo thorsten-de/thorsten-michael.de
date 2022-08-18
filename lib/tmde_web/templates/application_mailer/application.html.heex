@@ -28,8 +28,12 @@
   </head>
   <body style={to_style(%{margin: 0, padding: 0, "word-spacing": "normal", "background-color": @styling.bg_color})}>
     <div role="article" aria-roledescription="email" lang={@application.locale} style={to_style(%{"text-size-adjust": "100%", "-webkit-text-size-adjust": "100%", "-ms-text-size-adjust": "100%", "background-color": @styling.bg_color})}>
-      <.table style={[border: 10, "background-color": "green"]}>
-      </.table>
+      <.main_content>
+        <.block padding="30px" background-color="#ffffff">
+          <h1 style="margin-top:0;margin-bottom:16px;font-size:26px;line-height:32px;font-weight:bold;letter-spacing:-0.02em;">Header</h1>
+          <p style="margin:0;">Some paragraph text</p>
+        </.block>
+      </.main_content>
     </div>
   </body>
 </html>
