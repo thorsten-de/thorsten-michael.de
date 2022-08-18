@@ -1,0 +1,34 @@
+<!-- https://webdesign.tutsplus.com/articles/build-an-html-email-template-from-scratch--webdesign-12770?ec_unit=translation-info-language -->
+<!DOCTYPE html>
+<html lang={@application.locale}>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="x-apple-disable-message-reformatting">
+    <title>Meine Bewerbung</title>
+    <!--[if mso]>
+    <style>
+        table {border-collapse:collapse;border-spacing:0;border:none;margin:0;}
+        div, td {padding:0;}
+        div {margin:0 !important;}
+    </style>
+    <noscript>
+        <xml>
+            <o:OfficeDocumentSettings>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+    </noscript>
+    <![endif]-->
+    <style>
+        table, td, div, h1, p {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+  </head>
+  <body style={to_style(%{margin: 0, padding: 0, "word-spacing": "normal", "background-color": @styling.bg_color})}>
+    <div role="article" aria-roledescription="email" lang={@application.locale} style={to_style(%{"text-size-adjust": "100%", "-webkit-text-size-adjust": "100%", "-ms-text-size-adjust": "100%", "background-color": @styling.bg_color})}>
+      Some Text
+    </div>
+  </body>
+</html>
