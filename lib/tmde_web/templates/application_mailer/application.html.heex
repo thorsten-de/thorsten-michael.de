@@ -28,7 +28,8 @@
   </head>
   <body style={to_style(%{margin: 0, padding: 0, "word-spacing": "normal", "background-color": @styling.bg_color})}>
     <div role="article" aria-roledescription="email" lang={@application.locale} style={to_style(%{"text-size-adjust": "100%", "-webkit-text-size-adjust": "100%", "-ms-text-size-adjust": "100%", "background-color": @styling.bg_color})}>
-      Some Text
+      <.table style={[border: 10, "background-color": "green"]}>
+      </.table>
     </div>
   </body>
 </html>
