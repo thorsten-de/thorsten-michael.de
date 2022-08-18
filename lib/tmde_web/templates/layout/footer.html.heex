@@ -1,14 +1,19 @@
 <footer class="footer">
   <div class="container">
     <div class="columns">
-      <div class="columm is-narrow">
-        <figure class="mr-6">
-          <img src="/images/logos/tmd-footer.png" alt="Thorsten-Michael Deinert (Footer Logo)">
+      <div class="columm">
+        <figure class="image mr-6">
+          <img width="300" height="120"
+              alt="Thorsten-Michael Deinert (Footer Logo)"
+              srcset="/images/logos/tmd-slogan-120h.svg, 
+                      /images/logos/tmd-slogan-240h.svg 2x"
+              src="/images/logos/tmd-slogan-120h.svg">
+
         </figure>
       </div>
 
       <div class="column">
-        <h4 class="title">thorsten-michael.de</h4>
+        <div class="title">thorsten-michael.de</div>
         <ul>
           <li><%= link gettext("Home"), to: Routes.page_path(@conn,:index) %></li>
           <li><%= link gettext("Imprint"), to: Routes.page_path(@conn, :imprint)%></li>
@@ -17,14 +22,14 @@
       </div>    
 
       <div class="column">
-        <h4 class="title">Blog-Artikel</h4>
+        <div class="title">Blog-Artikel</div>
         <ul>
           <li>Noch keine angelegt</li>
         </ul>
       </div>
 
       <div class="column">
-        <h4 class="title">Meine Profile im Web</h4>
+        <div class="title">Meine Profile im Web</div>
         <ul>
           <li><a target="_blank" href="https://github.com/thorsten-de">GitHub thorsten-de</a></li>
           <li><a target="_blank" href="https://www.xing.com/profile/Thorsten_Deinert2">XING</a></li>

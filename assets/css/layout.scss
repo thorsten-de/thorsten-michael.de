@@ -5,14 +5,14 @@
 
 .footer {
   .title {
-    font-weight: 300;
+    font-weight: 400;
     font-size: $size-medium;
     margin-bottom: 1rem;
   }
-  blockquote p {
-    font-family: $family-serif;
-    font-size: $size-medium;
-    font-weight: $weight-light;
+
+  li a {
+    display: block;
+    padding: 0.4em 0;
   }
 }
 
