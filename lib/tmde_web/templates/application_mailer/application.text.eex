@@ -1,13 +1,20 @@
+<%= greeting(@application) %>
+          
+<%= @application.email %>
 
-Sehr geehrte Frau ...,
+<%= ending(@application) %>
 
+<%= sender(@application) %>
 
-Mit freundlichen Grüßen,
-
-Thorsten Deinert
-
-
+https://thorsten-michael.de/bewerbung/<%= @application.code %>a
 
 --
-Thorsten-Michael Deinert
-Web: https://thorsten-michael.de
+<%= @application.sender.title %>
+<%= @application.sender.name %>
+
+<%= @application.sender.address |> Enum.join("\n") %>
+
+<%= @application.sender.links |> Enum.map(&link_to_text(@application, &1))|> Enum.join("\n") %>
+
+<%= gettext("Web") %>: <%= Routes.page_url(TmdeWeb.Endpoint, :index) %>
+

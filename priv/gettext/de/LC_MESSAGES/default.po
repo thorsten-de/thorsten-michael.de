@@ -102,3 +102,44 @@ msgstr "Meine Profile"
 #, elixir-autogen, elixir-format
 msgid "no articles yet"
 msgstr "noch keine Artikel"
+
+
+#: lib/tmde_web/views/application_mailer_view.ex:13
+#, elixir-autogen, elixir-format
+msgid "Dear Mr. %{name},"
+msgstr "Sehr geehrter Herr %{name},"
+
+#: lib/tmde_web/views/application_mailer_view.ex:7
+#, elixir-autogen, elixir-format
+msgid "Dear Mrs. %{name},"
+msgstr "Sehr geehrte Frau %{name},"
+
+#: lib/tmde_web/views/application_mailer_view.ex:19
+#, elixir-autogen, elixir-format
+msgid "Dear Sirs and Madams,"
+msgstr "Sehr geehrte Damen und Herren,"
+
+#: lib/tmde_web/views/application_mailer_view.ex:25
+#, elixir-autogen, elixir-format
+msgid "Sincerely,"
+msgstr "Mit freundlichen Grüßen,"
+
+#: lib/tmde_web/templates/application_mailer/application.text.eex:19
+#, elixir-autogen, elixir-format
+msgid "Web"
+msgstr "Web"
+
+#: lib/tmde_web/views/application_mailer_view.ex:51
+#, elixir-autogen, elixir-format
+msgid "email"
+msgstr "E-Mail"
+
+#: lib/tmde_web/views/application_mailer_view.ex:45
+#, elixir-autogen, elixir-format
+msgid "mobile"
+msgstr "Handy"
+
+#: lib/tmde_web/views/application_mailer_view.ex:39
+#, elixir-autogen, elixir-format
+msgid "phone"
+msgstr "Tel."
