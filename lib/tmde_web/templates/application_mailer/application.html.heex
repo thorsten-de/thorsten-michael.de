@@ -1,11 +1,10 @@
-<!-- https://webdesign.tutsplus.com/articles/build-an-html-email-template-from-scratch--webdesign-12770?ec_unit=translation-info-language -->
 <!DOCTYPE html>
 <html lang={@application.locale}>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="x-apple-disable-message-reformatting">
-    <title>Meine Bewerbung</title>
+    <title><%= @application.subject %>g></title>
     <!--[if mso]>
     <style>
         table {border-collapse:collapse;border-spacing:0;border:none;margin:0;}
@@ -26,12 +25,30 @@
         }
     </style>
   </head>
-  <body style={to_style(%{margin: 0, padding: 0, "word-spacing": "normal", "background-color": @styling.bg_color})}>
-    <div role="article" aria-roledescription="email" lang={@application.locale} style={to_style(%{"text-size-adjust": "100%", "-webkit-text-size-adjust": "100%", "-ms-text-size-adjust": "100%", "background-color": @styling.bg_color})}>
-      <.main_content>
-        <.block padding="30px" background-color="#ffffff">
-          <h1 style="margin-top:0;margin-bottom:16px;font-size:26px;line-height:32px;font-weight:bold;letter-spacing:-0.02em;">Header</h1>
-          <p style="margin:0;">Some paragraph text</p>
+  <body style={to_style(%{margin: 0, padding: 0, "word-spacing": "normal", background: "radial-gradient(circle, #eee 0%, #bbb 100%)"})}>
+    <div role="article" aria-roledescription="email" lang={@application.locale} style={to_style(%{"text-size-adjust": "100%", "-webkit-text-size-adjust": "100%", "-ms-text-size-adjust": "100%", background: "transparent"})}>
+      <.main_content background="radial-gradient(circle at 25% 83%, rgba(250,250,250,1) 0%, rgba(240,240,240,1) 100%)" background="#fff">
+        <.block padding="20px 30px">
+          <p><%= greeting(@application) %></p>
+          <%= raw(@application.email) %>
+          <p><%= ending(@application) %></p>
+          <p><%= sender(@application) %></p>
+        </.block>
+        <.block padding="20px 30px">
+          <img src="/images/logos/tmd-slogan-120h.svg" width="200" style="width:200;height:auto;border:none;" alt="{@application.sender.name}"/>
+          <p>
+            <%= @application.sender.title %><br>
+            <strong><%= @application.sender.name %></strong><br>
+            <%= raw(@application.sender.address |> Enum.join("<br>")) %>
+          </p>
+          <p>
+            <%= for {_type, {number, schemes}} <- @application.sender.links do %>
+              <%= for s <- schemes do %>
+                <a href={"#{s}#{number}"}><%= number %></a><br>
+              <% end %>
+            <% end %>
+          </p>
+
         </.block>
       </.main_content>
     </div>

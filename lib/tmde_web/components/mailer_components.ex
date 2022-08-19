@@ -29,11 +29,13 @@ defmodule TmdeWeb.Components.MailerComponents do
       assigns
       |> assign(:style,
         width: "94%",
+        "margin-top": "20px",
         "max-width": "600px",
         "text-align": :left,
         "font-family": assigns[:font_family] || "Public Sans,Arial,sans-serif",
         "font-size": assigns[:font_size] || "16px",
         "line-height": "22px",
+        background: assigns[:background],
         color: assigns[:color]
       )
 

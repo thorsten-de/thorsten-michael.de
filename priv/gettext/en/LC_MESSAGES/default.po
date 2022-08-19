@@ -16,8 +16,8 @@ msgstr ""
 msgid "Contact Information"
 msgstr ""
 
-#: lib/tmde_web/controllers/page_controller.ex:40
-#: lib/tmde_web/templates/layout/footer.html.heex:14
+#: lib/tmde_web/controllers/page_controller.ex:42
+#: lib/tmde_web/templates/layout/footer.html.heex:19
 #: lib/tmde_web/templates/page/imprint.html.heex:3
 #, elixir-autogen, elixir-format
 msgid "Imprint"
@@ -33,7 +33,7 @@ msgstr ""
 msgid "Welcome"
 msgstr ""
 
-#: lib/tmde_web/templates/page/index.html.heex:6
+#: lib/tmde_web/templates/page/index.html.heex:13
 #, elixir-autogen, elixir-format
 msgid "Welcome to my personal website"
 msgstr ""
@@ -43,12 +43,12 @@ msgstr ""
 msgid "A little more detail, please?"
 msgstr ""
 
-#: lib/tmde_web/templates/layout/footer.html.heex:15
+#: lib/tmde_web/templates/layout/footer.html.heex:20
 #, elixir-autogen, elixir-format
 msgid "Code auf GitHub"
 msgstr "Source code on GitHub"
 
-#: lib/tmde_web/templates/layout/footer.html.heex:13
+#: lib/tmde_web/templates/layout/footer.html.heex:18
 #, elixir-autogen, elixir-format
 msgid "Home"
 msgstr ""
@@ -78,7 +78,7 @@ msgstr ""
 msgid "Sorry, the page does not exist."
 msgstr ""
 
-#: lib/tmde_web/controllers/page_controller.ex:43
+#: lib/tmde_web/controllers/page_controller.ex:44
 #, elixir-autogen, elixir-format
 msgid "Imprint and privacy policy for thorsten-michael.de, the personal homepage of Thorsten-Michael Deinert."
 msgstr ""
@@ -87,3 +87,43 @@ msgstr ""
 #, elixir-autogen, elixir-format
 msgid "Personal homepage of Thorsten-Michael Deinert. Passionate computer scientist, software developer, and programming languages polyglot."
 msgstr ""
+
+#: lib/tmde_web/views/application_mailer_view.ex:13
+#, elixir-autogen, elixir-format
+msgid "Dear Mr. %{name},"
+msgstr ""
+
+#: lib/tmde_web/views/application_mailer_view.ex:7
+#, elixir-autogen, elixir-format
+msgid "Dear Mrs. %{name},"
+msgstr ""
+
+#: lib/tmde_web/views/application_mailer_view.ex:19
+#, elixir-autogen, elixir-format
+msgid "Dear Sirs and Madams,"
+msgstr ""
+
+#: lib/tmde_web/views/application_mailer_view.ex:25
+#, elixir-autogen, elixir-format
+msgid "Sincerely,"
+msgstr ""
+
+#: lib/tmde_web/templates/application_mailer/application.text.eex:19
+#, elixir-autogen, elixir-format
+msgid "Web"
+msgstr "Web"
+
+#: lib/tmde_web/views/application_mailer_view.ex:51
+#, elixir-autogen, elixir-format
+msgid "email"
+msgstr "E-Mail"
+
+#: lib/tmde_web/views/application_mailer_view.ex:45
+#, elixir-autogen, elixir-format
+msgid "mobile"
+msgstr "Mobile"
+
+#: lib/tmde_web/views/application_mailer_view.ex:39
+#, elixir-autogen, elixir-format
+msgid "phone"
+msgstr "Phone"

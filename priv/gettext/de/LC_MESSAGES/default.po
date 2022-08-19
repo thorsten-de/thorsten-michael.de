@@ -16,8 +16,8 @@ msgstr ""
 msgid "Contact Information"
 msgstr "Verantwortlich im Sinne des §5 TMG"
 
-#: lib/tmde_web/controllers/page_controller.ex:40
-#: lib/tmde_web/templates/layout/footer.html.heex:14
+#: lib/tmde_web/controllers/page_controller.ex:42
+#: lib/tmde_web/templates/layout/footer.html.heex:19
 #: lib/tmde_web/templates/page/imprint.html.heex:3
 #, elixir-autogen, elixir-format
 msgid "Imprint"
@@ -33,7 +33,7 @@ msgstr "Datenschutzerklärung"
 msgid "Welcome"
 msgstr "Willkommen"
 
-#: lib/tmde_web/templates/page/index.html.heex:6
+#: lib/tmde_web/templates/page/index.html.heex:13
 #, elixir-autogen, elixir-format
 msgid "Welcome to my personal website"
 msgstr "Willkommen auf meiner Webseite!"
@@ -43,12 +43,12 @@ msgstr "Willkommen auf meiner Webseite!"
 msgid "A little more detail, please?"
 msgstr "Etwas mehr Transparenz, bitte?"
 
-#: lib/tmde_web/templates/layout/footer.html.heex:15
+#: lib/tmde_web/templates/layout/footer.html.heex:20
 #, elixir-autogen, elixir-format
 msgid "Code auf GitHub"
 msgstr "Code auf GitHub"
 
-#: lib/tmde_web/templates/layout/footer.html.heex:13
+#: lib/tmde_web/templates/layout/footer.html.heex:18
 #, elixir-autogen, elixir-format
 msgid "Home"
 msgstr "Home"
@@ -78,7 +78,7 @@ msgstr "Seite nicht gefunden"
 msgid "Sorry, the page does not exist."
 msgstr "Es tut mir leid, die Seite gibt es nicht."
 
-#: lib/tmde_web/controllers/page_controller.ex:43
+#: lib/tmde_web/controllers/page_controller.ex:44
 #, elixir-autogen, elixir-format
 msgid "Imprint and privacy policy for thorsten-michael.de, the personal homepage of Thorsten-Michael Deinert."
 msgstr "Impressum und Datenschutzerklärung auf thorsten-michael.de, der persönlichen Homepage von Thorsten-Michael Deinert."
@@ -87,3 +87,43 @@ msgstr "Impressum und Datenschutzerklärung auf thorsten-michael.de, der persön
 #, elixir-autogen, elixir-format
 msgid "Personal homepage of Thorsten-Michael Deinert. Passionate computer scientist, software developer, and programming languages polyglot."
 msgstr "Persönliche Homepage von Thorsten-Michael Deinert. Leidenschaftlicher Informatiker, Softwareentwickler und Programmiersprachen-Polyglott."
+
+#: lib/tmde_web/views/application_mailer_view.ex:13
+#, elixir-autogen, elixir-format
+msgid "Dear Mr. %{name},"
+msgstr "Sehr geehrter Herr %{name},"
+
+#: lib/tmde_web/views/application_mailer_view.ex:7
+#, elixir-autogen, elixir-format
+msgid "Dear Mrs. %{name},"
+msgstr "Sehr geehrte Frau %{name},"
+
+#: lib/tmde_web/views/application_mailer_view.ex:19
+#, elixir-autogen, elixir-format
+msgid "Dear Sirs and Madams,"
+msgstr "Sehr geehrte Damen und Herren,"
+
+#: lib/tmde_web/views/application_mailer_view.ex:25
+#, elixir-autogen, elixir-format
+msgid "Sincerely,"
+msgstr "Mit freundlichen Grüßen,"
+
+#: lib/tmde_web/templates/application_mailer/application.text.eex:19
+#, elixir-autogen, elixir-format
+msgid "Web"
+msgstr "Web"
+
+#: lib/tmde_web/views/application_mailer_view.ex:51
+#, elixir-autogen, elixir-format
+msgid "email"
+msgstr "E-Mail"
+
+#: lib/tmde_web/views/application_mailer_view.ex:45
+#, elixir-autogen, elixir-format
+msgid "mobile"
+msgstr "Handy"
+
+#: lib/tmde_web/views/application_mailer_view.ex:39
+#, elixir-autogen, elixir-format
+msgid "phone"
+msgstr "Tel."
