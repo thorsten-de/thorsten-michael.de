@@ -25,6 +25,8 @@ defmodule TmdeWeb.Router do
 
     get "/", PageController, :index
     get "/impressum", PageController, :imprint
+
+    live "/bewerbung/:id", JobsLive, :show
   end
 
   # Other scopes may use custom stacks.
