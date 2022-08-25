@@ -127,17 +127,40 @@ msgstr ""
 msgid "Web"
 msgstr ""
 
-#: lib/tmde_web/views/application_mailer_view.ex:51
+#: lib/tmde/contact/link.ex:15
+#: lib/tmde_web/views/application_mailer_view.ex:48
 #, elixir-autogen, elixir-format
 msgid "email"
 msgstr ""
 
-#: lib/tmde_web/views/application_mailer_view.ex:45
+#: lib/tmde/contact/link.ex:13
+#: lib/tmde_web/views/application_mailer_view.ex:42
 #, elixir-autogen, elixir-format
 msgid "mobile"
 msgstr ""
 
-#: lib/tmde_web/views/application_mailer_view.ex:39
+#: lib/tmde/contact/link.ex:12
+#: lib/tmde_web/views/application_mailer_view.ex:36
 #, elixir-autogen, elixir-format
 msgid "phone"
+msgstr ""
+
+#: lib/tmde/contact/link.ex:37
+#, elixir-autogen, elixir-format
+msgid "call %{number}..."
+msgstr ""
+
+#: lib/tmde/contact/link.ex:44
+#, elixir-autogen, elixir-format
+msgid "mail to %{email}..."
+msgstr ""
+
+#: lib/tmde/contact/link.ex:14
+#, elixir-autogen, elixir-format
+msgid "whatsapp"
+msgstr ""
+
+#: lib/tmde/contact/link.ex:51
+#, elixir-autogen, elixir-format
+msgid "whatsapp to %{number}..."
 msgstr ""

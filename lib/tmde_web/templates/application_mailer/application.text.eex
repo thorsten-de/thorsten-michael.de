@@ -14,7 +14,7 @@ https://thorsten-michael.de/bewerbung/<%= @application.code %>a
 
 <%= @application.sender.address |> Enum.join("\n") %>
 
-<%= @application.sender.links |> Enum.map(&link_to_text(@application, &1))|> Enum.join("\n") %>
+<%= @application.sender.links |> Enum.join("\n") %>
 
 <%= gettext("Web") %>: <%= Routes.page_url(TmdeWeb.Endpoint, :index) %>
 

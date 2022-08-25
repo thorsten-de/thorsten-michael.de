@@ -1,6 +1,7 @@
 defmodule TmdeWeb.ApplicationMailerView do
   use TmdeWeb, :view
   import TmdeWeb.Components.MailerComponents
+  alias Tmde.Contact.Link
 
   def greeting(%{locale: locale, contact: %{gender: "w", name: name}}) when is_binary(name) do
     Gettext.with_locale(locale, fn ->
@@ -27,25 +28,4 @@ defmodule TmdeWeb.ApplicationMailerView do
   end
 
   def sender(%{sender: %{name: name}}), do: name
-
-  def link_to_text(application, {type, {number, _usage}}),
-    do: "#{link_type(application, type)}:\t#{number}"
-
-  def link_type(%{locale: locale}, :phone) do
-    Gettext.with_locale(locale, fn ->
-      gettext("phone")
-    end)
-  end
-
-  def link_type(%{locale: locale}, :mobile) do
-    Gettext.with_locale(locale, fn ->
-      gettext("mobile")
-    end)
-  end
-
-  def link_type(%{locale: locale}, :email) do
-    Gettext.with_locale(locale, fn ->
-      gettext("email")
-    end)
-  end
 end

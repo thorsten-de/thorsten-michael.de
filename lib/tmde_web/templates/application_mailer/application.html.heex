@@ -42,10 +42,8 @@
             <%= raw(@application.sender.address |> Enum.join("<br>")) %>
           </p>
           <p>
-            <%= for {_type, {number, schemes}} <- @application.sender.links do %>
-              <%= for s <- schemes do %>
-                <a href={"#{s}#{number}"}><%= number %></a><br>
-              <% end %>
+            <%= for l <- @application.sender.links do %>
+              <%= link l, Link.build_link_options(l) %>
             <% end %>
           </p>
 
