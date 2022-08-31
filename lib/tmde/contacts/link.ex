@@ -1,7 +1,6 @@
-defmodule Tmde.Contact.Link do
+defmodule Tmde.Contacts.Link do
   use Ecto.Schema
   import TmdeWeb.Gettext
-  import Phoenix.HTML.Link, only: [link: 2]
   alias __MODULE__
 
   embedded_schema do

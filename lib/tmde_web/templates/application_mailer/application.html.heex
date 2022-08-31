@@ -29,17 +29,17 @@
     <div role="article" aria-roledescription="email" lang={@application.locale} style={to_style(%{"text-size-adjust": "100%", "-webkit-text-size-adjust": "100%", "-ms-text-size-adjust": "100%", background: "transparent"})}>
       <.main_content background="radial-gradient(circle at 25% 83%, rgba(250,250,250,1) 0%, rgba(240,240,240,1) 100%)" background="#fff">
         <.block padding="20px 30px">
-          <p><%= greeting(@application) %></p>
+          <p><%= greeting(@application.contact) %></p>
           <%= raw(@application.email) %>
           <p><%= ending(@application) %></p>
-          <p><%= sender(@application) %></p>
+          <p><%= @application.sender %></p>
         </.block>
         <.block padding="20px 30px">
           <img src="/images/logos/tmd-slogan-120h.svg" width="200" style="width:200;height:auto;border:none;" alt="{@application.sender.name}"/>
           <p>
             <%= @application.sender.title %><br>
-            <strong><%= @application.sender.name %></strong><br>
-            <%= raw(@application.sender.address |> Enum.join("<br>")) %>
+            <strong><%= @application.sender %></strong><br>
+            <%= @application.sender.address %>
           </p>
           <p>
             <%= for l <- @application.sender.links do %>
