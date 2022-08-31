@@ -1,18 +1,18 @@
-<%= greeting(@application) %>
+<%= greeting(@application.contact) %>
           
 <%= @application.email %>
 
 <%= ending(@application) %>
 
-<%= sender(@application) %>
+<%= @application.sender %>
 
-https://thorsten-michael.de/bewerbung/<%= @application.code %>a
+https://thorsten-michael.de/bewerbung/<%= @application.code %>
 
 --
 <%= @application.sender.title %>
-<%= @application.sender.name %>
+<%= @application.sender %>
 
-<%= @application.sender.address |> Enum.join("\n") %>
+<%= @application.sender.address %>
 
 <%= @application.sender.links |> Enum.join("\n") %>
 
