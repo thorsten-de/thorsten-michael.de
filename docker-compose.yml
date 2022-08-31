@@ -5,7 +5,7 @@ version: '3.8'
 services:
   db:
     build: docker/localized_postgres/.
-    ports: 
+    ports:
       - 5432:5432
     environment:
       POSTGRES_PASSWORD: postgres
@@ -25,9 +25,14 @@ services:
     depends_on:
       - db
 
+  adminer:
+    image: adminer
+    links:
+      - db:db
+    ports:
+      - 4004:8080
 
 volumes:
   db_data:
-
 
 
