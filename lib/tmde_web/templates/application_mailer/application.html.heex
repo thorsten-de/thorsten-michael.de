@@ -40,7 +40,9 @@
         </.block>
         <.columns>
           <:column>
-            <img src="/images/logos/tmd-slogan-120h.svg" width="200" style="width:200;height:auto;border:none;" alt="{@application.sender.name}"/>
+            <%= link to: Routes.page_path(TmdeWeb.Endpoint, :index), title: gettext("Show %{url} in browser...", url: "thorsten-michael.de") do %>
+              <img src={Routes.jobs_path(TmdeWeb.Endpoint, :logo_logger, @application.code)} width="200" style="width:200;height:auto;border:none;" alt="{@application.sender.name}"/>
+            <% end %>
             <p>
               <%= @application.sender.title %><br>
               <strong style="color: #e6611a;"><%= @application.sender %></strong><br>
