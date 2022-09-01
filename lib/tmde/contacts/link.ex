@@ -12,6 +12,7 @@ defmodule Tmde.Contacts.Link do
   def type_to_string(%__MODULE__{type: :mobile}), do: gettext("mobile")
   def type_to_string(%__MODULE__{type: :whatsapp}), do: gettext("whatsapp")
   def type_to_string(%__MODULE__{type: :email}), do: gettext("email")
+  def type_to_string(%__MODULE__{type: :website}), do: gettext("web")
   def type_to_string(%__MODULE__{}), do: ""
 
   defp sanitize_phone_number(target) do

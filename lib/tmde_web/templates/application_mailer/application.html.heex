@@ -23,6 +23,10 @@
         table, td, div, h1, p {
             font-family: Arial, sans-serif;
         }
+        a {
+          text-decoration: none;
+          color: #508caf;
+        }
     </style>
   </head>
   <body style={to_style(%{margin: 0, padding: 0, "word-spacing": "normal", background: "radial-gradient(circle, #eee 0%, #bbb 100%)"})}>
@@ -34,20 +38,28 @@
           <p><%= ending(@application) %></p>
           <p><%= @application.sender %></p>
         </.block>
-        <.block padding="20px 30px">
-          <img src="/images/logos/tmd-slogan-120h.svg" width="200" style="width:200;height:auto;border:none;" alt="{@application.sender.name}"/>
-          <p>
-            <%= @application.sender.title %><br>
-            <strong><%= @application.sender %></strong><br>
-            <%= @application.sender.address %>
-          </p>
-          <p>
-            <%= for l <- @application.sender.links do %>
-              <%= link l, Link.build_link_options(l) %>
-            <% end %>
-          </p>
-
-        </.block>
+        <.columns>
+          <:column>
+            <img src="/images/logos/tmd-slogan-120h.svg" width="200" style="width:200;height:auto;border:none;" alt="{@application.sender.name}"/>
+            <p>
+              <%= @application.sender.title %><br>
+              <strong style="color: #e6611a;"><%= @application.sender %></strong><br>
+              <%= @application.sender.address %>
+            </p>
+          </:column>
+          <:column vertical-align="bottom" text-align="right">
+            <ul style="list-style:none; padding-inner-start:0;">
+              <%= for l <- @application.sender.links do %>
+                <li style="margin: 6px 0;">
+                  <%= link Link.build_link_options(l) |> Keyword.merge(style: to_style display: "block", "line-height": "28px", color: if l.type == :whatsapp, do: "#89b34d") do %>
+                    <i><.bi_icon icon={l.type} size="22" /></i>
+                    <span><%= l %></span>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </:column>
+        </.columns>
       </.main_content>
     </div>
   </body>
