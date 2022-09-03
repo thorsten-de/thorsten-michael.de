@@ -1,4 +1,4 @@
-<.footer>
+<Footer.footer>
   <.container>
     <.columns>
       <.column>
@@ -15,7 +15,7 @@
       <.column>
         <.title>thorsten-michael.de</.title>
         <ul>
-          <li><%= link gettext("Home"), to: Routes.page_path(@conn,:index) %></li>
+          <li><%= link gettext("Home"), to: Routes.page_path(@conn, :index) %></li>
           <li><%= link gettext("Imprint"), to: Routes.page_path(@conn, :imprint)%></li>
           <li>
             <a target="_blank" href="https://github.com/thorsten-de/thorsten-michael.de">
@@ -28,7 +28,7 @@
       <.column>
         <.title label={gettext("Blog Articles")} />
         <ul>
-          <li>Noch keine angelegt</li>
+          <li><.label label={gettext("no articles yet")} /></li>
         </ul>
       </.column>
 
@@ -54,4 +54,4 @@
       </.column>
     </.columns>
   </.container>
-</.footer>
+</Footer.footer>
