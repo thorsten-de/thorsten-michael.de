@@ -66,7 +66,8 @@ config :tmde, TmdeWeb.Endpoint,
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/tmde_web/(live|views)/.*(ex)$",
-      ~r"lib/tmde_web/templates/.*(eex)$"
+      ~r"lib/tmde_web/templates/.*(eex)$",
+      ~r"lib/tmde_web/components/.*(ex|eex)$"
     ]
   ]
 

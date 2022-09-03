@@ -28,6 +28,21 @@ defmodule TmdeWeb do
     end
   end
 
+  @doc """
+  Allows simple rendering of co-located .heex files for
+  functional components. If you have a module named `Components.Layout`
+  in the `components`folder with a functional component `page(assigns)`,
+  you can use `render("page.html", assigns)` to render a template at
+  `components/layout/page.html.heex`
+  """
+  def colocate_templates do
+    quote do
+      use Phoenix.View,
+        root: "lib/tmde_web/components",
+        namespace: TmdeWeb.Components
+    end
+  end
+
   def view do
     quote do
       use Phoenix.View,
@@ -101,6 +116,9 @@ defmodule TmdeWeb do
 
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
+
+      # Include my own Bulma components
+      use Bulma
 
       import TmdeWeb.ErrorHelpers
       import TmdeWeb.Gettext
