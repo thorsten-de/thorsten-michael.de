@@ -22,6 +22,7 @@ config :tmde, TmdeWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4000],
   check_origin: false,
   code_reloader: true,
+  reloadable_apps: [:tmde, :bulma_liveview],
   debug_errors: true,
   secret_key_base: "nTOZQDPLW2DQb1Xb1Y480vR/eFdKb3rhxu2NpPzZ3561Be8jS+3eZPpkVhqy2GUL",
   watchers: [
