@@ -1,6 +1,12 @@
 /* This file is for your main application CSS */
 
 @import "fonts";
+
+$fa-font-path: "/fonts/";
+@import "./font-awesome/fontawesome";
+@import "./font-awesome/solid";
+@import "./font-awesome/brands";
+
 @import "override_bulma_variables";
 @import "bulma";
 
