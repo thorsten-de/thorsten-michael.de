@@ -15,8 +15,8 @@ msgstr ""
 msgid "Contact Information"
 msgstr ""
 
-#: lib/tmde_web/controllers/page_controller.ex:40
-#: lib/tmde_web/templates/layout/footer.html.heex:14
+#: lib/tmde_web/components/navigation/footer.html.heex:19
+#: lib/tmde_web/controllers/page_controller.ex:42
 #: lib/tmde_web/templates/page/imprint.html.heex:3
 #, elixir-autogen, elixir-format
 msgid "Imprint"
@@ -32,7 +32,7 @@ msgstr ""
 msgid "Welcome"
 msgstr ""
 
-#: lib/tmde_web/templates/page/index.html.heex:6
+#: lib/tmde_web/templates/page/index.html.heex:13
 #, elixir-autogen, elixir-format
 msgid "Welcome to my personal website"
 msgstr ""
@@ -42,12 +42,12 @@ msgstr ""
 msgid "A little more detail, please?"
 msgstr ""
 
-#: lib/tmde_web/templates/layout/footer.html.heex:15
+#: lib/tmde_web/components/navigation/footer.html.heex:22
 #, elixir-autogen, elixir-format
 msgid "Code auf GitHub"
 msgstr ""
 
-#: lib/tmde_web/templates/layout/footer.html.heex:13
+#: lib/tmde_web/components/navigation/footer.html.heex:18
 #, elixir-autogen, elixir-format
 msgid "Home"
 msgstr ""
@@ -77,7 +77,7 @@ msgstr ""
 msgid "Sorry, the page does not exist."
 msgstr ""
 
-#: lib/tmde_web/controllers/page_controller.ex:43
+#: lib/tmde_web/controllers/page_controller.ex:44
 #, elixir-autogen, elixir-format
 msgid "Imprint and privacy policy for thorsten-michael.de, the personal homepage of Thorsten-Michael Deinert."
 msgstr ""
@@ -85,4 +85,19 @@ msgstr ""
 #: lib/tmde_web/controllers/page_controller.ex:30
 #, elixir-autogen, elixir-format
 msgid "Personal homepage of Thorsten-Michael Deinert. Passionate computer scientist, software developer, and programming languages polyglot."
+msgstr ""
+
+#: lib/tmde_web/components/navigation/footer.html.heex:29
+#, elixir-autogen, elixir-format
+msgid "Blog Articles"
+msgstr ""
+
+#: lib/tmde_web/components/navigation/footer.html.heex:36
+#, elixir-autogen, elixir-format
+msgid "My Online Profiles"
+msgstr ""
+
+#: lib/tmde_web/components/navigation/footer.html.heex:31
+#, elixir-autogen, elixir-format
+msgid "no articles yet"
 msgstr ""
