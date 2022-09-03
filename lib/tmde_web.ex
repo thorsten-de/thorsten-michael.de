@@ -88,7 +88,13 @@ defmodule TmdeWeb do
   defp view_helpers do
     quote do
       # Use all HTML functionality (forms, tags, etc)
-      use Phoenix.HTML
+      # instead of use Phoenix.HTML, I'll import them to exclude functions clashing with
+      # my Bulma components, eg: label
+      import Phoenix.HTML
+      import Phoenix.HTML.Form, except: [label: 1]
+      import Phoenix.HTML.Link
+      import Phoenix.HTML.Tag, except: [attributes_escape: 1]
+      import Phoenix.HTML.Format
 
       # Import LiveView and .heex helpers (live_render, live_patch, <.form>, etc)
       import Phoenix.LiveView.Helpers
