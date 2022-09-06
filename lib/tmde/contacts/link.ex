@@ -49,10 +49,16 @@ defmodule Tmde.Contacts.Link do
   end
 
   def build_link_options(%__MODULE__{target: url}) do
-    [to: "https://#{url}"]
+    [
+      to: "https://#{url}",
+      title: gettext("Show %{url} in browser...", url: url)
+    ]
   end
 
   defimpl String.Chars, for: __MODULE__ do
+    def to_string(%{type: :website} = link),
+      do: "#{Link.type_to_string(link)}: https://#{link.target}"
+
     def to_string(link), do: "#{Link.type_to_string(link)}: #{link.target}"
   end
 
