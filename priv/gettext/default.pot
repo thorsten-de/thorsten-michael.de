@@ -161,3 +161,63 @@ msgstr ""
 #, elixir-autogen, elixir-format
 msgid "whatsapp to %{number}..."
 msgstr ""
+
+#: lib/tmde/contacts/contact.ex:27
+#, elixir-autogen, elixir-format
+msgid "Dear Mr. %{name},"
+msgstr ""
+
+#: lib/tmde/contacts/contact.ex:23
+#, elixir-autogen, elixir-format
+msgid "Dear Mrs. %{name},"
+msgstr ""
+
+#: lib/tmde/contacts/contact.ex:31
+#, elixir-autogen, elixir-format
+msgid "Dear Sirs and Madams,"
+msgstr ""
+
+#: lib/tmde_web/views/application_mailer_view.ex:9
+#, elixir-autogen, elixir-format
+msgid "Sincerely,"
+msgstr ""
+
+#: lib/tmde_web/templates/application_mailer/application.text.eex:19
+#, elixir-autogen, elixir-format
+msgid "Web"
+msgstr ""
+
+#: lib/tmde/contacts/link.ex:14
+#, elixir-autogen, elixir-format
+msgid "email"
+msgstr ""
+
+#: lib/tmde/contacts/link.ex:12
+#, elixir-autogen, elixir-format
+msgid "mobile"
+msgstr ""
+
+#: lib/tmde/contacts/link.ex:11
+#, elixir-autogen, elixir-format
+msgid "phone"
+msgstr ""
+
+#: lib/tmde/contacts/link.ex:32
+#, elixir-autogen, elixir-format
+msgid "call %{number}..."
+msgstr ""
+
+#: lib/tmde/contacts/link.ex:39
+#, elixir-autogen, elixir-format
+msgid "mail to %{email}..."
+msgstr ""
+
+#: lib/tmde/contacts/link.ex:13
+#, elixir-autogen, elixir-format
+msgid "whatsapp"
+msgstr ""
+
+#: lib/tmde/contacts/link.ex:46
+#, elixir-autogen, elixir-format
+msgid "whatsapp to %{number}..."
+msgstr ""
