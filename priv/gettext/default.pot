@@ -122,11 +122,6 @@ msgstr ""
 msgid "Sincerely,"
 msgstr ""
 
-#: lib/tmde_web/templates/application_mailer/application.text.eex:19
-#, elixir-autogen, elixir-format
-msgid "Web"
-msgstr ""
-
 #: lib/tmde/contacts/link.ex:14
 #, elixir-autogen, elixir-format
 msgid "email"
@@ -162,7 +157,9 @@ msgstr ""
 msgid "whatsapp to %{number}..."
 msgstr ""
 
-#: lib/tmde_web/templates/application_mailer/application.html.heex:43
+#: lib/tmde/contacts/link.ex:54
+#: lib/tmde_web/templates/application_mailer/application.html.heex:53
+#: lib/tmde_web/templates/application_mailer/application.html.heex:58
 #, elixir-autogen, elixir-format
 msgid "Show %{url} in browser..."
 msgstr ""
@@ -170,4 +167,26 @@ msgstr ""
 #: lib/tmde/contacts/link.ex:15
 #, elixir-autogen, elixir-format
 msgid "web"
+msgstr ""
+
+#: lib/tmde_web/templates/application_mailer/application.html.heex:42
+#: lib/tmde_web/templates/application_mailer/application.text.eex:10
+#, elixir-autogen, elixir-format
+msgid "Attachments:"
+msgstr ""
+
+#: lib/tmde_web/templates/application_mailer/application.html.heex:51
+#: lib/tmde_web/templates/application_mailer/application.text.eex:14
+#, elixir-autogen, elixir-format
+msgid "P.S. For this application I have created a dedicated section on my website:"
+msgstr ""
+
+#: lib/tmde_web/mailer/application_mailer.ex:25
+#, elixir-autogen, elixir-format
+msgid "%{sender} - application documents for %{reference}"
+msgstr ""
+
+#: lib/tmde_web/mailer/application_mailer.ex:23
+#, elixir-autogen, elixir-format
+msgid "application documents"
 msgstr ""

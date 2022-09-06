@@ -123,11 +123,6 @@ msgstr "Sehr geehrte Damen und Herren,"
 msgid "Sincerely,"
 msgstr "Mit freundlichen Grüßen,"
 
-#: lib/tmde_web/templates/application_mailer/application.text.eex:19
-#, elixir-autogen, elixir-format
-msgid "Web"
-msgstr "Web"
-
 #: lib/tmde/contacts/link.ex:14
 #, elixir-autogen, elixir-format
 msgid "email"
@@ -143,12 +138,12 @@ msgstr "Handy"
 msgid "phone"
 msgstr "Tel."
 
-#: lib/tmde/contacts/link.ex:32
+#: lib/tmde/contacts/link.ex:33
 #, elixir-autogen, elixir-format
 msgid "call %{number}..."
 msgstr "%{number} anrufen..."
 
-#: lib/tmde/contacts/link.ex:39
+#: lib/tmde/contacts/link.ex:40
 #, elixir-autogen, elixir-format
 msgid "mail to %{email}..."
 msgstr "E-Mail an %{email} senden..."
@@ -158,10 +153,41 @@ msgstr "E-Mail an %{email} senden..."
 msgid "whatsapp"
 msgstr "WhatsApp"
 
-#: lib/tmde/contacts/link.ex:46
+#: lib/tmde/contacts/link.ex:47
 #, elixir-autogen, elixir-format
 msgid "whatsapp to %{number}..."
 msgstr "WhatsApp-Nachricht an %{number} senden..."
 
+#: lib/tmde/contacts/link.ex:54
+#: lib/tmde_web/templates/application_mailer/application.html.heex:53
+#: lib/tmde_web/templates/application_mailer/application.html.heex:58
+#, elixir-autogen, elixir-format
+msgid "Show %{url} in browser..."
+msgstr "%{url} im Browser öffnen..."
 
+#: lib/tmde/contacts/link.ex:15
+#, elixir-autogen, elixir-format
+msgid "web"
+msgstr "Web"
 
+#: lib/tmde_web/templates/application_mailer/application.html.heex:42
+#: lib/tmde_web/templates/application_mailer/application.text.eex:10
+#, elixir-autogen, elixir-format
+msgid "Attachments:"
+msgstr "Anlagen:"
+
+#: lib/tmde_web/templates/application_mailer/application.html.heex:51
+#: lib/tmde_web/templates/application_mailer/application.text.eex:14
+#, elixir-autogen, elixir-format
+msgid "P.S. For this application I have created a dedicated section on my website:"
+msgstr "PS: Für diese Bewerbung habe ich auf meiner Webseite einen eigenen Bereich angelegt:"
+
+#: lib/tmde_web/mailer/application_mailer.ex:25
+#, elixir-autogen, elixir-format
+msgid "%{sender} - application documents for %{reference}"
+msgstr "%{sender} - Bewerbungsmappe für %{reference}"
+
+#: lib/tmde_web/mailer/application_mailer.ex:23
+#, elixir-autogen, elixir-format
+msgid "application documents"
+msgstr "Bewerbungsmappe"

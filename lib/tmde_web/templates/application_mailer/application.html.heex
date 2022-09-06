@@ -38,10 +38,25 @@
           <p><%= ending(@application) %></p>
           <p><%= @application.sender %></p>
         </.block>
+        <.block>
+            <%= gettext("Attachments:") %>
+            <ul>
+              <%= for %{name: name} <- @attachments do %>
+                <li style="margin: 6px 0;">
+                  <%= name %>
+                </li>
+              <% end %>
+            </ul>
+            <p>
+              <%= gettext("P.S. For this application I have created a dedicated section on my website:") %>
+              <br>
+              <%= url = Routes.jobs_url(TmdeWeb.Endpoint, :show, @application.code); link url, to: url, title: gettext("Show %{url} in browser...", url: url) %>
+            </p>
+        </.block>
         <.columns>
           <:column>
-            <%= link to: Routes.page_path(TmdeWeb.Endpoint, :index), title: gettext("Show %{url} in browser...", url: "thorsten-michael.de") do %>
-              <img src={Routes.jobs_path(TmdeWeb.Endpoint, :logo_logger, @application.code)} width="200" style="width:200;height:auto;border:none;" alt="{@application.sender.name}"/>
+            <%= link to: Routes.jobs_url(TmdeWeb.Endpoint, :show, @application.code), title: gettext("Show %{url} in browser...", url: "thorsten-michael.de") do %>
+              <img src={Routes.jobs_url(TmdeWeb.Endpoint, :logo_logger, @application.code)} width="200" style="width:200;height:auto;border:none;" alt="{@application.sender.name}"/>
             <% end %>
             <p>
               <%= @application.sender.title %><br>

@@ -6,15 +6,17 @@
 
 <%= @application.sender %>
 
-https://thorsten-michael.de/bewerbung/<%= @application.code %>
+
+<%= gettext("Attachments:") %>
+<%= for %{name: name} <- @attachments do %> - <%= name %>
+<% end %>
+
+<%= gettext("P.S. For this application I have created a dedicated section on my website:") %>
+<%= Routes.jobs_url(TmdeWeb.Endpoint, :show, @application.code) %>
 
 --
 <%= @application.sender.title %>
 <%= @application.sender %>
-
 <%= @application.sender.address %>
 
 <%= @application.sender.links |> Enum.join("\n") %>
-
-<%= gettext("Web") %>: <%= Routes.page_url(TmdeWeb.Endpoint, :index) %>
-
