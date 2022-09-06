@@ -119,9 +119,6 @@ defmodule TmdeWeb do
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
 
-      # Include my own Bulma components
-      use Bulma
-
       import TmdeWeb.ErrorHelpers
       import TmdeWeb.Gettext
       alias TmdeWeb.Router.Helpers, as: Routes
