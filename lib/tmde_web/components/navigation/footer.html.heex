@@ -1,0 +1,57 @@
+<Footer.footer>
+  <.container>
+    <.columns>
+      <.column>
+        <figure class="image mr-6">
+          <img width="300" height="120"
+              alt="Thorsten-Michael Deinert (Footer Logo)"
+              srcset="/images/logos/tmd-slogan-120h.svg, 
+                      /images/logos/tmd-slogan-240h.svg 2x"
+              src="/images/logos/tmd-slogan-120h.svg">
+
+        </figure>
+      </.column>
+
+      <.column>
+        <.title>thorsten-michael.de</.title>
+        <ul>
+          <li><%= link gettext("Home"), to: Routes.page_path(@conn, :index) %></li>
+          <li><%= link gettext("Imprint"), to: Routes.page_path(@conn, :imprint)%></li>
+          <li>
+            <a target="_blank" href="https://github.com/thorsten-de/thorsten-michael.de">
+              <.label icon_set="brands" icon="github" label={gettext("Code auf GitHub")} />
+            </a>
+          </li>
+        </ul>
+      </.column>
+
+      <.column>
+        <.title label={gettext("Blog Articles")} />
+        <ul>
+          <li><.label label={gettext("no articles yet")} /></li>
+        </ul>
+      </.column>
+
+      <.column>
+        <.title label={gettext("My Online Profiles")} />
+        <ul>
+          <li>
+            <a target="_blank" href="https://github.com/thorsten-de">
+              <.label icon_set="brands" icon="square-github" label="GitHub thorsten-de" />
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://www.xing.com/profile/Thorsten_Deinert2">
+              <.label icon_set="brands" icon="square-xing" label="XING" />          
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://www.linkedin.com/in/thorsten-deinert-57a832247">
+              <.label icon_set="brands" icon="linkedin" label="LinkedIn" />
+            </a>
+          </li>
+        </ul>
+      </.column>
+    </.columns>
+  </.container>
+</Footer.footer>

@@ -10,7 +10,7 @@ defmodule Tmde.MixProject do
       compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(Mix.env())
     ]
   end
 
@@ -27,6 +27,25 @@ defmodule Tmde.MixProject do
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
   defp elixirc_paths(_), do: ["lib"]
+
+  # As I publish my app within a docker container, I don't want to use a local copy of
+  # bulma_liveview repo in production. It should just pull the current version from
+  # github (or perhaps hex.pm if it will be published where)
+  defp deps(:prod) do
+    [
+      {:bulma_liveview, github: "thorsten-de/bulma_liveview"}
+      | deps()
+    ]
+  end
+
+  # As I want to evolve my bulma-liveview components along the way, I have a local
+  # remote of the github repository setup in development/test mode.
+  defp deps(_) do
+    [
+      {:bulma_liveview, path: "../bulma_liveview"}
+      | deps()
+    ]
+  end
 
   # Specifies your project dependencies.
   #

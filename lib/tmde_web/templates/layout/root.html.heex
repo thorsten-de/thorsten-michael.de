@@ -33,6 +33,6 @@
     <%= render "navbar.html", assigns %>
     
     <%= @inner_content %>
-    <%= render "footer.html", assigns %>
+    <Navigation.footer conn={@conn}/>
   </body>
 </html>
