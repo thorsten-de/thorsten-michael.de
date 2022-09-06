@@ -5,7 +5,7 @@ defmodule Tmde.Contacts.Contact do
   use Ecto.Schema
   import Tmde.Helper.StringHelper
   import TmdeWeb.Gettext
-  alias Tmde.Contacts.{Address, Link}
+  alias Tmde.Contacts.Address
   alias __MODULE__
 
   embedded_schema do
@@ -16,7 +16,6 @@ defmodule Tmde.Contacts.Contact do
     field :email, :string
 
     embeds_one :address, Address
-    embeds_many :links, Link
   end
 
   def greeting(%__MODULE__{gender: :female, last_name: name}) when is_binary(name) do
