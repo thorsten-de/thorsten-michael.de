@@ -4,13 +4,19 @@ defmodule TmdeWeb.Components.MailerComponents do
   """
   use TmdeWeb, :component
 
+  # Some sane defaults for width and padding
   @width 600
-  @padding 30
+  @vertical_padding 30
+  @horizontal_padding 20
 
   @doc """
   A block inside the layout that has content. Assigns are interpreted as styles
   """
   def block(assigns) do
+    assigns =
+      assigns
+      |> assign_defaults(padding: "#{@horizontal_padding}px #{@vertical_padding}px")
+
     assigns =
       assigns
       |> assign(:style, to_style(assigns_to_attributes(assigns)))
@@ -24,6 +30,65 @@ defmodule TmdeWeb.Components.MailerComponents do
     """
   end
 
+  @doc """
+  Calculate column widths for each column. Supports the following options:
+   - a fixed width in px like "240px"
+   - a weight like "2*" that distributes the free space among other free columns
+
+   If nothing is given, a weight of 1 is assumed.
+
+   Reminder to myself: I could pattern match on the suffix further to
+   deal with different type of length measures, as %. But that would
+   complicate matters more than needed for me.
+  """
+  def calculate_column_widths(columns, full_width) do
+    {columns, space_left} =
+      columns
+      |> Enum.reduce({[], full_width}, fn
+        %{width: width_declaration}, {cols, space_left} ->
+          width_declaration
+          |> to_string()
+          |> Float.parse()
+          |> case do
+            :error ->
+              {[{:weight, 1} | cols], space_left}
+
+            {weight, "*"} ->
+              {[{:weight, weight} | cols], space_left}
+
+            {width, _suffix} ->
+              rounded_width = round_to_int(width)
+              {[rounded_width | cols], space_left - rounded_width}
+          end
+
+        _no_width_given, {cols, space_left} ->
+          {[{:weight, 1} | cols], space_left}
+      end)
+
+    sum_weights =
+      columns
+      |> Enum.map(fn
+        {:weight, weight} -> weight
+        _ -> 0
+      end)
+      |> Enum.sum()
+
+    columns
+    |> Enum.reverse()
+    |> Enum.map(fn
+      {:weight, weight} -> "#{round_to_int(space_left * weight / sum_weights)}px"
+      width -> "#{width}px"
+    end)
+  end
+
+  # Rounds floats to integer
+  defp round_to_int(float), do: float |> Float.round() |> trunc()
+
+  @doc """
+  Generates a block with columns of content. Uses named slot ´<:column>´ that respect
+  the properties `text-align`, `vertical-align` and `width`. For the width property,
+  see `calculate_column_width/2` for more details.
+  """
   def columns(assigns) do
     assigns =
       assigns
@@ -33,18 +98,28 @@ defmodule TmdeWeb.Components.MailerComponents do
           width: "100%",
           "font-size": "1rem"
         ],
-        v_padding: "#{@padding}px",
-        default_column_width: "#{(@width - 2 * @padding) / length(assigns.column)}px"
+        max_width: @width,
+        vertical_padding: @vertical_padding,
+        horizontal_padding: @horizontal_padding
+      )
+
+    assigns =
+      assigns
+      |> assign(
+        column_widths:
+          calculate_column_widths(
+            assigns.column,
+            assigns.max_width - 2 * assigns.vertical_padding
+          )
       )
 
     ~H"""
-    <.block padding={"20px #{@v_padding}"} font-size="0">
+    <.block padding={"#{@horizontal_padding}px #{@vertical_padding}px"} font-size="0">
       <!--[if mso]>
       <table role="presentation" width="100%">
       <tr>
-        <%= for col <- @column do %>
+        <%= for {col, column_width} <- Enum.zip(@column, @column_widths) do %>
           <%
-            column_width = Map.get(col, :width, @default_column_width)
             vertical_align = Map.get(col, :"vertical-align", "top")
             text_align = Map.get(col, :"text-align")
           %>
@@ -71,7 +146,7 @@ defmodule TmdeWeb.Components.MailerComponents do
       assigns
       |> assign(:style,
         width: "94%",
-        "margin-top": "20px",
+        "margin-top": "#{@horizontal_padding}px",
         "max-width": "#{@width}px",
         "text-align": :left,
         "font-family": assigns[:font_family] || "Public Sans,Arial,sans-serif",
@@ -132,7 +207,7 @@ defmodule TmdeWeb.Components.MailerComponents do
     assigns =
       assigns
       |> assign_defaults(@default_table_assigns)
-      |> set_style()
+      |> set_table_style()
       |> set_attributes_from_assigns()
 
     ~H"""
@@ -142,6 +217,9 @@ defmodule TmdeWeb.Components.MailerComponents do
     """
   end
 
+  @doc """
+  A component for rendering different Bootstrap Icons. See icon/1 for knwon icons.
+  """
   def bi_icon(assigns) do
     assigns =
       assigns
@@ -199,7 +277,10 @@ defmodule TmdeWeb.Components.MailerComponents do
     """
   end
 
-  def set_style(assigns) do
+  @doc """
+  Merges default table styles with assigned styles and prepares the style attribute
+  """
+  def set_table_style(assigns) do
     assigns
     |> update(:style, fn style ->
       @default_table_assigns[:style]
