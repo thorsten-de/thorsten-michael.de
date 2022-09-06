@@ -15,8 +15,8 @@
       <div class="column">
         <div class="title">thorsten-michael.de</div>
         <ul>
-          <li><%= link gettext("Home"), to: Routes.page_path(@conn,:index) %></li>
-          <li><%= link gettext("Imprint"), to: Routes.page_path(@conn, :imprint)%></li>
+          <li><%= link gettext("Home"), to: Routes.page_path(TmdeWeb.Endpoint,:index) %></li>
+          <li><%= link gettext("Imprint"), to: Routes.page_path(TmdeWeb.Endpoint, :imprint)%></li>
           <li><a target="_blank" href="https://github.com/thorsten-de/thorsten-michael.de"><%= gettext("Code auf GitHub")%></a></li>
         </ul>
       </div>    
