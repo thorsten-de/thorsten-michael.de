@@ -25,3 +25,5 @@ apply_for = fn a ->
   |> TmdeWeb.ApplicationMailer.send_application()
   |> Tmde.Mailer.deliver!()
 end
+
+alias Tmde.Jobs
