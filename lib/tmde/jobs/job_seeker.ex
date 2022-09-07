@@ -3,11 +3,25 @@ defmodule Tmde.Jobs.JobSeeker do
   A job seeker who can apply for jobs. My personal data resides in that table.
   """
 
-  use Ecto.Schema
+  use Tmde, :schema
   alias Tmde.Contacts.{Contact, Link}
+  alias Tmde.Jobs.{Application, PersonalSkill}
 
   schema "job_seekers" do
     embeds_one :contact, Contact
     embeds_many :links, Link
+
+    has_many :skills, PersonalSkill
+    has_many :applications, Application
+
+    timestamps()
+  end
+
+  def changeset(job_seeker, attr \\ %{}) do
+    job_seeker
+    |> cast(attr, [])
+    |> cast_embed(:contact, required: true)
+    |> cast_embed(:links)
+    |> cast_assoc(:skills)
   end
 end

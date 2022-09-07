@@ -2,7 +2,7 @@ defmodule Tmde.Contacts.Contact do
   @moduledoc """
   Provides contact information to applications
   """
-  use Ecto.Schema
+  use Tmde, :schema
   import Tmde.Helper.StringHelper
   import TmdeWeb.Gettext
   alias Tmde.Contacts.Address
@@ -16,6 +16,13 @@ defmodule Tmde.Contacts.Contact do
     field :email, :string
 
     embeds_one :address, Address
+  end
+
+  def changeset(contact, attr \\ %{}) do
+    contact
+    |> cast(attr, [:gender, :title, :first_name, :last_name, :email])
+    |> validate_required([:gender, :email])
+    |> cast_embed(:address)
   end
 
   def greeting(%__MODULE__{gender: :female, last_name: name}) when is_binary(name) do

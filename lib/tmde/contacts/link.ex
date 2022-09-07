@@ -1,11 +1,17 @@
 defmodule Tmde.Contacts.Link do
-  use Ecto.Schema
+  use Tmde, :schema
   import TmdeWeb.Gettext
   alias __MODULE__
 
   embedded_schema do
     field :type, Ecto.Enum, values: [:email, :phone, :mobile, :whatsapp, :website]
     field :target, :string
+  end
+
+  def changeset(link, attr \\ %{}) do
+    link
+    |> cast(attr, [:type, :target])
+    |> validate_required([:type, :target])
   end
 
   def type_to_string(%__MODULE__{type: :phone}), do: gettext("phone")

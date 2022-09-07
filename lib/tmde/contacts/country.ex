@@ -8,6 +8,7 @@ defmodule Tmde.Contacts.Country do
   handling the country data at runtime.
   """
 
+  @derive {Jason.Encoder, only: [:iso]}
   defstruct [:iso, :title, :alias, :zip_validator]
 
   @known_isos ~w[de]
@@ -51,6 +52,8 @@ defmodule Tmde.Contacts.Country do
   def cast(%__MODULE__{} = country) do
     {:ok, country}
   end
+
+  def cast(%{"iso" => iso}), do: {:ok, get(iso)}
 
   def cast(_), do: :error
 

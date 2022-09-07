@@ -26,4 +26,5 @@ apply_for = fn a ->
   |> Tmde.Mailer.deliver!()
 end
 
+alias Tmde.Repo
 alias Tmde.Jobs

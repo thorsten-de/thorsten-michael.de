@@ -2,10 +2,9 @@ defmodule Tmde.Contacts.Address do
   @moduledoc """
   A contacts address
   """
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Tmde, :schema
   import Tmde.Helper.StringHelper
-  alias Tmde.Contacts.Contact
+  alias Tmde.Contacts.{Country, Contact}
   alias __MODULE__
 
   embedded_schema do
@@ -13,7 +12,7 @@ defmodule Tmde.Contacts.Address do
     field :street, :string
     field :zip, :string
     field :city, :string
-    field :country, Tmde.Contacts.Country
+    field :country, Country, default: Country.default()
 
     belongs_to :contact, Contact
   end
@@ -25,6 +24,10 @@ defmodule Tmde.Contacts.Address do
     |> validate_zip_code()
   end
 
+  @doc """
+  The format of the zip code can be checked with a regex set for the country. If no
+  validator is provided, nothing happens
+  """
   def validate_zip_code(cs) do
     with %{zip_validator: regex} when not is_nil(regex) <- get_field(cs, :country) do
       cs

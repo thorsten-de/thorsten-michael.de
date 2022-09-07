@@ -17,6 +17,8 @@ defmodule Tmde.Content.Translation do
     |> validate_required([:lang, :content])
   end
 
+  @spec cast_translation(Ecto.Changeset.t(), atom, nil | maybe_improper_list | map) ::
+          Ecto.Changeset.t()
   @doc """
   Casts the embedded translation data into the given changeset and uses a given fields
   value as default label (in German!) when no translations are given
@@ -35,6 +37,18 @@ defmodule Tmde.Content.Translation do
 
       _existing_translations_or_no_text ->
         cs
+    end
+  end
+
+  @doc """
+  Finds the translation and returns the content, otherwise returns an empty string.
+  """
+  def translate(translations, lang \\ :de) do
+    translations
+    |> Enum.find(fn %{lang: item_lang} -> lang == item_lang end)
+    |> case do
+      %__MODULE__{content: content} -> content
+      _ -> ""
     end
   end
 end

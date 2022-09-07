@@ -13,15 +13,20 @@
 alias Tmde.Repo
 alias Tmde.Jobs
 
-translation_mapper = fn {lang, text} -> %{lang: lang, content: text} end
+translation_mapper = fn obj, field ->
+  Map.update(
+    obj,
+    field,
+    [],
+    &Enum.map(&1, fn
+      {lang, text} -> %{lang: lang, content: text}
+    end)
+  )
+end
 
 skill_mapper = fn
-  {type, name, translations} ->
-    %{
-      type: type,
-      name: name,
-      label: Enum.map(translations, translation_mapper)
-    }
+  %{} = skill ->
+    translation_mapper.(skill, :label)
 
   {name, translations} ->
     %{
@@ -33,29 +38,62 @@ skill_mapper = fn
     %{name: name}
 end
 
-skills = [
-  "C#",
-  "SQL",
-  "Elixir",
-  "Phoenix",
-  "GraphQL",
-  "Ruby",
-  "Rails",
-  "REST",
-  "JS",
-  "HTML",
-  "CSS",
-  "Elm",
-  "PHP",
-  "Shopware",
-  "Vue",
-  "Docker",
-  "Linux",
-  "Nginx",
-  {:language, "Deutsch", de: "Deutsch", en: "German"},
-  {:language, "English", de: "Englisch", en: "English"}
-]
+my_skillset =
+  [
+    {"C#", %{rating: 1}},
+    {"SQL", %{rating: 1}},
+    {"Elixir", %{rating: 1}},
+    {"Phoenix", %{rating: 2}},
+    {"GraphQL", %{rating: 2}},
+    {"Ruby", %{rating: 2}},
+    {"Rails", %{rating: 2}},
+    {"REST", %{rating: 3}},
+    {"JS", %{rating: 2}},
+    {"HTML", %{rating: 2}},
+    {"CSS", %{rating: 2}},
+    {"Elm", %{rating: 3}},
+    {"PHP", %{rating: 3}},
+    {"Shopware", %{rating: 3}},
+    {"Vue", %{rating: 3}},
+    {"Docker", %{rating: 3}},
+    {"Linux", %{rating: 2}},
+    {%{type: :language, name: "Deutsch", label: [de: "Deutsch", en: "German"]},
+     %{rating: 1, rating_text: [de: "Muttersprachler", en: "native speaker"]}},
+    {%{type: :language, name: "English", label: [de: "Englisch", en: "English"]},
+     %{rating: 3, rating_text: [de: "B2", en: "B2 (upper-intermediate)"]}}
+  ]
+  |> Enum.map(fn {skill, rating} ->
+    {:ok, skill} =
+      skill
+      |> skill_mapper.()
+      |> Jobs.create_skill()
 
-skills
-|> Enum.map(skill_mapper)
-|> Enum.map(&Jobs.create_skill/1)
+    {skill, rating}
+  end)
+
+{:ok, myself} =
+  Jobs.create_job_seeker(%{
+    contact: %{
+      title: "Dipl.-Inf.",
+      first_name: "Thorsten-Michael",
+      last_name: "Deinert",
+      gender: :male,
+      email: "postmaster@thorsten-michael.de",
+      address: %{street: "Mustergasse 1", zip: "55555", city: "Hauptstadt"}
+    },
+    links: [
+      %{type: :phone, target: "+49 0001 0002 0003"},
+      %{type: :mobile, target: "+49 0001 0002 0003"},
+      %{type: :whatsapp, target: "+49 0001 0002 0003"},
+      %{type: :website, target: "thorsten-michael.de"},
+      %{type: :email, target: "postmaster@thorsten-michael.de"}
+    ],
+    skills:
+      my_skillset
+      |> Enum.map(fn {skill, rating} ->
+        rating
+        |> translation_mapper.(:rating_text)
+        |> Map.merge(%{skill_id: skill.id})
+      end)
+      |> IO.inspect(label: "Skillset")
+  })
