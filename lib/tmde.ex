@@ -10,7 +10,10 @@ defmodule Tmde do
   def schema do
     quote do
       use Ecto.Schema
+      import Ecto.Query
+      import Ecto, only: [assoc: 2]
       import Ecto.Changeset
+
       alias Tmde.Content.Translation
 
       @primary_key {:id, :binary_id, autogenerate: true}

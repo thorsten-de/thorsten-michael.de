@@ -19,4 +19,9 @@ defmodule Tmde.Jobs.Skill do
     |> unique_constraint(:name)
     |> Translation.cast_translation(:label, infer_from: :name)
   end
+
+  def with_type(query, type) do
+    from s in query,
+      where: [type: ^type]
+  end
 end

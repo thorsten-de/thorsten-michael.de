@@ -4,8 +4,6 @@ defmodule Tmde.Jobs do
   """
   alias Tmde.Jobs.{Skill, JobSeeker}
   alias Tmde.Repo
-  import Ecto.Query
-  import Ecto
 
   @doc """
   Creates a new skill with given attributes
@@ -22,18 +20,21 @@ defmodule Tmde.Jobs do
     |> Repo.insert()
   end
 
-  @spec get_job_seeker!(any) :: nil | [%{optional(atom) => any}] | %{optional(atom) => any}
   def get_job_seeker!(id) do
     JobSeeker
     |> Repo.get!(id)
   end
 
-  def job_seeker_languages(%JobSeeker{} = seeker) do
-    Repo.all(
-      from ps in assoc(seeker, :skills),
-        join: s in assoc(ps, :skill),
-        where: s.type == :language,
-        preload: [skill: s]
-    )
+  def languages(%JobSeeker{} = seeker) do
+    seeker
+    |> JobSeeker.skill_query()
+    |> Skill.with_type(:language)
+    |> Repo.all()
+  end
+
+  def all_skills(%JobSeeker{} = seeker) do
+    seeker
+    |> JobSeeker.skill_query()
+    |> Repo.all()
   end
 end
