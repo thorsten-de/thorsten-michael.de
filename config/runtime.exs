@@ -74,10 +74,9 @@ if config_env() == :prod do
     relay: System.get_env("MAIL_SERVER"),
     username: System.get_env("MAIL_USER"),
     password: System.get_env("MAIL_PASSWORD"),
-    ssl: true,
     tls: :always,
     auth: :always,
-    port: System.get_env("MAIL_PORT", 587)
+    port: String.to_integer(System.get_env("MAIL_PORT") || "587")
 
   #       api_key: System.get_env("MAILGUN_API_KEY"),
   #       domain: System.get_env("MAILGUN_DOMAIN")
