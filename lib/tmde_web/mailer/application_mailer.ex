@@ -1,32 +1,71 @@
 defmodule TmdeWeb.ApplicationMailer do
-  use Phoenix.Swoosh, view: TmdeWeb.ApplicationMailerView
+  use Phoenix.Swoosh, view: TmdeWeb.ApplicationMailerView, layout: {TmdeWeb.LayoutView, :email}
   alias Tmde.Contacts.Contact
   import TmdeWeb.Gettext
+  alias TmdeWeb.Router.Helpers, as: Routes
+  alias Tmde.Jobs
+  alias Tmde.Jobs.Delivery
+
+  def set_sender(email, %{contact: contact, links: _links} = sender) do
+    email
+    |> from({Contact.name(contact), contact.email})
+    |> assign(:sender, sender)
+  end
+
+  def create_delivery(email, opts) do
+    {:ok, delivery} =
+      Jobs.create_delivery(opts[:application], %{subject: email.subject, email: opts[:email]})
+
+    email
+    |> assign(:delivery_token, delivery |> Delivery.sign_token())
+  end
+
+  @spec set_mail_defaults(Swoosh.Email.t()) :: Swoosh.Email.t()
+  def set_mail_defaults(email) do
+    email
+    |> assign(:styling, %{bg_color: "#ffffff"})
+    |> assign(:logo_target, Routes.page_url(TmdeWeb.Endpoint, :index))
+    |> assign(:locale, "de")
+    |> assign(:title, email.subject)
+  end
+
+  def send_mail(%{sender: sender, recipient: recipient, subject: subject, body: body}) do
+    new()
+    |> to({Contact.name(recipient), recipient.email})
+    |> subject(subject)
+    |> set_mail_defaults()
+    |> set_sender(sender)
+    |> create_delivery(email: recipient.email)
+    |> render_body("mail.html", body: body)
+  end
 
   def send_application(application) do
-    attachments = prepare_attachments(application)
-
     new()
-    |> from({Contact.name(application.sender), application.sender.email})
     |> to({Contact.name(application.contact), application.contact.email})
     |> subject(application.subject)
+    |> set_mail_defaults()
+    |> set_sender(application.job_seeker)
+    |> create_delivery(email: application.contact.email)
+    |> prepare_attachments(application)
     |> render_body(:application,
-      application: application,
-      attachments: attachments,
-      styling: %{bg_color: "#ffffff"}
+      logo_target: Routes.jobs_url(TmdeWeb.Endpoint, :show, application),
+      application: application
     )
   end
 
-  def prepare_attachments(application) do
-    [
+  def prepare_attachments(email, application) do
+    attachments = [
       %{
         name: gettext("application documents"),
         filename:
           gettext("%{sender} - application documents for %{reference}",
-            sender: application.sender,
+            sender: email.assigns.sender.contact,
             reference: application.reference
           )
       }
     ]
+
+    email
+    |> assign(:attachments, attachments)
   end
 end

@@ -1,10 +1,10 @@
 <%= greeting(@application.contact) %>
           
-<%= @application.email %>
+<%= translate @application.cover_email, @application.locale %>
 
-<%= ending(@application) %>
+<%= ending() %>
 
-<%= @application.sender %>
+<%= @sender.contact %>
 
 
 <%= gettext("Attachments:") %>
@@ -12,11 +12,4 @@
 <% end %>
 
 <%= gettext("P.S. For this application I have created a dedicated section on my website:") %>
-<%= Routes.jobs_url(TmdeWeb.Endpoint, :show, @application.code) %>
-
---
-<%= @application.sender.title %>
-<%= @application.sender %>
-<%= @application.sender.address %>
-
-<%= @application.sender.links |> Enum.join("\n") %>
+<%= Routes.jobs_url(TmdeWeb.Endpoint, :show, @application.id) %>

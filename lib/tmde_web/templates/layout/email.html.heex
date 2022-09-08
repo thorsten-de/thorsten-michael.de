@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang={@locale}>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="x-apple-disable-message-reformatting">
+    <title><%= assigns[:title] %>g></title>
+    <!--[if mso]>
+    <style>
+        table {border-collapse:collapse;border-spacing:0;border:none;margin:0;}
+        div, td {padding:0;}
+        div {margin:0 !important;}
+    </style>
+    <noscript>
+        <xml>
+            <o:OfficeDocumentSettings>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+    </noscript>
+    <![endif]-->
+    <style>
+        table, td, div, h1, p {
+            font-family: Arial, sans-serif;
+        }
+        a {
+          text-decoration: none;
+          color: #508caf;
+        }
+    </style>
+  </head>
+  <body style={to_style(%{margin: 0, padding: 0, "word-spacing": "normal", background: "radial-gradient(circle, #eee 0%, #bbb 100%)"})}>
+    <div role="article" aria-roledescription="email" lang={@locale} style={to_style(%{"text-size-adjust": "100%", "-webkit-text-size-adjust": "100%", "-ms-text-size-adjust": "100%", background: "transparent"})}>
+      <.main_content background="radial-gradient(circle at 25% 83%, rgba(250,250,250,1) 0%, rgba(240,240,240,1) 100%)" background="#fff">
+        <%= @inner_content %>
+        <.columns>
+          <:column>
+            <%= link to: @logo_target, title: gettext("Show %{url} in browser...", url: @logo_target) do %>
+              <img src={Routes.delivery_url(TmdeWeb.Endpoint, :logo_logger, mailId: @delivery_token)} width="200" style="width:200;height:auto;border:none;" alt="TMD-Logo"/>
+            <% end %>
+            <p>
+              <%= @sender.contact.title %><br>
+              <strong style="color: #e6611a;"><%= @sender.contact %></strong><br>
+              <%= @sender.contact.address %>
+            </p>
+          </:column>
+          <:column vertical-align="bottom" text-align="right">
+            <ul style="list-style:none; padding-inner-start:0;">
+              <%= for l <- @sender.links do %>
+                <li style="margin: 6px 0;">
+                  <%= link Link.build_link_options(l) |> Keyword.merge(style: to_style display: "block", "line-height": "28px", color: if l.type == :whatsapp, do: "#89b34d") do %>
+                    <i><.bi_icon icon={l.type} size="22" /></i>
+                    <span><%= l %></span>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </:column>
+        </.columns>
+      </.main_content>
+    </div>
+  </body>
+</html>
+      

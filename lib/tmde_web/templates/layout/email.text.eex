@@ -1,0 +1,8 @@
+<%= @inner_content %>
+
+--
+<%= @sender.contact.title %>
+<%= @sender.contact %>
+<%= @sender.contact.address %>
+
+<%= @sender.links |> Enum.join("\n") %>

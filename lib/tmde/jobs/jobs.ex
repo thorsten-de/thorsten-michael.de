@@ -2,7 +2,7 @@ defmodule Tmde.Jobs do
   @moduledoc """
   Context for applications and jobs
   """
-  alias Tmde.Jobs.{Skill, JobSeeker}
+  alias Tmde.Jobs.{Skill, JobSeeker, Delivery, DeliveryTracking}
   alias Tmde.Repo
 
   @doc """
@@ -36,5 +36,22 @@ defmodule Tmde.Jobs do
     seeker
     |> JobSeeker.skill_query()
     |> Repo.all()
+  end
+
+  def create_delivery(application \\ nil, attrs \\ %{}) do
+    application
+    |> Delivery.create_changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def get_delivery(id) do
+    Delivery
+    |> Repo.get(id)
+  end
+
+  def create_delivery_tracking(%Delivery{} = delivery, attr \\ %{}) do
+    delivery
+    |> Ecto.build_assoc(:trackings, attr)
+    |> Repo.insert()
   end
 end

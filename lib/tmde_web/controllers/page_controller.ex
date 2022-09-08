@@ -49,11 +49,12 @@ defmodule TmdeWeb.PageController do
       privacy_policy: @privacy_policies[:de].html,
       cookie_data: conn.req_cookies,
       session_data: get_session(conn),
-      request_data:
-        conn.req_headers
-        |> Keyword.take(~w[referer user-agent])
-        |> Keyword.put(:"remote ip", conn.remote_ip |> :inet.ntoa())
-        |> Keyword.put(:"request path", conn.request_path)
+      request_data: %{
+        "referer" => get_req_header(conn, "referer"),
+        "user-agent" => get_req_header(conn, "user-agent"),
+        "remote ip" => conn.remote_ip |> :inet.ntoa() |> to_string(),
+        "request path" => conn.request_path
+      }
     )
   end
 end
