@@ -146,7 +146,7 @@ defmodule TmdeWeb.Components.MailerComponents do
       assigns
       |> assign(:style,
         width: "94%",
-        "margin-top": "#{@horizontal_padding}px",
+        margin: "#{@horizontal_padding}px 0",
         "max-width": "#{@width}px",
         "text-align": :left,
         "font-family": assigns[:font_family] || "Public Sans,Arial,sans-serif",
