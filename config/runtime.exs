@@ -69,8 +69,16 @@ if config_env() == :prod do
   # Also, you may need to configure the Swoosh API client of your choice if you
   # are not using SMTP. Here is an example of the configuration:
   #
-  #     config :tmde, Tmde.Mailer,
-  #       adapter: Swoosh.Adapters.Mailgun,
+  config :tmde, Tmde.Mailer,
+    adapter: Swoosh.Adapters.SMTP,
+    relay: System.get_env("MAIL_SERVER"),
+    username: System.get_env("MAIL_USER"),
+    password: System.get_env("MAIL_PASSWORD"),
+    ssl: true,
+    tls: :always,
+    auth: :always,
+    port: System.get_env("MAIL_PORT", 587)
+
   #       api_key: System.get_env("MAILGUN_API_KEY"),
   #       domain: System.get_env("MAILGUN_DOMAIN")
   #

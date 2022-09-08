@@ -68,6 +68,7 @@ defmodule Tmde.MixProject do
       {:earmark, "~> 1.4"},
       {:remote_ip, "~>1.0"},
       {:swoosh, "~> 1.3"},
+      {:gen_smtp, "~> 1.1"},
       {:phoenix_swoosh, "~> 1.0"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
