@@ -2,8 +2,14 @@ defmodule Tmde.Jobs do
   @moduledoc """
   Context for applications and jobs
   """
-  alias Tmde.Jobs.{Skill, JobSeeker, Delivery, DeliveryTracking}
+  alias Tmde.Jobs.{Skill, JobSeeker, Delivery}
   alias Tmde.Repo
+
+  def get_application!(id) do
+    Private.get_application()
+    # Application
+    # |> Repo.get!(id)
+  end
 
   @doc """
   Creates a new skill with given attributes
