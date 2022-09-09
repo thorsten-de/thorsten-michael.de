@@ -12,15 +12,14 @@
 
 alias Tmde.Repo
 alias Tmde.Jobs
+alias Tmde.Content.Translation
 
 translation_mapper = fn obj, field ->
   Map.update(
     obj,
     field,
     [],
-    &Enum.map(&1, fn
-      {lang, text} -> %{lang: lang, content: text}
-    end)
+    Translation.translations(&1)
   )
 end
 

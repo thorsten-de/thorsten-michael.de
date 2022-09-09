@@ -40,6 +40,14 @@ defmodule Tmde.Content.Translation do
     end
   end
 
+  def translations(translations \\ []) do
+    translations
+    |> Enum.map(fn
+      {lang, text} -> %__MODULE__{lang: lang, content: text}
+      text when is_binary(text) -> %__MODULE__{content: text}
+    end)
+  end
+
   @doc """
   Finds the translation and returns the content, otherwise returns an empty string.
   """
@@ -48,7 +56,7 @@ defmodule Tmde.Content.Translation do
     |> Enum.find(fn %{lang: item_lang} -> lang == item_lang end)
     |> case do
       %__MODULE__{content: content} -> content
-      _ -> ""
+      _ -> List.first(translations, %{content: ""}).content
     end
   end
 end
