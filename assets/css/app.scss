@@ -31,3 +31,10 @@ dl.property-list {
     word-break: break-all;
   }
 }
+
+.cv-section {
+  font-size: 1.1rem;
+  .media-left {
+    min-width: 128px;
+  }
+}

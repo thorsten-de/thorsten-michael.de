@@ -1,11 +1,34 @@
-<.media>
+<.media class={["pt-0", "pb-3": !Enum.empty?(@entry.focuses)]}>
   <:left>
-  <p class="image is-64x64">
-    <img src="https://bulma.io/images/placeholders/128x128.png">
-    <p>09 2006<br>bis heute</p>
-  </p>
+    <%= if @entry.icon do %>
+      <div class="image is-128x128">
+        <img src={@entry.icon || "https://bulma.io/images/placeholders/128x128.png"}>
+      </div>
+    <% end %>
   </:left>
-  <.title label={@title} />
-  <.subtitle label={@subtitle} />
-  
+  <div class="level mb-4">
+    <div class="level-left">
+      <div class="level-item">
+        <div>
+          <.title label={@title} spaced size="4"/>
+          <.subtitle label={@subtitle} />
+        </div>
+      </div>
+    </div>
+    <div class="level-right">
+      <div class="level-item">
+       <div class="tag is-medium">
+        <em><%= date_interval(@entry, format: "{0M}/{YYYY}") %></em>
+      </div> 
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <%= @description %>
+    <ul>
+      <%= for focus <- @entry.focuses do %>
+        <.cv_focus focus={focus} />
+      <% end %>
+    </ul>
+  </div>
 </.media>

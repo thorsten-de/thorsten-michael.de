@@ -103,91 +103,146 @@ msgstr "Meine Profile"
 msgid "no articles yet"
 msgstr "noch keine Artikel"
 
-#: lib/tmde/contacts/contact.ex:27
+#: lib/tmde/contacts/contact.ex:33
 #, elixir-autogen, elixir-format
 msgid "Dear Mr. %{name},"
 msgstr "Sehr geehrter Herr %{name},"
 
-#: lib/tmde/contacts/contact.ex:23
+#: lib/tmde/contacts/contact.ex:29
 #, elixir-autogen, elixir-format
 msgid "Dear Mrs. %{name},"
 msgstr "Sehr geehrte Frau %{name},"
 
-#: lib/tmde/contacts/contact.ex:31
+#: lib/tmde/contacts/contact.ex:37
 #, elixir-autogen, elixir-format
 msgid "Dear Sirs and Madams,"
 msgstr "Sehr geehrte Damen und Herren,"
 
-#: lib/tmde_web/views/application_mailer_view.ex:9
+#: lib/tmde_web/views/application_mailer_view.ex:8
 #, elixir-autogen, elixir-format
 msgid "Sincerely,"
 msgstr "Mit freundlichen Grüßen,"
 
-#: lib/tmde/contacts/link.ex:14
+#: lib/tmde/contacts/link.ex:20
 #, elixir-autogen, elixir-format
 msgid "email"
 msgstr "E-Mail"
 
-#: lib/tmde/contacts/link.ex:12
+#: lib/tmde/contacts/link.ex:18
 #, elixir-autogen, elixir-format
 msgid "mobile"
 msgstr "Handy"
 
-#: lib/tmde/contacts/link.ex:11
+#: lib/tmde/contacts/link.ex:17
 #, elixir-autogen, elixir-format
 msgid "phone"
 msgstr "Tel."
 
-#: lib/tmde/contacts/link.ex:33
+#: lib/tmde/contacts/link.ex:44
 #, elixir-autogen, elixir-format
 msgid "call %{number}..."
 msgstr "%{number} anrufen..."
 
-#: lib/tmde/contacts/link.ex:40
+#: lib/tmde/contacts/link.ex:51
 #, elixir-autogen, elixir-format
 msgid "mail to %{email}..."
 msgstr "E-Mail an %{email} senden..."
 
-#: lib/tmde/contacts/link.ex:13
+#: lib/tmde/contacts/link.ex:19
 #, elixir-autogen, elixir-format
 msgid "whatsapp"
 msgstr "WhatsApp"
 
-#: lib/tmde/contacts/link.ex:47
+#: lib/tmde/contacts/link.ex:58
 #, elixir-autogen, elixir-format
 msgid "whatsapp to %{number}..."
 msgstr "WhatsApp-Nachricht an %{number} senden..."
 
-#: lib/tmde/contacts/link.ex:54
-#: lib/tmde_web/templates/application_mailer/application.html.heex:53
-#: lib/tmde_web/templates/application_mailer/application.html.heex:58
+#: lib/tmde/contacts/link.ex:65
+#: lib/tmde_web/templates/application_mailer/application.html.heex:19
+#: lib/tmde_web/templates/layout/email.html.heex:38
 #, elixir-autogen, elixir-format
 msgid "Show %{url} in browser..."
 msgstr "%{url} im Browser öffnen..."
 
-#: lib/tmde/contacts/link.ex:15
+#: lib/tmde/contacts/link.ex:21
 #, elixir-autogen, elixir-format
 msgid "web"
 msgstr "Web"
 
-#: lib/tmde_web/templates/application_mailer/application.html.heex:42
+#: lib/tmde_web/templates/application_mailer/application.html.heex:8
 #: lib/tmde_web/templates/application_mailer/application.text.eex:10
 #, elixir-autogen, elixir-format
 msgid "Attachments:"
 msgstr "Anlagen:"
 
-#: lib/tmde_web/templates/application_mailer/application.html.heex:51
+#: lib/tmde_web/templates/application_mailer/application.html.heex:17
 #: lib/tmde_web/templates/application_mailer/application.text.eex:14
 #, elixir-autogen, elixir-format
 msgid "P.S. For this application I have created a dedicated section on my website:"
 msgstr "PS: Für diese Bewerbung habe ich auf meiner Webseite einen eigenen Bereich angelegt:"
 
-#: lib/tmde_web/mailer/application_mailer.ex:25
+#: lib/tmde_web/mailer/application_mailer.ex:61
 #, elixir-autogen, elixir-format
 msgid "%{sender} - application documents for %{reference}"
 msgstr "%{sender} - Bewerbungsmappe für %{reference}"
 
-#: lib/tmde_web/mailer/application_mailer.ex:23
+#: lib/tmde_web/mailer/application_mailer.ex:59
 #, elixir-autogen, elixir-format
 msgid "application documents"
 msgstr "Bewerbungsmappe"
+
+#: lib/tmde_web/live/jobs_live.html.heex:24
+#, elixir-autogen, elixir-format
+msgid "Born %{date} in %{place}"
+msgstr "Geboren am %{date} in %{place}"
+
+#: lib/tmde_web/live/jobs_live.html.heex:25
+#, elixir-autogen, elixir-format
+msgid "Citizenship: %{citizenship}"
+msgstr "Staatsbürgerschaft: %{citizenship}"
+
+#: lib/tmde_web/live/jobs_live.html.heex:90
+#, elixir-autogen, elixir-format
+msgid "Education"
+msgstr "Bildungsweg"
+
+#: lib/tmde_web/live/jobs_live.html.heex:89
+#, elixir-autogen, elixir-format
+msgid "Job experience"
+msgstr "Berufserfahrung"
+
+#: lib/tmde_web/live/jobs_live.html.heex:38
+#, elixir-autogen, elixir-format
+msgid "Languages"
+msgstr "Sprachen"
+
+#: lib/tmde_web/live/jobs_live.html.heex:43
+#, elixir-autogen, elixir-format
+msgid "Primary Skills"
+msgstr "Fähigkeiten"
+
+#: lib/tmde_web/live/jobs_live.html.heex:50
+#, elixir-autogen, elixir-format
+msgid "Programming Languages"
+msgstr "Programmiersprachen"
+
+#: lib/tmde_web/live/jobs_live.html.heex:65
+#, elixir-autogen, elixir-format
+msgid "Techs and Frameworks"
+msgstr ""
+
+#: lib/tmde_web/date_formatter.ex:28
+#, elixir-autogen, elixir-format
+msgid "%{date} - today"
+msgstr "%{date} - heute"
+
+#: lib/tmde_web/date_formatter.ex:31
+#, elixir-autogen, elixir-format
+msgid "%{from} - %{until}"
+msgstr ""
+
+#: lib/tmde_web/date_formatter.ex:25
+#, elixir-autogen, elixir-format
+msgid "until %{date}"
+msgstr "bis %{date}"

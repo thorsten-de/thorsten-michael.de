@@ -21,6 +21,11 @@ defmodule Tmde.Contacts.Link do
   def type_to_string(%__MODULE__{type: :website}), do: gettext("web")
   def type_to_string(%__MODULE__{}), do: ""
 
+  def type_to_icon(%__MODULE__{type: :whatsapp}), do: %{icon_set: "brands", icon: "whatsapp"}
+  def type_to_icon(%__MODULE__{type: :website}), do: %{icon_set: "regular", icon: "globe"}
+  def type_to_icon(%__MODULE__{type: :email}), do: %{icon_set: "regular", icon: "envelope"}
+  def type_to_icon(%__MODULE__{type: type}), do: %{icon_set: "regular", icon: type}
+
   defp sanitize_phone_number(target) do
     target
     |> String.replace(~r/[^0-9\+]/, "")

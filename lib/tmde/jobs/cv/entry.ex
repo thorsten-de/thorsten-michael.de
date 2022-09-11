@@ -17,6 +17,7 @@ defmodule Tmde.Jobs.CV.Entry do
     field :icon, :string
 
     embeds_many :role, Translation
+    embeds_many :description, Translation
 
     embeds_one :company, Company do
       field :name, :string

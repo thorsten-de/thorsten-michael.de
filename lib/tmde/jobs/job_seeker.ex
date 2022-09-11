@@ -7,6 +7,11 @@ defmodule Tmde.Jobs.JobSeeker do
   alias Tmde.Jobs.{Application, PersonalSkill}
 
   schema "job_seekers" do
+    field :dob, :date
+    field :place_of_birth, :string
+    field :citizenship, :string
+    field :marital_status, Ecto.Enum, values: [:single, :married, :devorced, :widowed]
+
     embeds_one :contact, Contact
     embeds_many :links, Link
 

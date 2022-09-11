@@ -2,13 +2,19 @@ defmodule Tmde.Jobs do
   @moduledoc """
   Context for applications and jobs
   """
-  alias Tmde.Jobs.{Skill, JobSeeker, Delivery}
+  alias Tmde.Jobs.{Application, Skill, JobSeeker, Delivery}
   alias Tmde.Repo
 
   def get_application!(id) do
-    Private.get_application()
-    # Application
-    # |> Repo.get!(id)
+    if function_exported?(Private, :get_application, 0) do
+      # TODO: Use full featured DB approach
+      # For building out functionality, I can include a module with private application
+      # data inside IEX. Will be removed when a full featured Application DB is in place.
+      Private.get_application()
+    else
+      Application
+      |> Repo.get!(id)
+    end
   end
 
   @doc """

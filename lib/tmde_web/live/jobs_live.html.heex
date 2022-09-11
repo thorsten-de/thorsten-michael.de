@@ -1,22 +1,93 @@
 <section class="section">
-<.container>
+<.container width="fluid">
   <.columns>
-    <.column>
-      <Jobs.cv_article title="Barbara Reisen, Selm-Bork" subtitle="Full-Stack Software-Entwickler" />
-      <Jobs.cv_article title="T-Cosmetic International, Hamm" subtitle="Full-Stack Software-Entwickler" />
-      <Jobs.cv_article title="Technische Universität Dortmund" subtitle="Studiengang Diplom-Informatik" />
-     
+   
+    <.column width="3">
+      
+
+      <figure class="image my-2">
+        <picture>
+          <source srcset="/images/logos/tmd-slogan-960.webp" type="image/webp">
+          <img src="/images/logos/tmd-slogan-960.png" alt="Thorsten-Michael Deinert (Logo)" width="960" height="380">
+        </picture>
+      </figure>
+
+      <figure class="image m-5">
+        <picture>
+          <source srcset="/images/myself/profile.webp" type="image/webp">
+          <img class="is-rounded" src="/images/myself/profile.png" />
+        </picture>
+      </figure>
+      
+      <p class="my-5 has-text-centered"><em>Software-Entwickler aus Leidenschaft, Diplom-Informatiker und immer neugierig auf Programmiersprachen</em></p>
+      <.cv_panel text="left">
+        <p class="my-1"><%= gettext("Born %{date} in %{place}", date: Calendar.strftime(@myself.dob, "%d.%0m.%Y"), place: @myself.place_of_birth) %></p>
+        <p class="my-1"><%= gettext("Citizenship: %{citizenship}", citizenship: @myself.citizenship) %></p>
+
+        <p class="my-3">      
+          <.label icon="home" label={@myself.contact.address} />
+        </p>
+        <p>
+          <%= for l <- @myself.links do %>
+            <%= link Link.build_link_options(l) |> Keyword.merge(class: "is-block py-1 my-1") do %>
+              <.label {Link.type_to_icon(l)} label={l} />
+            <% end %>
+          <% end %>
+        </p>
+      </.cv_panel>
+      <.cv_panel title={gettext("Languages")}>
+        <.primary_skill label="Deutsch" rating="100" value="Muttersprache" />
+        <.primary_skill label="Englisch" rating="70" value="B2" />
+      </.cv_panel>
+
+      <.cv_panel title={gettext("Primary Skills")}>
+        <.primary_skill icon_set="brands" icon="windows" label="C#/.NET Anwendungen" rating="84" value="15+ Jahre" />
+        <.primary_skill icon="database" label="SQL/Datenbanken" rating="87" value="20+ Jahre" />
+        <.primary_skill icon_set="brands" icon="phoenix-framework" label="Elixir/Phoenix" rating="80" value="5+ Jahre" />
+        <.primary_skill icon="gem" label="Ruby on Rails" rating="75" value="10+ Jahre" />
+        <.primary_skill icon_set="brands" icon="shopware" label="PHP & Shopware" rating="55" value=""/>
+      </.cv_panel>
+      <.cv_panel title={gettext("Programming Languages")}>
+        <.skill label="C#" color="info"/>
+        <.skill label="Elixir" color="info"/>
+        <.skill label="Ruby" color="info"/>
+        <.skill icon_set="brands" icon="js" label="JavaScript"/>
+        <.skill icon_set="brands" icon="php" label="PHP"/>
+        <.skill label="Elm"/>
+        <.skill label="F#"/>
+        <.skill icon_set="brands" icon="java" label="Java"/>
+        <.skill icon_set="brands" icon="python "label="Python"/>
+        <.skill icon_set="brands" icon="rust" label="Rust"/>      
+        <.skill label="Haskell"/>      
+        <.skill label="Delphi/Pascal"/>
+      </.cv_panel>
+
+       <.cv_panel title={gettext("Techs and Frameworks")}>
+        <.skill label=".NET"/>
+        <.skill label="WinForms"/>
+        <.skill label="WPF/XAML"/>
+        <.skill icon_set="brands" icon="html5" label="HTML"/>
+        <.skill icon_set="brands" icon="css3" label="CSS"/>
+        <.skill icon_set="brands" icon="sass" label="SCSS"/>
+        <.skill label="GraphQL"/>
+        <.skill icon_set="brands" icon="phoenix-framework" label="Phoenix"/>
+        <.skill icon="gem" label="Rails"/>
+        <.skill icon="gem" label="Padrino"/>
+        <.skill icon_set="brands" icon="github" label="Git"/>
+        <.skill icon_set="brands" icon="docker" label="Docker"/>
+        <.skill icon_set="brands" icon="shopware" label="Shopware"/>
+        <.skill icon_set="brands" icon="vuejs" label="Vue.js"/>
+        <.skill icon_set="brands" icon="react" label="React"/>
+        <.skill label="MySQL"/>
+        <.skill label="PostgreSQL"/>
+        <.skill icon_set="brands" icon="linux" label="Linux"/>
+        <.skill label="Nginx"/>  
+      </.cv_panel>
+    
     </.column>
-    <.column width="2">
-      <!--picture>
-        <source srcset="/images/myself/profile-240p.webp" type="image/webp">
-        <img src="/images/myself/profile-240p.png" />
-      </picture-->
-     <picture>
-        <source srcset="/images/logos/tmd-slogan-960.webp" type="image/webp">
-        <img src="/images/logos/tmd-slogan-960.png" alt="Thorsten-Michael Deinert (Logo)" width="960" height="380">
-    </picture>
-     
+    <.column>
+      <.cv_section entries={@entries[:job]} title={gettext("Job experience")} />
+      <.cv_section entries={@entries[:education]} title={gettext("Education")} />
     </.column>
   </.columns>
 </.container>
