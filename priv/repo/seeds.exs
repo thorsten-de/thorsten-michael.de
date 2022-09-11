@@ -57,7 +57,7 @@ my_skillset =
     {"Docker", %{rating: 3}},
     {"Linux", %{rating: 2}},
     {%{type: :language, name: "Deutsch", label: [de: "Deutsch", en: "German"]},
-     %{rating: 1, rating_text: [de: "Muttersprachler", en: "native speaker"]}},
+     %{rating: 1, rating_text: [de: "Muttersprache", en: "native speaker"]}},
     {%{type: :language, name: "English", label: [de: "Englisch", en: "English"]},
      %{rating: 3, rating_text: [de: "B2", en: "B2 (upper-intermediate)"]}}
   ]
