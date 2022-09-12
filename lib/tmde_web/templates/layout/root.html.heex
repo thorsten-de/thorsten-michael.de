@@ -30,9 +30,11 @@
     <meta name="theme-color" content="#ffffff">
   </head>
   <body>
-    <%= render "navbar.html", assigns %>
+    <%= unless assigns[:is_cv?], do: render "navbar.html", assigns %>
     
     <%= @inner_content %>
-    <Navigation.footer conn={@conn}/>
+    <%= unless assigns[:is_cv?] do %>
+      <Navigation.footer conn={@conn}/>
+    <% end %>
   </body>
 </html>

@@ -14,7 +14,12 @@ defmodule TmdeWeb.JobsLive do
 
     socket =
       socket
-      |> assign(application: application, entries: entries, myself: application.job_seeker)
+      |> assign(
+        application: application,
+        entries: entries,
+        myself: application.job_seeker,
+        is_cv?: application_id == "cv"
+      )
 
     {:ok, socket}
   end
