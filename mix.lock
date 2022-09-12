@@ -1,6 +1,6 @@
 %{
   "bulma": {:git, "https://github.com/thorsten-de/bulma-elixir.git", "4ea61ec92a466af2a612d86fa64f7a90876bfdce", []},
-  "bulma_liveview": {:git, "https://github.com/thorsten-de/bulma_liveview.git", "681288809f3cc9711cdf530beceac1b8a74441b5", []},
+  "bulma_liveview": {:git, "https://github.com/thorsten-de/bulma_liveview.git", "5baefe34b82927f50472a50685d74105097412aa", []},
   "castore": {:hex, :castore, "0.1.18", "deb5b9ab02400561b6f5708f3e7660fc35ca2d51bfc6a940d2f513f89c2975fc", [:mix], [], "hexpm", "61bbaf6452b782ef80b33cdb45701afbcf0a918a45ebe7e73f1130d661e66a06"},
   "certifi": {:hex, :certifi, "2.9.0", "6f2a475689dd47f19fb74334859d460a2dc4e3252a3324bd2111b8f0429e7e21", [:rebar3], [], "hexpm", "266da46bdb06d6c6d35fde799bcb28d36d985d424ad7c08b5bb48f5b5cdd4641"},
   "combine": {:hex, :combine, "0.10.0", "eff8224eeb56498a2af13011d142c5e7997a80c8f5b97c499f84c841032e429f", [:mix], [], "hexpm", "1b1dbc1790073076580d0d1d64e42eae2366583e7aecd455d1215b0d16f2451b"},
