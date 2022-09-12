@@ -35,7 +35,7 @@ defmodule TmdeWeb.Components.Jobs do
     assigns =
       assigns
       |> assign_defaults(title: nil, inner_block: [])
-      |> assign_class(["my-6", "mx-4", has(:text)])
+      |> assign_class(["my-5", "mx-4", has(:text)])
 
     ~H"""
       <div class={@class}>

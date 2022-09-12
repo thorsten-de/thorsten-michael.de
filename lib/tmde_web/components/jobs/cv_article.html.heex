@@ -1,8 +1,8 @@
 <.media class={["pt-0", "pb-3": !Enum.empty?(@entry.focuses)]}>
   <:left>
     <%= if @entry.icon do %>
-      <div class="image is-128x128">
-        <img src={@entry.icon || "https://bulma.io/images/placeholders/128x128.png"}>
+      <div class="image is-64x64">
+        <img src={@entry.icon}>
       </div>
     <% end %>
   </:left>
