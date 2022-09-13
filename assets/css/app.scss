@@ -15,6 +15,7 @@ $fa-font-path: "/fonts/";
 
 @import "typography";
 @import "layout";
+@import "jobs";
 
 dl.property-list {
   @extend %block;
@@ -29,12 +30,5 @@ dl.property-list {
   dd {
     grid-column: 2;
     word-break: break-all;
-  }
-}
-
-.cv-section {
-  font-size: 1.1rem;
-  .media-left {
-    min-width: 64px;
   }
 }

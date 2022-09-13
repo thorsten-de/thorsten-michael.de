@@ -1,13 +1,14 @@
-<.media class={["pt-0", "pb-3": !Enum.empty?(@entry.focuses)]}>
-  <:left>
-    <%= if @entry.icon do %>
-      <div class="image is-64x64">
-        <img src={@entry.icon}>
-      </div>
-    <% end %>
-  </:left>
+<div class={@class}>
+  
   <div class="level mb-4">
     <div class="level-left">
+      <div class="level_item">
+        <figure>
+          <%= if @entry.icon do %>
+            <img src={@entry.icon} width="64">
+          <% end %>
+        </figure>
+      </div>
       <div class="level-item">
         <div>
           <.title label={@title} spaced size="4"/>
@@ -31,4 +32,4 @@
       <% end %>
     </ul>
   </div>
-</.media>
+</div>

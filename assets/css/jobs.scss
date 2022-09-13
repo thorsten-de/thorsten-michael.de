@@ -1,0 +1,29 @@
+.cv-section {
+  font-size: 1.1rem;
+  margin: 1.75rem 0;
+
+  .media-left {
+    min-width: 64px;
+  }
+}
+
+.cv-entry {
+  padding: 0;
+  @include tablet {
+    .content {
+      margin-left: 76px;
+    }
+
+    figure {
+      width: 76px;
+    }
+  }
+
+  margin: 1.5rem 0;
+}
+
+div.onpage-qr-link {
+  position: absolute;
+  right: 0px;
+  bottom: -96px;
+}
