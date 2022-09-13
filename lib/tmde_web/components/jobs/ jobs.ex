@@ -15,6 +15,7 @@ defmodule TmdeWeb.Components.Jobs do
         title: translate(entry.role),
         description: translate_html(entry.description)
       )
+      |> assign_class(["cv-entry", "pt-0", ["pt-0", "pb-3": !Enum.empty?(entry.focuses)]])
 
     render("cv_article.html", assigns)
   end
@@ -35,7 +36,7 @@ defmodule TmdeWeb.Components.Jobs do
     assigns =
       assigns
       |> assign_defaults(title: nil, inner_block: [])
-      |> assign_class(["my-5", "mx-4", has(:text)])
+      |> assign_class(["my-5", "mr-4", has(:text)])
 
     ~H"""
       <div class={@class}>
@@ -68,6 +69,15 @@ defmodule TmdeWeb.Components.Jobs do
         <.label {@attributes} />
       </span>
     """
+  end
+
+  def qr_code(%{qr_code: nil} = assigns) do
+    ~H"""
+    """
+  end
+
+  def qr_code(assigns) do
+    render("qr_code.html", assigns)
   end
 
   def translate_html(content), do: content |> translate() |> raw()

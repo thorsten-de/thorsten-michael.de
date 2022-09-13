@@ -159,6 +159,7 @@ msgid "whatsapp to %{number}..."
 msgstr ""
 
 #: lib/tmde/contacts/link.ex:65
+#: lib/tmde_web/components/jobs/qr_code.html.heex:3
 #: lib/tmde_web/templates/application_mailer/application.html.heex:19
 #: lib/tmde_web/templates/layout/email.html.heex:38
 #, elixir-autogen, elixir-format
@@ -192,42 +193,42 @@ msgstr ""
 msgid "application documents"
 msgstr ""
 
-#: lib/tmde_web/live/jobs_live.html.heex:24
+#: lib/tmde_web/live/jobs_live.html.heex:22
 #, elixir-autogen, elixir-format
 msgid "Born %{date} in %{place}"
 msgstr ""
 
-#: lib/tmde_web/live/jobs_live.html.heex:25
+#: lib/tmde_web/live/jobs_live.html.heex:23
 #, elixir-autogen, elixir-format
 msgid "Citizenship: %{citizenship}"
 msgstr ""
 
-#: lib/tmde_web/live/jobs_live.html.heex:90
+#: lib/tmde_web/live/jobs_live.html.heex:88
 #, elixir-autogen, elixir-format
 msgid "Education"
 msgstr ""
 
-#: lib/tmde_web/live/jobs_live.html.heex:89
+#: lib/tmde_web/live/jobs_live.html.heex:87
 #, elixir-autogen, elixir-format
 msgid "Job experience"
 msgstr ""
 
-#: lib/tmde_web/live/jobs_live.html.heex:38
+#: lib/tmde_web/live/jobs_live.html.heex:36
 #, elixir-autogen, elixir-format
 msgid "Languages"
 msgstr ""
 
-#: lib/tmde_web/live/jobs_live.html.heex:43
+#: lib/tmde_web/live/jobs_live.html.heex:41
 #, elixir-autogen, elixir-format
 msgid "Primary Skills"
 msgstr ""
 
-#: lib/tmde_web/live/jobs_live.html.heex:50
+#: lib/tmde_web/live/jobs_live.html.heex:48
 #, elixir-autogen, elixir-format
 msgid "Programming Languages"
 msgstr ""
 
-#: lib/tmde_web/live/jobs_live.html.heex:65
+#: lib/tmde_web/live/jobs_live.html.heex:63
 #, elixir-autogen, elixir-format
 msgid "Techs and Frameworks"
 msgstr ""
@@ -245,4 +246,9 @@ msgstr ""
 #: lib/tmde_web/date_formatter.ex:25
 #, elixir-autogen, elixir-format
 msgid "until %{date}"
+msgstr ""
+
+#: lib/tmde_web/components/jobs/qr_code.html.heex:3
+#, elixir-autogen, elixir-format
+msgid "View this application online:"
 msgstr ""

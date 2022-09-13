@@ -159,6 +159,7 @@ msgid "whatsapp to %{number}..."
 msgstr "WhatsApp-Nachricht an %{number} senden..."
 
 #: lib/tmde/contacts/link.ex:65
+#: lib/tmde_web/components/jobs/qr_code.html.heex:3
 #: lib/tmde_web/templates/application_mailer/application.html.heex:19
 #: lib/tmde_web/templates/layout/email.html.heex:38
 #, elixir-autogen, elixir-format
@@ -192,42 +193,42 @@ msgstr "%{sender} - Bewerbungsmappe für %{reference}"
 msgid "application documents"
 msgstr "Bewerbungsmappe"
 
-#: lib/tmde_web/live/jobs_live.html.heex:24
+#: lib/tmde_web/live/jobs_live.html.heex:22
 #, elixir-autogen, elixir-format
 msgid "Born %{date} in %{place}"
 msgstr "Geboren am %{date} in %{place}"
 
-#: lib/tmde_web/live/jobs_live.html.heex:25
+#: lib/tmde_web/live/jobs_live.html.heex:23
 #, elixir-autogen, elixir-format
 msgid "Citizenship: %{citizenship}"
 msgstr "Staatsbürgerschaft: %{citizenship}"
 
-#: lib/tmde_web/live/jobs_live.html.heex:90
+#: lib/tmde_web/live/jobs_live.html.heex:88
 #, elixir-autogen, elixir-format
 msgid "Education"
 msgstr "Bildungsweg"
 
-#: lib/tmde_web/live/jobs_live.html.heex:89
+#: lib/tmde_web/live/jobs_live.html.heex:87
 #, elixir-autogen, elixir-format
 msgid "Job experience"
 msgstr "Berufserfahrung"
 
-#: lib/tmde_web/live/jobs_live.html.heex:38
+#: lib/tmde_web/live/jobs_live.html.heex:36
 #, elixir-autogen, elixir-format
 msgid "Languages"
 msgstr "Sprachen"
 
-#: lib/tmde_web/live/jobs_live.html.heex:43
+#: lib/tmde_web/live/jobs_live.html.heex:41
 #, elixir-autogen, elixir-format
 msgid "Primary Skills"
 msgstr "Fähigkeiten"
 
-#: lib/tmde_web/live/jobs_live.html.heex:50
+#: lib/tmde_web/live/jobs_live.html.heex:48
 #, elixir-autogen, elixir-format
 msgid "Programming Languages"
 msgstr "Programmiersprachen"
 
-#: lib/tmde_web/live/jobs_live.html.heex:65
+#: lib/tmde_web/live/jobs_live.html.heex:63
 #, elixir-autogen, elixir-format
 msgid "Techs and Frameworks"
 msgstr ""
@@ -246,3 +247,8 @@ msgstr ""
 #, elixir-autogen, elixir-format
 msgid "until %{date}"
 msgstr "bis %{date}"
+
+#: lib/tmde_web/components/jobs/qr_code.html.heex:3
+#, elixir-autogen, elixir-format
+msgid "View this application online:"
+msgstr "Diese Bewerbung auf meiner Webseite lesen:"
