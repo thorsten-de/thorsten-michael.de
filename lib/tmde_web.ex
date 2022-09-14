@@ -119,7 +119,6 @@ defmodule TmdeWeb do
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
 
-      import Tmde.Content.Translation, only: [translate: 1, translate: 2]
       import TmdeWeb.DateFormatter
       import TmdeWeb.ErrorHelpers
       import TmdeWeb.Gettext

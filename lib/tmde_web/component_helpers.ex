@@ -4,7 +4,7 @@ defmodule TmdeWeb.ComponentHelpers do
   """
   import Phoenix.LiveView, only: [assign_new: 3, assign: 3]
   import Phoenix.LiveView.Helpers, only: [assigns_to_attributes: 2]
-  import Tmde.Content.Translation, only: [translate: 2]
+  alias Tmde.Content.Translation
 
   @doc """
   Defines default variables for assigns
@@ -26,8 +26,15 @@ defmodule TmdeWeb.ComponentHelpers do
   end
 
   def translate_html(content) do
+    content
+    |> translate()
+    |> Phoenix.HTML.raw()
+  end
+
+  def translate(content) do
     locale = Gettext.get_locale(TmdeWeb.Gettext)
 
-    content |> translate(locale) |> Phoenix.HTML.raw()
+    content
+    |> Translation.translate(locale)
   end
 end

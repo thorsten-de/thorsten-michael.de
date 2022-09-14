@@ -7,7 +7,7 @@ defmodule Tmde.Content.Translation do
 
   @primary_key false
   embedded_schema do
-    field :lang, Ecto.Enum, values: [:de, :en], default: :de
+    field :lang, :string, default: "de"
     field :content, :string
   end
 
@@ -43,7 +43,7 @@ defmodule Tmde.Content.Translation do
   def translations(translations \\ []) do
     translations
     |> Enum.map(fn
-      {lang, text} -> %{lang: lang, content: text}
+      {lang, text} -> %{lang: to_string(lang), content: text}
       text when is_binary(text) -> %{content: text}
     end)
   end
@@ -51,7 +51,7 @@ defmodule Tmde.Content.Translation do
   @doc """
   Finds the translation and returns the content, otherwise returns an empty string.
   """
-  def translate(translations, lang \\ :de) do
+  def translate(translations, lang \\ "de") do
     translations
     |> Enum.find(fn %{lang: item_lang} -> lang == item_lang end)
     |> case do
