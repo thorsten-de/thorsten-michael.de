@@ -28,22 +28,26 @@ defmodule TmdeWeb.Components.Jobs do
     ~H"""
       <div class="my-2">
         <strong><.label {assigns} /></strong>
-        <progress class="progress is-info" value={@rating} max="100"><%= @value %></progress>
+        <progress class="progress is-info" value={@rating} max="100" title={@value}><%= @value %></progress>
       </div>
     """
   end
 
-  @spec skill(any) :: Phoenix.LiveView.Rendered.t()
   def skill(assigns) do
-    assigns =
-      assigns
-      |> assign_class(["tag", "skill", "is-normal", is(:color)])
-      |> set_attributes_from_assigns([:color])
-
     ~H"""
-      <span class={@class}>
-        <.label {@attributes} />
-      </span>
+      <Tags.tag class="skill" color={assigns[:color]}>
+        <.label {assigns} />
+      </Tags.tag>
+    """
+  end
+
+  def skill_set(assigns) do
+    ~H"""
+      <Tags.tags class="skill-set">
+        <%= for skill <- @skills do %>
+          <.skill {skill} />
+        <% end %>
+      </Tags.tags>
     """
   end
 
