@@ -23,7 +23,7 @@ defmodule Tmde.Jobs.JobSeeker do
 
   def changeset(job_seeker, attr \\ %{}) do
     job_seeker
-    |> cast(attr, [])
+    |> cast(attr, [:dob, :place_of_birth, :citizenship, :marital_status])
     |> cast_embed(:contact, required: true)
     |> cast_embed(:links)
     |> cast_assoc(:skills)
