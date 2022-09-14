@@ -1,6 +1,8 @@
-blockquote p {
-  font-family: $family-serif;
-  font-weight: $weight-light;
+.content blockquote {
+  border-left-color: $primary;
+  p {
+    font-family: $family-serif;
+  }
 }
 
 .content {
