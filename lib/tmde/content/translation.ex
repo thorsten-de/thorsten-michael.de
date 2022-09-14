@@ -43,8 +43,8 @@ defmodule Tmde.Content.Translation do
   def translations(translations \\ []) do
     translations
     |> Enum.map(fn
-      {lang, text} -> %__MODULE__{lang: lang, content: text}
-      text when is_binary(text) -> %__MODULE__{content: text}
+      {lang, text} -> %{lang: lang, content: text}
+      text when is_binary(text) -> %{content: text}
     end)
   end
 
