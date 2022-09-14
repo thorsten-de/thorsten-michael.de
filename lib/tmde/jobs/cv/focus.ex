@@ -11,5 +11,6 @@ defmodule Tmde.Jobs.CV.Focus do
 
     belongs_to :entry, CV.Entry
     embeds_many :abstract, Translation
+    timestamps()
   end
 end

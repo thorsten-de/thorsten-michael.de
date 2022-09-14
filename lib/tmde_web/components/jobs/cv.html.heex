@@ -16,7 +16,7 @@
           </picture>
         </figure>
         
-        <p class="my-5 has-text-centered"><em>Software-Entwickler aus Leidenschaft, Diplom-Informatiker und immer neugierig auf Programmiersprachen</em></p>
+        <p class="my-5 has-text-centered"><em><%= translate(@myself.slogan) %></em></p>
         <CV.panel text="left">
           <p class="my-1"><%= gettext("Born %{date} in %{place}", date: Calendar.strftime(@myself.dob, "%d.%0m.%Y"), place: @myself.place_of_birth) %></p>
           <p class="my-1"><%= gettext("Citizenship: %{citizenship}", citizenship: @myself.citizenship) %></p>
@@ -32,6 +32,9 @@
             <% end %>
           </p>
         </CV.panel>
+        <%= for {category, skills} <- @featured_skillsets do %>
+          <.featured_skillset category={category} skills={skills} />
+        <% end %>
         <CV.panel title={gettext("Languages")}>
           <.primary_skill label="Deutsch" rating="100" value="Muttersprache" />
           <.primary_skill label="Englisch" rating="70" value="B2" />
@@ -44,6 +47,11 @@
           <.primary_skill icon="gem" label="Ruby on Rails" rating="75" value="10+ Jahre" />
           <.primary_skill icon_set="brands" icon="shopware" label="PHP & Shopware" rating="55" value=""/>
         </CV.panel>
+
+        <%= for {category, skills} <- @skillsets do %>
+          <.skillset category={category} skills={skills} />
+        <% end %>
+
         <CV.panel title={gettext("Programming Languages")}>
           <div class="tags" >
             <.skill label="C#" color="info"/>
@@ -83,7 +91,6 @@
             <.skill icon_set="brands" icon="linux" label="Linux"/>
             <.skill label="Nginx"/>  
           </Tags.tags>
-          <.skill_set skills={[]} />
         </CV.panel>
       
       

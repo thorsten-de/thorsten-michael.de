@@ -28,5 +28,7 @@ defmodule Tmde.Jobs.CV.Entry do
     belongs_to :application, Application
 
     has_many :focuses, CV.Focus
+
+    timestamps()
   end
 end

@@ -2,8 +2,9 @@ defmodule Tmde.Jobs do
   @moduledoc """
   Context for applications and jobs
   """
-  alias Tmde.Jobs.{Application, Skill, JobSeeker, Delivery}
+  alias Tmde.Jobs.{Application, Skill, JobSeeker, Delivery, CV, PersonalSkill}
   alias Tmde.Repo
+  import Ecto.Query
 
   def get_application!(id) do
     if function_exported?(Private, :get_application, 0) do
@@ -14,6 +15,10 @@ defmodule Tmde.Jobs do
     else
       Application
       |> Repo.get!(id)
+      |> Repo.preload(
+        cv_entries: {ordered(CV.Entry), focuses: ordered(CV.Focus)},
+        job_seeker: [skills: {ordered(PersonalSkill), skill: []}]
+      )
     end
   end
 
@@ -65,5 +70,9 @@ defmodule Tmde.Jobs do
     delivery
     |> Ecto.build_assoc(:trackings, attr)
     |> Repo.insert()
+  end
+
+  defp ordered(query, order \\ [asc: :sort_order]) do
+    from q in query, order_by: ^order
   end
 end

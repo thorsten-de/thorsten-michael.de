@@ -14,6 +14,7 @@ defmodule Tmde.Jobs.JobSeeker do
 
     embeds_one :contact, Contact
     embeds_many :links, Link
+    embeds_many :slogan, Translation
 
     has_many :skills, PersonalSkill
     has_many :applications, Application
@@ -26,6 +27,7 @@ defmodule Tmde.Jobs.JobSeeker do
     |> cast(attr, [:dob, :place_of_birth, :citizenship, :marital_status])
     |> cast_embed(:contact, required: true)
     |> cast_embed(:links)
+    |> Translation.cast_translation(:slogan)
     |> cast_assoc(:skills)
   end
 
