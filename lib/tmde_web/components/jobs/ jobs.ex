@@ -5,47 +5,23 @@ defmodule TmdeWeb.Components.Jobs do
   use TmdeWeb, :component
   use TmdeWeb, :colocate_templates
   use Bulma
-  import Bulma.Helpers, only: [assign_class: 2, has: 1, is: 1]
+  import Bulma.Helpers, only: [assign_class: 2, is: 1]
+  alias TmdeWeb.Components.Jobs.{CV}
+  alias Tmde.Contacts.Link, as: ContactLink
 
-  def cv_article(%{entry: entry} = assigns) do
+  def cv(%{application: application} = assigns) do
+    entries =
+      application.cv_entries
+      |> Enum.group_by(& &1.type)
+
     assigns =
       assigns
-      |> assign(
-        subtitle: "#{entry.company.name}, #{entry.company.location}",
-        title: translate(entry.role),
-        description: translate_html(entry.description)
-      )
-      |> assign_class(["cv-entry", "pt-0", ["pt-0", "pb-3": !Enum.empty?(entry.focuses)]])
+      |> assign_defaults(socket: TmdeWeb.Endpoint, qr_code: nil)
+      |> assign_class(["cv"])
+      |> set_attributes_from_assigns([:socket, :application])
+      |> assign(myself: application.job_seeker, entries: entries)
 
-    render("cv_article.html", assigns)
-  end
-
-  def cv_section(assigns) do
-    render("cv_section.html", assigns)
-  end
-
-  def cv_focus(%{focus: focus} = assigns) do
-    assigns =
-      assigns
-      |> assign(abstract: translate_html(focus.abstract))
-
-    render("cv_focus.html", assigns)
-  end
-
-  def cv_panel(assigns) do
-    assigns =
-      assigns
-      |> assign_defaults(title: nil, inner_block: [])
-      |> assign_class(["my-5", "mr-4", has(:text)])
-
-    ~H"""
-      <div class={@class}>
-        <%= if @title do %>
-          <.title class="mb-3" size="5" label={@title} />
-        <% end %>
-        <%= render_slot(@inner_block) %>
-      </div>
-    """
+    render("cv.html", assigns)
   end
 
   def primary_skill(assigns) do
@@ -79,6 +55,4 @@ defmodule TmdeWeb.Components.Jobs do
   def qr_code(assigns) do
     render("qr_code.html", assigns)
   end
-
-  def translate_html(content), do: content |> translate() |> raw()
 end

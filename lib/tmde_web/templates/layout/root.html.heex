@@ -30,10 +30,10 @@
     <meta name="theme-color" content="#ffffff">
   </head>
   <body>
-    <%= unless assigns[:is_cv?], do: render "navbar.html", assigns %>
+    <%= unless assigns[:print_layout?], do: render "navbar.html", assigns %>
     
     <%= @inner_content %>
-    <%= unless assigns[:is_cv?] do %>
+    <%= unless assigns[:print_layout?] do %>
       <Navigation.footer conn={@conn}/>
     <% end %>
   </body>

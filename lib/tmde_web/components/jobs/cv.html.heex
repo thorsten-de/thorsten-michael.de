@@ -1,0 +1,90 @@
+ <.container {@attributes}>
+  <.columns>
+      <.qr_code url={Routes.jobs_url(@socket, :show, @application)} qr_code={assigns[:qr_code]} />
+      <.column width="3">
+        <figure class="image my-5">
+          <picture>
+            <source srcset="/images/logos/tmd-slogan-960.webp" type="image/webp">
+            <img src="/images/logos/tmd-slogan-960.png" alt="Thorsten-Michael Deinert (Logo)" width="960" height="380">
+          </picture>
+        </figure>
+
+        <figure class="image m-5">
+          <picture>
+            <source srcset="/images/myself/profile.webp" type="image/webp">
+            <img class="is-rounded" src="/images/myself/profile.png" />
+          </picture>
+        </figure>
+        
+        <p class="my-5 has-text-centered"><em>Software-Entwickler aus Leidenschaft, Diplom-Informatiker und immer neugierig auf Programmiersprachen</em></p>
+        <CV.panel text="left">
+          <p class="my-1"><%= gettext("Born %{date} in %{place}", date: Calendar.strftime(@myself.dob, "%d.%0m.%Y"), place: @myself.place_of_birth) %></p>
+          <p class="my-1"><%= gettext("Citizenship: %{citizenship}", citizenship: @myself.citizenship) %></p>
+
+          <p class="my-3">      
+            <.label icon="home" label={@myself.contact.address} />
+          </p>
+          <p>
+            <%= for l <- @myself.links do %>
+              <%= link ContactLink.build_link_options(l) |> Keyword.merge(class: "is-block my-1") do %>
+                <.label {ContactLink.type_to_icon(l)} label={l} />
+              <% end %>
+            <% end %>
+          </p>
+        </CV.panel>
+        <CV.panel title={gettext("Languages")}>
+          <.primary_skill label="Deutsch" rating="100" value="Muttersprache" />
+          <.primary_skill label="Englisch" rating="70" value="B2" />
+        </CV.panel>
+
+        <CV.panel title={gettext("Primary Skills")}>
+          <.primary_skill icon_set="brands" icon="windows" label="C#/.NET Anwendungen" rating="84" value="15+ Jahre" />
+          <.primary_skill icon="database" label="SQL/Datenbanken" rating="87" value="20+ Jahre" />
+          <.primary_skill icon_set="brands" icon="phoenix-framework" label="Elixir/Phoenix" rating="80" value="5+ Jahre" />
+          <.primary_skill icon="gem" label="Ruby on Rails" rating="75" value="10+ Jahre" />
+          <.primary_skill icon_set="brands" icon="shopware" label="PHP & Shopware" rating="55" value=""/>
+        </CV.panel>
+        <CV.panel title={gettext("Programming Languages")}>
+          <.skill label="C#" color="info"/>
+          <.skill label="Elixir" color="info"/>
+          <.skill label="Ruby" color="info"/>
+          <.skill icon_set="brands" icon="js" label="JavaScript"/>
+          <.skill icon_set="brands" icon="php" label="PHP"/>
+          <.skill label="Elm"/>
+          <.skill label="F#"/>
+          <.skill icon_set="brands" icon="java" label="Java"/>
+          <.skill icon_set="brands" icon="python "label="Python"/>
+          <.skill icon_set="brands" icon="rust" label="Rust"/>      
+          <.skill label="Haskell"/>      
+          <.skill label="Delphi/Pascal"/>
+        </CV.panel>
+
+        <CV.panel title={gettext("Techs and Frameworks")}>
+          <.skill label=".NET"/>
+          <.skill label="WinForms"/>
+          <.skill label="WPF/XAML"/>
+          <.skill icon_set="brands" icon="html5" label="HTML"/>
+          <.skill icon_set="brands" icon="css3" label="CSS"/>
+          <.skill icon_set="brands" icon="sass" label="SCSS"/>
+          <.skill label="GraphQL"/>
+          <.skill icon_set="brands" icon="phoenix-framework" label="Phoenix"/>
+          <.skill icon="gem" label="Rails"/>
+          <.skill icon="gem" label="Padrino"/>
+          <.skill icon_set="brands" icon="github" label="Git"/>
+          <.skill icon_set="brands" icon="docker" label="Docker"/>
+          <.skill icon_set="brands" icon="shopware" label="Shopware"/>
+          <.skill icon_set="brands" icon="vuejs" label="Vue.js"/>
+          <.skill icon_set="brands" icon="react" label="React"/>
+          <.skill label="MySQL"/>
+          <.skill label="PostgreSQL"/>
+          <.skill icon_set="brands" icon="linux" label="Linux"/>
+          <.skill label="Nginx"/>  
+        </CV.panel>
+      
+      </.column>
+      <.column>
+        <CV.section entries={@entries[:job]} title={gettext("Job experience")} />
+        <CV.section entries={@entries[:education]} title={gettext("Education")} />
+      </.column>
+    </.columns>
+  </.container>

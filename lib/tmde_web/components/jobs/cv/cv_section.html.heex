@@ -1,6 +1,6 @@
 <div class="cv-section">
   <.title class="mb-5" label={@title}  />
   <%= for entry <- (@entries || []) do %>
-    <.cv_article entry={entry} />
+    <.entry entry={entry} />
 <% end %>
 </div>
