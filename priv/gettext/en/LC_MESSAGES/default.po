@@ -17,7 +17,7 @@ msgid "Contact Information"
 msgstr ""
 
 #: lib/tmde_web/components/navigation/footer.html.heex:19
-#: lib/tmde_web/controllers/page_controller.ex:42
+#: lib/tmde_web/controllers/page_controller.ex:46
 #: lib/tmde_web/templates/page/imprint.html.heex:3
 #, elixir-autogen, elixir-format
 msgid "Imprint"
@@ -78,12 +78,12 @@ msgstr ""
 msgid "Sorry, the page does not exist."
 msgstr ""
 
-#: lib/tmde_web/controllers/page_controller.ex:44
+#: lib/tmde_web/controllers/page_controller.ex:48
 #, elixir-autogen, elixir-format
 msgid "Imprint and privacy policy for thorsten-michael.de, the personal homepage of Thorsten-Michael Deinert."
 msgstr ""
 
-#: lib/tmde_web/controllers/page_controller.ex:30
+#: lib/tmde_web/controllers/page_controller.ex:32
 #, elixir-autogen, elixir-format
 msgid "Personal homepage of Thorsten-Michael Deinert. Passionate computer scientist, software developer, and programming languages polyglot."
 msgstr ""
@@ -193,42 +193,42 @@ msgstr ""
 msgid "application documents"
 msgstr ""
 
-#: lib/tmde_web/live/jobs_live.html.heex:22
+#: lib/tmde_web/components/jobs/cv.html.heex:21
 #, elixir-autogen, elixir-format
 msgid "Born %{date} in %{place}"
 msgstr ""
 
-#: lib/tmde_web/live/jobs_live.html.heex:23
+#: lib/tmde_web/components/jobs/cv.html.heex:22
 #, elixir-autogen, elixir-format
 msgid "Citizenship: %{citizenship}"
 msgstr ""
 
-#: lib/tmde_web/live/jobs_live.html.heex:88
+#: lib/tmde_web/components/jobs/cv.html.heex:47
 #, elixir-autogen, elixir-format
 msgid "Education"
 msgstr ""
 
-#: lib/tmde_web/live/jobs_live.html.heex:87
+#: lib/tmde_web/components/jobs/cv.html.heex:46
 #, elixir-autogen, elixir-format
 msgid "Job experience"
 msgstr ""
 
-#: lib/tmde_web/live/jobs_live.html.heex:36
+#: lib/tmde/jobs/personal_skill.ex:37
 #, elixir-autogen, elixir-format
 msgid "Languages"
 msgstr ""
 
-#: lib/tmde_web/live/jobs_live.html.heex:41
+#: lib/tmde/jobs/personal_skill.ex:38
 #, elixir-autogen, elixir-format
 msgid "Primary Skills"
 msgstr ""
 
-#: lib/tmde_web/live/jobs_live.html.heex:48
+#: lib/tmde/jobs/personal_skill.ex:39
 #, elixir-autogen, elixir-format
 msgid "Programming Languages"
 msgstr ""
 
-#: lib/tmde_web/live/jobs_live.html.heex:63
+#: lib/tmde/jobs/personal_skill.ex:40
 #, elixir-autogen, elixir-format
 msgid "Techs and Frameworks"
 msgstr ""
@@ -251,4 +251,19 @@ msgstr ""
 #: lib/tmde_web/components/jobs/qr_code.html.heex:3
 #, elixir-autogen, elixir-format
 msgid "View this application online:"
+msgstr ""
+
+#: lib/tmde_web/components/navigation/navbar.html.heex:4
+#, elixir-autogen, elixir-format
+msgid "Go to home page..."
+msgstr ""
+
+#: lib/tmde_web/components/navigation/navbar.html.heex:13
+#, elixir-autogen, elixir-format, fuzzy
+msgid "Language"
+msgstr ""
+
+#: lib/tmde/jobs/personal_skill.ex:41
+#, elixir-autogen, elixir-format
+msgid "Skills"
 msgstr ""
