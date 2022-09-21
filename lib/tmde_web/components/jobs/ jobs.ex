@@ -8,7 +8,12 @@ defmodule TmdeWeb.Components.Jobs do
   import Bulma.Helpers, only: [assign_class: 2, is: 1]
   alias TmdeWeb.Components.Jobs.{CV}
   alias Tmde.Contacts.Link, as: ContactLink
+  alias Tmde.Jobs
   alias Tmde.Jobs.Skill
+
+  import Jobs.PersonalSkill, only: [category_label: 1]
+
+  @featured_categories [:languages, :featured]
 
   def cv(%{application: application} = assigns) do
     entries =
@@ -18,7 +23,7 @@ defmodule TmdeWeb.Components.Jobs do
     {featured_skillsets, skillsets} =
       application.job_seeker.skills
       |> Enum.group_by(& &1.category)
-      |> Enum.split_with(fn {category, _} -> category in [:languages, :featured] end)
+      |> Enum.split_with(fn {category, _} -> category in @featured_categories end)
       |> IO.inspect()
 
     assigns =
@@ -29,7 +34,7 @@ defmodule TmdeWeb.Components.Jobs do
       |> assign(
         myself: application.job_seeker,
         entries: entries,
-        featured_skillsets: featured_skillsets,
+        featured_skillsets: @featured_categories |> Enum.map(&{&1, featured_skillsets[&1]}),
         skillsets: skillsets
       )
 
@@ -65,7 +70,7 @@ defmodule TmdeWeb.Components.Jobs do
 
   def featured_skillset(assigns) do
     ~H"""
-      <CV.panel title={@category}>
+      <CV.panel title={category_label(@category)}>
         <%= for skill <- @skills do %>
           <.primary_skill skill={skill} />
         <% end %>
@@ -100,7 +105,7 @@ defmodule TmdeWeb.Components.Jobs do
 
   def skillset(assigns) do
     ~H"""
-    <CV.panel title={@category}>
+    <CV.panel title={category_label(@category)}>
       <Tags.tags class="skill-set">
         <%= for skill <- @skills do %>
           <.skill skill={skill} />

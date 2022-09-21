@@ -32,67 +32,14 @@
             <% end %>
           </p>
         </CV.panel>
+        
         <%= for {category, skills} <- @featured_skillsets do %>
           <.featured_skillset category={category} skills={skills} />
         <% end %>
-        <CV.panel title={gettext("Languages")}>
-          <.primary_skill label="Deutsch" rating="100" value="Muttersprache" />
-          <.primary_skill label="Englisch" rating="70" value="B2" />
-        </CV.panel>
-
-        <CV.panel title={gettext("Primary Skills")}>
-          <.primary_skill icon_set="brands" icon="windows" label="C#/.NET Anwendungen" rating="84" value="15+ Jahre" />
-          <.primary_skill icon="database" label="SQL/Datenbanken" rating="87" value="20+ Jahre" />
-          <.primary_skill icon_set="brands" icon="phoenix-framework" label="Elixir/Phoenix" rating="80" value="5+ Jahre" />
-          <.primary_skill icon="gem" label="Ruby on Rails" rating="75" value="10+ Jahre" />
-          <.primary_skill icon_set="brands" icon="shopware" label="PHP & Shopware" rating="55" value=""/>
-        </CV.panel>
-
+        
         <%= for {category, skills} <- @skillsets do %>
           <.skillset category={category} skills={skills} />
         <% end %>
-
-        <CV.panel title={gettext("Programming Languages")}>
-          <div class="tags" >
-            <.skill label="C#" color="info"/>
-            <.skill label="Elixir" color="info"/>
-            <.skill label="Ruby" color="info"/>
-            <.skill icon_set="brands" icon="js" label="JavaScript"/>
-            <.skill icon_set="brands" icon="php" label="PHP"/>
-            <.skill label="Elm"/>
-            <.skill label="F#"/>
-            <.skill icon_set="brands" icon="java" label="Java"/>
-            <.skill icon_set="brands" icon="python "label="Python"/>
-            <.skill icon_set="brands" icon="rust" label="Rust"/>      
-            <.skill label="Haskell"/>      
-            <.skill label="Delphi/Pascal"/>
-          </div>
-        </CV.panel>
-
-        <CV.panel title={gettext("Techs and Frameworks")}>
-          <Tags.tags>
-            <.skill label=".NET"/>
-            <.skill label="WinForms"/>
-            <.skill label="WPF/XAML"/>
-            <.skill icon_set="brands" icon="html5" label="HTML"/>
-            <.skill icon_set="brands" icon="css3" label="CSS"/>
-            <.skill icon_set="brands" icon="sass" label="SCSS"/>
-            <.skill label="GraphQL"/>
-            <.skill icon_set="brands" icon="phoenix-framework" label="Phoenix"/>
-            <.skill icon="gem" label="Rails"/>
-            <.skill icon="gem" label="Padrino"/>
-            <.skill icon_set="brands" icon="github" label="Git"/>
-            <.skill icon_set="brands" icon="docker" label="Docker"/>
-            <.skill icon_set="brands" icon="shopware" label="Shopware"/>
-            <.skill icon_set="brands" icon="vuejs" label="Vue.js"/>
-            <.skill icon_set="brands" icon="react" label="React"/>
-            <.skill label="MySQL"/>
-            <.skill label="PostgreSQL"/>
-            <.skill icon_set="brands" icon="linux" label="Linux"/>
-            <.skill label="Nginx"/>  
-          </Tags.tags>
-        </CV.panel>
-      
       
       </.column>
       <.column>
