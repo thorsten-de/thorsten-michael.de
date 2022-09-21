@@ -6,7 +6,6 @@ defmodule TmdeWeb.Components.Jobs.CV do
   use TmdeWeb, :colocate_templates
 
   use Bulma
-  import Bulma.Helpers, only: [assign_class: 2, has: 1, is: 1]
 
   def entry(%{entry: entry} = assigns) do
     assigns =

@@ -5,7 +5,6 @@ defmodule TmdeWeb.Components.Jobs do
   use TmdeWeb, :component
   use TmdeWeb, :colocate_templates
   use Bulma
-  import Bulma.Helpers, only: [assign_class: 2, is: 1]
   alias TmdeWeb.Components.Jobs.{CV}
   alias Tmde.Contacts.Link, as: ContactLink
   alias Tmde.Jobs
@@ -24,13 +23,12 @@ defmodule TmdeWeb.Components.Jobs do
       application.job_seeker.skills
       |> Enum.group_by(& &1.category)
       |> Enum.split_with(fn {category, _} -> category in @featured_categories end)
-      |> IO.inspect()
 
     assigns =
       assigns
       |> assign_defaults(socket: TmdeWeb.Endpoint, qr_code: nil)
       |> assign_class(["cv"])
-      |> set_attributes_from_assigns([:socket, :application])
+      |> set_attributes_from_assigns(exclude: [:socket, :application])
       |> assign(
         myself: application.job_seeker,
         entries: entries,

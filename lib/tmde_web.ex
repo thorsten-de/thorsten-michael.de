@@ -122,6 +122,7 @@ defmodule TmdeWeb do
       import TmdeWeb.DateFormatter
       import TmdeWeb.ErrorHelpers
       import TmdeWeb.Gettext
+      import Bulma.Helpers
       alias TmdeWeb.Router.Helpers, as: Routes
     end
   end

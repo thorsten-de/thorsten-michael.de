@@ -40,7 +40,6 @@ defmodule TmdeWeb.DateFormatter do
     _locale = opts[:locale] || @default_locale
 
     Timex.diff(until, from, :duration)
-    |> IO.inspect()
     |> Timex.format_duration(Timex.Format.Duration.Formatters.Humanized)
   end
 end
