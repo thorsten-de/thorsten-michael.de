@@ -339,7 +339,7 @@ myself =
              de:
                "Software-Entwickler aus Leidenschaft, Diplom-Informatiker und immer neugierig auf Programmiersprachen",
              en:
-               "Passionate software developer, computer scientist and programming language polyglott"
+               "Passionate about software development, computer science and programming languages"
            ),
          dob: ~D[2000-02-29],
          place_of_birth: "Irgendwo",
