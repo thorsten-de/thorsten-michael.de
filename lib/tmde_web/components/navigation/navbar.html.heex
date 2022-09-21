@@ -1,0 +1,19 @@
+<Navbar.navbar color="light">
+  <.container>
+    <Navbar.brand>
+      <Navbar.item href="/" title="Zur Startseite...">
+        <img src="/images/icons/favicon-32x32.png" 
+          srcset="/images/icons/favicon-32x32.png, /images/icons/favicon-64x64.png 2x" 
+          alt="TMD (LOGO)" width="32" height="32">
+        thorsten-michael.de
+      </Navbar.item>
+    </Navbar.brand>
+    <Navbar.menu id="navMenu">
+      <Navbar.bar_end>
+        <Navbar.dropdown hoverable label={gettext("Language")}>
+          <Navbar.item href="#" label="Deutsch" />
+        </Navbar.dropdown>
+      </Navbar.bar_end>
+    </Navbar.menu>
+  </.container>
+</Navbar.navbar>
