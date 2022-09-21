@@ -12,8 +12,8 @@ defmodule Tmde.Helper.Markdown do
   to html and returns a keyword list of %{path: _, html: _} maps for each local file.
   """
   def content_to_html!(contents, opts \\ []) do
-    for {lang, path} <- contents do
-      {lang,
+    for {lang, path} <- contents, into: %{} do
+      {to_string(lang),
        %{
          path: path,
          html: file_to_html!(path, opts)

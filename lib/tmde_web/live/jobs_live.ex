@@ -4,8 +4,10 @@ defmodule TmdeWeb.JobsLive do
   alias Tmde.Jobs
   import TmdeWeb.Components.Jobs
 
-  def mount(%{"id" => application_id}, _session, socket) do
+  def mount(%{"id" => application_id}, session, socket) do
     application = Jobs.get_application!(application_id)
+
+    if locale = session["locale"], do: Gettext.put_locale(TmdeWeb.Gettext, locale)
 
     socket =
       socket

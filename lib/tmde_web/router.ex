@@ -9,6 +9,7 @@ defmodule TmdeWeb.Router do
     plug :put_root_layout, {TmdeWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug Plugs.Locale
 
     plug Plugs.Page,
       locale: Application.get_env(:gettext, :default_locale),
