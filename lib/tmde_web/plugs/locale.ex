@@ -20,6 +20,9 @@ defmodule TmdeWeb.Plugs.Locale do
     case get_session(conn, :locale) do
       locale when locale in @known_locales ->
         Gettext.put_locale(TmdeWeb.Gettext, locale)
+
+      _other ->
+        :noop
     end
 
     conn
