@@ -28,6 +28,7 @@ defmodule TmdeWeb.Router do
     get "/impressum", PageController, :imprint
 
     get "/email/tmd-logo.svg", DeliveryController, :logo_logger
+    get "/bewerbung/:id/cv.pdf", JobsController, :cv_pdf
     live "/bewerbung/:id", JobsLive, :show
   end
 

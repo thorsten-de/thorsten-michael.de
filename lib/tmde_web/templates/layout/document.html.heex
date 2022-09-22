@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang={@locale}>
+  <head>
+    <meta charset="utf-8"/>
+    <base href="http://localhost:4000/" /> 
+    <link rel="stylesheet" href={Routes.static_path(TmdeWeb.Endpoint, "/assets/app.css")}/>
+    <style>
+      body {
+        background-color: white;
+      }
+      .cv-section {
+        margin-left: 5mm;
+        font-size: 1.125em;
+      }
+    </style>
+
+  </head>
+  <body>
+    <%= @inner_content %>
+  </body>
+</html>

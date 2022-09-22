@@ -30,12 +30,8 @@
     <meta name="theme-color" content="#ffffff">
   </head>
   <body>
-    <%= unless assigns[:print_layout?] do %>
-      <Navigation.navbar />
-    <% end %>
+    <Navigation.navbar />
     <%= @inner_content %>
-    <%= unless assigns[:print_layout?] do %>
-      <Navigation.footer conn={@conn}/>
-    <% end %>
+    <Navigation.footer conn={@conn}/>
   </body>
 </html>
