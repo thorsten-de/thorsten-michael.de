@@ -25,6 +25,7 @@
 
 
 <div class="address-section">
+<p><small><%= Contact.address_line(@application.job_seeker.contact) %></small></p>
 <.address contact={@application.contact}>
   <:prepend>
     <%= @application.company %><br>
@@ -40,7 +41,7 @@
 <div class="main-section content">
   <div class="date">
     <p class="has-text-right">
-      <%= gettext("%{location}, %{date}", location: @application.job_seeker.contact.address.city, date: date(@application.updated_at, format: "{0D}.{Mfull} {YYYY}")) %>
+      <%= gettext("%{location}, %{date}", location: @application.job_seeker.contact.address.city, date: date(@application.updated_at, format: "{0D}. {Mfull} {YYYY}")) %>
     </p>
   </div>
   <div class="subject">

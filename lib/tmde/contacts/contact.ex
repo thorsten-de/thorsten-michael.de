@@ -43,6 +43,27 @@ defmodule Tmde.Contacts.Contact do
     |> Enum.join(" ")
   end
 
+  def short_name(%__MODULE__{} = contact) do
+    [get_initials(contact), contact.last_name]
+    |> reject_empty()
+    |> Enum.join(" ")
+  end
+
+  defp get_initials(contact) do
+    case contact.first_name do
+      "" -> ""
+      name when is_binary(name) -> String.slice(name, 0..0) <> "."
+      _ -> ""
+    end
+  end
+
+  def address_line(contact, opts \\ []) do
+    splitter = opts[:splitter] || " | "
+
+    [short_name(contact) | Address.lines(contact.address)]
+    |> Enum.join(splitter)
+  end
+
   defimpl String.Chars, for: __MODULE__ do
     def to_string(contact), do: Contact.name(contact)
   end
