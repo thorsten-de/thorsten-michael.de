@@ -12,8 +12,6 @@ defmodule TmdeWeb.DeliveryController do
     with token when not is_nil(token) <- params["mailId"],
          {:ok, id} <- Delivery.token_to_id(token),
          %Delivery{} = delivery <- Jobs.get_delivery(id) do
-      IO.inspect(conn.req_headers)
-
       Jobs.create_delivery_tracking(delivery,
         payload: %{
           "referer" => get_req_header(conn, "referer"),

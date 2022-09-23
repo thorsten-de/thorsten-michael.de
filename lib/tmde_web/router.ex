@@ -30,7 +30,7 @@ defmodule TmdeWeb.Router do
     get "/email/tmd-logo.svg", DeliveryController, :logo_logger
     get "/bewerbung/:id/cv", JobsController, :cv_pdf
     get "/bewerbung/:id/cover_letter", JobsController, :cover_letter_pdf
-    live "/bewerbung/:id", JobsLive, :show
+    live "/bewerbung/:token", JobsLive, :show
   end
 
   # Other scopes may use custom stacks.
