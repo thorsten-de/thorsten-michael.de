@@ -7,6 +7,7 @@ defmodule TmdeWeb.DocumentView do
   import TmdeWeb.Components.{ContactComponents, ContentComponents}
   import TmdeWeb.Components.Jobs, only: [qr_code: 1]
   alias Tmde.Contacts.Link, as: ContactLink
+  alias Tmde.Contacts.Contact
 
   @spec render_pdf(binary, binary | maybe_improper_list(any, binary | []) | char, keyword) ::
           {:ok, binary,
@@ -15,7 +16,7 @@ defmodule TmdeWeb.DocumentView do
                binary | maybe_improper_list(any, binary | []) | byte,
                binary | []
              )}
-  def render_pdf(template, filename, options \\ []) do
+  def render_pdf(template, filepath, filename, options \\ []) do
     layout =
       case options[:layout] do
         false -> false
@@ -36,13 +37,19 @@ defmodule TmdeWeb.DocumentView do
       )
 
     path =
-      Path.expand([
-        Application.get_env(:tmde, :document_root, "tmp/documents/"),
-        filename
+      Path.join([
+        Application.get_env(:tmde, :document_root, "tmp/documents/")
+        | filepath
       ])
 
+    unless File.dir?(path) do
+      File.mkdir_p!(path)
+    end
+
+    path = Path.join(path, filename)
+
     {:html, html}
-    |> ChromicPDF.print_to_pdfa(
+    |> ChromicPDF.print_to_pdf(
       Keyword.merge(
         options[:print],
         output: path
@@ -59,7 +66,8 @@ defmodule TmdeWeb.DocumentView do
 
     render_pdf(
       "print_cv.html",
-      "CV_#{application.id}.pdf",
+      [application.id],
+      "CV.pdf",
       print: [
         print_to_pdf: %{
           scale: 0.6,
@@ -94,7 +102,8 @@ defmodule TmdeWeb.DocumentView do
 
     render_pdf(
       "cover_letter.html",
-      "cover_letter_#{application.id}.pdf",
+      [application.id],
+      "cover_letter.pdf",
       print: [
         print_to_pdf: %{
           paperWidth: mm(210),
