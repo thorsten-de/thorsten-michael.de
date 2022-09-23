@@ -1,4 +1,20 @@
-<div style="position: relative;backround-color: #fff;">
-  <!--Jobs.qr_code url={Routes.jobs_url(TmdeWeb.Endpoint, :show, @application)} qr_code={assigns[:qr_code]} /-->
-  <Jobs.cv application={@application} />
-</div>
+<!DOCTYPE html>
+<html lang={@locale}>
+  <head>
+    <meta charset="utf-8"/>
+    <base href="http://localhost:4000/" /> 
+    <link rel="stylesheet" href={Routes.static_path(TmdeWeb.Endpoint, "/assets/app.css")}/>
+    <style>
+      body {
+        background-color: white;
+      }
+      .cv-section {
+        font-size: 1.125rem;
+        margin-left: 5mm;
+      }
+    </style>
+  </head>
+  <body>
+    <Jobs.cv application={@application} />
+  </body>
+</html>
