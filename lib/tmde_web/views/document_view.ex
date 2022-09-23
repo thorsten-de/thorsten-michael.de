@@ -46,7 +46,7 @@ defmodule TmdeWeb.DocumentView do
       output: path
     )
 
-    {:ok, path}
+    {:ok, path, html}
   end
 
   defp mm(l), do: l / 25.4
@@ -58,8 +58,18 @@ defmodule TmdeWeb.DocumentView do
       "print_cv.html",
       "CV_#{application.id}.pdf",
       application: application,
-      qr_code: qr_code,
-      print_layout?: true
+      qr_code: qr_code
+    )
+  end
+
+  def generate_cover_letter(application, opts \\ []) do
+    qr_code = if opts[:qr_code], do: build_qr_code(application)
+
+    render_pdf(
+      "cover_letter.html",
+      "cover_letter_#{application.id}.pdf",
+      application: application,
+      qr_code: qr_code
     )
   end
 

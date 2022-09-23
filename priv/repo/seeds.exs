@@ -369,7 +369,8 @@ default_application = %Application{
     gender: :female,
     email: "thorsten.deinert@udo.edu",
     first_name: "Marianne",
-    last_name: "Mustermann"
+    last_name: "Mustermann",
+    address: %{street: "Hauptstraße 2", zip: "49999", city: "Musterhausen"}
   },
   cv_entries: [
     %CV.Entry{

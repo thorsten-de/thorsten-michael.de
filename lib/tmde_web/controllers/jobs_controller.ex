@@ -7,9 +7,18 @@ defmodule TmdeWeb.JobsController do
   def cv_pdf(conn, %{"id" => application_id}) do
     application = Jobs.get_application!(application_id)
 
-    {:ok, path} = DocumentView.generate_cv(application, qr_code: true)
+    {:ok, _path, html} = DocumentView.generate_cv(application, qr_code: true)
 
     conn
-    |> send_download({:file, path})
+    |> html(html)
+  end
+
+  def cover_letter_pdf(conn, %{"id" => application_id}) do
+    application = Jobs.get_application!(application_id)
+
+    {:ok, _path, html} = DocumentView.generate_cover_letter(application, qr_code: true)
+
+    conn
+    |> html(html)
   end
 end
