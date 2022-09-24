@@ -129,10 +129,10 @@ defmodule TmdeWeb.DocumentView do
 
   def default_documents do
     [
-      {gettext("Graduation diploma"),
-       document_filepath(["common"], "Abiturzeugnis_Thorsten_Deinert.pdf")},
       {gettext("Diploma certificate"),
-       document_filepath(["common"], "Diplomzeugnis_Thorsten_Deinert.pdf")}
+       document_filepath(["common"], "Diplomzeugnis_Thorsten_Deinert.pdf")},
+      {gettext("Graduation diploma"),
+       document_filepath(["common"], "Abiturzeugnis_Thorsten_Deinert.pdf")}
     ]
   end
 
