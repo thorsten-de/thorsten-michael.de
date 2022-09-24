@@ -10,6 +10,7 @@ defmodule Tmde.Jobs.Application do
   schema "job_applications" do
     field :subject, :string
     field :reference, :string
+    field :short_reference, :string
     field :company, :string
     field :locale, Ecto.Enum, values: [:de, :en], default: :de
     embeds_one :contact, Contact
