@@ -18,7 +18,10 @@ defmodule TmdeWeb.Components.ContactComponents do
 
   def signature(assigns) do
     ~H"""
-    <p><%= @sender %></p>
+    <p class="signature">
+      <img src={"file://#{@file_path}"} alt="Unterschrift Thorsten-Michael Deinert" />
+      <%= @sender %>
+    </p>
     """
   end
 
@@ -35,7 +38,6 @@ defmodule TmdeWeb.Components.ContactComponents do
       assigns
       |> assign_defaults(prepend: [])
       |> assign(contact: contact, address: address)
-      |> IO.inspect()
 
     ~H"""
     <p>

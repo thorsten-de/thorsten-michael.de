@@ -28,3 +28,5 @@ end
 
 alias Tmde.Repo
 alias Tmde.Jobs
+application_id = "4655266c-ac42-4b5c-9fb4-21a8dafcd4a0"
+a = Jobs.get_application!(application_id)
