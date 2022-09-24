@@ -118,6 +118,7 @@ msgstr ""
 msgid "Dear Sirs and Madams,"
 msgstr ""
 
+#: lib/tmde_web/components/contact_components.ex:15
 #: lib/tmde_web/views/application_mailer_view.ex:8
 #, elixir-autogen, elixir-format
 msgid "Sincerely,"
@@ -159,7 +160,7 @@ msgid "whatsapp to %{number}..."
 msgstr ""
 
 #: lib/tmde/contacts/link.ex:65
-#: lib/tmde_web/components/jobs/qr_code.html.heex:3
+#: lib/tmde_web/components/jobs/qr_code.html.heex:5
 #: lib/tmde_web/templates/application_mailer/application.html.heex:19
 #: lib/tmde_web/templates/layout/email.html.heex:38
 #, elixir-autogen, elixir-format
@@ -173,6 +174,7 @@ msgstr "Web"
 
 #: lib/tmde_web/templates/application_mailer/application.html.heex:8
 #: lib/tmde_web/templates/application_mailer/application.text.eex:10
+#: lib/tmde_web/templates/document/cover_letter.html.heex:57
 #, elixir-autogen, elixir-format
 msgid "Attachments:"
 msgstr ""
@@ -193,22 +195,22 @@ msgstr ""
 msgid "application documents"
 msgstr ""
 
-#: lib/tmde_web/components/jobs/cv.html.heex:21
+#: lib/tmde_web/components/jobs/cv.html.heex:19
 #, elixir-autogen, elixir-format
 msgid "Born %{date} in %{place}"
 msgstr ""
 
-#: lib/tmde_web/components/jobs/cv.html.heex:22
+#: lib/tmde_web/components/jobs/cv.html.heex:20
 #, elixir-autogen, elixir-format
 msgid "Citizenship: %{citizenship}"
 msgstr ""
 
-#: lib/tmde_web/components/jobs/cv.html.heex:47
+#: lib/tmde_web/components/jobs/cv.html.heex:45
 #, elixir-autogen, elixir-format
 msgid "Education"
 msgstr ""
 
-#: lib/tmde_web/components/jobs/cv.html.heex:46
+#: lib/tmde_web/components/jobs/cv.html.heex:44
 #, elixir-autogen, elixir-format
 msgid "Job experience"
 msgstr ""
@@ -266,4 +268,34 @@ msgstr ""
 #: lib/tmde/jobs/personal_skill.ex:41
 #, elixir-autogen, elixir-format
 msgid "Skills"
+msgstr ""
+
+#: lib/tmde_web/templates/document/cover_letter.html.heex:44
+#, elixir-autogen, elixir-format
+msgid "%{location}, %{date}"
+msgstr ""
+
+#: lib/tmde_web/views/document_view.ex:148
+#, elixir-autogen, elixir-format
+msgid "CV"
+msgstr ""
+
+#: lib/tmde_web/views/document_view.ex:158
+#, elixir-autogen, elixir-format
+msgid "Cover Letter"
+msgstr ""
+
+#: lib/tmde_web/views/document_view.ex:134
+#, elixir-autogen, elixir-format
+msgid "Diploma certificate"
+msgstr ""
+
+#: lib/tmde_web/views/document_view.ex:132
+#, elixir-autogen, elixir-format
+msgid "Graduation diploma"
+msgstr ""
+
+#: lib/tmde_web/views/document_view.ex:164
+#, elixir-autogen, elixir-format
+msgid "Portfolio"
 msgstr ""
