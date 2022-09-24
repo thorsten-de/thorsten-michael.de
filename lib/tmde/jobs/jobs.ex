@@ -28,6 +28,12 @@ defmodule Tmde.Jobs do
     |> Repo.update()
   end
 
+  def log_event!(%Application{} = application, type, payload \\ %{}) do
+    application
+    |> Ecto.build_assoc(:events, %{type: type, payload: payload})
+    |> Repo.insert!()
+  end
+
   @doc """
   Creates a new skill with given attributes
   """

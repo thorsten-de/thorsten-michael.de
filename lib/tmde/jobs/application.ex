@@ -5,7 +5,7 @@ defmodule Tmde.Jobs.Application do
   use Tmde, :schema
   import Ecto.Changeset
   alias Tmde.Contacts.Contact
-  alias Tmde.Jobs.{CV, JobSeeker}
+  alias Tmde.Jobs.{CV, JobSeeker, ApplicationEvent}
 
   schema "job_applications" do
     field :subject, :string
@@ -26,6 +26,8 @@ defmodule Tmde.Jobs.Application do
     belongs_to :job_seeker, JobSeeker
     has_many :cv_entries, CV.Entry
     has_many :skills, through: [:job_seeker, :skills]
+
+    has_many :events, ApplicationEvent
     timestamps()
   end
 
