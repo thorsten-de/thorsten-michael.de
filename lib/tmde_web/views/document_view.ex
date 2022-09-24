@@ -129,14 +129,20 @@ defmodule TmdeWeb.DocumentView do
 
   def default_documents do
     [
-      {gettext("Diploma certificate"),
-       document_filepath(["common"], "Diplomzeugnis_Thorsten_Deinert.pdf")},
-      {gettext("Graduation diploma"),
-       document_filepath(["common"], "Abiturzeugnis_Thorsten_Deinert.pdf")}
+      %{
+        slug: "diplomzeugnis",
+        label: gettext("Diploma certificate"),
+        filename: document_filepath(["common"], "Diplomzeugnis_Thorsten_Deinert.pdf")
+      },
+      %{
+        slug: "abiturzeugnis",
+        label: gettext("Graduation diploma"),
+        filename: document_filepath(["common"], "Abiturzeugnis_Thorsten_Deinert.pdf")
+      }
     ]
   end
 
-  def generate_portfolio(%Tmde.Jobs.Application{id: uuid} = application) do
+  def generate_documents(%Tmde.Jobs.Application{id: uuid} = application) do
     ensure_path_exists!([uuid])
 
     {:ok, cv_file, _hmtl} =
@@ -145,26 +151,31 @@ defmodule TmdeWeb.DocumentView do
         document_filepath([application.id], "CV.pdf")
       )
 
-    documents = [{gettext("CV"), cv_file} | default_documents()]
+    documents = [
+      %{slug: "cv", label: gettext("CV"), filename: cv_file}
+      | default_documents()
+    ]
 
     {:ok, letter_file, _html} =
       generate_cover_letter(
         application,
         document_filepath([uuid], "cover_letter.pdf"),
         qr_code: true,
-        attachments: Enum.map(documents, &elem(&1, 0))
+        attachments: Enum.map(documents, & &1.label)
       )
 
-    documents = [{gettext("Cover Letter"), letter_file} | documents]
+    documents = [
+      %{slug: "anschreiben", label: gettext("Cover Letter"), filename: letter_file}
+      | documents
+    ]
 
     portfolio_file = document_filepath([uuid], "portfolio.pdf")
-    System.cmd("pdfunite", Enum.map(documents, &elem(&1, 1)) ++ [portfolio_file])
+    System.cmd("pdfunite", Enum.map(documents, & &1.filename) ++ [portfolio_file])
 
-    documents =
-      [{gettext("Portfolio"), portfolio_file} | documents]
-      |> IO.inspect()
-
-    :ok
+    [
+      %{slug: "portfolio", label: gettext("Portfolio"), filename: portfolio_file}
+      | documents
+    ]
   end
 
   # Generate QR-Code and assign it to the socket. Only needed in print layout

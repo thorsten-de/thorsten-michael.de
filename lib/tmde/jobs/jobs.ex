@@ -22,6 +22,12 @@ defmodule Tmde.Jobs do
     end
   end
 
+  def update_documents(application, documents) do
+    application
+    |> Application.put_documents(documents)
+    |> Repo.update()
+  end
+
   @doc """
   Creates a new skill with given attributes
   """

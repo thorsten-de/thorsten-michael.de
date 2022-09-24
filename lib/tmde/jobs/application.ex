@@ -3,6 +3,7 @@ defmodule Tmde.Jobs.Application do
   A job application
   """
   use Tmde, :schema
+  import Ecto.Changeset
   alias Tmde.Contacts.Contact
   alias Tmde.Jobs.{CV, JobSeeker}
 
@@ -15,10 +16,22 @@ defmodule Tmde.Jobs.Application do
     embeds_many :cover_letter, Translation
     embeds_many :cover_email, Translation
 
+    embeds_many :documents, Document, on_replace: :delete do
+      field :slug, :string
+      field :label, :string
+      field :filename, :string
+    end
+
     belongs_to :job_seeker, JobSeeker
     has_many :cv_entries, CV.Entry
     has_many :skills, through: [:job_seeker, :skills]
     timestamps()
+  end
+
+  def put_documents(%__MODULE__{} = application, documents) do
+    application
+    |> change()
+    |> put_embed(:documents, documents)
   end
 
   @max_token_age 86400 * 365
