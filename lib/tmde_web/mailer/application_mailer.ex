@@ -40,6 +40,8 @@ defmodule TmdeWeb.ApplicationMailer do
   end
 
   def send_application(application) do
+    token = Tmde.Jobs.Application.sign_token(application)
+
     new()
     |> to({Contact.name(application.contact), application.contact.email})
     |> subject(application.subject)
@@ -48,24 +50,24 @@ defmodule TmdeWeb.ApplicationMailer do
     |> create_delivery(email: application.contact.email)
     |> prepare_attachments(application)
     |> render_body(:application,
-      logo_target: Routes.jobs_url(TmdeWeb.Endpoint, :show, application),
+      logo_target: Routes.jobs_url(TmdeWeb.Endpoint, :show, token),
       application: application
     )
   end
 
   def prepare_attachments(email, application) do
-    attachments = [
-      %{
-        name: gettext("application documents"),
+    [attachment | _] = application.documents
+
+    email
+    |> assign(:attachments, [attachment])
+    |> attachment(
+      Swoosh.Attachment.new(attachment.filename,
         filename:
           gettext("%{sender} - application documents for %{reference}",
             sender: email.assigns.sender.contact,
-            reference: application.reference
-          )
-      }
-    ]
-
-    email
-    |> assign(:attachments, attachments)
+            reference: application.short_reference
+          ) <> ".pdf"
+      )
+    )
   end
 end
