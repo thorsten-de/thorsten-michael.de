@@ -10,11 +10,16 @@ defmodule TmdeWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug Plugs.Locale
+    plug Plugs.Auth
 
     plug Plugs.Page,
       locale: Application.get_env(:gettext, :default_locale),
       author: "Thorsten-Michael Deinert",
       description: "Persönliche Homepage von Thorsten-Michael Deinert."
+  end
+
+  pipeline :requires_auth do
+    plug Plugs.EnsureAuthenticated
   end
 
   pipeline :api do
@@ -31,6 +36,18 @@ defmodule TmdeWeb.Router do
     get "/bewerbung/:id/cv", JobsController, :cv_pdf
     get "/bewerbung/:id/cover_letter", JobsController, :cover_letter_pdf
     live "/bewerbung/:token", JobsLive, :show
+  end
+
+  scope "/admin", TmdeWeb.Admin do
+    pipe_through [:browser, :requires_auth]
+
+    get "/profile", ProfileController, :index
+  end
+
+  scope "/", TmdeWeb do
+    pipe_through :browser
+
+    resources "/sessions", SessionController, only: [:new, :create, :delete]
   end
 
   # Other scopes may use custom stacks.

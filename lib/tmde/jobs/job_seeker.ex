@@ -58,4 +58,12 @@ defmodule Tmde.Jobs.JobSeeker do
       join: s in assoc(ps, :skill),
       preload: [skill: s]
   end
+
+  defimpl String.Chars, for: __MODULE__ do
+    def to_string(%{username: username}), do: username
+  end
+
+  defimpl Phoenix.HTML.Safe, for: __MODULE__ do
+    def to_iodata(job_seeker), do: to_string(job_seeker)
+  end
 end
