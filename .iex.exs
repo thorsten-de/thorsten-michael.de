@@ -28,7 +28,7 @@ end
 
 alias Tmde.Repo
 alias Tmde.Jobs
-# "b207f8f8-662d-4155-baa9-70b82bbd0972"
-application_id = "4655266c-ac42-4b5c-9fb4-21a8dafcd4a0"
+[%{id: application_id}] = Repo.all(Jobs.Application)
+
 a = Jobs.get_application!(application_id)
-TmdeWeb.DocumentView.generate_documents(a)
+# TmdeWeb.DocumentView.generate_documents(a)
