@@ -1,0 +1,14 @@
+<%= greeting(@application.contact) %>
+          
+<%= translate @application.cover_email, @application.locale %>
+
+<%= ending() %>
+
+<%= @sender.contact %>
+
+<%= gettext("Attachments:") %>
+<%= for %{label: name} <- @attachments do %> - <%= name %>
+<% end %>
+
+<%= gettext("P.S. For this application I have created a dedicated section on my website:") %>
+<%= @logo_target %>

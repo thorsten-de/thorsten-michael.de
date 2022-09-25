@@ -30,8 +30,7 @@
     <meta name="theme-color" content="#ffffff">
   </head>
   <body>
-    <%= render "navbar.html", assigns %>
-    
+    <Navigation.navbar />
     <%= @inner_content %>
     <Navigation.footer conn={@conn}/>
   </body>

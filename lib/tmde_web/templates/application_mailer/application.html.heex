@@ -1,0 +1,21 @@
+ <.block>
+  <p><%= greeting(@application.contact) %></p>
+  <%= @application.cover_email |> translate(@application.locale) |> text_to_html() %>
+  <p><%= ending() %></p>
+<p><%= @application.job_seeker.contact %></p>
+</.block>
+<.block>
+    <%= gettext("Attachments:") %>
+    <ul>
+      <%= for %{label: name} <- @attachments do %>
+        <li style="margin: 6px 0;">
+          <%= name %>
+        </li>
+      <% end %>
+    </ul>
+    <p>
+      <%= gettext("P.S. For this application I have created a dedicated section on my website:") %>
+      <br>
+      <%= url = @logo_target; link url, to: url, title: gettext("Show %{url} in browser...", url: url) %>
+    </p>
+</.block>

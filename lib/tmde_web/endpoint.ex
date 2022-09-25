@@ -20,7 +20,8 @@ defmodule TmdeWeb.Endpoint do
     at: "/",
     from: :tmde,
     gzip: false,
-    only: ~w(assets fonts images favicon.ico robots.txt sitemap.xml)
+    only: ~w(assets fonts images documents favicon.ico robots.txt sitemap.xml),
+    headers: %{"Access-Control-Allow-Origin" => "*"}
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

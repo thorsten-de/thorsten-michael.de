@@ -66,8 +66,13 @@ defmodule Tmde.MixProject do
       # forked from kevinlang/bulma-elixir (bulma in hex) to support v0.9.4
       {:bulma, "0.9.4", github: "thorsten-de/bulma-elixir"},
       {:earmark, "~> 1.4"},
+      {:chromic_pdf, "~> 1.2"},
+      {:qr_code, "~> 2.3"},
+      {:timex, "~>3.7"},
       {:remote_ip, "~>1.0"},
       {:swoosh, "~> 1.3"},
+      {:gen_smtp, "~> 1.1"},
+      {:phoenix_swoosh, "~> 1.0"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},

@@ -1,0 +1,65 @@
+<div class="header-section">
+  <div class="level is-align-items-start">
+    <div class="level-left">
+      <div class="level-item">
+        <img src="/images/logos/tmd-slogan-240h.svg" alt="Thorsten-Michael Deinert (Logo)" >
+      </div>
+    </div>
+      <div class="level-item">
+        <.address contact={@application.job_seeker.contact} />
+      </div>
+    <div class="level-right">
+    <div class="level-item">
+        <div class="has-text-right">
+        <%= for l <- @application.job_seeker.links do %>
+          <%= link ContactLink.build_link_options(l) |> Keyword.merge(class: "is-block my-1") do %>
+            <.label {ContactLink.type_to_icon(l)} label={l} />
+          <% end %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+<div class="address-section">
+<p><small><%= Contact.address_line(@application.job_seeker.contact) %></small></p>
+<.address contact={@application.contact}>
+  <:prepend>
+    <%= @application.company %><br>
+  </:prepend>
+</.address>
+</div>
+
+<div class="footer-section">
+  <.qr_code url={Routes.jobs_url(TmdeWeb.Endpoint, :show, @token)} qr_code={assigns[:qr_code]} />
+</div>
+
+
+<div class="main-section">
+  <div class="date">
+    <p class="has-text-right">
+      <%= gettext("%{location}, %{date}", location: @application.job_seeker.contact.address.city, date: date(@application.updated_at, format: "{0D}. {Mfull} {YYYY}")) %>
+    </p>
+  </div>
+  <div class="subject">
+    <.title size="4" label={@application.subject} />
+    <.subtitle size="6" label={@application.reference} />
+  </div>
+  <div class="content">
+    <.greeting contact={@application.contact} />
+    <.t html={@application.cover_letter} />
+    <.ending />
+    <.signature sender={@application.job_seeker.contact} file_path={document_filepath(["common"], "signature.png")} />
+    <div class="attachments">
+      <em><%= gettext("Attachments:") %></em>
+      <ul>
+        <%= for attachment <- @attachments do %>
+          <li><%= attachment %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

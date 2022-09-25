@@ -10,6 +10,8 @@ import Config
 config :tmde,
   ecto_repos: [Tmde.Repo]
 
+config :tmde, Tmde.Repo, migration_primary_key: [name: :id, type: :binary_id]
+
 # Configures the endpoint
 config :tmde, TmdeWeb.Endpoint,
   url: [host: "localhost"],

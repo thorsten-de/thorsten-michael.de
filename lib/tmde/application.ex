@@ -15,9 +15,10 @@ defmodule Tmde.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Tmde.PubSub},
       # Start the Endpoint (http/https)
-      TmdeWeb.Endpoint
+      TmdeWeb.Endpoint,
       # Start a worker by calling: Tmde.Worker.start_link(arg)
       # {Tmde.Worker, arg}
+      ChromicPDF
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

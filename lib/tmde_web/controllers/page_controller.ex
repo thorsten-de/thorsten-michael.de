@@ -17,12 +17,14 @@ defmodule TmdeWeb.PageController do
                       en: "content/pages/en/privacy_policy.md"
                     )
 
-  for %{path: path} <- Keyword.values(@privacy_policies) ++ Keyword.values(@readme_contents) do
+  for %{path: path} <- Map.values(@privacy_policies) ++ Map.values(@readme_contents) do
     @external_resource path
   end
 
   @doc "Homepage"
   def index(conn, _params) do
+    locale = Gettext.get_locale(TmdeWeb.Gettext)
+
     conn
     |> set_metadata(
       title: "Thorsten-Michael",
@@ -32,11 +34,13 @@ defmodule TmdeWeb.PageController do
         )
     )
     |> render("index.html",
-      readme_content: @readme_contents[:de].html
+      readme_content: @readme_contents[locale].html
     )
   end
 
   def imprint(conn, _params) do
+    locale = Gettext.get_locale(TmdeWeb.Gettext)
+
     conn
     |> set_metadata(
       title: gettext("Imprint"),
@@ -46,14 +50,15 @@ defmodule TmdeWeb.PageController do
         )
     )
     |> render("imprint.html",
-      privacy_policy: @privacy_policies[:de].html,
+      privacy_policy: @privacy_policies[locale].html,
       cookie_data: conn.req_cookies,
       session_data: get_session(conn),
-      request_data:
-        conn.req_headers
-        |> Keyword.take(~w[referer user-agent])
-        |> Keyword.put(:"remote ip", conn.remote_ip |> :inet.ntoa())
-        |> Keyword.put(:"request path", conn.request_path)
+      request_data: %{
+        "referer" => get_req_header(conn, "referer"),
+        "user-agent" => get_req_header(conn, "user-agent"),
+        "remote ip" => conn.remote_ip |> :inet.ntoa() |> to_string(),
+        "request path" => conn.request_path
+      }
     )
   end
 end

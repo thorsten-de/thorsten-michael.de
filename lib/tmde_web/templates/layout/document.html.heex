@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang={@locale}>
+  <head>
+    <meta charset="utf-8"/>
+    <base href="http://localhost:4000/" /> 
+    <link rel="stylesheet" href={Routes.static_path(TmdeWeb.Endpoint, "/assets/app.css")}/>
+    <style>
+      body {
+        background-color: white;
+        width: 210mm;
+        height: 297mm;
+      }
+
+      .header-section {
+        position: absolute;
+        top: 0mm;
+        left: 0mm;
+        right: 0mm;
+      }
+
+      .header-section  img {
+        width: 60mm;
+      }
+
+      .footer-section {
+        position: absolute;
+        bottom: 0mm;
+        left: 0mm;
+        right: 0mm;
+        height: 25mm;
+        font-size: 0.8rem;
+      }
+
+      .footer-section  img {
+        height: 25mm;
+      }
+
+      .footer a {
+        word-break: break-all;
+      }
+
+      .address-section {
+        position: absolute;
+        top: 40mm;
+        left: 0mm;
+        width: 80mm;
+        height: 30mm;
+      }
+      
+      .address-section p {
+        margin: 4mm 0;
+      }
+
+      .main-section {
+        position: relative;
+        margin-top: 80mm;
+      }
+
+      .subject {
+        margin: 10mm 0;
+      }
+
+      p.signature {
+        margin-top: -1em;
+      }
+
+      .signature img {
+        display: block;
+        height: 24mm;
+      }
+
+      .attachments {
+        margin-top: 10mm;
+      }
+
+      .content ul {
+        margin-top: 0.2em;
+        list-style-type: square;
+      }
+
+
+    </style>
+
+  </head>
+  <body>
+    <%= @inner_content %>
+  </body>
+</html>

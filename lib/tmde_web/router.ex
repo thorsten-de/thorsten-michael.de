@@ -9,6 +9,7 @@ defmodule TmdeWeb.Router do
     plug :put_root_layout, {TmdeWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug Plugs.Locale
 
     plug Plugs.Page,
       locale: Application.get_env(:gettext, :default_locale),
@@ -25,6 +26,11 @@ defmodule TmdeWeb.Router do
 
     get "/", PageController, :index
     get "/impressum", PageController, :imprint
+
+    get "/email/tmd-logo.svg", DeliveryController, :logo_logger
+    get "/bewerbung/:id/cv", JobsController, :cv_pdf
+    get "/bewerbung/:id/cover_letter", JobsController, :cover_letter_pdf
+    live "/bewerbung/:token", JobsLive, :show
   end
 
   # Other scopes may use custom stacks.

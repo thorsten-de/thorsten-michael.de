@@ -6,4 +6,6 @@ defmodule TmdeWeb.LayoutView do
   @compile {:no_warn_undefined, {Routes, :live_dashboard_path, 2}}
 
   alias TmdeWeb.Components.Navigation
+  import TmdeWeb.Components.MailerComponents
+  alias Tmde.Contacts.{Link}
 end

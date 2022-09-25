@@ -6,22 +6,26 @@ $family-serif: "Roboto Slab", sans-serif;
 $family-secondary: $family-serif;
 
 $orange: #e6611a;
-$green: #89b34d;
+// $green: #89b34d;
+$green: #888;
 $blue: #508caf;
+$info: $blue;
 
 $primary: $orange;
 $footer-background-color: white;
 
 $border: $green;
 
-$text-strong: $orange;
-$strong-weight: 700;
+$strong-weight: 650;
 
 $title-family: $family-serif;
-$title-weight: 300;
+$title-weight: 500;
+$title-color: $orange;
 
 $subtitle-family: $family-serif;
-$subtitle-weight: 400;
+$subtitle-weight: 500;
 $subtitle-color: $green;
 
 $content-heading-weight: 400;
+
+$media-border-size: 0;

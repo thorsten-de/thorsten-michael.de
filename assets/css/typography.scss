@@ -1,6 +1,8 @@
-blockquote p {
-  font-family: $family-serif;
-  font-weight: $weight-light;
+.content blockquote {
+  border-left-color: $primary;
+  p {
+    font-family: $family-serif;
+  }
 }
 
 .content {
@@ -20,4 +22,10 @@ a {
 
 .navbar-brand {
   font-family: $family-serif;
+}
+
+em {
+  font-style: normal;
+  font-family: $family-serif;
+  font-weight: 500;
 }
