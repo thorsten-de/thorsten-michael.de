@@ -6,25 +6,35 @@ defmodule TmdeWeb.JobsController do
 
   def cv_pdf(conn, %{"id" => application_id}) do
     application = Jobs.get_application!(application_id)
+    DocumentView.ensure_path_exists!(["test"])
 
-    {:ok, _path, html} = DocumentView.generate_cv(application, qr_code: true)
+    {:ok, path, _html} =
+      DocumentView.generate_cv(
+        application,
+        DocumentView.document_filepath(["test"], "CV.pdf")
+      )
 
     conn
-    |> html(html)
+    |> send_download({:file, path})
+
+    # |> html(html)
   end
 
+  @spec cover_letter_pdf(Plug.Conn.t(), map) :: Plug.Conn.t()
   def cover_letter_pdf(conn, %{"id" => application_id}) do
     application = Jobs.get_application!(application_id)
     DocumentView.ensure_path_exists!(["test"])
 
-    {:ok, _path, html} =
+    {:ok, path, _html} =
       DocumentView.generate_cover_letter(
         application,
-        DocumentView.document_filepath(["test"], ".cl.pdf"),
+        DocumentView.document_filepath(["test"], "cover_letter.pdf"),
         qr_code: true
       )
 
     conn
-    |> html(html)
+    |> send_download({:file, path})
+
+    # |> html(html)
   end
 end
