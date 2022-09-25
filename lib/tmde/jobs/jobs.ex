@@ -49,6 +49,12 @@ defmodule Tmde.Jobs do
     |> Repo.insert()
   end
 
+  def create_job_seeker_login(job_seeker, username, password) do
+    job_seeker
+    |> JobSeeker.login_changeset(%{username: username, password: password})
+    |> Repo.update()
+  end
+
   def get_job_seeker!(id) do
     JobSeeker
     |> Repo.get!(id)
