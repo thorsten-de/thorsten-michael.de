@@ -17,11 +17,12 @@ defmodule TmdeWeb.SessionController do
 
       {:error, _reason} ->
         conn
-        |> put_flash(:error, "Invalid username or password")
+        |> put_flash(:error, dgettext("errors", "Invalid username or password"))
         |> render("new.html")
     end
   end
 
+  @spec delete(Plug.Conn.t(), any) :: Plug.Conn.t()
   def delete(conn, _) do
     conn
     |> Auth.logout()

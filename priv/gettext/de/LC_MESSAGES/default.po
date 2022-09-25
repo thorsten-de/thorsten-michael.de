@@ -294,3 +294,36 @@ msgstr "Abiturzeugnis"
 #, elixir-autogen, elixir-format
 msgid "Portfolio"
 msgstr "Bewerbungsunterlagen"
+
+#: lib/tmde_web/templates/session/new.html.heex:19
+#, elixir-autogen, elixir-format
+msgid "Log in"
+msgstr "Anmelden"
+
+#: lib/tmde_web/components/navigation/navbar.html.heex:22
+#: lib/tmde_web/templates/session/new.html.heex:3
+#, elixir-autogen, elixir-format
+msgid "Login"
+msgstr "Anmelden"
+
+#: lib/tmde_web/components/navigation/navbar.html.heex:19
+#, elixir-autogen, elixir-format
+msgid "Logout"
+msgstr "Abmelden"
+
+#: lib/tmde_web/templates/session/new.html.heex:12
+#: lib/tmde_web/templates/session/new.html.heex:14
+#, elixir-autogen, elixir-format
+msgid "Password"
+msgstr "Passwort"
+
+#: lib/tmde_web/templates/session/new.html.heex:6
+#: lib/tmde_web/templates/session/new.html.heex:8
+#, elixir-autogen, elixir-format
+msgid "Username"
+msgstr "Benutzername"
+
+#: lib/tmde_web/controllers/session_controller.ex:15
+#, elixir-autogen, elixir-format
+msgid "Welcome back, %{username}!"
+msgstr "Willkommen, %{username}!"

@@ -2,6 +2,7 @@ defmodule TmdeWeb.Plugs.EnsureAuthenticated do
   import Plug.Conn
   alias TmdeWeb.Router.Helpers, as: Routes
   import Phoenix.Controller, only: [put_flash: 3, redirect: 2]
+  require TmdeWeb.Gettext
 
   def init(opts), do: opts
 
@@ -12,7 +13,7 @@ defmodule TmdeWeb.Plugs.EnsureAuthenticated do
       conn
       |> put_flash(
         :error,
-        Gettext.dgettext(TmdeWeb.Gettext, "errors", "You must be logged in to access this page")
+        TmdeWeb.Gettext.dgettext("errors", "You must be logged in to access this page")
       )
       |> redirect(to: Routes.session_path(conn, :new))
       |> halt()
