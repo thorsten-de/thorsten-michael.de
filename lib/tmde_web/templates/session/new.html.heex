@@ -1,5 +1,5 @@
-<section class="section">
-  <div class="container">
+<.section>
+  <.container width="max-desktop">
     <.title label={gettext("Login")}/>
     <%= form_for @conn, Routes.session_path(@conn, :create), [as: :session], fn f -> %>
       <div class="field">
@@ -20,5 +20,5 @@
         </div>
       </div>
     <% end %>
-  </div>
-</section>
+  </.container>
+</.section>
