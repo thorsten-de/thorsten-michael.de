@@ -17,11 +17,16 @@ services:
   staging:
     image: docker.thorsten-michael.de/tmde:staging
     ports:
-      - 8080:8080
+      - 8080:4000
+    volumes:
+      - /home/thomi/Dokumente/tmde:/documents
+    security_opt:
+      - seccomp=./chrome.json
     environment:
       - DATABASE_URL=ecto://postgres:postgres@db/tmde_dev
-      - SECRET_KEY_BASE=PtApWjeuuk6XNDIxpNc9HBQRKowJv/LOgkNjR9z2rxiIvwm3+FDzSNtypGe1/+tq
-      - PORT=8080
+      - SECRET_KEY_BASE=PtApWjeuuk6XNDIxpNc9HBQRKowJv/LOgkNjR9z2rxiIvwm3+FDzSNtypGe1/+tq      
+      - PHX_HOST=localhost
+      - DOCUMENT_ROOT=/documents
     depends_on:
       - db
 
