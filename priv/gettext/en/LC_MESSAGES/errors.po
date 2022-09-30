@@ -95,3 +95,13 @@ msgstr ""
 
 msgid "must be equal to %{number}"
 msgstr ""
+
+#: lib/tmde_web/controllers/session_controller.ex:20
+#, elixir-autogen, elixir-format
+msgid "Invalid username or password"
+msgstr ""
+
+#: lib/tmde_web/plugs/ensure_authenticated.ex:16
+#, elixir-autogen, elixir-format
+msgid "You must be logged in to access this page"
+msgstr ""

@@ -42,6 +42,8 @@ defmodule Tmde.Contacts.Address do
     |> reject_empty()
   end
 
+  def lines(nil), do: []
+
   defimpl String.Chars, for: __MODULE__ do
     def to_string(address) do
       address

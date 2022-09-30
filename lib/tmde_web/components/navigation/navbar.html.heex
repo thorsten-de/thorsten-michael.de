@@ -14,6 +14,13 @@
           <Navbar.item href="?locale=de" label="Deutsch" />
           <Navbar.item href="?locale=en" label="English" />
         </Navbar.dropdown>
+        <%= if @current_user do %>
+          <Navbar.dropdown hoverable label={@current_user}>
+            <Navbar.item href={Routes.session_path(TmdeWeb.Endpoint, :delete, @current_user)} method="delete" label={gettext("Logout")} />
+          </Navbar.dropdown>
+        <% else %>
+          <Navbar.item href={Routes.session_path(TmdeWeb.Endpoint, :new)} label={gettext("Login")} />
+        <% end %>
       </Navbar.bar_end>
     </Navbar.menu>
   </.container>

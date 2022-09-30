@@ -30,7 +30,7 @@
     <meta name="theme-color" content="#ffffff">
   </head>
   <body>
-    <Navigation.navbar />
+    <Navigation.navbar current_user={@current_user} />
     <%= @inner_content %>
     <Navigation.footer conn={@conn}/>
   </body>

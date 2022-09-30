@@ -17,6 +17,7 @@ alias Jobs.PersonalSkill, as: MySkill
 
 alias Tmde.Jobs.{JobSeeker, Application, CV}
 alias Tmde.Contacts.{Contact, Link, Address}
+alias Tmde.Accounts
 
 import Tmde.Content.Translation, only: [translations: 1]
 t = &translations/1
@@ -325,7 +326,7 @@ my_skillsets =
   end)
 
 myself =
-  case Jobs.create_job_seeker(%{
+  case Accounts.create_user(%{
          contact: %{
            title: "Dipl.-Inf.",
            first_name: "Thorsten-Michael",

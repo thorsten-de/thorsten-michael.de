@@ -293,3 +293,36 @@ msgstr ""
 #, elixir-autogen, elixir-format
 msgid "Portfolio"
 msgstr ""
+
+#: lib/tmde_web/templates/session/new.html.heex:19
+#, elixir-autogen, elixir-format
+msgid "Log in"
+msgstr ""
+
+#: lib/tmde_web/components/navigation/navbar.html.heex:22
+#: lib/tmde_web/templates/session/new.html.heex:3
+#, elixir-autogen, elixir-format
+msgid "Login"
+msgstr ""
+
+#: lib/tmde_web/components/navigation/navbar.html.heex:19
+#, elixir-autogen, elixir-format
+msgid "Logout"
+msgstr ""
+
+#: lib/tmde_web/templates/session/new.html.heex:12
+#: lib/tmde_web/templates/session/new.html.heex:14
+#, elixir-autogen, elixir-format
+msgid "Password"
+msgstr ""
+
+#: lib/tmde_web/templates/session/new.html.heex:6
+#: lib/tmde_web/templates/session/new.html.heex:8
+#, elixir-autogen, elixir-format
+msgid "Username"
+msgstr ""
+
+#: lib/tmde_web/controllers/session_controller.ex:15
+#, elixir-autogen, elixir-format
+msgid "Welcome back, %{username}!"
+msgstr ""

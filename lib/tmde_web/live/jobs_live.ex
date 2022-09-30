@@ -5,8 +5,6 @@ defmodule TmdeWeb.JobsLive do
   import TmdeWeb.Components.Jobs
 
   def mount(%{"token" => token}, session, socket) do
-    IO.inspect(socket)
-
     with {:ok, id} <- Jobs.Application.token_to_id(token),
          %Jobs.Application{} = application <- Jobs.get_application!(id) do
       unless connected?(socket),

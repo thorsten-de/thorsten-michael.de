@@ -73,6 +73,7 @@ defmodule Tmde.MixProject do
       {:swoosh, "~> 1.3"},
       {:gen_smtp, "~> 1.1"},
       {:phoenix_swoosh, "~> 1.0"},
+      {:pbkdf2_elixir, "~>2.0"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},

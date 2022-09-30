@@ -19,6 +19,10 @@ defmodule Tmde.Jobs.JobSeeker do
     has_many :skills, PersonalSkill
     has_many :applications, Application
 
+    field :username, :string
+    field :password, :string, virtual: true
+    field :password_hash, :string
+
     timestamps()
   end
 
@@ -31,9 +35,35 @@ defmodule Tmde.Jobs.JobSeeker do
     |> cast_assoc(:skills)
   end
 
+  def login_changeset(job_seeker, attr) do
+    job_seeker
+    |> cast(attr, [:username, :password])
+    |> validate_required([:username, :password])
+    |> validate_length(:password, min: 6, max: 20)
+    |> put_password_hash()
+  end
+
+  defp put_password_hash(cs) do
+    case cs do
+      %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
+        put_change(cs, :password_hash, Pbkdf2.hash_pwd_salt(pass))
+
+      _ ->
+        cs
+    end
+  end
+
   def skill_query(%__MODULE__{} = job_seeker) do
     from ps in assoc(job_seeker, :skills),
       join: s in assoc(ps, :skill),
       preload: [skill: s]
+  end
+
+  defimpl String.Chars, for: __MODULE__ do
+    def to_string(%{username: username}), do: username
+  end
+
+  defimpl Phoenix.HTML.Safe, for: __MODULE__ do
+    def to_iodata(job_seeker), do: to_string(job_seeker)
   end
 end
