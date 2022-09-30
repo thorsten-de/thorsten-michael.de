@@ -1,6 +1,6 @@
 %{
   "bulma": {:git, "https://github.com/thorsten-de/bulma-elixir.git", "4ea61ec92a466af2a612d86fa64f7a90876bfdce", []},
-  "bulma_liveview": {:git, "https://github.com/thorsten-de/bulma_liveview.git", "94a9a33f000cc2f1f072afb7fc34088534dee598", []},
+  "bulma_liveview": {:git, "https://github.com/thorsten-de/bulma_liveview.git", "a14f40f06932a0f06b62b0c7abc5fcdb6d6e148d", []},
   "castore": {:hex, :castore, "0.1.18", "deb5b9ab02400561b6f5708f3e7660fc35ca2d51bfc6a940d2f513f89c2975fc", [:mix], [], "hexpm", "61bbaf6452b782ef80b33cdb45701afbcf0a918a45ebe7e73f1130d661e66a06"},
   "certifi": {:hex, :certifi, "2.9.0", "6f2a475689dd47f19fb74334859d460a2dc4e3252a3324bd2111b8f0429e7e21", [:rebar3], [], "hexpm", "266da46bdb06d6c6d35fde799bcb28d36d985d424ad7c08b5bb48f5b5cdd4641"},
   "chromic_pdf": {:hex, :chromic_pdf, "1.2.2", "673ab7c2e0990458034f03aecda807c3360ca97a8acd001b555cf0837aaaace1", [:mix], [{:jason, "~> 1.1", [hex: :jason, repo: "hexpm", optional: false]}, {:nimble_pool, "~> 0.2.3", [hex: :nimble_pool, repo: "hexpm", optional: false]}, {:telemetry, "~> 0.4 or ~> 1.0", [hex: :telemetry, repo: "hexpm", optional: false]}], "hexpm", "449f6a76fcd1a52b1222a7481f9653b7e3569d2aa3f0ce6081fb9a1175cd4c54"},
