@@ -1,24 +1,16 @@
 <.section>
   <.container width="max-desktop">
     <.title label={gettext("Login")}/>
-    <%= form_for @conn, Routes.session_path(@conn, :create), [as: :session], fn f -> %>
-      <div class="field">
-        <%= label f, :username, gettext("Username"), class: "label" %>
-        <div class="control">
-          <%= text_input f, :username, placeholder: gettext("Username"), class: "input" %>
-        </div>
-      </div>
-      <div class="field">
-        <%= label f, :password, gettext("Password"), class: "label" %>
-        <div class="control">
-          <%= password_input f, :password, placeholder: gettext("Password"), class: "input" %>
-        </div>
-      </div>
-      <div class="field">
-        <div class="control">
-          <%= submit gettext("Log in"), class: "button is-link" %>
-        </div>
-      </div>
-    <% end %>
+    <.form for={@conn} action={Routes.session_path(@conn, :create)} as={:session} let={f}>
+      <Form.field form={f} name={:username} type={:text_input} label={gettext("Username")}>
+        <:icon icon="user" align="right" />
+      </Form.field>
+      <Form.field form={f} name={:password} type={&password_input/3} label={gettext("Password")}>
+        <:icon icon="key" align="right" />
+      </Form.field>
+      <Form.field>
+        <Button.submit value={gettext("Log in")} color="link" />
+      </Form.field>
+    </.form>
   </.container>
 </.section>
