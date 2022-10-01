@@ -1,0 +1,27 @@
+
+<%= if @live_action == :edit do %>
+  <.section>
+    <.container>
+      <.job_seeker_form changeset={@changeset} />
+    </.container>
+  </.section>
+<% end %>
+<.section>
+  <.container>
+    <.title label={gettext("Applications")} />
+    <.table data={@applications} fullwidth style={["hoverable"]}>
+      <:column_header />
+      <:column let={%{field: company}} field={:company}>
+        <%= link company || "Nicht angegeben", to: "/"  %>
+      </:column>
+      <:column field={:subject} /> 
+      <:column field={:locale} /> 
+      <:column field={:contact} icon="user"/> 
+      <:column let={%{field: contact}} field={:contact} header={gettext("E-mail")} abbr="EM" icon="envelope">
+        <.label label={contact.email} icon="envelope"/>
+      </:column>
+      <:header />
+    </.table>
+
+  </.container>
+</.section>
