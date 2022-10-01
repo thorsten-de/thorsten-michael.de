@@ -67,14 +67,21 @@ defmodule Tmde.Content.Translation do
   @doc """
   Finds the translation and returns the content, otherwise returns an empty string.
   """
-  def translate(translations, lang \\ "de") do
+  def translate(translations, lang \\ "de")
+
+  def translate(translations, lang) when is_list(translations) do
     translations
-    |> Enum.find(fn %{lang: item_lang} -> lang == item_lang end)
+    |> Enum.find(fn
+      %{lang: item_lang} -> lang == item_lang
+      _ -> false
+    end)
     |> case do
       %__MODULE__{} = m -> m
       _ -> List.first(translations, nil)
     end
   end
+
+  def translate(_translations, _lang), do: nil
 
   defimpl Phoenix.HTML.Safe, for: __MODULE__ do
     def to_iodata(%Translation{type: :html, content: content}), do: content

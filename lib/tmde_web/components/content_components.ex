@@ -5,15 +5,9 @@ defmodule TmdeWeb.Components.ContentComponents do
 
   use TmdeWeb, :component
 
-  def t(%{html: html} = assigns) do
-    ~H"""
-      <%= translate(@html) %>
-    """
-  end
-
   def t(assigns) do
     ~H"""
-      <%= translate(@content) %>
+      <%= translate(assigns) %>
     """
   end
 end
