@@ -66,4 +66,8 @@ defmodule Tmde.Contacts.Country do
   defimpl String.Chars, for: __MODULE__ do
     def to_string(%{title: title}), do: title
   end
+
+  defimpl Phoenix.HTML.Safe, for: __MODULE__ do
+    def to_iodata(country), do: to_string(country)
+  end
 end
