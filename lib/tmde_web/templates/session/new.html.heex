@@ -1,16 +1,16 @@
 <.section>
   <.container width="max-desktop">
     <.title label={gettext("Login")}/>
-    <.form for={@conn} action={Routes.session_path(@conn, :create)} as={:session} let={f}>
-      <Form.field form={f} name={:username} type={:text_input} label={gettext("Username")}>
+    <.form let={f} for={@conn} action={Routes.session_path(@conn, :create)} as={:session}>
+      <.field form={f} name={:username} input={:text_input} label={gettext("Username")} >
         <:icon icon="user" align="right" />
-      </Form.field>
-      <Form.field form={f} name={:password} type={&password_input/3} label={gettext("Password")}>
+      </.field>
+      <.field form={f} name={:password} input={&password_input/3} label={gettext("Password")}>
         <:icon icon="key" align="right" />
-      </Form.field>
-      <Form.field>
+      </.field>
+      <.field>
         <Button.submit value={gettext("Log in")} color="link" />
-      </Form.field>
+      </.field>
     </.form>
   </.container>
 </.section>
