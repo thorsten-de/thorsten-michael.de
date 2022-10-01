@@ -23,4 +23,20 @@ defmodule TmdeWeb.JobsLive do
         {:ok, socket}
     end
   end
+
+  def mount(%{"id" => id}, session, socket) do
+    with %Jobs.Application{} = application <- Jobs.get_application!(id) do
+      if locale = session["locale"], do: Gettext.put_locale(TmdeWeb.Gettext, locale)
+
+      socket =
+        socket
+        |> assign(application: application)
+
+      {:ok, socket}
+    else
+      err ->
+        IO.inspect(err)
+        {:ok, socket}
+    end
+  end
 end
