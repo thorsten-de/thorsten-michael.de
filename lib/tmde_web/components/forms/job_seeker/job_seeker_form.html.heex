@@ -1,0 +1,16 @@
+<.form let={f} for={@changeset} phx-submit="update_user">
+  <.columns>
+    <.column> 
+      <.title label={gettext("Contact information")} />
+      <.inputs let={contact} form={f} field={:contact}>
+        <.contact_form form={contact} />
+      </.inputs>
+    </.column>
+    <.column>
+      <.title label={gettext("Personal information")} />
+      <.private_form form={f} />
+    </.column>
+  </.columns>
+
+  <Button.submit color="link"/>
+</.form>

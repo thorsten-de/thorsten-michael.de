@@ -1,0 +1,8 @@
+<.field form={@form} name={:gender} label={gettext("gender")} input={:select} options={Contact.all_genders()} />
+<.field form={@form} name={:title} label={gettext("title")} input={:text_input} />
+<.field form={@form} name={:first_name} label={gettext("first name")} input={:text_input} />
+<.field form={@form} name={:last_name} label={gettext("last name")} input={:text_input} />
+<.field form={@form} name={:email} label={gettext("email address")} input={:email_input} />
+<.inputs let={address} form={@form} field={:address}>
+  <.address_form form={address} />
+</.inputs>                    
