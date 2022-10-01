@@ -1,20 +1,18 @@
-<div class="hero is-halfheight">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <picture>
-        <source srcset="/images/logos/tmd-slogan-960.webp" type="image/webp">
-        <img src="/images/logos/tmd-slogan-960.png" alt="Thorsten-Michael Deinert (Logo)" width="960" height="380">
-      </picture>
-    </div>
-  </div>
-</div>
-<section class="section">
-  <div class="container">
-    <h1 class="title is-1"><%= gettext("Welcome to my personal website") %></h1>
+<.hero size="halfheight">
+  <.container width="max-desktop">
+    <picture>
+      <source srcset="/images/logos/tmd-slogan-960.webp" type="image/webp">
+      <img src="/images/logos/tmd-slogan-960.png" alt="Thorsten-Michael Deinert (Logo)" width="960" height="380">
+    </picture>
+  </.container>
+</.hero>
+<.section>
+  <.container>
+    <.title size="1" label={gettext("Welcome to my personal website")} />
     <div class="content">
       <%= raw(@readme_content) %>
     </div>
-  </div>
-</section>
+  </.container>
+</.section>
 
 
