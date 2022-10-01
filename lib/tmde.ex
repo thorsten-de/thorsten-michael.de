@@ -15,6 +15,8 @@ defmodule Tmde do
       import Ecto.Changeset
 
       alias Tmde.Content.Translation
+      require Tmde.Content.Translation
+      import Tmde.Content.Translation, only: [translation_field: 1]
 
       @primary_key {:id, :binary_id, autogenerate: true}
       @foreign_key_type :binary_id

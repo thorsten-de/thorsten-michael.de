@@ -4,12 +4,6 @@ defmodule TmdeWeb.ComponentHelpers do
   """
   alias Tmde.Content.Translation
 
-  def translate_html(content) do
-    content
-    |> translate()
-    |> Phoenix.HTML.raw()
-  end
-
   def translate(content) do
     locale = Gettext.get_locale(TmdeWeb.Gettext)
 

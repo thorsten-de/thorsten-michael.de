@@ -13,7 +13,7 @@ defmodule TmdeWeb.Components.Jobs.CV do
       |> assign(
         subtitle: "#{entry.company.name}, #{entry.company.location}",
         title: translate(entry.role),
-        description: translate_html(entry.description)
+        description: translate(entry.description)
       )
       |> assign_class(["cv-entry", "pt-0", ["pt-0", "pb-3": !Enum.empty?(entry.focuses)]])
 
@@ -27,7 +27,7 @@ defmodule TmdeWeb.Components.Jobs.CV do
   def focus(%{focus: focus} = assigns) do
     assigns =
       assigns
-      |> assign(abstract: translate_html(focus.abstract))
+      |> assign(abstract: translate(focus.abstract))
 
     render("cv_focus.html", assigns)
   end

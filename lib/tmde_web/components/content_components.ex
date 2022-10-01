@@ -7,7 +7,7 @@ defmodule TmdeWeb.Components.ContentComponents do
 
   def t(%{html: html} = assigns) do
     ~H"""
-      <%= translate_html(@html) %>
+      <%= translate(@html) %>
     """
   end
 

@@ -385,14 +385,14 @@ default_application = %Application{
           en: "Full-Stack Software Developer"
         ),
       description:
-        translations(
-          de:
-            Earmark.as_html!("""
-            Als Student habe ich die **interne Buchungssoftware** geschrieben und die IT mitgestaltet. Seit Abschluss des
-            Studiums bin ich als Allrounder verantwortlich für die **Software-Entwicklung**, die **Webseite**, den
-            **täglichen IT-Betrieb** und die **Netzwerkinfrastruktur**. Die Schwerpunkte im Detail:
-            """)
-        ),
+        translations([
+          {:de, :markdown,
+           """
+           Als Student habe ich die **interne Buchungssoftware** geschrieben und die IT mitgestaltet. Seit Abschluss des
+           Studiums bin ich als Allrounder verantwortlich für die **Software-Entwicklung**, die **Webseite**, den
+           **täglichen IT-Betrieb** und die **Netzwerkinfrastruktur**. Die Schwerpunkte im Detail:
+           """}
+        ]),
       focuses: [
         %CV.Focus{
           sort_order: 1,
