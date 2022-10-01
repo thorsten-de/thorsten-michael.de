@@ -10,7 +10,7 @@ defmodule Tmde.Jobs.CV.Focus do
     field :sort_order, :integer
 
     belongs_to :entry, CV.Entry
-    embeds_many :abstract, Translation
+    translation_field(:abstract)
     timestamps()
   end
 end
