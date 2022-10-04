@@ -2,7 +2,9 @@ defmodule TmdeWeb.Admin.ProfileLive do
   use TmdeWeb, :live_view
   use Bulma
   alias Tmde.Jobs
-  import TmdeWeb.Components.Forms.JobSeeker
+  alias TmdeWeb.Components
+  import Components.Forms.JobSeeker
+  import Components.ContactComponents
 
   on_mount TmdeWeb.UserLiveAuth
 
@@ -15,6 +17,7 @@ defmodule TmdeWeb.Admin.ProfileLive do
     socket =
       assign(socket,
         changeset: changeset,
+        job_seeker: job_seeker,
         applications: applications
       )
 
@@ -33,7 +36,6 @@ defmodule TmdeWeb.Admin.ProfileLive do
   def handle_event("update_user", %{"job_seeker" => params}, socket) do
     socket.assigns.current_user
     |> Jobs.update_job_seeker(params)
-    |> IO.inspect()
     |> case do
       {:ok, job_seeker} ->
         {:noreply,

@@ -1,11 +1,20 @@
-
-<%= if @live_action == :edit do %>
-  <.section>
-    <.container>
+<.section>
+  <.container>
+    <%= if @live_action == :edit do %>
       <.job_seeker_form changeset={@changeset} />
-    </.container>
-  </.section>
-<% end %>
+    <% else %>
+      <.card>
+        <:header label="Kontaktdaten">
+          <.button class="card-header-icon" icon="edit" href="#"/>
+        </:header>
+        <.address contact={@job_seeker.contact} />
+        <p>
+          <.label label={@job_seeker.contact.email} icon="envelope" />
+        </p>
+      </.card>
+    <% end %>
+</.container>
+</.section>
 <.section>
   <.container>
     <.title label={gettext("Applications")} />

@@ -1,5 +1,6 @@
 defmodule TmdeWeb.PageView do
   use TmdeWeb, :view
+  use Bulma
 
   def render_dl(list) do
     content_tag(:dl, class: "property-list") do
