@@ -9,11 +9,13 @@ defmodule TmdeWeb.Admin.ProfileLive do
 
   on_mount TmdeWeb.UserLiveAuth
 
-  def mount(_params, _session, socket) do
+  def mount(_params, session, socket) do
     job_seeker = socket.assigns.current_user
     changeset = Jobs.change_job_seeker(job_seeker)
 
     applications = Jobs.job_seeker_applications(job_seeker)
+
+    if locale = session["locale"], do: Gettext.put_locale(TmdeWeb.Gettext, locale)
 
     socket =
       assign(socket,

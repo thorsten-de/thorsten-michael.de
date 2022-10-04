@@ -6,7 +6,7 @@
         <.job_seeker_form changeset={@changeset} />
       <% else %>
         <.card>
-          <:header label="Kontaktdaten">
+          <:header label={gettext("Contact info")}>
             <.button class="card-header-icon" icon="edit" href="#"/>
           </:header>
           <.address contact={@job_seeker.contact} />
@@ -18,14 +18,18 @@
       </.column>
       <.column>
         <.card>
-          <:header label="Persönliche Daten" />
+          <:header label={gettext("Personal information")} >
+            <.button class="card-header-icon" icon="edit" href="#"/>
+          </:header>
             <p class="my-1"><%= gettext("Born %{date} in %{place}", date: Calendar.strftime(@job_seeker.dob, "%d.%0m.%Y"), place: @job_seeker.place_of_birth) %></p>
             <p class="my-1"><%= gettext("Citizenship: %{citizenship}", citizenship: @job_seeker.citizenship) %></p>
         </.card>
       </.column>
         <.column>
         <.card>
-          <:header label="Links" />
+          <:header label={gettext("Links")} >
+            <.button class="card-header-icon" icon="edit" href="#"/>
+          </:header>
           <%= for l <- @job_seeker.links do %>
             <%= link ContactLink.build_link_options(l) |> Keyword.merge(class: "is-block my-1") do %>
               <.label {ContactLink.type_to_icon(l)} label={l} />
@@ -41,12 +45,12 @@
     <.title label={gettext("Applications")} />
     <.table data={@applications} fullwidth style={["hoverable"]}>
       <:column_header />
-      <:column let={%{field: company}} field={:company}>
+      <:column let={%{field: company}} header={gettext("Company")} field={:company}>
         <%= link company || "Nicht angegeben", to: "/"  %>
       </:column>
-      <:column field={:subject} /> 
-      <:column field={:locale} /> 
-      <:column field={:contact} icon="user"/> 
+      <:column field={:subject} header={gettext("Subject")} /> 
+      <:column field={:locale} header={gettext("Language")} /> 
+      <:column field={:contact} header={gettext("Contact")} icon="user"/> 
       <:column let={%{field: contact}} field={:contact} header={gettext("E-mail")} abbr="EM" icon="envelope">
         <.label label={contact.email} icon="envelope"/>
       </:column>
