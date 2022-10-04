@@ -1,18 +1,39 @@
 <.section>
   <.container>
-    <%= if @live_action == :edit do %>
-      <.job_seeker_form changeset={@changeset} />
-    <% else %>
-      <.card>
-        <:header label="Kontaktdaten">
-          <.button class="card-header-icon" icon="edit" href="#"/>
-        </:header>
-        <.address contact={@job_seeker.contact} />
-        <p>
-          <.label label={@job_seeker.contact.email} icon="envelope" />
-        </p>
-      </.card>
-    <% end %>
+    <.columns>
+      <.column>
+      <%= if @live_action == :edit do %>
+        <.job_seeker_form changeset={@changeset} />
+      <% else %>
+        <.card>
+          <:header label="Kontaktdaten">
+            <.button class="card-header-icon" icon="edit" href="#"/>
+          </:header>
+          <.address contact={@job_seeker.contact} />
+          <p>
+            <.label label={@job_seeker.contact.email} icon="envelope" />
+          </p>
+        </.card>
+      <% end %>
+      </.column>
+      <.column>
+        <.card>
+          <:header label="Persönliche Daten" />
+            <p class="my-1"><%= gettext("Born %{date} in %{place}", date: Calendar.strftime(@job_seeker.dob, "%d.%0m.%Y"), place: @job_seeker.place_of_birth) %></p>
+            <p class="my-1"><%= gettext("Citizenship: %{citizenship}", citizenship: @job_seeker.citizenship) %></p>
+        </.card>
+      </.column>
+        <.column>
+        <.card>
+          <:header label="Links" />
+          <%= for l <- @job_seeker.links do %>
+            <%= link ContactLink.build_link_options(l) |> Keyword.merge(class: "is-block my-1") do %>
+              <.label {ContactLink.type_to_icon(l)} label={l} />
+            <% end %>
+          <% end %>
+        </.card>
+      </.column>
+    </.columns>
 </.container>
 </.section>
 <.section>

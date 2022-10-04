@@ -2,6 +2,7 @@ defmodule TmdeWeb.Admin.ProfileLive do
   use TmdeWeb, :live_view
   use Bulma
   alias Tmde.Jobs
+  alias Tmde.Contacts.Link, as: ContactLink
   alias TmdeWeb.Components
   import Components.Forms.JobSeeker
   import Components.ContactComponents
