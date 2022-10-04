@@ -35,12 +35,15 @@ defmodule TmdeWeb.Router do
     get "/email/tmd-logo.svg", DeliveryController, :logo_logger
     get "/bewerbung/:id/cv", JobsController, :cv_pdf
     get "/bewerbung/:id/cover_letter", JobsController, :cover_letter_pdf
-    live "/bewerbung/:id/dev", JobsLive, :show
-    live "/bewerbung/:token", JobsLive, :show
+
+    live_session :jobs, on_mount: [TmdeWeb.LocaleLive] do
+      live "/bewerbung/:id/dev", JobsLive, :show
+      live "/bewerbung/:token", JobsLive, :show
+    end
   end
 
   scope "/profile", TmdeWeb.Admin do
-    live_session :profile, on_mount: TmdeWeb.UserLiveAuth do
+    live_session :profile, on_mount: [TmdeWeb.UserLiveAuth, TmdeWeb.LocaleLive] do
       pipe_through [:browser, :requires_auth]
 
       live "/", ProfileLive, :index

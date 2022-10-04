@@ -10,8 +10,6 @@ defmodule TmdeWeb.JobsLive do
       unless connected?(socket),
         do: Jobs.log_event!(application, "APPLICATION_VISITED")
 
-      if locale = session["locale"], do: Gettext.put_locale(TmdeWeb.Gettext, locale)
-
       socket =
         socket
         |> assign(application: application)
@@ -26,8 +24,6 @@ defmodule TmdeWeb.JobsLive do
 
   def mount(%{"id" => id}, session, socket) do
     with %Jobs.Application{} = application <- Jobs.get_application!(id) do
-      if locale = session["locale"], do: Gettext.put_locale(TmdeWeb.Gettext, locale)
-
       socket =
         socket
         |> assign(application: application)

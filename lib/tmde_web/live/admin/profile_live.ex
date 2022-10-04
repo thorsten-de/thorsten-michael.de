@@ -15,8 +15,6 @@ defmodule TmdeWeb.Admin.ProfileLive do
 
     applications = Jobs.job_seeker_applications(job_seeker)
 
-    if locale = session["locale"], do: Gettext.put_locale(TmdeWeb.Gettext, locale)
-
     socket =
       assign(socket,
         changeset: changeset,

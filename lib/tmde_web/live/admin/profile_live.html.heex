@@ -44,7 +44,7 @@
   <.container>
     <.title label={gettext("Applications")} />
     <.table data={@applications} fullwidth style={["hoverable"]}>
-      <:column_header />
+      <:column_header field={:id}/>
       <:column let={%{field: company}} header={gettext("Company")} field={:company}>
         <%= link company || "Nicht angegeben", to: "/"  %>
       </:column>
