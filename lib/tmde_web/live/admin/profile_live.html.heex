@@ -2,35 +2,25 @@
   <.container>
     <.columns>
       <.column>
-      <%= if @live_action == :edit do %>
-        <.job_seeker_form changeset={@changeset} />
-      <% else %>
         <.card>
           <:header label={gettext("Contact info")}>
             <.button class="card-header-icon" icon="edit" href="#"/>
           </:header>
-          <.address contact={@job_seeker.contact} />
+          <.address contact={@current_user.contact} />
           <p>
-            <.label label={@job_seeker.contact.email} icon="envelope" />
+            <.label label={@current_user.contact.email} icon="envelope" />
           </p>
         </.card>
-      <% end %>
       </.column>
       <.column>
-        <.card>
-          <:header label={gettext("Personal information")} >
-            <.button class="card-header-icon" icon="edit" href="#"/>
-          </:header>
-            <p class="my-1"><%= gettext("Born %{date} in %{place}", date: Calendar.strftime(@job_seeker.dob, "%d.%0m.%Y"), place: @job_seeker.place_of_birth) %></p>
-            <p class="my-1"><%= gettext("Citizenship: %{citizenship}", citizenship: @job_seeker.citizenship) %></p>
-        </.card>
+        <.personal_data_editor job_seeker={@current_user} changeset={@changeset} />
       </.column>
         <.column>
         <.card>
           <:header label={gettext("Links")} >
             <.button class="card-header-icon" icon="edit" href="#"/>
           </:header>
-          <%= for l <- @job_seeker.links do %>
+          <%= for l <- @current_user.links do %>
             <%= link ContactLink.build_link_options(l) |> Keyword.merge(class: "is-block my-1") do %>
               <.label {ContactLink.type_to_icon(l)} label={l} />
             <% end %>
@@ -38,7 +28,7 @@
         </.card>
       </.column>
     </.columns>
-    <.live_component module={TranslationEditor} obj={@job_seeker} field={:slogan} header={gettext("Slogan")} id={:slogan_editor} />
+    <.live_component module={TranslationEditor} obj={@current_user} field={:slogan} header={gettext("Slogan")} id={:slogan_editor} />
 </.container>
 </.section>
 <.section>

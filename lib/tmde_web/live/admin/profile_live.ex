@@ -7,6 +7,8 @@ defmodule TmdeWeb.Admin.ProfileLive do
   import Components.Forms.JobSeeker
   import Components.ContactComponents
   alias Components.Content.TranslationEditor
+  import TmdeWeb.Admin.Profile.PersonalDataEditor, only: [personal_data_editor: 1]
+  alias Components.Forms.EditorCard
 
   on_mount TmdeWeb.UserLiveAuth
 
@@ -19,7 +21,6 @@ defmodule TmdeWeb.Admin.ProfileLive do
     socket =
       assign(socket,
         changeset: changeset,
-        job_seeker: job_seeker,
         applications: applications
       )
 
@@ -40,9 +41,10 @@ defmodule TmdeWeb.Admin.ProfileLive do
     |> Jobs.update_job_seeker(params)
     |> case do
       {:ok, job_seeker} ->
+        EditorCard.close_editor("personal_data_editor")
+
         {:noreply,
          socket
-         |> put_flash(:info, "Daten geändert")
          |> assign(changeset: Jobs.change_job_seeker(job_seeker), current_user: job_seeker)}
 
       {:error, changeset} ->

@@ -13,8 +13,4 @@ defmodule TmdeWeb.Components.Forms.JobSeeker do
   def link_form(assigns) do
     render("link_form.html", assigns)
   end
-
-  def private_form(assigns) do
-    render("job_seeker_private_form.html", assigns)
-  end
 end
