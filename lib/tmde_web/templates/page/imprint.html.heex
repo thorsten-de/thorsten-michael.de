@@ -23,13 +23,13 @@
         <div class="columns">
           <div class="column">
             <h4 class="subtitle is-5"><%= gettext("Your current cookies") %></h4>
-            <%= render_dl(@cookie_data) %>
+            <.property_list data={@cookie_data} />
             <h4 class="subtitle is-5"><%= gettext("Your current session information") %></h4>
-            <%= render_dl(@session_data) %>
+            <.property_list data={@session_data} />
           </div>
           <div class="column">
             <h4 class="subtitle is-5"><%= gettext("Your current client data") %></h4>
-              <%= render_dl(@request_data) %>
+              <.property_list data={@request_data} />
           </div>        
         </div>
       </div>
