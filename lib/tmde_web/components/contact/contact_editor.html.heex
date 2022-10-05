@@ -1,0 +1,16 @@
+<div class="contact-editor">
+ <.form let={f} for={@changeset} as={:object}  phx-submit="save" phx-target={@myself}>
+    <.editor_card header={@header} target={@myself} edit?={@edit?}>
+      <.address contact={@contact} />
+      <p>
+        <.label label={@contact.email} icon="envelope" />
+      </p>
+      
+      <:editor>
+        <.inputs let={contact_form} form={f} field={@field}>
+          <.contact_form form={contact_form} />  
+        </.inputs>                
+      </:editor>
+    </.editor_card>
+  </.form>
+</div>

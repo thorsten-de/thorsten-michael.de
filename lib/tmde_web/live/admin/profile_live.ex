@@ -7,6 +7,7 @@ defmodule TmdeWeb.Admin.ProfileLive do
   import Components.Forms.JobSeeker
   import Components.ContactComponents
   alias Components.Content.TranslationEditor
+  alias Components.Contact.ContactEditor
   import TmdeWeb.Admin.Profile.PersonalDataEditor, only: [personal_data_editor: 1]
   alias Components.Forms.EditorCard
 

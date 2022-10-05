@@ -1,7 +1,7 @@
 defmodule TmdeWeb.Components.Forms.EditorCard do
   use TmdeWeb, :live_component
   use Bulma
-  import TmdeWeb.Components.Forms, only: [editor_card: 1]
+  import TmdeWeb.Components.Forms
 
   def mount(socket) do
     {:ok, assign(socket, edit?: false)}

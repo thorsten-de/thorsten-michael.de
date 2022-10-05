@@ -2,20 +2,12 @@
   <.container>
     <.columns>
       <.column>
-        <.card>
-          <:header label={gettext("Contact info")}>
-            <.button class="card-header-icon" icon="edit" href="#"/>
-          </:header>
-          <.address contact={@current_user.contact} />
-          <p>
-            <.label label={@current_user.contact.email} icon="envelope" />
-          </p>
-        </.card>
+        <.live_component module={ContactEditor} obj={@current_user} field={:contact} header={gettext("Contact info")} id="contact_editor" />
       </.column>
       <.column>
         <.personal_data_editor job_seeker={@current_user} changeset={@changeset} />
       </.column>
-        <.column>
+      <.column>
         <.card>
           <:header label={gettext("Links")} >
             <.button class="card-header-icon" icon="edit" href="#"/>
