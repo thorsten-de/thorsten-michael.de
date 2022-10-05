@@ -6,6 +6,7 @@ defmodule TmdeWeb.Admin.ProfileLive do
   alias TmdeWeb.Components
   import Components.Forms.JobSeeker
   import Components.ContactComponents
+  alias Components.Content.TranslationEditor
 
   on_mount TmdeWeb.UserLiveAuth
 

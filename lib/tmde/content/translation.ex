@@ -20,7 +20,6 @@ defmodule Tmde.Content.Translation do
     content
     |> cast(attributes, [:lang, :type, :content])
     |> validate_required([:lang, :type, :content])
-    |> IO.inspect()
   end
 
   @doc """

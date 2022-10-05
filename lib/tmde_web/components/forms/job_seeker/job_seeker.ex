@@ -4,7 +4,7 @@ defmodule TmdeWeb.Components.Forms.JobSeeker do
   use Bulma
 
   import TmdeWeb.Components.Forms,
-    only: [address_form: 1, contact_form: 1, translation_form: 1]
+    only: [address_form: 1, contact_form: 1]
 
   def job_seeker_form(assigns) do
     render("job_seeker_form.html", assigns)
