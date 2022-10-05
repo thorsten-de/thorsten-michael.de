@@ -13,7 +13,13 @@ defmodule TmdeWeb.Components.List do
     <dl class={@class}>
       <%= for {key, value} <- @data do %>
         <dt><%= key %></dt>
-        <dd><%= value %></dd>
+        <dd>
+          <%= if assigns[:inner_block] do %>
+            <%= render_slot(@inner_block, value) %>
+          <% else %>
+            <%= value %>
+          <% end %>
+        </dd>
       <% end %>
     </dl>
     """
@@ -27,7 +33,7 @@ defmodule TmdeWeb.Components.List do
             item
 
           is_map(item) ->
-            {Map.get(item, assigns[:key]), Map.get(item, assigns[:value])}
+            {Map.get(item, assigns[:key]), Map.get(item, assigns[:value], item)}
         end
       end
 
