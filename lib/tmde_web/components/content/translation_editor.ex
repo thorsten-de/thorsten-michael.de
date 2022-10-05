@@ -5,7 +5,6 @@ defmodule TmdeWeb.Components.Content.TranslationEditor do
 
   alias Tmde.Content
   alias Tmde.Content.Translation
-  import Bulma.Navbar
 
   def mount(socket) do
     {:ok, assign(socket, edit?: false)}
@@ -25,13 +24,8 @@ defmodule TmdeWeb.Components.Content.TranslationEditor do
     {:ok, socket}
   end
 
-  def handle_event("toggle-editor", _params, socket) do
-    socket =
-      socket
-      |> assign(edit?: !socket.assigns.edit?)
-
-    {:noreply, socket}
-  end
+  def handle_event("toggle-editor", _params, socket),
+    do: {:noreply, toggle(socket, :edit?)}
 
   def handle_event("cancel", _params, socket) do
     socket =

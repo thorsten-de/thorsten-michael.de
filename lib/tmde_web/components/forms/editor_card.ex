@@ -8,7 +8,7 @@ defmodule TmdeWeb.Components.Forms.EditorCard do
   end
 
   def handle_event("toggle-editor", _params, socket) do
-    {:noreply, update(socket, :edit?, &(!&1))}
+    {:noreply, toggle(socket, :edit?)}
   end
 
   def close_editor(id) do
