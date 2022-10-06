@@ -8,7 +8,10 @@ defmodule TmdeWeb.Admin.ProfileLive do
   import Components.ContactComponents
   alias Components.Content.TranslationEditor
   alias Components.Contact.ContactEditor
-  import TmdeWeb.Admin.Profile.PersonalDataEditor, only: [personal_data_editor: 1]
+
+  import TmdeWeb.Admin.Profile.Editors,
+    only: [personal_data_editor: 1, links_editor: 1]
+
   alias Components.Forms.EditorCard
 
   on_mount TmdeWeb.UserLiveAuth
@@ -37,12 +40,22 @@ defmodule TmdeWeb.Admin.ProfileLive do
     {:noreply, assign(socket, changeset: changeset)}
   end
 
-  def handle_event("update_user", %{"job_seeker" => params}, socket) do
+  def handle_event("update_personal_data", %{"job_seeker" => params}, socket) do
+    socket
+    |> do_user_update(params, editor_id: "personal_data_editor")
+  end
+
+  def handle_event("update_links", %{"job_seeker" => params}, socket) do
+    socket
+    |> do_user_update(params, editor_id: "links_editor")
+  end
+
+  defp do_user_update(socket, params, opts \\ []) do
     socket.assigns.current_user
     |> Jobs.update_job_seeker(params)
     |> case do
       {:ok, job_seeker} ->
-        EditorCard.close_editor("personal_data_editor")
+        EditorCard.close_editor(opts[:editor_id])
 
         {:noreply,
          socket

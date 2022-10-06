@@ -37,7 +37,7 @@ defmodule TmdeWeb.Router do
     get "/bewerbung/:id/cover_letter", JobsController, :cover_letter_pdf
 
     live_session :jobs, on_mount: [TmdeWeb.LocaleLive] do
-      live "/bewerbung/:id/dev", JobsLive, :show
+      live "/bewerbung/:id/dev", JobsLive, :show, as: :jobs_dev
       live "/bewerbung/:token", JobsLive, :show
     end
   end

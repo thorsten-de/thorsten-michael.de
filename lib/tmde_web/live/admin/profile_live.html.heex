@@ -8,16 +8,7 @@
         <.personal_data_editor job_seeker={@current_user} changeset={@changeset} />
       </.column>
       <.column>
-        <.card>
-          <:header label={gettext("Links")} >
-            <.button class="card-header-icon" icon="edit" href="#"/>
-          </:header>
-          <%= for l <- @current_user.links do %>
-            <%= link ContactLink.build_link_options(l) |> Keyword.merge(class: "is-block my-1") do %>
-              <.label {ContactLink.type_to_icon(l)} label={l} />
-            <% end %>
-          <% end %>
-        </.card>
+        <.links_editor job_seeker={@current_user} changeset={@changeset} />
       </.column>
     </.columns>
     <.live_component module={TranslationEditor} obj={@current_user} field={:slogan} header={gettext("Slogan")} id={:slogan_editor} />
@@ -27,7 +18,9 @@
   <.container>
     <.title label={gettext("Applications")} />
     <.table data={@applications} fullwidth style={["hoverable"]}>
-      <:column_header field={:id}/>
+      <:column_header let={%{idx: idx, item: item}} field={:id}>
+        <%= link idx, to: Routes.jobs_dev_path(TmdeWeb.Endpoint, :show, item) %>
+      </:column_header>
       <:column let={%{field: company}} header={gettext("Company")} field={:company}>
         <%= link company || "Nicht angegeben", to: "/"  %>
       </:column>
