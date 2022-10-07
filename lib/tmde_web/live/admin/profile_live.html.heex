@@ -1,0 +1,37 @@
+<.section>
+  <.container>
+    <.columns>
+      <.column>
+        <.live_component module={ContactEditor} obj={@current_user} field={:contact} header={gettext("Contact info")} id="contact_editor" />
+      </.column>
+      <.column>
+        <.personal_data_editor job_seeker={@current_user} changeset={@changeset} />
+      </.column>
+      <.column>
+        <.links_editor job_seeker={@current_user} changeset={@changeset} />
+      </.column>
+    </.columns>
+    <.live_component module={TranslationEditor} obj={@current_user} field={:slogan} header={gettext("Slogan")} id={:slogan_editor} />
+</.container>
+</.section>
+<.section>
+  <.container>
+    <.title label={gettext("Applications")} />
+    <.table data={@applications} fullwidth style={["hoverable"]}>
+      <:column_header let={%{idx: idx, item: item}} field={:id}>
+        <%= link idx, to: Routes.jobs_dev_path(TmdeWeb.Endpoint, :show, item) %>
+      </:column_header>
+      <:column let={%{field: company}} header={gettext("Company")} field={:company}>
+        <%= link company || "Nicht angegeben", to: "/"  %>
+      </:column>
+      <:column field={:subject} header={gettext("Subject")} /> 
+      <:column field={:locale} header={gettext("Language")} /> 
+      <:column field={:contact} header={gettext("Contact")} icon="user"/> 
+      <:column let={%{field: contact}} field={:contact} header={gettext("E-mail")} abbr="EM" icon="envelope">
+        <.label label={contact.email} icon="envelope"/>
+      </:column>
+      <:header />
+    </.table>
+
+  </.container>
+</.section>

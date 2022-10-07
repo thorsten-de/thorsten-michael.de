@@ -3,10 +3,14 @@ defmodule Tmde.Contacts.Link do
   import TmdeWeb.Gettext
   alias __MODULE__
 
+  @types [:email, :phone, :mobile, :whatsapp, :website]
+
   embedded_schema do
-    field :type, Ecto.Enum, values: [:email, :phone, :mobile, :whatsapp, :website]
+    field :type, Ecto.Enum, values: @types
     field :target, :string
   end
+
+  def all_types, do: @types |> Enum.map(&{&1, type_to_string(%__MODULE__{type: &1})})
 
   def changeset(link, attr \\ %{}) do
     link

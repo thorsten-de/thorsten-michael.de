@@ -16,13 +16,13 @@ defmodule Tmde.Jobs.CV.Entry do
     field :sort_order, :integer
     field :icon, :string
 
-    embeds_many :role, Translation
-    embeds_many :description, Translation
+    translation_field(:role)
+    translation_field(:description)
 
     embeds_one :company, Company do
       field :name, :string
       field :location, :string
-      embeds_many :sector, Translation
+      translation_field(:sector)
     end
 
     belongs_to :application, Application

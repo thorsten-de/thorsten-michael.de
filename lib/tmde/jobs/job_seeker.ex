@@ -14,7 +14,8 @@ defmodule Tmde.Jobs.JobSeeker do
 
     embeds_one :contact, Contact
     embeds_many :links, Link
-    embeds_many :slogan, Translation
+
+    translation_field(:slogan)
 
     has_many :skills, PersonalSkill
     has_many :applications, Application

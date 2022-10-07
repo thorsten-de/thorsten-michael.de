@@ -3,12 +3,7 @@ defmodule TmdeWeb.ComponentHelpers do
   Some helper functions to building components. Included with TmdeWeb, :component
   """
   alias Tmde.Content.Translation
-
-  def translate_html(content) do
-    content
-    |> translate()
-    |> Phoenix.HTML.raw()
-  end
+  import Phoenix.LiveView, only: [update: 3]
 
   def translate(content) do
     locale = Gettext.get_locale(TmdeWeb.Gettext)
@@ -16,4 +11,7 @@ defmodule TmdeWeb.ComponentHelpers do
     content
     |> Translation.translate(locale)
   end
+
+  def toggle(socket, key),
+    do: update(socket, key, &(!&1))
 end

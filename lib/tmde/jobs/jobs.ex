@@ -5,6 +5,7 @@ defmodule Tmde.Jobs do
   alias Tmde.Jobs.{Application, Skill, JobSeeker, Delivery, CV, PersonalSkill}
   alias Tmde.Repo
   import Ecto.Query
+  import Ecto
 
   def get_application!(id) do
     if function_exported?(Private, :get_application, 0) do
@@ -22,6 +23,11 @@ defmodule Tmde.Jobs do
     end
   end
 
+  def job_seeker_applications(job_seeker) do
+    from(a in assoc(job_seeker, :applications), order_by: [desc: a.inserted_at])
+    |> Repo.all()
+  end
+
   def update_documents(application, documents) do
     application
     |> Application.put_documents(documents)
@@ -32,6 +38,17 @@ defmodule Tmde.Jobs do
     application
     |> Ecto.build_assoc(:events, %{type: type, payload: payload})
     |> Repo.insert!()
+  end
+
+  def change_job_seeker(job_seeker, params \\ %{}) do
+    job_seeker
+    |> JobSeeker.changeset(params)
+  end
+
+  def update_job_seeker(job_seeker, params) do
+    job_seeker
+    |> change_job_seeker(params)
+    |> Repo.update()
   end
 
   @doc """

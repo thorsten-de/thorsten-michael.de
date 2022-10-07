@@ -8,7 +8,7 @@ defmodule Tmde.Jobs.Skill do
     field :type, Ecto.Enum, values: [:language, :profession, :character], default: :profession
     field :icon, :string
     field :name, :string
-    embeds_many :label, Translation
+    translation_field(:label)
 
     timestamps()
   end

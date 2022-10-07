@@ -14,8 +14,8 @@ defmodule Tmde.Jobs.Application do
     field :company, :string
     field :locale, Ecto.Enum, values: [:de, :en], default: :de
     embeds_one :contact, Contact
-    embeds_many :cover_letter, Translation
-    embeds_many :cover_email, Translation
+    translation_field(:cover_letter)
+    translation_field(:cover_email)
 
     embeds_many :documents, Document, on_replace: :delete do
       field :slug, :string

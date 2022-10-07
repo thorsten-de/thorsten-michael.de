@@ -1,0 +1,34 @@
+<div class="translation-editor">
+  <.form let={f} for={@changeset} as={:object}  phx-submit="save" phx-target={@myself}>
+    <.card>
+      <:header label={@header}>
+        <a href="#" class="card-header-icon" phx-click="toggle-editor" phx-target={@myself}>
+          <.label icon="edit" />
+        </a>
+      </:header>
+      <:footer>
+        <%= if @edit? do %>
+          <a class="card-footer-item" phx-click="cancel" phx-target={@myself}><%= gettext("Cancel") %></a>
+          <input class="card-footer-item" type="submit" value={gettext("Save")}>
+        <% end %>
+      </:footer>
+      <.property_list data={@translations} key={:lang} let={item}>
+        <.content>
+          <%= item %>
+        </.content>
+      </.property_list>
+      <%= if @edit? do %>
+          <.inputs let={ft} form={f} field={@field}>
+              <.box>
+                <div class="field is-grouped">
+                  <.field form={ft} name={:lang} input={:select} options={@languages} />
+                  <.field form={ft} name={:type} input={:select}  options={@types} />
+                </div>
+                <.field form={ft} name={:content} input={:textarea} rows="10" />
+              </.box>
+            <hr>
+          </.inputs>
+      <% end %>
+    </.card>
+  </.form>
+</div>

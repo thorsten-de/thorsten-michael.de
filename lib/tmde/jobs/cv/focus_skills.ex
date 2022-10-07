@@ -12,7 +12,7 @@ defmodule Tmde.Jobs.CV.FocusSkills do
     belongs_to :job_seeker, CV.Focus
     belongs_to :skill, Skill
 
-    embeds_many :description, Translation
-    embeds_many :rating_text, Translation
+    translation_field(:description)
+    translation_field(:rating_text)
   end
 end

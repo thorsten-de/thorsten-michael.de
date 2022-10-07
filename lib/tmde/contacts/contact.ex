@@ -8,14 +8,19 @@ defmodule Tmde.Contacts.Contact do
   alias Tmde.Contacts.Address
   alias __MODULE__
 
+  @all_genders [male: gettext("male"), female: gettext("female"), unknown: gettext("other")]
   embedded_schema do
-    field :gender, Ecto.Enum, values: [:male, :female, :unknown], default: :unknown
+    field :gender, Ecto.Enum, values: Keyword.keys(@all_genders), default: :unknown
     field :title, :string
     field :first_name, :string
     field :last_name, :string
     field :email, :string
 
     embeds_one :address, Address
+  end
+
+  def all_genders() do
+    @all_genders
   end
 
   def changeset(contact, attr \\ %{}) do

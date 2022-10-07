@@ -1,0 +1,5 @@
+<.inputs let={t} form={@form} field={@field}>
+  <.field form={t} name={:lang} input={:select} label={gettext("Language")} options={@languages} />
+  <.field form={t} name={:type} input={:select} label={gettext("Format")} options={@types} />
+  <.field form={t} name={:content} input={:text_input} label={gettext("Content")} />
+</.inputs>
