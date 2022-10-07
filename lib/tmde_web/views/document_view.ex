@@ -6,6 +6,7 @@ defmodule TmdeWeb.DocumentView do
 
   import TmdeWeb.Components.{ContactComponents, ContentComponents}
   import TmdeWeb.Components.Jobs, only: [qr_code: 1]
+  import TmdeWeb.ComponentHelpers
   alias Tmde.Contacts.Link, as: ContactLink
   alias Tmde.Contacts.Contact
 
@@ -129,6 +130,12 @@ defmodule TmdeWeb.DocumentView do
 
   def default_documents do
     [
+      %{
+        slug: "arbeitszeugnis-barbara-reisen",
+        label: gettext("Reference %{company_name}", company_name: "Barbara Reisen"),
+        filename:
+          document_filepath(["common"], "Arbeitszeugnis_Barbara-Reisen_Thorsten_Deinert.pdf")
+      },
       %{
         slug: "diplomzeugnis",
         label: gettext("Diploma certificate"),
