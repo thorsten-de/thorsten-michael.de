@@ -1,0 +1,11 @@
+<.section>
+  <.container>
+    <.title label={@application.subject} />
+    <.subtitle label={@application.reference} />
+
+    <.live_component module={TranslationEditor} obj={@application} field={:cover_letter} header={gettext("Cover letter")} id="letter_editor" />
+    <div class="block">
+      <.live_component module={TranslationEditor} obj={@application} field={:cover_email} header={gettext("Cover email")} id="email_editor" />
+    </div>
+  </.container>
+</.section>

@@ -21,8 +21,8 @@
       <:column_header let={%{idx: idx, item: item}} field={:id}>
         <%= link idx, to: Routes.jobs_dev_path(TmdeWeb.Endpoint, :show, item) %>
       </:column_header>
-      <:column let={%{field: company}} header={gettext("Company")} field={:company}>
-        <%= link company || "Nicht angegeben", to: "/"  %>
+      <:column let={%{item: item}} header={gettext("Company")} >
+        <%= link item.company || "Nicht angegeben", to: Routes.application_path(@socket, :show, item)  %>
       </:column>
       <:column field={:subject} header={gettext("Subject")} /> 
       <:column field={:locale} header={gettext("Language")} /> 
