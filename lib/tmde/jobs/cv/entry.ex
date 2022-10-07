@@ -7,7 +7,8 @@ defmodule Tmde.Jobs.CV.Entry do
   in a structural manner.
   """
   use Tmde, :schema
-  alias Tmde.Jobs.{CV, Application}
+  alias Tmde.Jobs.{CV, JobSeeker}
+  alias Tmde.Content.Translation
 
   schema "cv_entries" do
     field :type, Ecto.Enum, values: [:job, :education, :projects]
@@ -25,10 +26,20 @@ defmodule Tmde.Jobs.CV.Entry do
       translation_field(:sector)
     end
 
-    belongs_to :application, Application
+    belongs_to :job_seeker, JobSeeker
 
     has_many :focuses, CV.Focus
 
     timestamps()
+  end
+
+  def _changeset(entry, params \\ %{}) do
+    entry
+    |> cast(params, [:type, :from, :until, :sort_order, :icon])
+    |> cast_embed(:company)
+    |> Translation.cast_translation(:role)
+    |> Translation.cast_translation(:description)
+    |> cast_embed(:company)
+    |> cast_assoc(:focuses)
   end
 end

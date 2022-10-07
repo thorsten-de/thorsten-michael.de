@@ -24,7 +24,6 @@ defmodule Tmde.Jobs.Application do
     end
 
     belongs_to :job_seeker, JobSeeker
-    has_many :cv_entries, CV.Entry
     has_many :skills, through: [:job_seeker, :skills]
 
     has_many :events, ApplicationEvent

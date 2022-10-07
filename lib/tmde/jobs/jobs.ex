@@ -17,8 +17,10 @@ defmodule Tmde.Jobs do
       Application
       |> Repo.get!(id)
       |> Repo.preload(
-        cv_entries: {ordered(CV.Entry), focuses: ordered(CV.Focus)},
-        job_seeker: [skills: {ordered(PersonalSkill), skill: []}]
+        job_seeker: [
+          skills: {ordered(PersonalSkill), skill: []},
+          cv_entries: {ordered(CV.Entry), focuses: ordered(CV.Focus)}
+        ]
       )
     end
   end
