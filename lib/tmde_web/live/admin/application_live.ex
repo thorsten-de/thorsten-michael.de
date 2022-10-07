@@ -5,6 +5,16 @@ defmodule TmdeWeb.Admin.ApplicationLive do
   alias TmdeWeb.Components
   alias Components.Content.TranslationEditor
 
+  def mount(_params, _session, socket) do
+    application = %Jobs.Application{subject: "New Application", reference: "Reference"}
+
+    socket =
+      socket
+      |> assign(application: application)
+
+    {:ok, socket}
+  end
+
   def handle_params(%{"id" => id}, _, socket) do
     application = Jobs.get_application!(id)
 
@@ -14,4 +24,6 @@ defmodule TmdeWeb.Admin.ApplicationLive do
 
     {:noreply, socket}
   end
+
+  def handle_params(_, _, socket), do: {:noreply, socket}
 end

@@ -17,6 +17,9 @@
 <.section>
   <.container>
     <.title label={gettext("Applications")} />
+    <%= link to: Routes.application_path(@socket, :new), class: "button is-info" do %>
+      <.label label={gettext("New application")} icon="add" />
+    <% end %>
     <.table data={@applications} fullwidth style={["hoverable"]}>
       <:column_header let={%{idx: idx, item: item}} field={:id}>
         <%= link idx, to: Routes.jobs_dev_path(TmdeWeb.Endpoint, :show, item) %>

@@ -47,6 +47,7 @@ defmodule TmdeWeb.Router do
       pipe_through [:browser, :requires_auth]
 
       live "/", ProfileLive, :index
+      live "/application", ApplicationLive, :new
       live "/application/:id", ApplicationLive, :show
     end
   end
