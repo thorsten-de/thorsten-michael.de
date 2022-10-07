@@ -1,6 +1,6 @@
  <.block>
   <p><%= greeting(@application.contact) %></p>
-  <%= @application.cover_email |> translate(@application.locale) |> text_to_html() %>
+  <%= @application.cover_email |> translate(@application.locale) %>
   <p><%= ending() %></p>
 <p><%= @application.job_seeker.contact %></p>
 </.block>

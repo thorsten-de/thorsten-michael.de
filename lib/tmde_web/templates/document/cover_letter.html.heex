@@ -50,7 +50,7 @@
   </div>
   <div class="content">
     <.greeting contact={@application.contact} />
-    <.t {@application.cover_letter} />
+    <%= translate(@application.cover_letter) %>
     <.ending />
     <.signature sender={@application.job_seeker.contact} file_path={document_filepath(["common"], "signature.png")} />
     <div class="attachments">
