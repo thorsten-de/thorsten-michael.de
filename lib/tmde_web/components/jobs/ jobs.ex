@@ -11,12 +11,13 @@ defmodule TmdeWeb.Components.Jobs do
   alias Tmde.Jobs.Skill
 
   import Jobs.PersonalSkill, only: [category_label: 1]
+  import TmdeWeb.Components.ContentComponents
 
   @featured_categories [:languages, :featured]
 
   def cv(%{application: application} = assigns) do
     entries =
-      application.cv_entries
+      application.job_seeker.cv_entries
       |> Enum.group_by(& &1.type)
 
     {featured_skillsets, skillsets} =
@@ -77,7 +78,7 @@ defmodule TmdeWeb.Components.Jobs do
     """
   end
 
-  def skill(%{skill: %{skill: skill} = myskill} = assigns) do
+  def skill(%{skill: %{skill: skill, rating_text: []} = myskill} = assigns) do
     assigns =
       assigns
       |> assign(
@@ -90,6 +91,26 @@ defmodule TmdeWeb.Components.Jobs do
       <Tags.tag class="skill" color={@color}>
         <.label {assigns} />
       </Tags.tag>
+    """
+  end
+
+  def skill(%{skill: %{skill: skill, rating_text: text} = myskill} = assigns)
+      when is_list(text) do
+    assigns =
+      assigns
+      |> assign(
+        label: translate(skill.label),
+        color: if(myskill.is_featured, do: "info")
+      )
+      |> assign(Skill.get_icon_details(skill))
+
+    ~H"""
+      <div class="tags has-addons">
+        <Tags.tag class="skill" color={@color}>
+          <.label {assigns} />
+        </Tags.tag>
+        <Tags.tag color="success"  label={translate(text)} />
+      </div>
     """
   end
 
