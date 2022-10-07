@@ -13,11 +13,11 @@ defmodule Tmde.Repo.Migrations.AddCvEntriesTable do
       add :description, :map
       add :company, :map
 
-      add :application_id, references(:job_applications), null: false
+      add :job_seeker_id, references(:job_seekers), null: false
 
       timestamps()
     end
 
-    create index(:cv_entries, :application_id)
+    create index(:cv_entries, :job_seeker_id)
   end
 end

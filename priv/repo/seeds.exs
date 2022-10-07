@@ -310,6 +310,13 @@ my_skillsets =
           name: "Nginx"
         },
         rating: 70
+      },
+      %{
+        skill: %{
+          name: "Microsoft Azure"
+        },
+        rating: 50,
+        rating_text: translations(de: "AZ-900")
       }
     ]
   ]
@@ -325,298 +332,316 @@ my_skillsets =
     Map.put(my_skill, :skill_id, skill.id)
   end)
 
+cv_entries = [
+  %CV.Entry{
+    type: :job,
+    from: ~D[2006-09-26],
+    sort_order: 1,
+    icon: "/images/Barbara_Reisen_Logo.svg",
+    role:
+      translations(
+        de: "Full-Stack Software-Entwickler",
+        en: "Full-Stack Software Developer"
+      ),
+    description:
+      translations([
+        {:de, :markdown,
+         """
+         Als Student habe ich die **interne Buchungssoftware** geschrieben und die IT mitgestaltet. Seit Abschluss des
+         Studiums bin ich als Allrounder verantwortlich für die **Software-Entwicklung**, die **Webseite**, den
+         **täglichen IT-Betrieb** und die **Netzwerkinfrastruktur**. Die Schwerpunkte im Detail:
+         """}
+      ]),
+    focuses: [
+      %CV.Focus{
+        sort_order: 1,
+        abstract:
+          translations(
+            de: """
+              <p>Planung, Design, Implementierung und kontinuierliche Weiterentwicklung des internen
+              Buchungssystems als <strong>Client/Server-Anwendung für Windows mit C#/.NET</strong>.
+              <br><small>(im Betrieb seit 06/2007)</small>
+            """
+          )
+      },
+      %CV.Focus{
+        sort_order: 2,
+        abstract:
+          translations(
+            de: """
+            <p>Anpassen und Umgestalten der Webseite (PHP), ab 2011 als Online-Buchungsseite mit
+            Authoring/CMS-System in <strong>Ruby/Rails</strong> neu gestaltet, implementiert und via
+            REST-Schnitstelle ans Buchungssystem angebunden.
+            <br><small>(<a href="https://www.barbara-reisen.de">barbara-reisen.de</a>, online seit 2014)</small>
+            """
+          )
+      },
+      %CV.Focus{
+        sort_order: 3,
+        abstract:
+          translations(
+            de:
+              Earmark.as_html!("""
+                Ab 2016: Neues **Elixir/Phoenix/GraphQL-Backend** mit **LiveView-Frontend**,
+                um Webseite und Buchungsystem langfristig zu integrieren.
+              """)
+          )
+      },
+      %CV.Focus{
+        sort_order: 4,
+        abstract:
+          translations(
+            de:
+              Earmark.as_html!("""
+                Konzeption, Administration und Betrieb des Firmennetzwerks, der Domains, Web/Mailserver
+                und weiterer Seiten, z.B. des [Gesundheitsblogs](https://www.barbara-reisen.de/blog).
+              """)
+          )
+      }
+    ],
+    company: %{
+      name: "Barbara Reisen",
+      location: "Reiseveranstalter in Selm, NRW",
+      sector:
+        translations(
+          de: "Reiseveranstalter / Kuren und Wellness",
+          en: "Tour operator / cures and wellness"
+        )
+    }
+  },
+  %CV.Entry{
+    type: :job,
+    from: ~D[2016-06-01],
+    sort_order: 2,
+    icon: "/images/T-Cosmetic_Logo.svg",
+    role:
+      translations(
+        de: "Full-Stack Software-Entwickler (Nebenjob)",
+        en: "Full-Stack Software Developer"
+      ),
+    description:
+      translations(
+        de:
+          Earmark.as_html!("""
+          Bei T-Cosmetic wird Standardsoftware an den Direktvertrieb mit **Multi-Level-Marketing (MLM)**
+          angepasst oder speziell dafür entwickelt.  Neben der **Beratung** beinhaltet meine Arbeit:
+          """)
+      ),
+    focuses: [
+      %CV.Focus{
+        sort_order: 1,
+        abstract:
+          translations(
+            de: """
+            Entwurf und Entwicklung des Systems zur <strong>strukturellen Abrechnung von MLM-Provisionen/Boni</strong>
+            auf Daten einer Legacy-Software. Implementiert in <strong>Elixir/Phoenix/GraphQL</strong>.
+            <br><small>(im Produktivbetrieb seit 01/2017)</small>
+            """
+          )
+      },
+      %CV.Focus{
+        sort_order: 2,
+        abstract:
+          translations(
+            de:
+              Earmark.as_html!("""
+                Entwicklung von **Plugins für Shopware 5/6** in **PHP** für MLM im Webshop. Erweiterung des Datenmodells
+                und Backends (**Vue.js**) von Shopware 6, um die Legacy-Software abzulösen.
+              """)
+          )
+      },
+      %CV.Focus{
+        sort_order: 3,
+        abstract:
+          translations(
+            de:
+              Earmark.as_html!("""
+                Darstellung der aktuellen Struktur-Umsätze und Historie, im Web als **Elm-Frontend** in
+                der Storefront eingebettet. Datenaustausch mit dem internen Bonussystem über **GraphQL** Schnitstelle.
+              """)
+          )
+      }
+    ],
+    company: %{
+      name: "T-Cosmetic International",
+      location: "Hamm, NRW",
+      sector:
+        translations(
+          de: "Parfüm, Kosmetik und Nahrungsergänzung",
+          en: "perfumes, cosmetics and nutritional supplements"
+        )
+    }
+  },
+  %CV.Entry{
+    type: :education,
+    from: ~D[2002-10-01],
+    until: ~D[2010-10-19],
+    sort_order: 1,
+    icon: "/images/TU_Dortmund_Logo_small.svg",
+    role:
+      translations(
+        de: "Diplom im Studiengang Informatik",
+        en: "Computer Science (Diploma)"
+      ),
+    focuses: [
+      %CV.Focus{
+        sort_order: 1,
+        abstract:
+          translations(
+            de: """
+              Schwerpunktgebiet: <strong class="has-text-primary">Intelligente Systeme</strong>
+            """
+          )
+      },
+      %CV.Focus{
+        sort_order: 2,
+        abstract:
+          translations(
+            de:
+              Earmark.as_html!("""
+                Nebenfach: Betriebswirtschaftslehre
+              """)
+          )
+      },
+      %CV.Focus{
+        sort_order: 3,
+        abstract:
+          translations(
+            de: """
+            Diplomarbeit <span class="tag">sehr gut (1,1)</span>
+            <br><a class="is-block py-2" href="https://thorsten-michael.de/documents/Deinert_T---Tempoerkennung---[Masterthesis]---2010.pdf">
+              <span class="icon">
+                <i class="fa-solid fa-file-pdf"></i>
+              </span>
+              <span>Tempoerkennung aus Audiosignalen langsamer Musikstücke</span>
+            </a>
+
+              <ul class="mt-0 mb-3">
+                <li>Signalverarbeitung, Merkmalsextraktion, Klassifikation in <strong>F#/.NET</strong></li>
+                <li><strong>C#/WPF-Anwendung</strong> zur Steuerung und Visualierung</li>
+              </ul>
+              <p>Auszugsweise in Englisch als Paper bei der AES:
+                <a href="http://www.aes.org/e-lib/browse.cfm?elib=1596">Regression-Based Tempo Recognition from Chroma and Energy Accents for Slow Audio Recordings</a>.
+              </p>
+            """
+          )
+      }
+    ],
+    company: %{
+      name: "Technische Universität Dortmund",
+      location: "NRW",
+      sector:
+        translations(
+          de: "Universität",
+          en: "University"
+        )
+    }
+  },
+  %CV.Entry{
+    type: :education,
+    from: ~D[2001-09-03],
+    until: ~D[2002-06-30],
+    sort_order: 2,
+    role: translations(de: "Zivildienst"),
+    focuses: [],
+    company: %{
+      name: "Arbeiter-Samariter-Bund",
+      location: "Hamm, NRW",
+      sector:
+        translations(
+          de: "",
+          en: ""
+        )
+    }
+  },
+  %CV.Entry{
+    type: :education,
+    from: ~D[1998-08-01],
+    until: ~D[2001-06-30],
+    sort_order: 2,
+    role:
+      translations(
+        de: "Abitur (mit Leistungskurs Informatik)",
+        en: "Abitur (high school graduation)"
+      ),
+    focuses: [],
+    company: %{
+      name: "Friedrich-List-Berufskolleg",
+      location: "Hamm, NRW",
+      sector:
+        translations(
+          de: "Sekundarstufe 2",
+          en: "Höhere Handelsschule"
+        )
+    }
+  }
+]
+
 myself =
-  case Accounts.create_user(%{
-         contact: %{
-           title: "Dipl.-Inf.",
-           first_name: "Thorsten-Michael",
-           last_name: "Deinert",
-           gender: :male,
-           email: "postmaster@thorsten-michael.de",
-           address: %{street: "Mustergasse 1", zip: "55555", city: "Hauptstadt"}
+  case Accounts.create_user(
+         %{
+           contact: %{
+             title: "Dipl.-Inf.",
+             first_name: "Thorsten-Michael",
+             last_name: "Deinert",
+             gender: :male,
+             email: "postmaster@thorsten-michael.de",
+             address: %{street: "Mustergasse 1", zip: "55555", city: "Hauptstadt"}
+           },
+           slogan:
+             t.(
+               de:
+                 "Software-Entwickler aus Leidenschaft, Diplom-Informatiker und immer neugierig auf Programmiersprachen",
+               en:
+                 "Passionate about software development, computer science and programming languages"
+             ),
+           dob: ~D[2000-02-29],
+           place_of_birth: "Irgendwo",
+           marital_status: :married,
+           citizenship: "Europe",
+           links: [
+             %{type: :phone, target: "+49 0001 0002 0003"},
+             %{type: :mobile, target: "+49 0001 0002 0003"},
+             %{type: :whatsapp, target: "+49 0001 0002 0003"},
+             %{type: :website, target: "thorsten-michael.de"},
+             %{type: :email, target: "postmaster@thorsten-michael.de"}
+           ],
+           skills: my_skillsets
          },
-         slogan:
-           t.(
-             de:
-               "Software-Entwickler aus Leidenschaft, Diplom-Informatiker und immer neugierig auf Programmiersprachen",
-             en:
-               "Passionate about software development, computer science and programming languages"
-           ),
-         dob: ~D[2000-02-29],
-         place_of_birth: "Irgendwo",
-         marital_status: :married,
-         citizenship: "Europe",
-         links: [
-           %{type: :phone, target: "+49 0001 0002 0003"},
-           %{type: :mobile, target: "+49 0001 0002 0003"},
-           %{type: :whatsapp, target: "+49 0001 0002 0003"},
-           %{type: :website, target: "thorsten-michael.de"},
-           %{type: :email, target: "postmaster@thorsten-michael.de"}
-         ],
-         skills: my_skillsets
-       }) do
+         cv_entries
+       ) do
     {:ok, myself} ->
-      IO.inspect(myself)
+      IO.puts("Created myself.")
+      myself
 
     {:error, changeset} ->
       IO.inspect(Ecto.Changeset.traverse_errors(changeset, fn {msg, _} -> msg end))
       changeset
   end
 
+letter_and_email =
+  translations([
+    {:de, :text,
+     """
+     nach unserem angenehmen ersten Treffen möchte ich hiermit gerne meine Bewerbungsunterlagen senden. Ich freue mich schon auf unser Gespräch.
+     """}
+  ])
+
 default_application = %Application{
   job_seeker: myself,
-  subject: "Bewerbung als Software-Entwickler bei...",
+  company: "Company",
+  subject: "Bewerbung als Software-Entwickler",
+  reference: "Software Entwickler C# / .NET (m/w/d)",
+  short_reference: "als Software-Entwickler",
   contact: %Contact{
-    gender: :female,
+    gender: :male,
     email: "thorsten.deinert@udo.edu",
     first_name: "Marianne",
     last_name: "Mustermann",
-    address: %{street: "Hauptstraße 2", zip: "49999", city: "Musterhausen"}
+    address: %{street: "Hauptstraße 1", zip: "99999", city: "Irgendwo"}
   },
-  cv_entries: [
-    %CV.Entry{
-      type: :job,
-      from: ~D[2006-09-26],
-      sort_order: 1,
-      icon: "/images/Barbara_Reisen_Logo.svg",
-      role:
-        translations(
-          de: "Full-Stack Software-Entwickler",
-          en: "Full-Stack Software Developer"
-        ),
-      description:
-        translations([
-          {:de, :markdown,
-           """
-           Als Student habe ich die **interne Buchungssoftware** geschrieben und die IT mitgestaltet. Seit Abschluss des
-           Studiums bin ich als Allrounder verantwortlich für die **Software-Entwicklung**, die **Webseite**, den
-           **täglichen IT-Betrieb** und die **Netzwerkinfrastruktur**. Die Schwerpunkte im Detail:
-           """}
-        ]),
-      focuses: [
-        %CV.Focus{
-          sort_order: 1,
-          abstract:
-            translations(
-              de: """
-                <p>Planung, Design, Implementierung und kontinuierliche Weiterentwicklung des internen
-                Buchungssystems als <strong>Client/Server-Anwendung für Windows mit C#/.NET</strong>.
-                <br><small>(im Betrieb seit 06/2007)</small>
-              """
-            )
-        },
-        %CV.Focus{
-          sort_order: 2,
-          abstract:
-            translations(
-              de: """
-              <p>Anpassen und Umgestalten der Webseite (PHP), ab 2011 als Online-Buchungsseite mit
-              Authoring/CMS-System in <strong>Ruby/Rails</strong> neu gestaltet, implementiert und via
-              REST-Schnitstelle ans Buchungssystem angebunden.
-              <br><small>(<a href="https://www.barbara-reisen.de">barbara-reisen.de</a>, online seit 2014)</small>
-              """
-            )
-        },
-        %CV.Focus{
-          sort_order: 3,
-          abstract:
-            translations(
-              de:
-                Earmark.as_html!("""
-                  Ab 2016: Neues **Elixir/Phoenix/GraphQL-Backend** mit **LiveView-Frontend**,
-                  um Webseite und Buchungsystem langfristig zu integrieren.
-                """)
-            )
-        },
-        %CV.Focus{
-          sort_order: 4,
-          abstract:
-            translations(
-              de:
-                Earmark.as_html!("""
-                  Konzeption, Administration und Betrieb des Firmennetzwerks, der Domains, Web/Mailserver
-                  und weiterer Seiten, z.B. des [Gesundheitsblogs](https://www.barbara-reisen.de/blog).
-                """)
-            )
-        }
-      ],
-      company: %{
-        name: "Barbara Reisen",
-        location: "Reiseveranstalter in Selm, NRW",
-        sector:
-          translations(
-            de: "Reiseveranstalter / Kuren und Wellness",
-            en: "Tour operator / cures and wellness"
-          )
-      }
-    },
-    %CV.Entry{
-      type: :job,
-      from: ~D[2016-06-01],
-      sort_order: 2,
-      icon: "/images/T-Cosmetic_Logo.svg",
-      role:
-        translations(
-          de: "Full-Stack Software-Entwickler (Nebenjob)",
-          en: "Full-Stack Software Developer"
-        ),
-      description:
-        translations(
-          de:
-            Earmark.as_html!("""
-            Bei T-Cosmetic wird Standardsoftware an den Direktvertrieb mit **Multi-Level-Marketing (MLM)**
-            angepasst oder speziell dafür entwickelt.  Neben der **Beratung** beinhaltet meine Arbeit:
-            """)
-        ),
-      focuses: [
-        %CV.Focus{
-          sort_order: 1,
-          abstract:
-            translations(
-              de: """
-              Entwurf und Entwicklung des Systems zur <strong>strukturellen Abrechnung von MLM-Provisionen/Boni</strong>
-              auf Daten einer Legacy-Software. Implementiert in <strong>Elixir/Phoenix/GraphQL</strong>.
-              <br><small>(im Produktivbetrieb seit 01/2017)</small>
-              """
-            )
-        },
-        %CV.Focus{
-          sort_order: 2,
-          abstract:
-            translations(
-              de:
-                Earmark.as_html!("""
-                  Entwicklung von **Plugins für Shopware 5/6** in **PHP** für MLM im Webshop. Erweiterung des Datenmodells
-                  und Backends (**Vue.js**) von Shopware 6, um die Legacy-Software abzulösen.
-                """)
-            )
-        },
-        %CV.Focus{
-          sort_order: 3,
-          abstract:
-            translations(
-              de:
-                Earmark.as_html!("""
-                  Darstellung der aktuellen Struktur-Umsätze und Historie, im Web als **Elm-Frontend** in
-                  der Storefront eingebettet. Datenaustausch mit dem internen Bonussystem über **GraphQL** Schnitstelle.
-                """)
-            )
-        }
-      ],
-      company: %{
-        name: "T-Cosmetic International",
-        location: "Hamm, NRW",
-        sector:
-          translations(
-            de: "Parfüm, Kosmetik und Nahrungsergänzung",
-            en: "perfumes, cosmetics and nutritional supplements"
-          )
-      }
-    },
-    %CV.Entry{
-      type: :education,
-      from: ~D[2002-10-01],
-      until: ~D[2010-10-19],
-      sort_order: 1,
-      icon: "/images/TU_Dortmund_Logo_small.svg",
-      role:
-        translations(
-          de: "Diplom im Studiengang Informatik",
-          en: "Computer Science (Diploma)"
-        ),
-      focuses: [
-        %CV.Focus{
-          sort_order: 1,
-          abstract:
-            translations(
-              de: """
-                Schwerpunktgebiet: <strong class="has-text-primary">Intelligente Systeme</strong>
-              """
-            )
-        },
-        %CV.Focus{
-          sort_order: 2,
-          abstract:
-            translations(
-              de:
-                Earmark.as_html!("""
-                  Nebenfach: Betriebswirtschaftslehre
-                """)
-            )
-        },
-        %CV.Focus{
-          sort_order: 3,
-          abstract:
-            translations(
-              de: """
-              Diplomarbeit <span class="tag">sehr gut (1,1)</span>
-              <br><a class="is-block py-2" href="https://thorsten-michael.de/documents/Deinert_T---Tempoerkennung---[Masterthesis]---2010.pdf">
-                <span class="icon">
-                  <i class="fa-solid fa-file-pdf"></i>
-                </span>
-                <span>Tempoerkennung aus Audiosignalen langsamer Musikstücke</span>
-              </a>
-
-                <ul class="mt-0 mb-3">
-                  <li>Signalverarbeitung, Merkmalsextraktion, Klassifikation in <strong>F#/.NET</strong></li>
-                  <li><strong>C#/WPF-Anwendung</strong> zur Steuerung und Visualierung</li>
-                </ul>
-                <p>Auszugsweise in Englisch als Paper bei der AES:
-                  <a href="http://www.aes.org/e-lib/browse.cfm?elib=1596">Regression-Based Tempo Recognition from Chroma and Energy Accents for Slow Audio Recordings</a>.
-                </p>
-              """
-            )
-        }
-      ],
-      company: %{
-        name: "Technische Universität Dortmund",
-        location: "NRW",
-        sector:
-          translations(
-            de: "Universität",
-            en: "University"
-          )
-      }
-    },
-    %CV.Entry{
-      type: :education,
-      from: ~D[2001-09-03],
-      until: ~D[2002-06-30],
-      sort_order: 2,
-      role: translations(de: "Zivildienst"),
-      focuses: [],
-      company: %{
-        name: "Arbeiter-Samariter-Bund",
-        location: "Hamm, NRW",
-        sector:
-          translations(
-            de: "",
-            en: ""
-          )
-      }
-    },
-    %CV.Entry{
-      type: :education,
-      from: ~D[1998-08-01],
-      until: ~D[2001-06-30],
-      sort_order: 2,
-      role:
-        translations(
-          de: "Abitur (mit Leistungskurs Informatik)",
-          en: "Abitur (high school graduation)"
-        ),
-      focuses: [],
-      company: %{
-        name: "Friedrich-List-Berufskolleg",
-        location: "Hamm, NRW",
-        sector:
-          translations(
-            de: "Sekundarstufe 2",
-            en: "Höhere Handelsschule"
-          )
-      }
-    }
-  ]
+  cover_letter: letter_and_email,
+  cover_email: letter_and_email
 }
 
 Repo.insert!(default_application)

@@ -35,9 +35,10 @@ defmodule Tmde.Accounts do
     |> Repo.get(id)
   end
 
-  def create_user(attributes) do
+  def create_user(attributes, cv_entries) do
     %JobSeeker{}
     |> JobSeeker.changeset(attributes)
+    |> Ecto.Changeset.put_assoc(:cv_entries, cv_entries)
     |> Repo.insert()
   end
 end

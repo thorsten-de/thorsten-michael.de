@@ -4,7 +4,7 @@ defmodule Tmde.Jobs.JobSeeker do
   """
   use Tmde, :schema
   alias Tmde.Contacts.{Contact, Link}
-  alias Tmde.Jobs.{Application, PersonalSkill}
+  alias Tmde.Jobs.{Application, PersonalSkill, CV}
 
   schema "job_seekers" do
     field :dob, :date
@@ -18,6 +18,7 @@ defmodule Tmde.Jobs.JobSeeker do
     translation_field(:slogan)
 
     has_many :skills, PersonalSkill
+    has_many :cv_entries, CV.Entry
     has_many :applications, Application
 
     field :username, :string
