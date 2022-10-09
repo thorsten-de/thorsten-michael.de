@@ -2,6 +2,9 @@
   <.form let={f} for={@changeset} as={:object}  phx-submit="save" phx-target={@myself}>
     <.card>
       <:header label={@header}>
+        <a href="#" class="card-header-icon" phx-click="add-translation" phx-target={@myself}>
+          <.label icon="add" />
+        </a>
         <a href="#" class="card-header-icon" phx-click="toggle-editor" phx-target={@myself}>
           <.label icon="edit" />
         </a>

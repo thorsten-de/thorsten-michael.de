@@ -18,7 +18,7 @@ defmodule TmdeWeb.Components.Content.TranslationEditor do
       |> assign(
         changeset: Content.change_translations(obj, field),
         types: Translation.all_content_types(),
-        languages: Gettext.known_locales(TmdeWeb.Gettext)
+        languages: Content.all_locales()
       )
 
     {:ok, socket}
@@ -60,6 +60,22 @@ defmodule TmdeWeb.Components.Content.TranslationEditor do
            edit?: false
          )
          |> assign_translations()}
+
+      {:error, changeset} ->
+        {:noreply, assign(socket, changeset: changeset)}
+    end
+  end
+
+  def handle_event("add-translation", _, %{assigns: %{obj: obj, field: field}} = socket) do
+    case Content.add_translation(obj, field, %{content: "Text"}) do
+      {:ok, obj} ->
+        {:noreply,
+         socket
+         |> assign(
+           obj: obj,
+           changeset: Content.change_translations(obj, field),
+           edit?: true
+         )}
 
       {:error, changeset} ->
         {:noreply, assign(socket, changeset: changeset)}

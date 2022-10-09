@@ -5,9 +5,19 @@ defmodule Tmde.Content do
 
   alias __MODULE__.Translation
 
+  def all_locales do
+    Gettext.known_locales(TmdeWeb.Gettext)
+  end
+
   def remove_translation(data, translation_field, id) do
     data
     |> Translation.remove_translation_changeset(translation_field, id)
+    |> Repo.update()
+  end
+
+  def add_translation(data, translation_field, params \\ %{}) do
+    data
+    |> Translation.add_translation_changeset(translation_field, params)
     |> Repo.update()
   end
 

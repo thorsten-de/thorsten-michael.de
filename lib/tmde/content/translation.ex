@@ -54,6 +54,16 @@ defmodule Tmde.Content.Translation do
     |> put_embed(translation_field, translations)
   end
 
+  def add_translation_changeset(data, translation_field, params) do
+    translations =
+      Map.get(data, translation_field, []) ++
+        [changeset(%Translation{}, params)]
+
+    data
+    |> change()
+    |> put_embed(translation_field, translations)
+  end
+
   def translations(translations \\ []) do
     translations
     |> Enum.map(fn
