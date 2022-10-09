@@ -19,7 +19,8 @@ defmodule TmdeWeb.Admin.ApplicationLive do
         application: application,
         changeset: Jobs.change_application(application),
         languages: Content.all_locales(),
-        generate_documents?: false
+        generate_documents?: false,
+        send_email?: false
       )
 
     {:ok, socket}
@@ -64,6 +65,11 @@ defmodule TmdeWeb.Admin.ApplicationLive do
     {:noreply, assign(socket, generate_documents?: true)}
   end
 
+  def handle_event("send-email", _, socket) do
+    send(self(), :send_email)
+    {:noreply, assign(socket, send_email?: true)}
+  end
+
   def handle_info(:generate_documents, socket) do
     application = socket.assigns.application
     documents = TmdeWeb.DocumentView.generate_documents(application)
@@ -78,5 +84,15 @@ defmodule TmdeWeb.Admin.ApplicationLive do
       end
 
     {:noreply, assign(socket, generate_documents?: false)}
+  end
+
+  def handle_info(:send_email, socket) do
+    application = socket.assigns.application
+
+    application
+    |> TmdeWeb.ApplicationMailer.send_application()
+    |> Tmde.Mailer.deliver()
+
+    {:noreply, assign(socket, send_email?: false)}
   end
 end

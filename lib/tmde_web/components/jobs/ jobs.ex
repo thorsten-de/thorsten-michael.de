@@ -131,7 +131,6 @@ defmodule TmdeWeb.Components.Jobs do
   end
 
   def document_list(assigns) do
-    IO.inspect(assigns)
     render("document_list.html", assigns)
   end
 end

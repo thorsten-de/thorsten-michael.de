@@ -37,3 +37,16 @@
     </.card>
   </.container>
 </.section>
+<.section>
+  <.container>
+    <.card>
+      <:header icon="envelope" label={gettext("Delivery")} />
+      <%= if @send_email? do %>
+        <progress class="progress is-primary" max="100">Sending Email</progress>
+      <% else %>
+        <.button color="link" icon="paper-plane" click="send-email"
+          label={gettext("Send to %{email}", email: @application.contact.email)} />
+      <% end %>
+    </.card>
+  </.container>
+</.section>

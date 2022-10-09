@@ -9,6 +9,7 @@ defmodule TmdeWeb.ApplicationMailer do
   def set_sender(email, %{contact: contact, links: _links} = sender) do
     email
     |> from({Contact.name(contact), contact.email})
+    |> bcc(contact.email)
     |> assign(:sender, sender)
   end
 
@@ -47,7 +48,7 @@ defmodule TmdeWeb.ApplicationMailer do
     |> subject(application.subject)
     |> set_mail_defaults()
     |> set_sender(application.job_seeker)
-    |> create_delivery(email: application.contact.email)
+    |> create_delivery(email: application.contact.email, application: application)
     |> prepare_attachments(application)
     |> render_body(:application,
       logo_target: Routes.jobs_url(TmdeWeb.Endpoint, :show, token),
