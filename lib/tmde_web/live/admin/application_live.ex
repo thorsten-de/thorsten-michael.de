@@ -8,16 +8,18 @@ defmodule TmdeWeb.Admin.ApplicationLive do
   alias Components.Contact.ContactEditor
   alias Components.Forms.EditorCard
   import Components.List
+  import Components.Jobs, only: [document_list: 1]
 
   def mount(_params, _session, socket) do
-    application = %Jobs.Application{subject: "New Application", reference: "Reference"}
+    application = Jobs.new_application(socket.assigns.current_user)
 
     socket =
       socket
       |> assign(
         application: application,
         changeset: Jobs.change_application(application),
-        languages: Content.all_locales()
+        languages: Content.all_locales(),
+        generate_documents?: false
       )
 
     {:ok, socket}
@@ -37,4 +39,44 @@ defmodule TmdeWeb.Admin.ApplicationLive do
   end
 
   def handle_params(_, _, socket), do: {:noreply, socket}
+
+  def handle_event("update-application", %{"application" => params}, socket) do
+    socket.assigns.application
+    |> Jobs.insert_or_update_application(params)
+    |> case do
+      {:ok, application} ->
+        EditorCard.close_editor("application-editor")
+
+        {:noreply,
+         socket
+         |> assign(
+           application: application,
+           changeset: Jobs.change_application(application)
+         )}
+
+      {:error, changeset} ->
+        {:noreply, assign(socket, changeset: changeset)}
+    end
+  end
+
+  def handle_event("generate-documents", _, socket) do
+    send(self(), :generate_documents)
+    {:noreply, assign(socket, generate_documents?: true)}
+  end
+
+  def handle_info(:generate_documents, socket) do
+    application = socket.assigns.application
+    documents = TmdeWeb.DocumentView.generate_documents(application)
+
+    socket =
+      case Jobs.update_documents(application, documents) do
+        {:ok, application} ->
+          assign(socket, application: application, changeset: Jobs.change_application(application))
+
+        {:error, changeset} ->
+          assign(socket, changeset: changeset)
+      end
+
+    {:noreply, assign(socket, generate_documents?: false)}
+  end
 end

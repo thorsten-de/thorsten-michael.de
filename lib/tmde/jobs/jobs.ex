@@ -3,9 +3,12 @@ defmodule Tmde.Jobs do
   Context for applications and jobs
   """
   alias Tmde.Jobs.{Application, Skill, JobSeeker, Delivery, CV, PersonalSkill}
+  alias Tmde.Contacts.Contact
   alias Tmde.Repo
   import Ecto.Query
   import Ecto
+
+  import TmdeWeb.Gettext
 
   def get_application!(id) do
     if function_exported?(Private, :get_application, 0) do
@@ -28,6 +31,28 @@ defmodule Tmde.Jobs do
   def change_application(application, params \\ %{}) do
     application
     |> Application.changeset(params)
+  end
+
+  def insert_or_update_application(application, params) do
+    application
+    |> change_application(params)
+    |> Repo.insert_or_update()
+  end
+
+  def new_application(job_seeker, params \\ %{}) do
+    Application
+    |> struct!(
+      Map.merge(
+        %{
+          job_seeker: job_seeker,
+          subject: gettext("New application"),
+          reference: gettext("Reference"),
+          company: gettext("Company"),
+          contact: %Contact{}
+        },
+        params
+      )
+    )
   end
 
   def job_seeker_applications(job_seeker) do

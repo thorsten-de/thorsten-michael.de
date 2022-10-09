@@ -142,4 +142,9 @@ defmodule TmdeWeb.Components.Jobs do
   def qr_code(assigns) do
     render("qr_code.html", assigns)
   end
+
+  def document_list(assigns) do
+    IO.inspect(assigns)
+    render("document_list.html", assigns)
+  end
 end

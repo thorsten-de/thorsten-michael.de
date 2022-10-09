@@ -1,0 +1,7 @@
+<ul>
+  <%= for document <- @documents do %>
+    <li>
+      <.label icon="file" label={document.label} />
+    </li>
+  <% end %>
+</ul>

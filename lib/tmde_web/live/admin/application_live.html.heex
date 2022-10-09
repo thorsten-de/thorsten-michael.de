@@ -21,3 +21,19 @@
     <% end %>
   </.container>
 </.section>
+<.section>
+  <.container>
+    <.card>
+      <:header icon="file" label={gettext("Documents")}>
+        <a href="#" class="card-header-icon" phx-click="generate-documents" title={gettext("Generate documents")}>
+          <.label icon="refresh" />
+        </a>
+      </:header>
+      <%= if @generate_documents? do %>
+        <progress class="progress is-primary" max="100">Generating documents</progress>
+      <% else %>        
+        <.document_list documents={@application.documents} />
+      <% end %>
+    </.card>
+  </.container>
+</.section>
