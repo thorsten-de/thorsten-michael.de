@@ -8,7 +8,7 @@ defmodule TmdeWeb.JobsLive do
   import TmdeWeb.Components.{ContactComponents, ContentComponents}
   import TmdeWeb.DocumentView, only: [document_filepath: 2]
 
-  def mount(%{"token" => token}, session, socket) do
+  def mount(%{"token" => token}, _session, socket) do
     with {:ok, id} <- Jobs.Application.token_to_id(token),
          %Jobs.Application{} = application <- Jobs.get_application!(id) do
       unless connected?(socket),
