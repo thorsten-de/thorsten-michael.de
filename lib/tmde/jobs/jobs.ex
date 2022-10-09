@@ -25,6 +25,11 @@ defmodule Tmde.Jobs do
     end
   end
 
+  def change_application(application, params \\ %{}) do
+    application
+    |> Application.changeset(params)
+  end
+
   def job_seeker_applications(job_seeker) do
     from(a in assoc(job_seeker, :applications), order_by: [desc: a.inserted_at])
     |> Repo.all()

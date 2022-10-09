@@ -2,10 +2,22 @@
   <.container>
     <.title label={@application.subject} />
     <.subtitle label={@application.reference} />
-
-    <.live_component module={TranslationEditor} obj={@application} field={:cover_letter} header={gettext("Cover letter")} id="letter_editor" />
-    <div class="block">
-      <.live_component module={TranslationEditor} obj={@application} field={:cover_email} header={gettext("Cover email")} id="email_editor" />
-    </div>
+    <.form let={f} for={@changeset} phx-submit="update-application" >
+      <.live_component module={EditorCard} header={gettext("Application data")} id="application-editor" edit?={@live_action == :new}>
+        <.property_list data={Map.take(@application, [:company, :short_reference, :locale])} />
+        <:editor>
+          <.field form={f} name={:locale} input={:select} options={@languages})} />
+          <.field form={f} name={:subject} label={gettext("Subject")} input={:text_input} />
+          <.field form={f} name={:company} label={gettext("Company")} input={:text_input} />
+          <.field form={f} name={:reference} label={gettext("Referece")} input={:text_input} />
+          <.field form={f} name={:short_reference} label={gettext("Short reference")} input={:text_input} />
+        </:editor>
+      </.live_component>
+    </.form>
+    <%= if (@live_action != :new) do %>
+    <.live_component module={ContactEditor} obj={@application} field={:contact} header={gettext("Contact data")} id="content-editor" />
+    <.live_component module={TranslationEditor} obj={@application} field={:cover_letter} header={gettext("Cover letter")} id="letter-editor" />
+    <.live_component module={TranslationEditor} obj={@application} field={:cover_email} header={gettext("Cover email")} id="email-editor" />
+    <% end %>
   </.container>
 </.section>

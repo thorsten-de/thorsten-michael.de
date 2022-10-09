@@ -49,4 +49,12 @@ defmodule Tmde.Jobs.Application do
       {:ok, id}
     end
   end
+
+  def changeset(application, params) do
+    application
+    |> cast(params, [:subject, :reference, :short_reference, :company, :locale])
+    |> validate_required([:subject, :company, :locale])
+    |> cast_embed(:cover_email)
+    |> cast_embed(:cover_letter)
+  end
 end
