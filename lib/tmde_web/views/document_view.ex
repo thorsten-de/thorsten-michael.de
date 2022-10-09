@@ -152,29 +152,32 @@ defmodule TmdeWeb.DocumentView do
   def generate_documents(%Tmde.Jobs.Application{id: uuid} = application) do
     ensure_path_exists!([uuid])
 
-    {:ok, cv_file, _hmtl} =
-      generate_cv(
-        application,
-        document_filepath([application.id], "CV.pdf")
-      )
+    documents =
+      Gettext.with_locale(TmdeWeb.Gettext, application.locale, fn ->
+        {:ok, cv_file, _hmtl} =
+          generate_cv(
+            application,
+            document_filepath([application.id], "CV.pdf")
+          )
 
-    documents = [
-      %{slug: "cv", label: gettext("CV"), filename: cv_file}
-      | default_documents()
-    ]
+        documents = [
+          %{slug: "cv", label: gettext("CV"), filename: cv_file}
+          | default_documents()
+        ]
 
-    {:ok, letter_file, _html} =
-      generate_cover_letter(
-        application,
-        document_filepath([uuid], "cover_letter.pdf"),
-        qr_code: true,
-        attachments: Enum.map(documents, & &1.label)
-      )
+        {:ok, letter_file, _html} =
+          generate_cover_letter(
+            application,
+            document_filepath([uuid], "cover_letter.pdf"),
+            qr_code: true,
+            attachments: Enum.map(documents, & &1.label)
+          )
 
-    documents = [
-      %{slug: "anschreiben", label: gettext("Cover Letter"), filename: letter_file}
-      | documents
-    ]
+        [
+          %{slug: "anschreiben", label: gettext("Cover Letter"), filename: letter_file}
+          | documents
+        ]
+      end)
 
     portfolio_file = document_filepath([uuid], "portfolio.pdf")
     System.cmd("pdfunite", Enum.map(documents, & &1.filename) ++ [portfolio_file])

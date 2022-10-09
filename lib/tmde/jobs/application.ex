@@ -12,7 +12,7 @@ defmodule Tmde.Jobs.Application do
     field :reference, :string
     field :short_reference, :string
     field :company, :string
-    field :locale, Ecto.Enum, values: [:de, :en], default: :de
+    field :locale, :string, default: "de"
     embeds_one :contact, Contact
     translation_field(:cover_letter)
     translation_field(:cover_email)
