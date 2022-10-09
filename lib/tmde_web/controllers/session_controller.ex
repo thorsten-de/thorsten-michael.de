@@ -13,7 +13,7 @@ defmodule TmdeWeb.SessionController do
         conn
         |> Auth.login(user)
         |> put_flash(:info, gettext("Welcome back, %{username}!", username: username))
-        |> redirect(to: Routes.profile_path(conn, :edit))
+        |> redirect(to: Routes.profile_path(conn, :index))
 
       {:error, _reason} ->
         conn
