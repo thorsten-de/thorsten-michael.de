@@ -14,7 +14,7 @@ defmodule TmdeWeb.JobsLive do
       unless connected?(socket),
         do:
           Jobs.log_event!(application, "APPLICATION_VISITED", %{
-            locale: socket.assigns.locale,
+            locale: socket.assigns[:locale],
             token: token
           })
 
