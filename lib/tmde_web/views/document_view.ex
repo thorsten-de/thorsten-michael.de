@@ -110,6 +110,13 @@ defmodule TmdeWeb.DocumentView do
     )
   end
 
+  @spec ensure_path_exists!([
+          binary
+          | maybe_improper_list(
+              binary | maybe_improper_list(any, binary | []) | char,
+              binary | []
+            )
+        ]) :: nil | :ok
   def ensure_path_exists!(path) do
     path = document_path(path)
 

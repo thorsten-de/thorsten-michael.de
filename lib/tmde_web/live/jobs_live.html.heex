@@ -1,5 +1,23 @@
 <section class="section">
   <.container>
-    <.cv application={@application} />
+    <.columns class="is-variable is-8">
+      <.column>
+        <div class="letter-section">
+          <.title class="mb-5" label={@application.subject}  />
+          <.subtitle class="mb-5" label={@application.reference}  />
+        </div>
+        <.content>
+          <.greeting contact={@application.contact} />
+          <%= translate(@application.cover_letter) %>
+          <.ending />
+          <.signature sender={@application.job_seeker.contact} file_path={document_filepath(["common"], "signature.png")} />
+
+        </.content>
+        <.cv application={@application} />        
+      </.column>
+      <.column width="3">
+        <CV.sidebar {assigns} /> 
+      </.column>
+    </.columns>
   </.container>
 </section>

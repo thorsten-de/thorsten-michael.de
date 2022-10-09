@@ -1,0 +1,38 @@
+<figure class="image my-5">
+  <picture>
+    <source srcset="/images/logos/tmd-slogan-960.webp" type="image/webp">
+    <img src="/images/logos/tmd-slogan-960.png" alt="Thorsten-Michael Deinert (Logo)" width="960" height="380">
+  </picture>
+</figure>
+
+<figure class="image m-5">
+  <picture>
+    <source srcset="/images/myself/profile.webp" type="image/webp">
+    <img class="is-rounded" src="/images/myself/profile.png" />
+  </picture>
+</figure>
+
+<p class="my-5 has-text-centered"><em><%= translate(@myself.slogan) %></em></p>
+<CV.panel text="left">
+  <p class="my-1"><%= gettext("Born %{date} in %{place}", date: Calendar.strftime(@myself.dob, "%d.%0m.%Y"), place: @myself.place_of_birth) %></p>
+  <p class="my-1"><%= gettext("Citizenship: %{citizenship}", citizenship: @myself.citizenship) %></p>
+
+  <p class="my-3">      
+    <.label icon="home" label={@myself.contact.address} />
+  </p>
+  <p>
+    <%= for l <- @myself.links do %>
+      <%= link ContactLink.build_link_options(l) |> Keyword.merge(class: "is-block my-1") do %>
+        <.label {ContactLink.type_to_icon(l)} label={l} />
+      <% end %>
+    <% end %>
+  </p>
+</CV.panel>
+
+<%= for {category, skills} <- @featured_skillsets do %>
+  <.featured_skillset category={category} skills={skills} />
+<% end %>
+
+<%= for {category, skills} <- @skillsets do %>
+  <.skillset category={category} skills={skills} />
+<% end %>
