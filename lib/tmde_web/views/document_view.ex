@@ -76,7 +76,8 @@ defmodule TmdeWeb.DocumentView do
   end
 
   def generate_cover_letter(application, filename, opts \\ []) do
-    qr_code = if opts[:qr_code], do: build_qr_code(application)
+    token = Tmde.Jobs.Application.sign_token(application)
+    qr_code = if opts[:qr_code], do: build_qr_code(token)
 
     render_pdf(
       "cover_letter.html",
@@ -104,19 +105,12 @@ defmodule TmdeWeb.DocumentView do
       assigns: [
         application: application,
         qr_code: qr_code,
-        token: Tmde.Jobs.Application.sign_token(application),
+        token: token,
         attachments: opts[:attachments] || []
       ]
     )
   end
 
-  @spec ensure_path_exists!([
-          binary
-          | maybe_improper_list(
-              binary | maybe_improper_list(any, binary | []) | char,
-              binary | []
-            )
-        ]) :: nil | :ok
   def ensure_path_exists!(path) do
     path = document_path(path)
 
@@ -198,10 +192,10 @@ defmodule TmdeWeb.DocumentView do
   # Generate QR-Code and assign it to the socket. Only needed in print layout
   @settings %QRCode.SvgSettings{qrcode_color: {54, 54, 54}}
 
-  defp build_qr_code(application) do
+  defp build_qr_code(token) do
     with {:ok, code} <-
            TmdeWeb.Endpoint
-           |> Routes.jobs_url(:show, application)
+           |> Routes.jobs_url(:show, token)
            |> QRCode.create(:low),
          svg_data <- QRCode.Svg.to_base64(code, @settings) do
       svg_data
