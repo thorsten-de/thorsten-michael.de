@@ -3,8 +3,8 @@
     <.columns class="is-variable is-8">
       <.column>
         <div class="letter-section">
-          <.title class="mb-5" label={@application.subject}  />
-          <.subtitle class="mb-5" label={@application.reference}  />
+          <.title class="mb-5" label={translate(@application.subject)}  />
+          <.subtitle class="mb-5" label={translate(@application.reference)}  />
         </div>
         <.content>
           <.greeting contact={@application.contact} />

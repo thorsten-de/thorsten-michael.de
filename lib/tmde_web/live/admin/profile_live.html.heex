@@ -27,7 +27,9 @@
       <:column let={%{item: item}} header={gettext("Company")} >
         <%= link item.company || "Nicht angegeben", to: Routes.application_path(@socket, :show, item)  %>
       </:column>
-      <:column field={:subject} header={gettext("Subject")} /> 
+      <:column field={:subject} header={gettext("Subject")} let={%{field: subject}}> 
+        <.label label={translate(subject)} />
+      </:column>
       <:column field={:locale} header={gettext("Language")} /> 
       <:column field={:contact} header={gettext("Contact")} icon="user"/> 
       <:column let={%{field: contact}} field={:contact} header={gettext("E-mail")} abbr="EM" icon="envelope">

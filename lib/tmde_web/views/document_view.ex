@@ -4,7 +4,7 @@ defmodule TmdeWeb.DocumentView do
   alias TmdeWeb.LayoutView
   alias TmdeWeb.Components.{Jobs}
 
-  import TmdeWeb.Components.{ContactComponents, ContentComponents}
+  import TmdeWeb.Components.{ContactComponents}
   import TmdeWeb.Components.Jobs, only: [qr_code: 1]
   import TmdeWeb.ComponentHelpers
   alias Tmde.Contacts.Link, as: ContactLink
