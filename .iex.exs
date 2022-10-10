@@ -28,7 +28,7 @@ end
 
 alias Tmde.Repo
 alias Tmde.Jobs
-[%{id: application_id}] = Repo.all(Jobs.Application)
+[%{id: application_id} | _] = Repo.all(Jobs.Application)
 
 a = Jobs.get_application!(application_id)
 # TmdeWeb.DocumentView.generate_documents(a)

@@ -45,8 +45,6 @@ defmodule Tmde.Jobs do
       Map.merge(
         %{
           job_seeker: job_seeker,
-          subject: gettext("New application"),
-          reference: gettext("Reference"),
           company: gettext("Company"),
           contact: %Contact{}
         },

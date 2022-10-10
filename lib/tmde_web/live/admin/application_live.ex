@@ -56,7 +56,8 @@ defmodule TmdeWeb.Admin.ApplicationLive do
          )}
 
       {:error, changeset} ->
-        {:noreply, assign(socket, changeset: changeset)}
+        {:noreply,
+         assign(socket, changeset: changeset |> IO.inspect(label: "UPDATE APPLICATION ERROR"))}
     end
   end
 
