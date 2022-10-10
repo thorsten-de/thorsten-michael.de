@@ -185,7 +185,7 @@ msgstr ""
 msgid "P.S. For this application I have created a dedicated section on my website:"
 msgstr ""
 
-#: lib/tmde_web/mailer/application_mailer.ex:67
+#: lib/tmde_web/mailer/application_mailer.ex:71
 #, elixir-autogen, elixir-format
 msgid "%{sender} - application documents for %{reference}"
 msgstr ""
@@ -259,7 +259,7 @@ msgstr ""
 
 #: lib/tmde_web/components/forms/translation_form.html.heex:2
 #: lib/tmde_web/components/navigation/navbar.html.heex:14
-#: lib/tmde_web/live/admin/profile_live.html.heex:30
+#: lib/tmde_web/live/admin/profile_live.html.heex:31
 #, elixir-autogen, elixir-format, fuzzy
 msgid "Language"
 msgstr ""
@@ -279,7 +279,7 @@ msgstr ""
 msgid "CV"
 msgstr ""
 
-#: lib/tmde_web/views/document_view.ex:178
+#: lib/tmde_web/views/document_view.ex:184
 #, elixir-autogen, elixir-format
 msgid "Cover Letter"
 msgstr ""
@@ -294,7 +294,8 @@ msgstr ""
 msgid "Graduation diploma"
 msgstr ""
 
-#: lib/tmde_web/views/document_view.ex:187
+#: lib/tmde_web/views/document_view.ex:190
+#: lib/tmde_web/views/document_view.ex:195
 #, elixir-autogen, elixir-format
 msgid "Portfolio"
 msgstr ""
@@ -345,7 +346,7 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: lib/tmde_web/live/admin/profile_live.html.heex:32
+#: lib/tmde_web/live/admin/profile_live.html.heex:33
 #, elixir-autogen, elixir-format, fuzzy
 msgid "E-mail"
 msgstr "E-Mail"
@@ -441,18 +442,18 @@ msgid "zip code"
 msgstr "Postal code"
 
 #: lib/tmde/jobs/jobs.ex:50
-#: lib/tmde_web/live/admin/application_live.html.heex:11
+#: lib/tmde_web/live/admin/application_live.html.heex:10
 #: lib/tmde_web/live/admin/profile_live.html.heex:26
 #, elixir-autogen, elixir-format
 msgid "Company"
 msgstr ""
 
-#: lib/tmde_web/live/admin/profile_live.html.heex:31
+#: lib/tmde_web/live/admin/profile_live.html.heex:32
 #, elixir-autogen, elixir-format, fuzzy
 msgid "Contact"
 msgstr ""
 
-#: lib/tmde_web/live/admin/application_live.html.heex:10
+#: lib/tmde_web/live/admin/application_live.html.heex:17
 #: lib/tmde_web/live/admin/profile_live.html.heex:29
 #, elixir-autogen, elixir-format
 msgid "Subject"
@@ -481,6 +482,8 @@ msgid "Slogan"
 msgstr ""
 
 #: lib/tmde_web/components/jobs/qr_code.html.heex:6
+#: lib/tmde_web/templates/application_mailer/application.html.heex:21
+#: lib/tmde_web/templates/application_mailer/application.text.eex:15
 #, elixir-autogen, elixir-format
 msgid "(Auch auf Deutsch)"
 msgstr "(auch auf Deutsch verfügbar)"
@@ -490,7 +493,7 @@ msgstr "(auch auf Deutsch verfügbar)"
 msgid "Application data"
 msgstr ""
 
-#: lib/tmde_web/live/admin/application_live.html.heex:18
+#: lib/tmde_web/live/admin/application_live.html.heex:16
 #, elixir-autogen, elixir-format, fuzzy
 msgid "Contact data"
 msgstr ""
@@ -511,6 +514,7 @@ msgid "Delivery"
 msgstr ""
 
 #: lib/tmde_web/live/admin/application_live.html.heex:27
+#: lib/tmde_web/live/jobs_live.html.heex:21
 #, elixir-autogen, elixir-format
 msgid "Documents"
 msgstr ""
@@ -532,7 +536,7 @@ msgid "New application"
 msgstr ""
 
 #: lib/tmde/jobs/jobs.ex:49
-#: lib/tmde_web/live/admin/application_live.html.heex:12
+#: lib/tmde_web/live/admin/application_live.html.heex:18
 #, elixir-autogen, elixir-format
 msgid "Reference"
 msgstr ""
@@ -542,7 +546,12 @@ msgstr ""
 msgid "Send to %{email}"
 msgstr ""
 
-#: lib/tmde_web/live/admin/application_live.html.heex:13
+#: lib/tmde_web/live/admin/application_live.html.heex:11
 #, elixir-autogen, elixir-format
 msgid "Short reference"
+msgstr ""
+
+#: lib/tmde_web/components/jobs/document_list.html.heex:4
+#, elixir-autogen, elixir-format
+msgid "Download %{title}"
 msgstr ""

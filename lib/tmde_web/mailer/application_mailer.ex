@@ -70,7 +70,7 @@ defmodule TmdeWeb.ApplicationMailer do
         filename:
           gettext("%{sender} - application documents for %{reference}",
             sender: email.assigns.sender.contact,
-            reference: application.short_reference
+            reference: application[:short_reference]
           ) <> ".pdf"
       )
     )

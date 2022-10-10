@@ -63,7 +63,7 @@ defmodule TmdeWeb.DocumentView do
           author: "Thorsten-Michael Deinert",
           creator: "Bewerbungen auf thorsten-michael.de via ChromicPDF",
           title: "CV Thorsten-Michael Deinert",
-          subject: "Bewerbungsunterlagen: Elixir-Developer",
+          subject: "CV Thorsten-Michael Deinert",
           keywords: "CV, Lebenslauf",
           creation_date: Timex.now()
         }
@@ -96,9 +96,9 @@ defmodule TmdeWeb.DocumentView do
         info: %{
           author: "Thorsten-Michael Deinert",
           creator: "Bewerbungen auf thorsten-michael.de via ChromicPDF",
-          title: "CV Thorsten-Michael Deinert",
-          subject: "Bewerbungsunterlagen: Elixir-Developer",
-          keywords: "CV, Lebenslauf",
+          title: opts[:subject] || "Bewerbung von Thorsten-Michael Deinert",
+          subject: opts[:subject] || "Bewerbung von Thorsten-Michael Deinert",
+          keywords: "Anschreiben, Cover letter",
           creation_date: Timex.now()
         }
       ],
@@ -135,17 +135,17 @@ defmodule TmdeWeb.DocumentView do
         slug: "arbeitszeugnis-barbara-reisen",
         label: gettext("Reference %{company_name}", company_name: "Barbara Reisen"),
         filename:
-          document_filepath(["common"], "Arbeitszeugnis_Barbara-Reisen_Thorsten_Deinert.pdf")
+          document_filepath(["common"], "Arbeitszeugnis Barbara Reisen Thorsten Deinert.pdf")
       },
       %{
         slug: "diplomzeugnis",
         label: gettext("Diploma certificate"),
-        filename: document_filepath(["common"], "Diplomzeugnis_Thorsten_Deinert.pdf")
+        filename: document_filepath(["common"], "Diplomzeugnis Thorsten Deinert.pdf")
       },
       %{
         slug: "abiturzeugnis",
         label: gettext("Graduation diploma"),
-        filename: document_filepath(["common"], "Abiturzeugnis_Thorsten_Deinert.pdf")
+        filename: document_filepath(["common"], "Abiturzeugnis Thorsten Deinert.pdf")
       }
     ]
   end
@@ -158,7 +158,7 @@ defmodule TmdeWeb.DocumentView do
         {:ok, cv_file, _hmtl} =
           generate_cv(
             application,
-            document_filepath([application.id], "CV.pdf")
+            document_filepath([application.id], "CV #{application.job_seeker.contact}.pdf")
           )
 
         documents = [
@@ -166,11 +166,17 @@ defmodule TmdeWeb.DocumentView do
           | default_documents()
         ]
 
+        title = "#{application.job_seeker.contact} - #{translate(application.subject)}"
+
         {:ok, letter_file, _html} =
           generate_cover_letter(
             application,
-            document_filepath([uuid], "cover_letter.pdf"),
+            document_filepath(
+              [uuid],
+              "#{title}.pdf"
+            ),
             qr_code: true,
+            subject: title,
             attachments: Enum.map(documents, & &1.label)
           )
 
@@ -180,7 +186,9 @@ defmodule TmdeWeb.DocumentView do
         ]
       end)
 
-    portfolio_file = document_filepath([uuid], "portfolio.pdf")
+    portfolio_file =
+      document_filepath([uuid], "#{gettext("Portfolio")} #{application.job_seeker.contact}.pdf")
+
     System.cmd("pdfunite", Enum.map(documents, & &1.filename) ++ [portfolio_file])
 
     [

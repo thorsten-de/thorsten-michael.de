@@ -20,7 +20,7 @@ defmodule TmdeWeb.JobsLive do
 
       socket =
         socket
-        |> assign(application: application)
+        |> assign(application: application, token: token)
 
       {:ok, socket}
     else

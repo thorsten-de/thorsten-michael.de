@@ -32,7 +32,7 @@
       <%= if @generate_documents? do %>
         <progress class="progress is-primary" max="100">Generating documents</progress>
       <% else %>        
-        <.document_list documents={@application.documents} />
+        <.document_list documents={@application.documents} url_for={fn document -> Routes.document_preview_path(TmdeWeb.Endpoint, :download_document, @application, document.slug) end}/>
       <% end %>
     </.card>
   </.container>
