@@ -1,5 +1,6 @@
 defmodule TmdeWeb.ErrorView do
   use TmdeWeb, :view
+  alias TmdeWeb.Components.Navigation
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.
