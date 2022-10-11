@@ -34,7 +34,7 @@ defmodule TmdeWeb.JobsLive do
     with %Jobs.Application{} = application <- Jobs.get_application!(id) do
       socket =
         socket
-        |> assign(application: application)
+        |> assign(application: application, token: application)
 
       {:ok, socket}
     else
