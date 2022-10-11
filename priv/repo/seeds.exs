@@ -630,8 +630,8 @@ letter_and_email =
 default_application = %Application{
   job_seeker: myself,
   company: "Company",
-  subject: "Bewerbung als Software-Entwickler",
-  reference: "Software Entwickler C# / .NET (m/w/d)",
+  subject: translations(de: "Bewerbung als Software-Entwickler"),
+  reference: translations(de: "Software Entwickler C# / .NET (m/w/d)"),
   short_reference: "als Software-Entwickler",
   contact: %Contact{
     gender: :male,
