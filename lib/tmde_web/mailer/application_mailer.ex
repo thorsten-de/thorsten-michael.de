@@ -45,18 +45,19 @@ defmodule TmdeWeb.ApplicationMailer do
     token = Tmde.Jobs.Application.sign_token(application)
 
     Gettext.with_locale(TmdeWeb.Gettext, application.locale, fn ->
-      new()
-      |> to({Contact.name(application.contact), application.contact.email})
-      |> subject(application.subject |> translate |> to_string())
-      |> set_mail_defaults()
-      |> set_sender(application.job_seeker)
-      |> assign(:locale, application.locale)
-      |> create_delivery(email: application.contact.email, application: application)
-      |> prepare_attachments(application)
-      |> render_body(:application,
-        logo_target: Routes.jobs_url(TmdeWeb.Endpoint, :show, token),
-        application: application
-      )
+      email =
+        new()
+        |> to({Contact.name(application.contact), application.contact.email})
+        |> subject(application.subject |> translate |> to_string())
+        |> set_mail_defaults()
+        |> set_sender(application.job_seeker)
+        |> assign(:locale, application.locale)
+        |> create_delivery(email: application.contact.email, application: application)
+        |> prepare_attachments(application)
+        |> render_body(:application,
+          logo_target: Routes.jobs_url(TmdeWeb.Endpoint, :show, token),
+          application: application
+        )
     end)
   end
 
@@ -70,7 +71,7 @@ defmodule TmdeWeb.ApplicationMailer do
         filename:
           gettext("%{sender} - application documents for %{reference}",
             sender: email.assigns.sender.contact,
-            reference: application[:short_reference]
+            reference: application.short_reference
           ) <> ".pdf"
       )
     )
