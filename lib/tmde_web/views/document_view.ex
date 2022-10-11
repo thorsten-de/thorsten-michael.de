@@ -86,10 +86,10 @@ defmodule TmdeWeb.DocumentView do
         print_to_pdf: %{
           paperWidth: mm(210),
           paperHeight: mm(297),
-          marginLeft: mm(25),
-          marginTop: mm(20),
+          marginLeft: mm(20),
+          marginTop: mm(10),
           marginRight: mm(20),
-          marginBottom: mm(20),
+          marginBottom: mm(0),
           printBackground: true,
           pageRanges: "1"
         },
