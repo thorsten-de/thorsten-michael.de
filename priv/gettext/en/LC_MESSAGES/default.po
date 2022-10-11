@@ -68,12 +68,12 @@ msgstr ""
 msgid "Your current session information"
 msgstr ""
 
-#: lib/tmde_web/templates/error/404.html.eex:8
+#: lib/tmde_web/templates/error/404.html.heex:8
 #, elixir-autogen, elixir-format
 msgid "Page not found"
 msgstr ""
 
-#: lib/tmde_web/templates/error/404.html.eex:35
+#: lib/tmde_web/templates/error/404.html.heex:35
 #, elixir-autogen, elixir-format
 msgid "Sorry, the page does not exist."
 msgstr ""
@@ -183,9 +183,9 @@ msgstr ""
 #: lib/tmde_web/templates/application_mailer/application.text.eex:13
 #, elixir-autogen, elixir-format
 msgid "P.S. For this application I have created a dedicated section on my website:"
-msgstr ""
+msgstr "P.S. "
 
-#: lib/tmde_web/mailer/application_mailer.ex:71
+#: lib/tmde_web/mailer/application_mailer.ex:72
 #, elixir-autogen, elixir-format
 msgid "%{sender} - application documents for %{reference}"
 msgstr ""
@@ -247,9 +247,9 @@ msgstr ""
 msgid "until %{date}"
 msgstr ""
 
-#: lib/tmde_web/components/jobs/qr_code.html.heex:4
+#: lib/tmde_web/templates/application_mailer/application.html.heex:19
 #, elixir-autogen, elixir-format
-msgid "View this application online:"
+msgid "View this application online"
 msgstr ""
 
 #: lib/tmde_web/components/navigation/navbar.html.heex:4
@@ -441,7 +441,7 @@ msgstr ""
 msgid "zip code"
 msgstr "Postal code"
 
-#: lib/tmde/jobs/jobs.ex:50
+#: lib/tmde/jobs/jobs.ex:48
 #: lib/tmde_web/live/admin/application_live.html.heex:10
 #: lib/tmde_web/live/admin/profile_live.html.heex:26
 #, elixir-autogen, elixir-format
@@ -529,13 +529,11 @@ msgstr ""
 msgid "My Profile"
 msgstr ""
 
-#: lib/tmde/jobs/jobs.ex:48
 #: lib/tmde_web/live/admin/profile_live.html.heex:21
 #, elixir-autogen, elixir-format
 msgid "New application"
 msgstr ""
 
-#: lib/tmde/jobs/jobs.ex:49
 #: lib/tmde_web/live/admin/application_live.html.heex:18
 #, elixir-autogen, elixir-format
 msgid "Reference"
@@ -554,4 +552,9 @@ msgstr ""
 #: lib/tmde_web/components/jobs/document_list.html.heex:4
 #, elixir-autogen, elixir-format
 msgid "Download %{title}"
+msgstr ""
+
+#: lib/tmde_web/components/jobs/qr_code.html.heex:4
+#, elixir-autogen, elixir-format, fuzzy
+msgid "View this application online:"
 msgstr ""

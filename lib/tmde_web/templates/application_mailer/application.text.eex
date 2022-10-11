@@ -6,10 +6,10 @@
 
 <%= @sender.contact %>
 
+
 <%= gettext("Attachments:") %>
 <%= for %{label: name} <- @attachments do %> - <%= name %>
 <% end %>
-
-<%= gettext("P.S. For this application I have created a dedicated section on my website:") %>
+<%= gettext("P.S. For this application I have created a dedicated section on my website:") %><%= gettext("View this application online:") %>
 <%= @logo_target %>
 <%= gettext("(Auch auf Deutsch)") %>

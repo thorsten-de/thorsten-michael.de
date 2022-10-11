@@ -68,12 +68,12 @@ msgstr "Ihre übermittelten Cookies"
 msgid "Your current session information"
 msgstr "Informationen in Ihrer Session"
 
-#: lib/tmde_web/templates/error/404.html.eex:8
+#: lib/tmde_web/templates/error/404.html.heex:8
 #, elixir-autogen, elixir-format
 msgid "Page not found"
 msgstr "Seite nicht gefunden"
 
-#: lib/tmde_web/templates/error/404.html.eex:35
+#: lib/tmde_web/templates/error/404.html.heex:35
 #, elixir-autogen, elixir-format
 msgid "Sorry, the page does not exist."
 msgstr "Es tut mir leid, die Seite gibt es nicht."
@@ -183,9 +183,9 @@ msgstr "Anlagen:"
 #: lib/tmde_web/templates/application_mailer/application.text.eex:13
 #, elixir-autogen, elixir-format
 msgid "P.S. For this application I have created a dedicated section on my website:"
-msgstr "PS: Für diese Bewerbung habe ich auf meiner Webseite einen eigenen Bereich angelegt:"
+msgstr "PS: "
 
-#: lib/tmde_web/mailer/application_mailer.ex:71
+#: lib/tmde_web/mailer/application_mailer.ex:72
 #, elixir-autogen, elixir-format
 msgid "%{sender} - application documents for %{reference}"
 msgstr "Bewerbung %{sender}%{reference}"
@@ -247,10 +247,10 @@ msgstr ""
 msgid "until %{date}"
 msgstr "bis %{date}"
 
-#: lib/tmde_web/components/jobs/qr_code.html.heex:4
+#: lib/tmde_web/templates/application_mailer/application.html.heex:19
 #, elixir-autogen, elixir-format
-msgid "View this application online:"
-msgstr "Diese Bewerbung auf meiner Webseite lesen:"
+msgid "View this application online"
+msgstr "Diese Bewerbung auf meiner Webseite lesen"
 
 #: lib/tmde_web/components/navigation/navbar.html.heex:4
 #, elixir-autogen, elixir-format
@@ -441,7 +441,7 @@ msgstr "Titel"
 msgid "zip code"
 msgstr "PLZ"
 
-#: lib/tmde/jobs/jobs.ex:50
+#: lib/tmde/jobs/jobs.ex:48
 #: lib/tmde_web/live/admin/application_live.html.heex:10
 #: lib/tmde_web/live/admin/profile_live.html.heex:26
 #, elixir-autogen, elixir-format
@@ -529,13 +529,11 @@ msgstr "Dokumente erzeugen"
 msgid "My Profile"
 msgstr "Mein Profil"
 
-#: lib/tmde/jobs/jobs.ex:48
 #: lib/tmde_web/live/admin/profile_live.html.heex:21
 #, elixir-autogen, elixir-format
 msgid "New application"
 msgstr "Neue Bewerbung"
 
-#: lib/tmde/jobs/jobs.ex:49
 #: lib/tmde_web/live/admin/application_live.html.heex:18
 #, elixir-autogen, elixir-format
 msgid "Reference"
@@ -555,3 +553,8 @@ msgstr "Kurzbezeichnung"
 #, elixir-autogen, elixir-format
 msgid "Download %{title}"
 msgstr "%{title} herunterladen"
+
+#: lib/tmde_web/components/jobs/qr_code.html.heex:4
+#, elixir-autogen, elixir-format, fuzzy
+msgid "View this application online:"
+msgstr "Diese Bewerbung auf meiner Webseite lesen"
