@@ -45,9 +45,7 @@
     <%= for {section, entries} <- @cv do %>
       <.title size="4" label={CV.Entry.section_title(section)} />
       <%= for entry <- entries do %>
-      <.card>
-          <.entry entry={entry} />
-      </.card>
+        <.live_component module={EntryEditor} entry={entry} id={"entry-editor-#{entry.id}"} />
       <% end %>
     <% end %>
   </.container>

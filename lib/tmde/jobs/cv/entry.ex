@@ -44,13 +44,12 @@ defmodule Tmde.Jobs.CV.Entry do
 
   def section_title(section), do: @cv_sections[section] || "No title set"
 
-  def _changeset(entry, params \\ %{}) do
+  def changeset(entry, params \\ %{}) do
     entry
     |> cast(params, [:type, :from, :until, :sort_order, :icon])
     |> cast_embed(:company)
     |> Translation.cast_translation(:role)
     |> Translation.cast_translation(:description)
-    |> cast_embed(:company)
     |> cast_assoc(:focuses)
   end
 end

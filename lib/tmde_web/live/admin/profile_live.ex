@@ -3,13 +3,10 @@ defmodule TmdeWeb.Admin.ProfileLive do
   use Bulma
   alias Tmde.Jobs
   alias Jobs.CV
-  alias Tmde.Contacts.Link, as: ContactLink
   alias TmdeWeb.Components
-  import Components.Forms.JobSeeker
-  import Components.ContactComponents
-  import TmdeWeb.Components.Jobs.CV, only: [entry: 1]
   alias Components.Content.TranslationEditor
   alias Components.Contact.ContactEditor
+  alias Components.Jobs.CV.EntryEditor
 
   import TmdeWeb.Admin.Profile.Editors,
     only: [personal_data_editor: 1, links_editor: 1]
@@ -18,7 +15,7 @@ defmodule TmdeWeb.Admin.ProfileLive do
 
   on_mount TmdeWeb.UserLiveAuth
 
-  def mount(_params, session, socket) do
+  def mount(_params, _session, socket) do
     job_seeker = socket.assigns.current_user
     changeset = Jobs.change_job_seeker(job_seeker)
 
@@ -53,7 +50,7 @@ defmodule TmdeWeb.Admin.ProfileLive do
     |> do_user_update(params, editor_id: "links_editor")
   end
 
-  defp do_user_update(socket, params, opts \\ []) do
+  defp do_user_update(socket, params, opts) do
     socket.assigns.current_user
     |> Jobs.update_job_seeker(params)
     |> case do
