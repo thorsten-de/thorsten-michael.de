@@ -41,15 +41,18 @@ defmodule TmdeWeb.Router do
     end
   end
 
-  scope "/profile", TmdeWeb.Admin do
+  scope "/profile", TmdeWeb do
     live_session :profile, on_mount: [TmdeWeb.UserLiveAuth, TmdeWeb.LocaleLive] do
       pipe_through [:browser, :requires_auth]
 
-      live "/", ProfileLive, :index
+      live "/", Admin.ProfileLive, :index
 
       scope "/application" do
-        live "/", ApplicationLive, :new
-        live "/:id", ApplicationLive, :show
+        live "/", Admin.ApplicationLive, :new
+        live "/:id", Admin.ApplicationLive, :show
+        live "/:id/preview", JobsLive, :show, as: :jobs_preview
+
+        get "/:id/document/:slug", JobsController, :download_document, as: :document_preview
       end
     end
   end
@@ -57,11 +60,6 @@ defmodule TmdeWeb.Router do
   scope "/", TmdeWeb do
     pipe_through [:browser, :requires_auth]
     resources "/sessions", SessionController, only: [:delete]
-
-    live "/profile/application/:id/preview", JobsLive, :show, as: :jobs_preview
-
-    get "/profile/application/:id/document/:slug", JobsController, :download_document,
-      as: :document_preview
   end
 
   # Other scopes may use custom stacks.
