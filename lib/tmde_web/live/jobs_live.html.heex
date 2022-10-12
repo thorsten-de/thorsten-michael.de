@@ -19,7 +19,7 @@
         <CV.sidebar {assigns} /> 
         <.card class="my-6">
           <:header label={gettext("Documents")} />
-          <.document_list documents={@application.documents} url_for={fn document -> Routes.jobs_path(TmdeWeb.Endpoint, :download_document, @token, document.slug) end} />
+          <.document_list documents={@application.documents} url_for={@get_url} />
         </.card>
       </.column>
     </.columns>

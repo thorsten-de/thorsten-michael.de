@@ -4,8 +4,7 @@ defmodule TmdeWeb.JobsLive do
   alias Tmde.Jobs
   alias TmdeWeb.Components.Jobs.CV
   import TmdeWeb.Components.Jobs
-  import TmdeWeb.ComponentHelpers
-  import TmdeWeb.Components.{ContactComponents, ContentComponents}
+  import TmdeWeb.Components.ContactComponents
   import TmdeWeb.DocumentView, only: [document_filepath: 2]
 
   def mount(%{"token" => token}, _session, socket) do
@@ -20,7 +19,7 @@ defmodule TmdeWeb.JobsLive do
 
       socket =
         socket
-        |> assign(application: application, token: token)
+        |> assign(application: application, get_url: get_url_builder(:jobs_path, token))
 
       {:ok, socket}
     else
@@ -34,7 +33,10 @@ defmodule TmdeWeb.JobsLive do
     with %Jobs.Application{} = application <- Jobs.get_application!(id) do
       socket =
         socket
-        |> assign(application: application, token: application)
+        |> assign(
+          application: application,
+          get_url: get_url_builder(:document_preview_path, application)
+        )
 
       {:ok, socket}
     else
@@ -43,4 +45,9 @@ defmodule TmdeWeb.JobsLive do
         {:ok, socket}
     end
   end
+
+  defp get_url_builder(path, id),
+    do: fn document ->
+      apply(Routes, path, [TmdeWeb.Endpoint, :download_document, id, document.slug])
+    end
 end
