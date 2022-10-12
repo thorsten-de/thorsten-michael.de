@@ -13,14 +13,22 @@ defmodule TmdeWeb.Components.Jobs.CV do
   def entry(%{entry: entry} = assigns) do
     assigns =
       assigns
+      |> assign(description: translate(entry.description))
+      |> assign_class(["cv-entry", "pt-0", ["pt-0", "pb-3": !Enum.empty?(entry.focuses)]])
+
+    render("cv_entry.html", assigns)
+  end
+
+  def entry_header(%{entry: entry} = assigns) do
+    assigns =
+      assigns
       |> assign(
         subtitle: "#{entry.company.name}, #{entry.company.location}",
         title: translate(entry.role),
         description: translate(entry.description)
       )
-      |> assign_class(["cv-entry", "pt-0", ["pt-0", "pb-3": !Enum.empty?(entry.focuses)]])
 
-    render("cv_entry.html", assigns)
+    render("cv_entry_header.html", assigns)
   end
 
   @featured_categories [:languages, :featured]

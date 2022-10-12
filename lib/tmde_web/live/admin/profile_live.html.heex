@@ -37,6 +37,18 @@
       </:column>
       <:header />
     </.table>
-
+  </.container>
+</.section>
+<.section>
+  <.container>
+    <.title label={gettext("CV")} />
+    <%= for {section, entries} <- @cv do %>
+      <.title size="4" label={CV.Entry.section_title(section)} />
+      <%= for entry <- entries do %>
+      <.card>
+          <.entry entry={entry} />
+      </.card>
+      <% end %>
+    <% end %>
   </.container>
 </.section>

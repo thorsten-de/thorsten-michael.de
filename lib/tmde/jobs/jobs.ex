@@ -10,6 +10,13 @@ defmodule Tmde.Jobs do
 
   import TmdeWeb.Gettext
 
+  def get_cv(job_seeker) do
+    job_seeker
+    |> Repo.preload(cv_entries: {ordered(CV.Entry), focuses: ordered(CV.Focus)})
+    |> Map.get(:cv_entries)
+    |> Enum.group_by(& &1.type)
+  end
+
   def get_application!(id) do
     if function_exported?(Private, :get_application, 0) do
       # TODO: Use full featured DB approach

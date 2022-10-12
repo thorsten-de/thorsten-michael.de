@@ -2,10 +2,12 @@ defmodule TmdeWeb.Admin.ProfileLive do
   use TmdeWeb, :live_view
   use Bulma
   alias Tmde.Jobs
+  alias Jobs.CV
   alias Tmde.Contacts.Link, as: ContactLink
   alias TmdeWeb.Components
   import Components.Forms.JobSeeker
   import Components.ContactComponents
+  import TmdeWeb.Components.Jobs.CV, only: [entry: 1]
   alias Components.Content.TranslationEditor
   alias Components.Contact.ContactEditor
 
@@ -27,6 +29,7 @@ defmodule TmdeWeb.Admin.ProfileLive do
         changeset: changeset,
         applications: applications
       )
+      |> assign_cv()
 
     {:ok, socket}
   end
@@ -64,5 +67,10 @@ defmodule TmdeWeb.Admin.ProfileLive do
       {:error, changeset} ->
         {:noreply, assign(socket, changeset: changeset)}
     end
+  end
+
+  def assign_cv(socket) do
+    socket
+    |> assign(cv: Jobs.get_cv(socket.assigns.current_user))
   end
 end
