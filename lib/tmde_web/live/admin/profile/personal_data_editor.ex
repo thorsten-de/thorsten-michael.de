@@ -4,13 +4,16 @@ defmodule TmdeWeb.Admin.Profile.Editors do
   alias TmdeWeb.Components.Forms.EditorCard
   alias Tmde.Contacts.Link, as: ContactLink
 
+  @spec personal_data_editor(any) :: Phoenix.LiveView.Rendered.t()
   def personal_data_editor(assigns) do
     ~H"""
       <div class="personal-data-editor">
       <.form let={f} for={@changeset} phx-submit="update_personal_data" >
         <.live_component module={EditorCard} header={gettext("Personal information")} id="personal_data_editor">
-          <p class="my-1"><%= gettext("Born %{date} in %{place}", date: Calendar.strftime(@job_seeker.dob, "%d.%0m.%Y"), place: @job_seeker.place_of_birth) %></p>
-          <p class="my-1"><%= gettext("Citizenship: %{citizenship}", citizenship: @job_seeker.citizenship) %></p>
+          <:presenter>
+            <p class="my-1"><%= gettext("Born %{date} in %{place}", date: Calendar.strftime(@job_seeker.dob, "%d.%0m.%Y"), place: @job_seeker.place_of_birth) %></p>
+            <p class="my-1"><%= gettext("Citizenship: %{citizenship}", citizenship: @job_seeker.citizenship) %></p>
+          </:presenter>
           <:editor>
             <.field form={f} name={:dob} label={gettext("day of birth")} input={:date_input} />
             <.field form={f} name={:place_of_birth} label={gettext("place of birth")} input={:text_input} />
