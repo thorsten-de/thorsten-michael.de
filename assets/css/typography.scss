@@ -1,11 +1,9 @@
-.content blockquote {
-  border-left-color: $primary;
-  p {
-    font-family: $family-serif;
-  }
-}
-
 .content {
+  p {
+    hyphens: auto;
+    text-align: justify;
+  }
+
   h1,
   h2,
   h3,
@@ -13,6 +11,17 @@
   h5,
   h6 {
     font-family: $family-serif;
+  }
+
+  ul {
+    list-style-type: square;
+  }
+
+  blockquote {
+    border-left-color: $primary;
+    p {
+      font-family: $family-serif;
+    }
   }
 }
 

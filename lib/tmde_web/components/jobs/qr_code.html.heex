@@ -1,8 +1,10 @@
-<div class="is-flex is-justify-content-flex-end is-align-items-flex-end">
-  <p class="pr-4">
-    <%= gettext("View this application online:") %>
-    <br>
-    <%= link @url, to: @url, title: gettext("Show %{url} in browser...", url: @url) %>
-  </p>
+<%= link to: @url, title: gettext("Show %{url} in browser...", url: @url) do %>
+  <div class="is-flex is-justify-content-flex-end is-align-items-flex-end">
+    <p class="pr-4 has-text-right">
+        <%= gettext("View this application online:") %>
+        <br> 
+        <small><%= gettext("(Auch auf Deutsch)") %></small>
+    </p>
     <img src={"data:image/svg+xml;base64,#{@qr_code}"} />
-</div>
+  </div>
+<% end %>      

@@ -1,0 +1,52 @@
+<.section>
+  <.container>
+    <.title label={translate(@application.subject)} />
+    <.subtitle label={translate(@application.reference)} />
+    <.form let={f} for={@changeset} phx-submit="update-application" >
+      <.live_component module={EditorCard} header={gettext("Application data")} id="application-editor" edit?={@live_action == :new}>
+        <.property_list data={Map.take(@application, [:company, :short_reference, :locale])} />
+        <:editor>
+          <.field form={f} name={:locale} input={:select} options={@languages})} />
+          <.field form={f} name={:company} label={gettext("Company")} input={:text_input} />
+          <.field form={f} name={:short_reference} label={gettext("Short reference")} input={:text_input} />
+        </:editor>
+      </.live_component>
+    </.form>
+    <%= if (@live_action != :new) do %>
+    <.live_component module={ContactEditor} obj={@application} field={:contact} header={gettext("Contact data")} id="content-editor" />
+    <.live_component module={TranslationEditor} obj={@application} field={:subject} header={gettext("Subject")} id="subject-editor" />
+    <.live_component module={TranslationEditor} obj={@application} field={:reference} header={gettext("Reference")} id="reference-editor" />
+    <.live_component module={TranslationEditor} obj={@application} field={:cover_letter} header={gettext("Cover letter")} id="letter-editor" />
+    <.live_component module={TranslationEditor} obj={@application} field={:cover_email} header={gettext("Cover email")} id="email-editor" />
+    <% end %>
+  </.container>
+</.section>
+<.section>
+  <.container>
+    <.card>
+      <:header icon="file" label={gettext("Documents")}>
+        <a href="#" class="card-header-icon" phx-click="generate-documents" title={gettext("Generate documents")}>
+          <.label icon="refresh" />
+        </a>
+      </:header>
+      <%= if @generate_documents? do %>
+        <progress class="progress is-primary" max="100">Generating documents</progress>
+      <% else %>        
+        <.document_list documents={@application.documents} url_for={fn document -> Routes.document_preview_path(TmdeWeb.Endpoint, :download_document, @application, document.slug) end}/>
+      <% end %>
+    </.card>
+  </.container>
+</.section>
+<.section>
+  <.container>
+    <.card>
+      <:header icon="envelope" label={gettext("Delivery")} />
+      <%= if @send_email? do %>
+        <progress class="progress is-primary" max="100">Sending Email</progress>
+      <% else %>
+        <.button color="link" icon="paper-plane" click="send-email"
+          label={gettext("Send to %{email}", email: @application.contact.email)} />
+      <% end %>
+    </.card>
+  </.container>
+</.section>

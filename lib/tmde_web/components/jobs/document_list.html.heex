@@ -1,0 +1,9 @@
+<ul>
+  <%= for document <- @documents do %>
+    <li>
+      <a href={@url_for.(document)} title={gettext("Download %{title}", title: document.label)}>
+        <.label icon="file" label={document.label} />
+      </a>
+    </li>
+  <% end %>
+</ul>

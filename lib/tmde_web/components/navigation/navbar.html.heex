@@ -7,6 +7,7 @@
           alt="TMD (LOGO)" width="32" height="32">
         thorsten-michael.de
       </Navbar.item>
+      <Navbar.burger target="#navMenu" />
     </Navbar.brand>
     <Navbar.menu id="navMenu">
       <Navbar.bar_end>
@@ -16,6 +17,8 @@
         </Navbar.dropdown>
         <%= if @current_user do %>
           <Navbar.dropdown hoverable label={@current_user}>
+            <Navbar.item href={Routes.profile_path(TmdeWeb.Endpoint, :index)}  label={gettext("My Profile")} />
+            <Navbar.divider />
             <Navbar.item href={Routes.session_path(TmdeWeb.Endpoint, :delete, @current_user)} method="delete" label={gettext("Logout")} />
           </Navbar.dropdown>
         <% else %>

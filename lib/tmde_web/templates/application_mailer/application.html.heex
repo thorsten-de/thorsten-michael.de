@@ -15,7 +15,10 @@
     </ul>
     <p>
       <%= gettext("P.S. For this application I have created a dedicated section on my website:") %>
-      <br>
-      <%= url = @logo_target; link url, to: url, title: gettext("Show %{url} in browser...", url: url) %>
+      <%= link to: @logo_target, title: gettext("Show %{url} in browser...", url: @logo_target) do %>
+        <%= gettext("View this application online:") %>
+        <br> 
+        <small><%= gettext("(Auch auf Deutsch)") %></small>
+      <% end %>
     </p>
 </.block>

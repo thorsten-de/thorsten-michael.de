@@ -25,7 +25,7 @@
 
 
 <div class="address-section">
-<p><small><%= Contact.address_line(@application.job_seeker.contact) %></small></p>
+<p class="is-size-7"><%= Contact.address_line(@application.job_seeker.contact) %></p>
 <.address contact={@application.contact}>
   <:prepend>
     <%= @application.company %><br>
@@ -45,8 +45,8 @@
     </p>
   </div>
   <div class="subject">
-    <.title size="4" label={@application.subject} />
-    <.subtitle size="6" label={@application.reference} />
+    <.title size="4" label={translate(@application.subject)} />
+    <.subtitle size="6" label={translate(@application.reference)}] />
   </div>
   <div class="content">
     <.greeting contact={@application.contact} />

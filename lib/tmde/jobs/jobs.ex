@@ -3,9 +3,19 @@ defmodule Tmde.Jobs do
   Context for applications and jobs
   """
   alias Tmde.Jobs.{Application, Skill, JobSeeker, Delivery, CV, PersonalSkill}
+  alias Tmde.Contacts.Contact
   alias Tmde.Repo
   import Ecto.Query
   import Ecto
+
+  import TmdeWeb.Gettext
+
+  def get_cv(job_seeker) do
+    job_seeker
+    |> Repo.preload(cv_entries: {ordered(CV.Entry), focuses: ordered(CV.Focus)})
+    |> Map.get(:cv_entries)
+    |> Enum.group_by(& &1.type)
+  end
 
   def get_application!(id) do
     if function_exported?(Private, :get_application, 0) do
@@ -23,6 +33,31 @@ defmodule Tmde.Jobs do
         ]
       )
     end
+  end
+
+  def change_application(application, params \\ %{}) do
+    application
+    |> Application.changeset(params)
+  end
+
+  def insert_or_update_application(application, params) do
+    application
+    |> change_application(params)
+    |> Repo.insert_or_update()
+  end
+
+  def new_application(job_seeker, params \\ %{}) do
+    Application
+    |> struct!(
+      Map.merge(
+        %{
+          job_seeker: job_seeker,
+          company: gettext("Company"),
+          contact: %Contact{}
+        },
+        params
+      )
+    )
   end
 
   def job_seeker_applications(job_seeker) do
@@ -50,6 +85,17 @@ defmodule Tmde.Jobs do
   def update_job_seeker(job_seeker, params) do
     job_seeker
     |> change_job_seeker(params)
+    |> Repo.update()
+  end
+
+  def change_cv_entry(entry, params \\ %{}) do
+    entry
+    |> CV.Entry.changeset(params)
+  end
+
+  def update_cv_entry(entry, params \\ %{}) do
+    entry
+    |> change_cv_entry(params)
     |> Repo.update()
   end
 

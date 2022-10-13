@@ -17,9 +17,14 @@ defmodule TmdeWeb.Components.ContactComponents do
   end
 
   def signature(assigns) do
+    pngdata =
+      assigns.file_path
+      |> File.read!()
+      |> Base.encode64()
+
     ~H"""
     <p class="signature">
-      <img src={"file://#{@file_path}"} alt="Unterschrift Thorsten-Michael Deinert" />
+      <img src={"data:image/png;base64,#{pngdata}"} alt="Unterschrift Thorsten-Michael Deinert" />
       <%= @sender %>
     </p>
     """

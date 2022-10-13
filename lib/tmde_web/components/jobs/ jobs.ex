@@ -13,29 +13,16 @@ defmodule TmdeWeb.Components.Jobs do
   import Jobs.PersonalSkill, only: [category_label: 1]
   import TmdeWeb.Components.ContentComponents
 
-  @featured_categories [:languages, :featured]
-
   def cv(%{application: application} = assigns) do
     entries =
       application.job_seeker.cv_entries
       |> Enum.group_by(& &1.type)
 
-    {featured_skillsets, skillsets} =
-      application.job_seeker.skills
-      |> Enum.group_by(& &1.category)
-      |> Enum.split_with(fn {category, _} -> category in @featured_categories end)
-
     assigns =
       assigns
-      |> assign_defaults(socket: TmdeWeb.Endpoint, qr_code: nil)
-      |> assign_class(["cv"])
+      |> assign_defaults(socket: TmdeWeb.Endpoint)
       |> set_attributes_from_assigns(exclude: [:socket, :application])
-      |> assign(
-        myself: application.job_seeker,
-        entries: entries,
-        featured_skillsets: @featured_categories |> Enum.map(&{&1, featured_skillsets[&1]}),
-        skillsets: skillsets
-      )
+      |> assign(entries: entries)
 
     render("cv.html", assigns)
   end
@@ -141,5 +128,9 @@ defmodule TmdeWeb.Components.Jobs do
 
   def qr_code(assigns) do
     render("qr_code.html", assigns)
+  end
+
+  def document_list(assigns) do
+    render("document_list.html", assigns)
   end
 end

@@ -4,10 +4,22 @@ defmodule TmdeWeb.Components.Jobs.CV do
   """
   use TmdeWeb, :component
   use TmdeWeb, :colocate_templates
+  import TmdeWeb.Components.Jobs, except: [template_not_found: 2, render: 2]
+  alias TmdeWeb.Components.Jobs.CV
+  alias Tmde.Contacts.Link, as: ContactLink
 
   use Bulma
 
   def entry(%{entry: entry} = assigns) do
+    assigns =
+      assigns
+      |> assign(description: translate(entry.description))
+      |> assign_class(["cv-entry", "pt-0", ["pt-0", "pb-3": !Enum.empty?(entry.focuses)]])
+
+    render("cv_entry.html", assigns)
+  end
+
+  def entry_header(%{entry: entry} = assigns) do
     assigns =
       assigns
       |> assign(
@@ -15,9 +27,31 @@ defmodule TmdeWeb.Components.Jobs.CV do
         title: translate(entry.role),
         description: translate(entry.description)
       )
-      |> assign_class(["cv-entry", "pt-0", ["pt-0", "pb-3": !Enum.empty?(entry.focuses)]])
 
-    render("cv_entry.html", assigns)
+    render("cv_entry_header.html", assigns)
+  end
+
+  @featured_categories [:languages, :featured]
+  def sidebar(assigns) do
+    application = assigns.application
+
+    {featured_skillsets, skillsets} =
+      application.job_seeker.skills
+      |> Enum.group_by(& &1.category)
+      |> Enum.split_with(fn {category, _} -> category in @featured_categories end)
+
+    assigns =
+      assigns
+      |> assign_defaults(socket: TmdeWeb.Endpoint)
+      |> assign_class(["cv"])
+      |> set_attributes_from_assigns(exclude: [:socket, :application])
+      |> assign(
+        myself: application.job_seeker,
+        featured_skillsets: @featured_categories |> Enum.map(&{&1, featured_skillsets[&1]}),
+        skillsets: skillsets
+      )
+
+    render("cv_sidebar.html", assigns)
   end
 
   def section(assigns) do

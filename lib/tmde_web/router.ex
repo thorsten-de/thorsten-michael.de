@@ -31,30 +31,35 @@ defmodule TmdeWeb.Router do
 
     get "/", PageController, :index
     get "/impressum", PageController, :imprint
+    resources "/sessions", SessionController, only: [:new, :create]
 
     get "/email/tmd-logo.svg", DeliveryController, :logo_logger
-    get "/bewerbung/:id/cv", JobsController, :cv_pdf
-    get "/bewerbung/:id/cover_letter", JobsController, :cover_letter_pdf
+    get "/bewerbung/:token/dokumente/:slug", JobsController, :download_document
 
     live_session :jobs, on_mount: [TmdeWeb.LocaleLive] do
-      live "/bewerbung/:id/dev", JobsLive, :show, as: :jobs_dev
       live "/bewerbung/:token", JobsLive, :show
     end
   end
 
-  scope "/profile", TmdeWeb.Admin do
+  scope "/profile", TmdeWeb do
     live_session :profile, on_mount: [TmdeWeb.UserLiveAuth, TmdeWeb.LocaleLive] do
       pipe_through [:browser, :requires_auth]
 
-      live "/", ProfileLive, :index
-      live "/edit", ProfileLive, :edit
+      live "/", Admin.ProfileLive, :index
+
+      scope "/application" do
+        live "/", Admin.ApplicationLive, :new
+        live "/:id", Admin.ApplicationLive, :show
+        live "/:id/preview", JobsLive, :show, as: :jobs_preview
+
+        get "/:id/document/:slug", JobsController, :download_document, as: :document_preview
+      end
     end
   end
 
   scope "/", TmdeWeb do
-    pipe_through :browser
-
-    resources "/sessions", SessionController, only: [:new, :create, :delete]
+    pipe_through [:browser, :requires_auth]
+    resources "/sessions", SessionController, only: [:delete]
   end
 
   # Other scopes may use custom stacks.

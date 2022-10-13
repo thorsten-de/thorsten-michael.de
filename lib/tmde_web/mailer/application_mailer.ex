@@ -5,10 +5,12 @@ defmodule TmdeWeb.ApplicationMailer do
   alias TmdeWeb.Router.Helpers, as: Routes
   alias Tmde.Jobs
   alias Tmde.Jobs.Delivery
+  import TmdeWeb.ComponentHelpers, only: [translate: 1]
 
   def set_sender(email, %{contact: contact, links: _links} = sender) do
     email
     |> from({Contact.name(contact), contact.email})
+    |> bcc(contact.email)
     |> assign(:sender, sender)
   end
 
@@ -42,17 +44,21 @@ defmodule TmdeWeb.ApplicationMailer do
   def send_application(application) do
     token = Tmde.Jobs.Application.sign_token(application)
 
-    new()
-    |> to({Contact.name(application.contact), application.contact.email})
-    |> subject(application.subject)
-    |> set_mail_defaults()
-    |> set_sender(application.job_seeker)
-    |> create_delivery(email: application.contact.email)
-    |> prepare_attachments(application)
-    |> render_body(:application,
-      logo_target: Routes.jobs_url(TmdeWeb.Endpoint, :show, token),
-      application: application
-    )
+    Gettext.with_locale(TmdeWeb.Gettext, application.locale, fn ->
+      email =
+        new()
+        |> to({Contact.name(application.contact), application.contact.email})
+        |> subject(application.subject |> translate |> to_string())
+        |> set_mail_defaults()
+        |> set_sender(application.job_seeker)
+        |> assign(:locale, application.locale)
+        |> create_delivery(email: application.contact.email, application: application)
+        |> prepare_attachments(application)
+        |> render_body(:application,
+          logo_target: Routes.jobs_url(TmdeWeb.Endpoint, :show, token),
+          application: application
+        )
+    end)
   end
 
   def prepare_attachments(email, application) do

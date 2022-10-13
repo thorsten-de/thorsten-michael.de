@@ -9,9 +9,17 @@ defmodule Tmde.Jobs.CV.Entry do
   use Tmde, :schema
   alias Tmde.Jobs.{CV, JobSeeker}
   alias Tmde.Content.Translation
+  import TmdeWeb.Gettext
+  import Ecto.Changeset
+
+  @cv_sections [
+    job: gettext("Job experience"),
+    education: gettext("Education"),
+    projects: gettext("Projects")
+  ]
 
   schema "cv_entries" do
-    field :type, Ecto.Enum, values: [:job, :education, :projects]
+    field :type, Ecto.Enum, values: Keyword.keys(@cv_sections)
     field :from, :date
     field :until, :date
     field :sort_order, :integer
@@ -24,6 +32,11 @@ defmodule Tmde.Jobs.CV.Entry do
       field :name, :string
       field :location, :string
       translation_field(:sector)
+
+      def changeset(company, params) do
+        company
+        |> cast(params, [:name, :location])
+      end
     end
 
     belongs_to :job_seeker, JobSeeker
@@ -33,13 +46,16 @@ defmodule Tmde.Jobs.CV.Entry do
     timestamps()
   end
 
-  def _changeset(entry, params \\ %{}) do
+  def cv_sections, do: @cv_sections
+
+  def section_title(section), do: @cv_sections[section] || "No title set"
+
+  def changeset(entry, params \\ %{}) do
     entry
     |> cast(params, [:type, :from, :until, :sort_order, :icon])
     |> cast_embed(:company)
     |> Translation.cast_translation(:role)
     |> Translation.cast_translation(:description)
-    |> cast_embed(:company)
     |> cast_assoc(:focuses)
   end
 end

@@ -5,17 +5,20 @@ defmodule Tmde.Jobs.Application do
   use Tmde, :schema
   import Ecto.Changeset
   alias Tmde.Contacts.Contact
+  alias Tmde.Content.Translation
   alias Tmde.Jobs.{CV, JobSeeker, ApplicationEvent}
 
   schema "job_applications" do
-    field :subject, :string
-    field :reference, :string
+    #   field :subject, :string
+    #   field :reference, :string
     field :short_reference, :string
     field :company, :string
-    field :locale, Ecto.Enum, values: [:de, :en], default: :de
+    field :locale, :string, default: "de"
     embeds_one :contact, Contact
     translation_field(:cover_letter)
     translation_field(:cover_email)
+    translation_field(:subject)
+    translation_field(:reference)
 
     embeds_many :documents, Document, on_replace: :delete do
       field :slug, :string
@@ -48,5 +51,15 @@ defmodule Tmde.Jobs.Application do
          {:ok, id} <- Ecto.UUID.load(uuid) do
       {:ok, id}
     end
+  end
+
+  def changeset(application, params) do
+    application
+    |> cast(params, [:short_reference, :company, :locale])
+    |> validate_required([:company, :locale])
+    |> Translation.cast_translation(:cover_email)
+    |> Translation.cast_translation(:cover_letter)
+    |> Translation.cast_translation(:subject)
+    |> Translation.cast_translation(:reference)
   end
 end

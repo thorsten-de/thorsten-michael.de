@@ -19,7 +19,14 @@ defmodule TmdeWeb.Components.Forms do
   def editor_card(assigns) do
     assigns =
       assigns
-      |> assign_defaults(inner_block: [], editor: [], header: nil, edit?: false, target: nil)
+      |> assign_defaults(
+        inner_block: [],
+        editor: [],
+        presenter: [],
+        header: nil,
+        edit?: false,
+        target: nil
+      )
       |> assign_class([])
 
     ~H"""
@@ -35,10 +42,11 @@ defmodule TmdeWeb.Components.Forms do
           <input class="card-footer-item" type="submit" value={gettext("Save")}>
         <% end %>
       </:footer>
+      <%= render_slot(@inner_block) %>
       <%= if @edit? do %>
         <%= render_slot(@editor) %>
       <% else %>
-        <%= render_slot(@inner_block) %>
+        <%= render_slot(@presenter) %>
       <% end %>
     </.card>
     """
