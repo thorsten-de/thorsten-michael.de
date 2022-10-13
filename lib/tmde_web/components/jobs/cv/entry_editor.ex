@@ -3,6 +3,7 @@ defmodule TmdeWeb.Components.Jobs.CV.EntryEditor do
   use Bulma
   import TmdeWeb.Components.Forms, only: [editor_card: 1]
   import TmdeWeb.Components.Jobs.CV, only: [entry: 1]
+  alias TmdeWeb.Components.Content.TranslationEditor
 
   alias Tmde.Jobs
   alias Jobs.CV.Entry
@@ -23,9 +24,9 @@ defmodule TmdeWeb.Components.Jobs.CV.EntryEditor do
   def render(assigns) do
     ~H"""
     <div class="entry-editor">
+      <.entry entry={@entry} />
       <.form let={f} for={@changeset} phx-submit="update-entry" phx-target={@myself}>
-        <.editor_card target={@myself} edit?={@edit?}>
-          <.entry entry={@entry} />
+        <.editor_card target={@myself} edit?={@edit?} header={"#{gettext("Master Data")}: #{@entry.company.name}"}>
           <:editor>
             <.field form={f} name={:type} label={gettext("Section")} input={:select} options={Entry.cv_sections} />
             <.field form={f} name={:from} label={gettext("From")} input={:date_input} />
@@ -38,6 +39,11 @@ defmodule TmdeWeb.Components.Jobs.CV.EntryEditor do
           </:editor>
         </.editor_card>
       </.form>
+      <.live_component module={TranslationEditor} obj={@entry} field={:description} header={gettext("Description")} id={"description-editor-#{@entry.id}"} />
+      <.live_component module={TranslationEditor} obj={@entry} field={:role} header={gettext("Role")} id={"role-editor-#{@entry.id}"} />
+      <%= for focus <- @entry.focuses do %>
+        <.live_component module={TranslationEditor} obj={focus} field={:abstract} header={"#{gettext("Focus")} #{focus.sort_order}"} id={"focus-editor-#{focus.id}"} />
+      <% end %>
     </div>
     """
   end
