@@ -20,6 +20,8 @@ if System.get_env("PHX_SERVER") do
   config :tmde, TmdeWeb.Endpoint, server: true
 end
 
+config :deepl_ex, :api_key, System.get_env("DEEPL_AUTH_KEY")
+
 if config_env() == :prod do
   database_url =
     System.get_env("DATABASE_URL") ||
