@@ -50,8 +50,7 @@ defmodule TmdeWeb.Components.Content.TranslationEditor do
   end
 
   def handle_event("save", %{"object" => params}, %{assigns: %{obj: obj, field: field}} = socket) do
-
-    case Content.update_translations(obj, field, params)
+    case Content.update_translations(obj, field, params) do
       {:ok, obj} ->
         {:noreply,
          socket
