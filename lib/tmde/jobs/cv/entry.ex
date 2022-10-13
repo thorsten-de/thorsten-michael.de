@@ -10,6 +10,7 @@ defmodule Tmde.Jobs.CV.Entry do
   alias Tmde.Jobs.{CV, JobSeeker}
   alias Tmde.Content.Translation
   import TmdeWeb.Gettext
+  import Ecto.Changeset
 
   @cv_sections [
     job: gettext("Job experience"),
@@ -31,6 +32,11 @@ defmodule Tmde.Jobs.CV.Entry do
       field :name, :string
       field :location, :string
       translation_field(:sector)
+
+      def changeset(company, params) do
+        company
+        |> cast(params, [:name, :location])
+      end
     end
 
     belongs_to :job_seeker, JobSeeker

@@ -93,6 +93,12 @@ defmodule Tmde.Jobs do
     |> CV.Entry.changeset(params)
   end
 
+  def update_cv_entry(entry, params \\ %{}) do
+    entry
+    |> change_cv_entry(params)
+    |> Repo.update()
+  end
+
   @doc """
   Creates a new skill with given attributes
   """

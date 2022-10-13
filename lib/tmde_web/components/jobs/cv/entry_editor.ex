@@ -5,6 +5,7 @@ defmodule TmdeWeb.Components.Jobs.CV.EntryEditor do
   import TmdeWeb.Components.Jobs.CV, only: [entry: 1]
 
   alias Tmde.Jobs
+  alias Jobs.CV.Entry
 
   def mount(socket) do
     {:ok, assign(socket, edit?: false)}
@@ -22,9 +23,21 @@ defmodule TmdeWeb.Components.Jobs.CV.EntryEditor do
   def render(assigns) do
     ~H"""
     <div class="entry-editor">
-      <.editor_card target={@myself} edit?={@edit?}>
-        <.entry entry={@entry} />
-      </.editor_card>
+      <.form let={f} for={@changeset} phx-submit="update-entry" phx-target={@myself}>
+        <.editor_card target={@myself} edit?={@edit?}>
+          <.entry entry={@entry} />
+          <:editor>
+            <.field form={f} name={:type} label={gettext("Section")} input={:select} options={Entry.cv_sections} />
+            <.field form={f} name={:from} label={gettext("From")} input={:date_input} />
+            <.field form={f} name={:until} label={gettext("Until")} input={:date_input} />
+            <.field form={f} name={:icon} label={gettext("Icon")} input={:text_input} />
+            <.inputs let={company} form={f} field={:company}>
+              <.field form={company} name={:name} label={gettext("Company")} input={:text_input} />
+              <.field form={company} name={:location} label={gettext("Location")} input={:text_input} />
+            </.inputs>
+          </:editor>
+        </.editor_card>
+      </.form>
     </div>
     """
   end
@@ -34,4 +47,17 @@ defmodule TmdeWeb.Components.Jobs.CV.EntryEditor do
   end
 
   def handle_event("toggle-editor", _params, socket), do: {:noreply, toggle(socket, :edit?)}
+
+  def handle_event("update-entry", %{"entry" => params}, socket) do
+    case Jobs.update_cv_entry(socket.assigns.entry, params) do
+      {:ok, entry} ->
+        {:noreply,
+         socket
+         |> assign(entry: entry)
+         |> assign_changeset()}
+
+      {:error, changeset} ->
+        {:noreply, assign(socket, changeset: changeset)}
+    end
+  end
 end
