@@ -35,53 +35,63 @@ defmodule TmdeWeb.Components.Content.TranslationEditor do
     {:noreply, socket}
   end
 
-  def handle_event("preview", %{"object" => params}, socket) do
-    previews =
-      params[socket.assigns.field |> to_string()]
-      |> Enum.map(fn {_, t} ->
-        Translation.changeset(%Translation{id: t["id"]}, t)
-        |> Ecto.Changeset.apply_action!(:update)
-      end)
-      |> Enum.reduce(socket.assigns.previews, fn t, acc ->
-        Map.put(acc, t.id, t)
-      end)
+  def handle_event("save", %{"object" => params}, %{assigns: %{obj: obj, field: field}} = socket),
+    do:
+      obj
+      |> Content.update_translations(field, params)
+      |> success_or_error(socket, edit?: false)
 
-    {:noreply, assign(socket, previews: previews)}
+  def handle_event(
+        "add-translation",
+        %{"lang" => lang},
+        %{assigns: %{obj: obj, field: field}} = socket
+      ) do
+    new_content =
+      with [%Translation{lang: source_lang, content: text, type: type} | _] <-
+             socket.assigns.translations,
+           [translation] <-
+             DeeplEx.translate(
+               target_lang: lang,
+               text: text,
+               source_lang: source_lang,
+               split_sentences: "nonewlines",
+               formality: "prefer_more"
+             ) do
+        %{type: type, content: translation.text, lang: lang}
+      else
+        _ -> %{text: "Text", lang: lang}
+      end
+
+    obj
+    |> Content.add_translation(field, new_content)
+    |> success_or_error(socket, edit?: true)
   end
 
-  def handle_event("save", %{"object" => params}, %{assigns: %{obj: obj, field: field}} = socket) do
+  def handle_event(
+        "remove-translation",
+        %{"id" => id},
+        %{assigns: %{obj: obj, field: field}} = socket
+      ),
+      do:
+        obj
+        |> Content.remove_translation(field, id)
+        |> success_or_error(socket)
 
-    case Content.update_translations(obj, field, params)
-      {:ok, obj} ->
-        {:noreply,
-         socket
-         |> assign(
-           obj: obj,
-           changeset: Content.change_translations(obj, field),
-           edit?: false
-         )
-         |> assign_translations()}
+  def success_or_error(result, socket, additional_assignments \\ [])
 
-      {:error, changeset} ->
-        {:noreply, assign(socket, changeset: changeset)}
-    end
-  end
+  def success_or_error({:ok, obj}, socket, additional_assignments),
+    do:
+      {:noreply,
+       socket
+       |> assign(
+         obj: obj,
+         changeset: Content.change_translations(obj, socket.assigns.field)
+       )
+       |> assign(additional_assignments)
+       |> assign_translations()}
 
-  def handle_event("add-translation", _, %{assigns: %{obj: obj, field: field}} = socket) do
-    case Content.add_translation(obj, field, %{content: "Text"}) do
-      {:ok, obj} ->
-        {:noreply,
-         socket
-         |> assign(
-           obj: obj,
-           changeset: Content.change_translations(obj, field),
-           edit?: true
-         )}
-
-      {:error, changeset} ->
-        {:noreply, assign(socket, changeset: changeset)}
-    end
-  end
+  def success_or_error({:error, changeset}, socket, _additional_assignments),
+    do: {:noreply, assign(socket, changeset: changeset)}
 
   defp assign_translations(socket) do
     %{obj: obj, field: field} = socket.assigns

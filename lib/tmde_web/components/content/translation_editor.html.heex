@@ -2,9 +2,12 @@
   <.form let={f} for={@changeset} as={:object}  phx-submit="save" phx-target={@myself}>
     <.card>
       <:header label={@header}>
-        <a href="#" class="card-header-icon" phx-click="add-translation" phx-target={@myself}>
-          <.label icon="add" />
-        </a>
+        <.dropdown id={@id} items={@languages} let={item}>
+          <:trigger>
+            <a class="card-header-icon"><.label icon="language" label="Add"/></a>
+          </:trigger>
+          <Dropdown.item label={item} icon="flag" click="add-translation" target={@myself} values={[lang: item]}/>
+        </.dropdown>
         <a href="#" class="card-header-icon" phx-click="toggle-editor" phx-target={@myself}>
           <.label icon="edit" />
         </a>
@@ -17,7 +20,8 @@
       </:footer>
       <.property_list data={@translations} key={:lang} let={item}>
         <.content>
-          <%= item %>
+          <a phx-click="remove-translation" phx-value-id={item.id} phx-target={@myself}><.label icon="trash" /></a>
+          <%= item %> 
         </.content>
       </.property_list>
       <%= if @edit? do %>
