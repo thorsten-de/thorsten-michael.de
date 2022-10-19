@@ -3,7 +3,8 @@ defmodule TmdeWeb.Components.ContactComponents do
 
   alias Tmde.Contacts.{Contact, Address}
 
-  @spec greeting(any) :: Phoenix.LiveView.Rendered.t()
+  attr :contact, Contact, required: true
+
   def greeting(assigns) do
     ~H"""
     <p><%= Contact.greeting(@contact) %></p>
@@ -16,19 +17,30 @@ defmodule TmdeWeb.Components.ContactComponents do
     """
   end
 
+  attr :file_path, :string, required: true
+  attr :sender, Contact, required: true
+
   def signature(assigns) do
     pngdata =
       assigns.file_path
       |> File.read!()
       |> Base.encode64()
 
+    assigns =
+      assigns
+      |> assign(data: pngdata)
+
     ~H"""
     <p class="signature">
-      <img src={"data:image/png;base64,#{pngdata}"} alt="Unterschrift Thorsten-Michael Deinert" />
+      <img src={"data:image/png;base64,#{@data}"} alt="Unterschrift Thorsten-Michael Deinert" />
       <%= @sender %>
     </p>
     """
   end
+
+  attr :contact, Contact
+  attr :address, Address
+  slot :prepend
 
   def address(assigns) do
     contact = assigns[:contact]

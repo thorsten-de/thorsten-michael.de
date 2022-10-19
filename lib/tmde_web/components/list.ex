@@ -2,6 +2,10 @@ defmodule TmdeWeb.Components.List do
   use TmdeWeb, :component
   use Bulma
 
+
+  attr :data, :list, required: true
+  slot :inner_block
+
   def property_list(assigns) do
     assigns =
       assigns
@@ -14,11 +18,7 @@ defmodule TmdeWeb.Components.List do
       <%= for {key, value} <- @data do %>
         <dt><%= key %></dt>
         <dd>
-          <%= if assigns[:inner_block] do %>
-            <%= render_slot(@inner_block, value) %>
-          <% else %>
-            <%= value %>
-          <% end %>
+          <%= render_slot(@inner_block, value) || value %>
         </dd>
       <% end %>
     </dl>
