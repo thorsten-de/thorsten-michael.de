@@ -61,11 +61,11 @@ defmodule Tmde.Jobs.JobSeeker do
       preload: [skill: s]
   end
 
-  defimpl String.Chars, for: __MODULE__ do
+  defimpl String.Chars do
     def to_string(%{username: username}), do: username
   end
 
-  defimpl Phoenix.HTML.Safe, for: __MODULE__ do
+  defimpl Phoenix.HTML.Safe do
     def to_iodata(job_seeker), do: to_string(job_seeker)
   end
 end

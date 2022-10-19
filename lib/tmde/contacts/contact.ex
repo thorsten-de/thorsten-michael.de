@@ -69,11 +69,11 @@ defmodule Tmde.Contacts.Contact do
     |> Enum.join(splitter)
   end
 
-  defimpl String.Chars, for: __MODULE__ do
+  defimpl String.Chars do
     def to_string(contact), do: Contact.name(contact)
   end
 
-  defimpl Phoenix.HTML.Safe, for: __MODULE__ do
+  defimpl Phoenix.HTML.Safe do
     def to_iodata(contact), do: to_string(contact)
   end
 end

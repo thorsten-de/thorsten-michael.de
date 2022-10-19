@@ -44,7 +44,7 @@ defmodule Tmde.Contacts.Address do
 
   def lines(nil), do: []
 
-  defimpl String.Chars, for: __MODULE__ do
+  defimpl String.Chars do
     def to_string(address) do
       address
       |> Address.lines()
@@ -52,7 +52,7 @@ defmodule Tmde.Contacts.Address do
     end
   end
 
-  defimpl Phoenix.HTML.Safe, for: __MODULE__ do
+  defimpl Phoenix.HTML.Safe do
     def to_iodata(address) do
       address
       |> Address.lines()
