@@ -11,7 +11,6 @@ defmodule TmdeWeb.Components.Jobs do
   alias Tmde.Jobs.Skill
 
   import Jobs.PersonalSkill, only: [category_label: 1]
-  import TmdeWeb.Components.ContentComponents
 
   def cv(%{application: application} = assigns) do
     entries =
