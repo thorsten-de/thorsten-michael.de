@@ -33,7 +33,7 @@ defmodule Tmde.MixProject do
   # github (or perhaps hex.pm if it will be published where)
   defp deps(:prod) do
     [
-      {:bulma_liveview, github: "thorsten-de/bulma_liveview"}
+      {:bulma_liveview, github: "thorsten-de/bulma_liveview", branch: "1-liveview-018"}
       | deps()
     ]
   end
