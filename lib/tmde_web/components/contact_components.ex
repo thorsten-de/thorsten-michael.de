@@ -3,6 +3,11 @@ defmodule TmdeWeb.Components.ContactComponents do
 
   alias Tmde.Contacts.{Contact, Address}
 
+  @spec greeting(map) :: Phoenix.LiveView.Rendered.t()
+  @doc """
+  Display the letter greeting for a given contact, according
+  to the locale currently used
+  """
   attr :contact, Contact, required: true
 
   def greeting(assigns) do
@@ -11,13 +16,23 @@ defmodule TmdeWeb.Components.ContactComponents do
     """
   end
 
+  @spec ending(any) :: Phoenix.LiveView.Rendered.t()
+  @doc """
+  Display the letter ending formula, according to the
+  currently used locale
+  """
   def ending(assigns) do
     ~H"""
     <p><%= gettext("Sincerely,") %></p>
     """
   end
 
-  attr :file_path, :string, required: true
+  @spec signature(map) :: Phoenix.LiveView.Rendered.t()
+  @doc """
+  Signs a letter with an image of a signature and places
+  the contact's name under it.
+  """
+  attr :file_path, :string, required: true, doc: "path to the image containing the signature"
   attr :sender, Contact, required: true
 
   def signature(assigns) do
@@ -38,9 +53,17 @@ defmodule TmdeWeb.Components.ContactComponents do
     """
   end
 
-  attr :contact, Contact
-  attr :address, Address
-  slot :prepend
+  @spec address(map) :: Phoenix.LiveView.Rendered.t()
+  @doc """
+  Display address lines. If a contact is given, the address
+  can be pulled from the contact, and the contact's name
+  is prepended to the address lines. For additional data,
+  a prepend block can be used, e.g. to display the company's
+  name above the printed address in a letter.
+  """
+  attr :contact, Contact, doc: "the name and address lines of the contact are shown"
+  attr :address, Address, doc: "Address to be displayed. May be unset if a contact is given"
+  slot :prepend, doc: "Information displayed above the contact/address lines"
 
   def address(assigns) do
     contact = assigns[:contact]
