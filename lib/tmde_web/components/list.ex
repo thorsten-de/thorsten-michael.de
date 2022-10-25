@@ -2,10 +2,19 @@ defmodule TmdeWeb.Components.List do
   use TmdeWeb, :component
   use Bulma
 
+
+  @spec property_list(map) :: Phoenix.LiveView.Rendered.t()
+  @doc """
+  A list of keywords and values, shown as html dl block. Class
+  `property-list` is used to place keys and values in columns.
+  """
+  attr :data, :list, required: true
+  attr :class, :any
+  slot :inner_block
+
   def property_list(assigns) do
     assigns =
       assigns
-      |> assign_defaults(data: [])
       |> assign_class(["property-list"])
       |> prepare_data()
 
@@ -14,11 +23,7 @@ defmodule TmdeWeb.Components.List do
       <%= for {key, value} <- @data do %>
         <dt><%= key %></dt>
         <dd>
-          <%= if assigns[:inner_block] do %>
-            <%= render_slot(@inner_block, value) %>
-          <% else %>
-            <%= value %>
-          <% end %>
+          <%= render_slot(@inner_block, value) || value %>
         </dd>
       <% end %>
     </dl>

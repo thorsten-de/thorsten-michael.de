@@ -63,11 +63,11 @@ defmodule Tmde.Contacts.Country do
   def dump(string) when is_binary(string), do: {:ok, string}
   def dump(_), do: :error
 
-  defimpl String.Chars, for: __MODULE__ do
+  defimpl String.Chars do
     def to_string(%{title: title}), do: title
   end
 
-  defimpl Phoenix.HTML.Safe, for: __MODULE__ do
+  defimpl Phoenix.HTML.Safe do
     def to_iodata(country), do: to_string(country)
   end
 end

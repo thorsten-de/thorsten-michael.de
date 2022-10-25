@@ -1,5 +1,6 @@
 defmodule TmdeWeb.UserLiveAuth do
-  import Phoenix.LiveView
+  import Phoenix.Component, only: [assign: 2]
+  import Phoenix.LiveView, only: [redirect: 2]
   alias Tmde.Accounts
   alias TmdeWeb.Router.Helpers, as: Routes
 

@@ -7,7 +7,9 @@
     <meta name="description" content={@page.description}>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="csrf-token" content={csrf_token_value()}>
-    <%= live_title_tag assigns[:page_title] || gettext("Welcome"), suffix: " · thorsten-michael.de" %>
+    <.live_title suffix=" · thorsten-michael.de">
+      <%= assigns[:page_title] || gettext("Welcome") %>
+    </.live_title>
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
     <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-icon-57x57.png">

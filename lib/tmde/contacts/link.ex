@@ -70,14 +70,14 @@ defmodule Tmde.Contacts.Link do
     ]
   end
 
-  defimpl String.Chars, for: __MODULE__ do
+  defimpl String.Chars do
     def to_string(%{type: :website} = link),
       do: "#{Link.type_to_string(link)}: https://#{link.target}"
 
     def to_string(link), do: "#{Link.type_to_string(link)}: #{link.target}"
   end
 
-  defimpl Phoenix.HTML.Safe, for: __MODULE__ do
+  defimpl Phoenix.HTML.Safe do
     def to_iodata(%{target: target}), do: target
   end
 end

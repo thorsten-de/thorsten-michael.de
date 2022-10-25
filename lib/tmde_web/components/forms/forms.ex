@@ -16,17 +16,24 @@ defmodule TmdeWeb.Components.Forms do
     render("contact_form.html", assigns)
   end
 
+  @spec editor_card(map) :: Phoenix.LiveView.Rendered.t()
+  @doc """
+  Functional component that toggles card content if in edit mode. Events
+  have to be handled in the corresponding LiveView or another class that
+  is specified via the 'target' attribute.
+  """
+  attr :header, :string, doc: "Card-header for the editor"
+  attr :edit?, :boolean, default: false, doc: "Is in edit mode?"
+  attr :target, :any, required: true, doc: "phx-target that handles events for this modal"
+  attr :class, :any
+
+  slot :inner_block, doc: "Card content that is always visible"
+  slot :presenter, doc: "Card content that is visible when not in edit mode"
+  slot :editor, doc: "Card content that is visible in edit mode only"
+
   def editor_card(assigns) do
     assigns =
       assigns
-      |> assign_defaults(
-        inner_block: [],
-        editor: [],
-        presenter: [],
-        header: nil,
-        edit?: false,
-        target: nil
-      )
       |> assign_class([])
 
     ~H"""

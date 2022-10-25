@@ -92,11 +92,11 @@ defmodule Tmde.Content.Translation do
 
   def translate(_translations, _lang), do: nil
 
-  defimpl String.Chars, for: __MODULE__ do
+  defimpl String.Chars do
     def to_string(%{content: content}), do: content
   end
 
-  defimpl Phoenix.HTML.Safe, for: __MODULE__ do
+  defimpl Phoenix.HTML.Safe do
     def to_iodata(%Translation{type: :html, content: content}), do: content
 
     def to_iodata(%Translation{type: :text, content: content}) do
