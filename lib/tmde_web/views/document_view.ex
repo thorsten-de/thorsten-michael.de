@@ -53,7 +53,7 @@ defmodule TmdeWeb.DocumentView do
           paperWidth: mm(210),
           paperHeight: mm(297),
           marginLeft: mm(16),
-          marginTop: mm(10),
+          marginTop: mm(16),
           marginRight: mm(12),
           marginBottom: mm(10),
           printBackground: true,
