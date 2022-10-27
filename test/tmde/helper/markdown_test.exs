@@ -55,16 +55,16 @@ defmodule Tmde.Helper.MarkdownTest do
           en: @bad_splitter_file
         )
 
-      assert [
-               de: %{path: @markdown_file, html: ^html},
-               en: %{path: @bad_splitter_file}
-             ] = result
+      assert %{
+               "de" =>  %{path: @markdown_file, html: ^html},
+               "en" => %{path: @bad_splitter_file}
+       } = result
 
-      assert result[:de].html != result[:en].html
+      assert result["de"].html != result["en"].html
     end
 
     test "delegates splitter and options correctly", %{html_splitted: html} do
-      assert [de: %{html: ^html}] =
+      assert %{"de"=> %{html: ^html}} =
                Markdown.content_to_html!([de: @markdown_file], splitter: "TEST")
     end
   end
