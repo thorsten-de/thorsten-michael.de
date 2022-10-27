@@ -1,5 +1,8 @@
 .cv-section {
-  margin: 1.75rem 0;
+  + .cv-section {
+    margin-top: 3em;
+    margin-bottom: 3em;
+  }
 
   .media-left {
     min-width: 64px;
@@ -17,7 +20,8 @@
       width: 76px;
     }
   }
-  margin: 1.5rem 0;
+  margin-top: 1em;
+  margin-bottom: 2.5em;
 }
 
 .signature img {
