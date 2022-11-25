@@ -1,0 +1,9 @@
+.post__meta {
+  color: $grey;
+  border-top: 1px solid $grey-lighter;
+  border-bottom: 1px solid $grey-lighter;
+
+  .level-item {
+    padding: 0.6em;
+  }
+}

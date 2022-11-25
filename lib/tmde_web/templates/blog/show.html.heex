@@ -1,24 +1,5 @@
 <.section>
   <.container>
-    <.title label={@post.title} />
-    <div class="post__meta">
-      <div class="post__meta-date">
-        <.label icon="calendar" label={date(@post.date, format: "{0D}. {Mfull} {YYYY}")} />
-      </div>
-      <div class="post__meta-estimated_read">
-        <.label
-          icon="clock"
-          label={
-            ngettext("less than one minute", "%{count} minutes", @post.estimated_reading_time)
-          }
-        />
-      </div>
-      <div class="post__meta-tags">
-        <.label icon="tags" icon_set="solid" label={Enum.join(@post.tags, ", ")} />
-      </div>
-    </div>
-    <.content class="post">
-      <%= raw(@post.body) %>
-    </.content>
+    <Blog.post post={@post} />
   </.container>
 </.section>
