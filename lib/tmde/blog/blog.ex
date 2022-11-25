@@ -19,7 +19,11 @@ defmodule Tmde.Blog do
 
   def all_posts, do: @posts
 
-  def recent_posts(num \\ 5), do: all_posts() |> Enum.take(num)
+  def recent_posts(num \\ 5) do
+    all_posts()
+    |> Enum.filter(&Post.where(&1, language: Gettext.get_locale(TmdeWeb.Gettext)))
+    |> Enum.take(num)
+  end
 
   def all_tags, do: @tags
 
