@@ -6,15 +6,15 @@ defmodule TmdeWeb.DateFormatter do
 
   def date(date, opts \\ []) do
     format = opts[:format] || @default_format
-    locale = opts[:locale] || @default_locale
+    locale = opts[:locale] || Gettext.get_locale(TmdeWeb.Gettext) || @default_locale
 
     format_date(date, format, locale)
   end
 
   defp format_date(nil, _format, _locale), do: nil
 
-  defp format_date(date, format, _locale),
-    do: date |> Timex.format!(format)
+  defp format_date(date, format, locale),
+    do: date |> Timex.lformat!(format, locale)
 
   def date_interval(interval, opts \\ []) when is_map(interval) do
     case interval do
