@@ -7,7 +7,7 @@ defmodule Tmde.Blog do
 
   use NimblePublisher,
     build: Post,
-    from: "content/blog/**/*.md" |> IO.inspect(label: "APP_DIR"),
+    from: "content/blog/**/*.md",
     as: :posts,
     highlighters: [:makeup_elixir, :makeup_erlang]
 
@@ -19,10 +19,10 @@ defmodule Tmde.Blog do
 
   def all_posts, do: @posts
 
-  def recent_posts(num \\ 5) do
+  def recent_posts(count \\ 5, filter \\ []) do
     all_posts()
-    |> Enum.filter(&Post.where(&1, language: Gettext.get_locale(TmdeWeb.Gettext)))
-    |> Enum.take(num)
+    |> Enum.filter(&Post.where(&1, filter))
+    |> Enum.take(count)
   end
 
   def all_tags, do: @tags
