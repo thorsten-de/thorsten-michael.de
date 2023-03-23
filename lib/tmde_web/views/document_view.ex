@@ -10,6 +10,8 @@ defmodule TmdeWeb.DocumentView do
   alias Tmde.Contacts.Link, as: ContactLink
   alias Tmde.Contacts.Contact
 
+  alias QRCode.Render.SvgSettings
+
   def render_pdf(template, filename, options \\ []) do
     layout =
       case options[:layout] do
@@ -198,17 +200,20 @@ defmodule TmdeWeb.DocumentView do
   end
 
   # Generate QR-Code and assign it to the socket. Only needed in print layout
-  @settings %QRCode.SvgSettings{qrcode_color: {54, 54, 54}}
+  @settings %SvgSettings{qrcode_color: {54, 54, 54}}
 
   defp build_qr_code(token) do
-    with {:ok, code} <-
-           TmdeWeb.Endpoint
-           |> Routes.jobs_url(:show, token)
-           |> QRCode.create(:low),
-         svg_data <- QRCode.Svg.to_base64(code, @settings) do
-      svg_data
-    else
-      _ -> nil
+    TmdeWeb.Endpoint
+    |> Routes.jobs_url(:show, token)
+    |> QRCode.create(:low)
+    |> QRCode.render(:svg, @settings)
+    |> QRCode.to_base64()
+    |> case do
+      {:ok, svg_data} ->
+        svg_data
+
+      :error ->
+        nil
     end
   end
 end

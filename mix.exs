@@ -68,7 +68,7 @@ defmodule Tmde.MixProject do
       {:deepl_ex, "0.1.0", github: "thorsten-de/deepl_ex"},
       {:earmark, "~> 1.4"},
       {:chromic_pdf, "~> 1.2"},
-      {:qr_code, "~> 2.3"},
+      {:qr_code, "~> 3.0"},
       {:timex, "~>3.7"},
       {:remote_ip, "~>1.0"},
       {:swoosh, "~> 1.3"},
