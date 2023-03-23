@@ -66,7 +66,7 @@ defmodule Tmde.MixProject do
       {:bulma, "0.9.4"},
       {:deepl_ex, "0.1.0", github: "thorsten-de/deepl_ex"},
       {:earmark, "~> 1.4"},
-      {:nimble_publisher, "~> 0.1.3"},
+      {:nimble_publisher, "~>1.0"},
       {:makeup_elixir, "~> 0.1"},
       {:makeup_erlang, "~> 0.1"},
       {:chromic_pdf, "~> 1.2"},
