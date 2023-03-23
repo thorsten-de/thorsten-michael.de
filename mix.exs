@@ -64,7 +64,7 @@ defmodule Tmde.MixProject do
       {:esbuild, "~> 0.4", runtime: Mix.env() == :dev},
       {:dart_sass, "~> 0.5", runtime: Mix.env() == :dev},
       # forked from kevinlang/bulma-elixir (bulma in hex) to support v0.9.4
-      {:bulma, "0.9.4", github: "thorsten-de/bulma-elixir"},
+      {:bulma, "0.9.4"},
       {:deepl_ex, "0.1.0", github: "thorsten-de/deepl_ex"},
       {:earmark, "~> 1.4"},
       {:chromic_pdf, "~> 1.2"},
