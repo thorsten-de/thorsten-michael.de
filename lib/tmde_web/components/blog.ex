@@ -40,6 +40,7 @@ defmodule TmdeWeb.Components.Blog do
     <.title label={@post.title} />
     <.post_meta post={@post} />
     <.content class="post">
+      <.abstract text={@post.abstract} />
       <%= raw(@post.body) %>
     </.content>
     <.tag_list post={@post} />
@@ -59,6 +60,14 @@ defmodule TmdeWeb.Components.Blog do
         label={tag}
       />
     </.tags>
+    """
+  end
+
+  def abstract(assigns) do
+    ~H"""
+    <p class="is-family-secondary">
+        <%= @text %>
+    </p>
     """
   end
 end
