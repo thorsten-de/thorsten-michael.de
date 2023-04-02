@@ -1,7 +1,7 @@
 %{
   title: "Wie Software-Entwickler Kathedralen bauen",
   tags: ~w[Softwareentwicklung Architektur Entwurfsmuster Rückblick],
-  abstract: "Ein Rückblick auf ein Vierteljahrhundert Softwareentwicklung",
+  abstract: "Mein Rückblick auf ein Vierteljahrhundert Softwareentwicklung",
   language: "de",
   estimated_reading_time: 8,
   links: %{

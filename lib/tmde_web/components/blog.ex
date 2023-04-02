@@ -70,4 +70,17 @@ defmodule TmdeWeb.Components.Blog do
     </p>
     """
   end
+
+  def post_list(assigns) do
+    ~H"""
+    <.card :for={post <- @posts} class="m-3">
+      <.post_meta post={post} />
+      <.title size="4" label={post.title} />
+      <.abstract text={post.abstract} />
+      <.link class="mt-5 button is-link" href={Routes.blog_path(TmdeWeb.Endpoint, :show, post)}>
+        <%= gettext("Read all") %>
+      </.link>
+    </.card>
+    """
+  end
 end

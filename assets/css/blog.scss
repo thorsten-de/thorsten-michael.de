@@ -2,8 +2,9 @@
   color: $grey;
   border-top: 1px solid $grey-lighter;
   border-bottom: 1px solid $grey-lighter;
+  padding: 0.6em 0;
 
-  .level-item {
-    padding: 0.6em;
+  .icon-text {
+    flex-wrap: initial;
   }
 }

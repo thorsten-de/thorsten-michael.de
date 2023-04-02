@@ -16,7 +16,7 @@ msgid "Contact Information"
 msgstr ""
 
 #: lib/tmde_web/components/navigation/footer.html.heex:21
-#: lib/tmde_web/controllers/page_controller.ex:46
+#: lib/tmde_web/controllers/page_controller.ex:49
 #: lib/tmde_web/templates/page/imprint.html.heex:3
 #, elixir-autogen, elixir-format
 msgid "Imprint"
@@ -77,12 +77,12 @@ msgstr ""
 msgid "Sorry, the page does not exist."
 msgstr ""
 
-#: lib/tmde_web/controllers/page_controller.ex:48
+#: lib/tmde_web/controllers/page_controller.ex:51
 #, elixir-autogen, elixir-format
 msgid "Imprint and privacy policy for thorsten-michael.de, the personal homepage of Thorsten-Michael Deinert."
 msgstr ""
 
-#: lib/tmde_web/controllers/page_controller.ex:32
+#: lib/tmde_web/controllers/page_controller.ex:34
 #, elixir-autogen, elixir-format
 msgid "Personal homepage of Thorsten-Michael Deinert. Passionate computer scientist, software developer, and programming languages polyglot."
 msgstr ""
@@ -560,3 +560,14 @@ msgid "less than one minute"
 msgid_plural "%{count} minutes"
 msgstr[0] ""
 msgstr[1] ""
+
+#: lib/tmde_web/components/blog.ex:81
+#, elixir-autogen, elixir-format
+msgid "Read all"
+msgstr ""
+
+#: lib/tmde_web/templates/page/index.html.heex:12
+#, elixir-autogen, elixir-format
+msgid "My latest blog posts"
+msgstr ""
+

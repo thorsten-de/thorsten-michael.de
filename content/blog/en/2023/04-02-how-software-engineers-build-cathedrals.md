@@ -1,7 +1,7 @@
 %{
   title: "How software engineers build cathedrals",
   tags: ["Software Engineering", "Architecture", "Patterns", "Retrospective"],
-  abstract: "A restrospective on developing software for a quarter of a century",
+  abstract: "My restrospective on developing software for a quarter of a century",
   language: "en",
   estimated_reading_time: 8,
   links: %{
