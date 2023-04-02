@@ -36,6 +36,8 @@ defmodule TmdeWeb.Router do
     get "/email/tmd-logo.svg", DeliveryController, :logo_logger
     get "/bewerbung/:token/dokumente/:slug", JobsController, :download_document
 
+    get "/blog/:id", BlogController, :show
+
     live_session :jobs, on_mount: [TmdeWeb.LocaleLive] do
       live "/bewerbung/:token", JobsLive, :show
     end

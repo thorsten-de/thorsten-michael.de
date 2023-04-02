@@ -1,0 +1,10 @@
+.post__meta {
+  color: $grey;
+  border-top: 1px solid $grey-lighter;
+  border-bottom: 1px solid $grey-lighter;
+  padding: 0.6em 0;
+
+  .icon-text {
+    flex-wrap: initial;
+  }
+}

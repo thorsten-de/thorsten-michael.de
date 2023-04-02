@@ -1,5 +1,7 @@
 defmodule TmdeWeb.PageView do
   use TmdeWeb, :view
   use Bulma
-  import TmdeWeb.Components.List, only: [property_list: 1]
+  alias TmdeWeb.Components
+  alias Components.Blog
+  import Components.List, only: [property_list: 1]
 end

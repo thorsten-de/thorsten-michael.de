@@ -9,7 +9,9 @@
 <.section>
   <.container>
     <.title size="1" label={gettext("Welcome to my personal website")} />
-    <div class="content">
+    <.subtitle size="3" label={gettext("My latest blog posts")} />
+    <Blog.post_list posts={@posts} />
+    <div class="content my-6">
       <%= raw(@readme_content) %>
     </div>
   </.container>

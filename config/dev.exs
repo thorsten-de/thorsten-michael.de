@@ -67,7 +67,8 @@ config :tmde, TmdeWeb.Endpoint,
       ~r"priv/gettext/.*(po)$",
       ~r"lib/tmde_web/(live|views)/.*(ex)$",
       ~r"lib/tmde_web/templates/.*(eex)$",
-      ~r"lib/tmde_web/components/.*(ex|eex)$"
+      ~r"lib/tmde_web/components/.*(ex|eex)$",
+      ~r"content/blog/.*(md)$"
     ]
   ]
 

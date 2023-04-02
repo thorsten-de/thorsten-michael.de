@@ -4,6 +4,7 @@ defmodule TmdeWeb.PageController do
   """
   use TmdeWeb, :controller
   alias Tmde.Helper.Markdown
+  alias Tmde.Blog
 
   # Include part of repo's README as external resource and convert it into html on compile time
   @readme_contents Markdown.content_to_html!(
@@ -24,6 +25,7 @@ defmodule TmdeWeb.PageController do
   @doc "Homepage"
   def index(conn, _params) do
     locale = Gettext.get_locale(TmdeWeb.Gettext)
+    posts = Blog.recent_posts(5, language: locale)
 
     conn
     |> set_metadata(
@@ -34,6 +36,7 @@ defmodule TmdeWeb.PageController do
         )
     )
     |> render("index.html",
+      posts: posts,
       readme_content: @readme_contents[locale].html
     )
   end
