@@ -15,7 +15,7 @@ msgstr ""
 msgid "Contact Information"
 msgstr ""
 
-#: lib/tmde_web/components/navigation/footer.html.heex:19
+#: lib/tmde_web/components/navigation/footer.html.heex:21
 #: lib/tmde_web/controllers/page_controller.ex:46
 #: lib/tmde_web/templates/page/imprint.html.heex:3
 #, elixir-autogen, elixir-format
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Privacy Policy"
 msgstr ""
 
-#: lib/tmde_web/templates/layout/root.html.heex:10
+#: lib/tmde_web/templates/layout/root.html.heex:11
 #, elixir-autogen, elixir-format
 msgid "Welcome"
 msgstr ""
@@ -42,12 +42,12 @@ msgstr ""
 msgid "A little more detail, please?"
 msgstr ""
 
-#: lib/tmde_web/components/navigation/footer.html.heex:22
+#: lib/tmde_web/components/navigation/footer.html.heex:24
 #, elixir-autogen, elixir-format
 msgid "Code auf GitHub"
 msgstr ""
 
-#: lib/tmde_web/components/navigation/footer.html.heex:18
+#: lib/tmde_web/components/navigation/footer.html.heex:20
 #, elixir-autogen, elixir-format
 msgid "Home"
 msgstr ""
@@ -87,19 +87,14 @@ msgstr ""
 msgid "Personal homepage of Thorsten-Michael Deinert. Passionate computer scientist, software developer, and programming languages polyglot."
 msgstr ""
 
-#: lib/tmde_web/components/navigation/footer.html.heex:29
+#: lib/tmde_web/components/navigation/footer.html.heex:31
 #, elixir-autogen, elixir-format
 msgid "Blog Articles"
 msgstr ""
 
-#: lib/tmde_web/components/navigation/footer.html.heex:36
+#: lib/tmde_web/components/navigation/footer.html.heex:40
 #, elixir-autogen, elixir-format
 msgid "My Online Profiles"
-msgstr ""
-
-#: lib/tmde_web/components/navigation/footer.html.heex:31
-#, elixir-autogen, elixir-format
-msgid "no articles yet"
 msgstr ""
 
 #: lib/tmde/contacts/contact.ex:38
@@ -117,7 +112,7 @@ msgstr ""
 msgid "Dear Sirs and Madams,"
 msgstr ""
 
-#: lib/tmde_web/components/contact_components.ex:15
+#: lib/tmde_web/components/contact_components.ex:26
 #: lib/tmde_web/views/application_mailer_view.ex:8
 #, elixir-autogen, elixir-format
 msgid "Sincerely,"
@@ -160,7 +155,7 @@ msgstr ""
 
 #: lib/tmde/contacts/link.ex:69
 #: lib/tmde_web/components/jobs/qr_code.html.heex:1
-#: lib/tmde_web/templates/application_mailer/application.html.heex:19
+#: lib/tmde_web/templates/application_mailer/application.html.heex:18
 #: lib/tmde_web/templates/layout/email.html.heex:38
 #, elixir-autogen, elixir-format
 msgid "Show %{url} in browser..."
@@ -172,7 +167,7 @@ msgid "web"
 msgstr ""
 
 #: lib/tmde_web/templates/application_mailer/application.html.heex:8
-#: lib/tmde_web/templates/application_mailer/application.text.eex:9
+#: lib/tmde_web/templates/application_mailer/application.text.eex:10
 #: lib/tmde_web/templates/document/cover_letter.html.heex:57
 #, elixir-autogen, elixir-format
 msgid "Attachments:"
@@ -190,22 +185,24 @@ msgid "%{sender} - application documents for %{reference}"
 msgstr ""
 
 #: lib/tmde_web/components/jobs/cv/cv_sidebar.html.heex:17
-#: lib/tmde_web/live/admin/profile/personal_data_editor.ex:12
+#: lib/tmde_web/live/admin/profile/personal_data_editor.ex:14
 #, elixir-autogen, elixir-format
 msgid "Born %{date} in %{place}"
 msgstr ""
 
 #: lib/tmde_web/components/jobs/cv/cv_sidebar.html.heex:18
-#: lib/tmde_web/live/admin/profile/personal_data_editor.ex:13
+#: lib/tmde_web/live/admin/profile/personal_data_editor.ex:15
 #, elixir-autogen, elixir-format
 msgid "Citizenship: %{citizenship}"
 msgstr ""
 
+#: lib/tmde/jobs/cv/entry.ex:17
 #: lib/tmde_web/components/jobs/cv.html.heex:2
 #, elixir-autogen, elixir-format
 msgid "Education"
 msgstr ""
 
+#: lib/tmde/jobs/cv/entry.ex:16
 #: lib/tmde_web/components/jobs/cv.html.heex:1
 #, elixir-autogen, elixir-format
 msgid "Job experience"
@@ -246,11 +243,6 @@ msgstr ""
 msgid "until %{date}"
 msgstr ""
 
-#: lib/tmde_web/templates/application_mailer/application.html.heex:19
-#, elixir-autogen, elixir-format
-msgid "View this application online"
-msgstr ""
-
 #: lib/tmde_web/components/navigation/navbar.html.heex:4
 #, elixir-autogen, elixir-format
 msgid "Go to home page..."
@@ -258,7 +250,7 @@ msgstr ""
 
 #: lib/tmde_web/components/forms/translation_form.html.heex:2
 #: lib/tmde_web/components/navigation/navbar.html.heex:14
-#: lib/tmde_web/live/admin/profile_live.html.heex:31
+#: lib/tmde_web/live/admin/profile_live.html.heex:33
 #, elixir-autogen, elixir-format
 msgid "Language"
 msgstr ""
@@ -273,28 +265,29 @@ msgstr ""
 msgid "%{location}, %{date}"
 msgstr ""
 
-#: lib/tmde_web/views/document_view.ex:165
+#: lib/tmde_web/live/admin/profile_live.html.heex:44
+#: lib/tmde_web/views/document_view.ex:167
 #, elixir-autogen, elixir-format
 msgid "CV"
 msgstr ""
 
-#: lib/tmde_web/views/document_view.ex:184
+#: lib/tmde_web/views/document_view.ex:186
 #, elixir-autogen, elixir-format
 msgid "Cover Letter"
 msgstr ""
 
-#: lib/tmde_web/views/document_view.ex:142
+#: lib/tmde_web/views/document_view.ex:144
 #, elixir-autogen, elixir-format
 msgid "Diploma certificate"
 msgstr ""
 
-#: lib/tmde_web/views/document_view.ex:147
+#: lib/tmde_web/views/document_view.ex:149
 #, elixir-autogen, elixir-format
 msgid "Graduation diploma"
 msgstr ""
 
-#: lib/tmde_web/views/document_view.ex:190
-#: lib/tmde_web/views/document_view.ex:195
+#: lib/tmde_web/views/document_view.ex:192
+#: lib/tmde_web/views/document_view.ex:197
 #, elixir-autogen, elixir-format
 msgid "Portfolio"
 msgstr ""
@@ -345,7 +338,7 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: lib/tmde_web/live/admin/profile_live.html.heex:33
+#: lib/tmde_web/live/admin/profile_live.html.heex:35
 #, elixir-autogen, elixir-format
 msgid "E-mail"
 msgstr ""
@@ -355,17 +348,17 @@ msgstr ""
 msgid "Format"
 msgstr ""
 
-#: lib/tmde_web/live/admin/profile/personal_data_editor.ex:29
+#: lib/tmde_web/live/admin/profile/personal_data_editor.ex:32
 #, elixir-autogen, elixir-format
 msgid "Links"
 msgstr ""
 
-#: lib/tmde_web/live/admin/profile/personal_data_editor.ex:11
+#: lib/tmde_web/live/admin/profile/personal_data_editor.ex:12
 #, elixir-autogen, elixir-format
 msgid "Personal information"
 msgstr ""
 
-#: lib/tmde_web/live/admin/profile/personal_data_editor.ex:17
+#: lib/tmde_web/live/admin/profile/personal_data_editor.ex:20
 #, elixir-autogen, elixir-format
 msgid "citizenship"
 msgstr ""
@@ -380,7 +373,7 @@ msgstr ""
 msgid "country"
 msgstr ""
 
-#: lib/tmde_web/live/admin/profile/personal_data_editor.ex:15
+#: lib/tmde_web/live/admin/profile/personal_data_editor.ex:18
 #, elixir-autogen, elixir-format
 msgid "day of birth"
 msgstr ""
@@ -420,7 +413,7 @@ msgstr ""
 msgid "other"
 msgstr ""
 
-#: lib/tmde_web/live/admin/profile/personal_data_editor.ex:16
+#: lib/tmde_web/live/admin/profile/personal_data_editor.ex:19
 #, elixir-autogen, elixir-format
 msgid "place of birth"
 msgstr ""
@@ -440,37 +433,38 @@ msgstr ""
 msgid "zip code"
 msgstr ""
 
-#: lib/tmde/jobs/jobs.ex:48
+#: lib/tmde/jobs/jobs.ex:55
+#: lib/tmde_web/components/jobs/cv/entry_editor.ex:36
 #: lib/tmde_web/live/admin/application_live.html.heex:10
-#: lib/tmde_web/live/admin/profile_live.html.heex:26
+#: lib/tmde_web/live/admin/profile_live.html.heex:27
 #, elixir-autogen, elixir-format
 msgid "Company"
 msgstr ""
 
-#: lib/tmde_web/live/admin/profile_live.html.heex:32
+#: lib/tmde_web/live/admin/profile_live.html.heex:34
 #, elixir-autogen, elixir-format
 msgid "Contact"
 msgstr ""
 
 #: lib/tmde_web/live/admin/application_live.html.heex:17
-#: lib/tmde_web/live/admin/profile_live.html.heex:29
+#: lib/tmde_web/live/admin/profile_live.html.heex:30
 #, elixir-autogen, elixir-format
 msgid "Subject"
 msgstr ""
 
-#: lib/tmde_web/components/content/translation_editor.html.heex:14
-#: lib/tmde_web/components/forms/forms.ex:34
+#: lib/tmde_web/components/content/translation_editor.html.heex:17
+#: lib/tmde_web/components/forms/forms.ex:48
 #, elixir-autogen, elixir-format
 msgid "Cancel"
 msgstr ""
 
-#: lib/tmde_web/views/document_view.ex:136
+#: lib/tmde_web/views/document_view.ex:138
 #, elixir-autogen, elixir-format
 msgid "Reference %{company_name}"
 msgstr ""
 
-#: lib/tmde_web/components/content/translation_editor.html.heex:15
-#: lib/tmde_web/components/forms/forms.ex:35
+#: lib/tmde_web/components/content/translation_editor.html.heex:18
+#: lib/tmde_web/components/forms/forms.ex:49
 #, elixir-autogen, elixir-format
 msgid "Save"
 msgstr ""
@@ -554,6 +548,15 @@ msgid "Download %{title}"
 msgstr ""
 
 #: lib/tmde_web/components/jobs/qr_code.html.heex:4
+#: lib/tmde_web/templates/application_mailer/application.html.heex:19
+#: lib/tmde_web/templates/application_mailer/application.text.eex:13
 #, elixir-autogen, elixir-format
 msgid "View this application online:"
 msgstr ""
+
+#: lib/tmde_web/components/blog.ex:25
+#, elixir-autogen, elixir-format
+msgid "less than one minute"
+msgid_plural "%{count} minutes"
+msgstr[0] ""
+msgstr[1] ""

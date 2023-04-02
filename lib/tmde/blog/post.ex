@@ -12,7 +12,8 @@ defmodule Tmde.Blog.Post do
     :tags,
     :date,
     :language,
-    :estimated_reading_time
+    :estimated_reading_time,
+    links: %{}
   ]
 
   def build(filename, attrs, body) do

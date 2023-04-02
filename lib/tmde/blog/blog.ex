@@ -9,7 +9,8 @@ defmodule Tmde.Blog do
     build: Post,
     from: "content/blog/**/*.md",
     as: :posts,
-    highlighters: [:makeup_elixir, :makeup_erlang]
+    highlighters: [:makeup_elixir, :makeup_erlang],
+    earmark_options: [footnotes: true]
 
   defmodule NotFoundError, do: defexception([:message, plug_status: 404])
 
