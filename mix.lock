@@ -1,6 +1,6 @@
 %{
   "bulma": {:hex, :bulma, "0.9.4", "c668580bbced104697d3ad244980ee82a9749454d2f3745e2c6830a5043d35be", [:mix], [], "hexpm", "e9115bc0698829bda94d3cbc6424bff73019af756c812b85dc00e51f7f3bd9b0"},
-  "bulma_liveview": {:git, "https://github.com/thorsten-de/bulma_liveview.git", "6838aa4bc79db7b2ffacdfb13cf6533715866e76", [branch: "1-liveview-018"]},
+  "bulma_liveview": {:git, "https://github.com/thorsten-de/bulma_liveview.git", "8d3f7c6fc0bf060511c67dc0eab5a3feeb5338f3", [branch: "1-liveview-018"]},
   "castore": {:hex, :castore, "1.0.1", "240b9edb4e9e94f8f56ab39d8d2d0a57f49e46c56aced8f873892df8ff64ff5a", [:mix], [], "hexpm", "b4951de93c224d44fac71614beabd88b71932d0b1dea80d2f80fb9044e01bbb3"},
   "certifi": {:hex, :certifi, "2.9.0", "6f2a475689dd47f19fb74334859d460a2dc4e3252a3324bd2111b8f0429e7e21", [:rebar3], [], "hexpm", "266da46bdb06d6c6d35fde799bcb28d36d985d424ad7c08b5bb48f5b5cdd4641"},
   "chromic_pdf": {:hex, :chromic_pdf, "1.7.0", "6e7920ba57ae61d8cb3c33dfdd409db697ba6bfd13e8e6fe1ade0babf2a60426", [:mix], [{:jason, "~> 1.1", [hex: :jason, repo: "hexpm", optional: false]}, {:nimble_pool, "~> 0.2.3", [hex: :nimble_pool, repo: "hexpm", optional: false]}, {:telemetry, "~> 0.4 or ~> 1.0", [hex: :telemetry, repo: "hexpm", optional: false]}], "hexpm", "3ea15bcb974c0a36bc8275cd3a9196198a7bd28f6ef9250123344e3d83c38edf"},

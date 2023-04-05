@@ -18,6 +18,10 @@ defmodule TmdeWeb.BlogController do
 
 
     conn
-    |> render("show.html", post: Blog.get_post_by_id!(id))
+     |> set_metadata(
+      title: post.title,
+      description: post.abstract
+    )
+    |> render("show.html", post: Blog.get_post_by_id!(id), )
   end
 end
