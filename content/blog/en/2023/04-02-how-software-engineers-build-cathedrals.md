@@ -4,6 +4,7 @@
   abstract: "My restrospective on developing software for a quarter of a century",
   language: "en",
   estimated_reading_time: 8,
+  image: "Notre-Dame-Wide",
   links: %{
     "de" => "wie-softwareentwickler-kathedralen-bauen"
   }

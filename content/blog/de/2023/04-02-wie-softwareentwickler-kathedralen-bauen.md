@@ -4,6 +4,7 @@
   abstract: "Mein Rückblick auf ein Vierteljahrhundert Softwareentwicklung",
   language: "de",
   estimated_reading_time: 10,
+  image: "Notre-Dame-Wide",
   links: %{
     "en" => "how-software-engineers-build-cathedrals"
   }

@@ -38,6 +38,8 @@ defmodule TmdeWeb.Components.Blog do
   def post(assigns) do
     ~H"""
     <.title label={@post.title} />
+    <.post_image image={@post.image} />
+
     <.post_meta post={@post} />
     <.content class="post">
       <.abstract text={@post.abstract} />
@@ -83,4 +85,18 @@ defmodule TmdeWeb.Components.Blog do
     </.card>
     """
   end
+
+  def post_image(assigns = %{image: nil}), do:
+    ~H"""
+    """
+
+  def post_image(assigns) do
+    ~H"""
+    <picture class="image is-16-by9">
+      <source type="image/webp" srcset={"/images/#{@image}_2x.webp"}>
+      <img src={"/images/#{@image}_1920.jpg"} />
+    </picture>
+    """
+  end
+
 end

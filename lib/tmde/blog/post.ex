@@ -12,6 +12,7 @@ defmodule Tmde.Blog.Post do
     :tags,
     :date,
     :language,
+    :image,
     :estimated_reading_time,
     links: %{}
   ]
