@@ -1,7 +1,7 @@
 %{
   title: "Takeaways aus \"Objektorientierte Softwarekonstruktion\", Teil 1: Modularität",
   tags: ~w(OOP Softwareentwicklung Modularität Open-Closed-Prinzip),
-  abstract: "In ersten Teil seines Buches \"Object-orientated Software Construction\" prägt Bertrand Meyer im Jahr 1988 das aus \"SOLID\" berühmte Open-Closed-Prinzip (OCP). Er begründet aber vor allem, warum objektorientierte Programmiersprachen überhaupt nötig waren. In Teil 1 geht es darum, wie externe Qualitätsmerkmale und Modularität zum OCP führen.",
+  abstract: "Im ersten Teil seines Buches \"Object-orientated Software Construction\" prägt Bertrand Meyer im Jahr 1988 das aus \"SOLID\" berühmte Open-Closed-Prinzip (OCP). Er begründet aber vor allem, warum objektorientierte Programmiersprachen überhaupt nötig waren. In Teil 1 meiner Takeaways geht es darum, wie externe Qualitätsmerkmale und Modularität zum OCP führen.",
   language: "de",
   estimated_reading_time: 10,
   image: "modular-systems"
@@ -32,21 +32,21 @@ Damit Erweiterbarkeit und Wiederverwendbarkeit von außen sichtbar sind, muss di
 
 Meyer definiert fünf Kriterien oder unabhängige Merkmale, die ein modulares System erfüllen soll:
 
-- **Zerlegbarkeit** (decomposability): Ein komplexes Problem oder System wird in Teile zerlegt, die für sich betrachtet einfacher zu lösen sind. Das ist die Grundlage, um Aufgaben in der Softwareentwicklung aufzuteilen. Auf algorithmischer Ebene entspricht das dem Prinzip _"teile und herrsche" (divide and conquer)_, auf Ebene dem _Top-Down_-Ansatz.
-- **Zusammensetzbarkeit** (composability): Das Gegenteil zur Zerlegbarkeit bedeutet, dass sich ein System aus kleinen, wiederverwendbaren Bausteinen konstruiert ist. Wohldefinierte Aufgaben werden wie Legos in ganz verschiedenen Kontexten kombiniert. Das entspricht dem _Bottom-Up_-Ansatz.
+- **Zerlegbarkeit** (decomposability): Ein komplexes Problem oder System wird in Teile zerlegt, die für sich betrachtet einfacher zu lösen sind. Das ist die Grundlage, um Aufgaben in der Softwareentwicklung aufzuteilen. Auf algorithmischer Ebene entspricht das dem Prinzip _"teile und herrsche" (divide and conquer)_, auf Systemebene dem _Top-Down_-Ansatz.
+- **Zusammensetzbarkeit** (composability): Das Gegenteil zur Zerlegbarkeit bedeutet, dass ein System aus kleinen, wiederverwendbaren Bausteinen konstruiert ist. Wohldefinierte Aufgaben werden wie Legos in ganz verschiedenen Kontexten kombiniert. Das entspricht dem _Bottom-Up_-Ansatz.
 - **Verständlichkeit** (understandability): Das Modul erschließt sich dem Betrachter für sich allein, oder mit dem Blick auf nur wenige, benachbarte Module. Temporale Abhängigkeiten, bei dem das Modul in der richtigen Reihenfolge genutzt werden muss, werden vermieden.
 - **Kontinuität** (continuity): Kleine Änderungen im System betreffen nur eines oder wenige Module. Insbesondere ist keine strukturelle Änderung der Verbindungen der Module - d.h. der Architektur - erforderlich.
-- **Fehlerabgrenzung** (protection): Fehler betreffen ein Modul oder  nur wenige Nachbarn. Fehler lassen sich nicht ausschließen. Ziel ist es, die _Ausbreitung (Propagation)_ von Fehlern zu minimieren.[^1]
+- **Fehlerabgrenzung** (protection): Fehler betreffen ein Modul oder nur wenige Nachbarn. Fehler lassen sich nicht ausschließen. Ziel ist es, die _Ausbreitung (Propagation)_ von Fehlern zu minimieren.[^1]
 
 ### Fünf Prinzipien für Modularität
 
 Aus diesen fünf Kriterien folgen fünf Prinzipien, um Modularität zu erreichen:
 
-- Module bilden in der verwendeten Programmiersprache **eine kompilierbare, syntaktische Einheit**. Nur so können sie zerlegt und zusammengesetzt und die Ausbreitung von Fehlern kontrolliert werden.
+- Module bilden in der verwendeten Programmiersprache **eine kompilierbare, syntaktische Einheit**. Nur so können sie zerlegt und zusammengesetzt werden und die Ausbreitung von Fehlern kann kontrolliert werden.
 - Jedes Modul hat **so wenig Schnittstellen wie möglich**.
 - Wenn zwei Module kommunizieren, sind die **Schnittstellen so eingeschränkt wie möglich**. Insbesondere wird kein Wissen über interne Daten und Strukturen vorausgesetzt. Das vermeidet zu enge Koppelung.
 - Module kommunizieren über **explizite Schnittstellen**. Das macht die Abhängigkeit offensichtlich, sowohl im Design als auch im Laufzeitverhalten.
-- Alles im Modul ist **privat**, bis es **bewusst veröffentlicht wird**. Das Modul kann nur über die öffentliche Schnittstelle nutzen. Diese wird bewusst unabhängig von der Implementierung gemacht.
+- Alles im Modul ist **privat**, bis es **bewusst veröffentlicht wird**. Das Modul wird nur über die öffentliche Schnittstelle genutzt. Diese wird bewusst unabhängig von der Implementierung gestaltet.
 
 ### Das Open-Closed-Prinzip
 
@@ -72,7 +72,7 @@ Ziel ist es, dass ein Modul **gleichzeitig offen und geschlossen** ist. Dazu ist
 - und somit ohne abhängige Module neu zu kompilieren
 - oder abhängige Komponenten anzupassen, um sie kompatibel zu halten.
 
- Meyer kommt zu dem Schluss, dass die klassischen Ansätze seinerzeit (1988) genau dafür keine Lösung geboten haben. Hieraus ergibt sich eine der drei Säulen objektorientierter Programmierung: _Vererbung_ ermöglicht es, die abstrakten Klassen/Interfaces aus einem geschlossenen Modul woanders zu implementieren und zu erweitern. Das Verhalten wird geändert, indem _neuer Code hinzugefügt wird_, anstatt bestehenden Code zu ändern.
+ Meyer kommt zu dem Schluss, dass die klassischen Ansätze seinerzeit (1988) genau dafür keine Lösung geboten haben. Hieraus ergibt sich eine der drei Säulen objektorientierter Programmierung: _Vererbung_ ermöglicht es, die abstrakten Klassen oder Interfaces aus einem geschlossenen Modul woanders zu implementieren und zu erweitern. Um das Verhalten anzupassen _fügt man neuen Code hinzu_,statt bestehenden Code zu verändern.
 
 ## Meine Takeaways
 
@@ -80,8 +80,8 @@ Ziel ist es, dass ein Modul **gleichzeitig offen und geschlossen** ist. Dazu ist
 - Modulare Software wird nicht durch einen rigorosen divide-and-conquer oder Top-Down-Ansatz auf Systemebene erreicht. Hier muss die Zerlegbarkeit mit anderen Kriterien für Modularität in Einklang gebracht werden.
 - Das Ziel objektorientierter Softwareentwicklung ist das Bereitstellen von eigenständigen Modulen, die im System auf unterschiedliche Weise genutzt und erweitert werden. Somit fördert objektorientierte Entwicklung eher einen Bottom-Up-Ansatz.
 - Programmiere gegen die öffentliche Schnittstelle, nicht gegen die aktuelle interne Implementierung. Das (nicht-spezifizierte) Verhalten wird sich ändern!
-- Gutes objektorientiertes Design ist die Strategie, bewusst zu entscheiden, gegen welche Art von Erweiterungen ein Modul geschlossen sein soll, und schafft die dafür nötigen Abstraktionen.
+- Gutes objektorientiertes Design entscheidet strategisch, gegen welche Art von Erweiterungen ein Modul geschlossen sein soll. Es schafft die dafür nötigen Abstraktionen.
 
-Im nächsten Teil werde ich weiter auf die Auswirkungen des Open-Closed-Prinzips auf objektorientierte Entwicklung eingehen. Es wird beantwortet, warum der Top-Down-Ansatz in einem _"teile und verzweifle"_ enden kann, und warum man nicht zuerst fragen sollte, was ein System tut, sondern was es dazu befähigt, es zu tun.
+Im zweiten Teil werde ich weiter auf die Auswirkungen des Open-Closed-Prinzips auf objektorientierte Entwicklung eingehen. Es wird beantwortet, warum der Top-Down-Ansatz in einem _"teile und verzweifle"_ enden kann, und warum man nicht zuerst fragen sollte, was ein System tut, sondern was es dazu befähigt, es zu tun.
 
 [^1]: Michael T. Nygard geht in seinem Buch _"Release It!: Design and Deploy Production-Ready Software"_ darauf ein, wie robuste Software konstruiert wird. Es geht um konkrete Strategien, die verhindern, dass lokale Fehler und Ausfälle sich ausbreiten und das Gesamtsystem lahmlegen. Dazu gibt es beizeiten Takeaways, sobald ich die Lektüre verdaut habe.
