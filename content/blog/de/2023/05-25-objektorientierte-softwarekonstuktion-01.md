@@ -15,7 +15,7 @@ Zurzeit sichte ich einige Klassiker zum Thema Softwareentwicklung, und so habe i
 Dennoch kann man viel daraus lernen, warum 1988, vor dem Siegeszug von Java, C++ und co, Objektorientierung als nötig angesehen wurde. Das liefert den Rahmen, um objektorientierte Programmierung und Design erfolgreich einzusetzen. Zunächst definiert Meyer fünf _externe Qualitätsmerkmale_ von Software:
 
 - **Korrektheit**: Die Software verhält sich so, wie es in den Anforderungen spezifiziert ist.
-- **Robustheit**: Die Software verursacht in Situationen, die außerhalb der spezifizierten Bedingungen liegen, keine Katastrophe.
+- **Robustheit**: Die Software verursacht in Situationen, die außerhalb der spezifizierten Bedingungen liegen, keine Katastrophe. [^1]
 - **Erweiterbarkeit**: Die Software  ist _"soft"_, lässt sich leicht an geänderte Anforderungen anpassen.
 - **Wiederverwendbarkeit**: Die Software kann - ganz oder in Teilen - in neuen Produkten genutzt werden.
 - **Kompatibilität**: Die Software lässt sich leicht mit anderen Produkten kombinieren.
@@ -36,7 +36,7 @@ Meyer definiert fünf Kriterien oder unabhängige Merkmale, die ein modulares Sy
 - **Zusammensetzbarkeit** (composability): Das Gegenteil zur Zerlegbarkeit bedeutet, dass sich ein System aus kleinen, wiederverwendbaren Bausteinen konstruiert ist. Wohldefinierte Aufgaben werden wie Legos in ganz verschiedenen Kontexten kombiniert. Das entspricht dem _Bottom-Up_-Ansatz.
 - **Verständlichkeit** (understandability): Das Modul erschließt sich dem Betrachter für sich allein, oder mit dem Blick auf nur wenige, benachbarte Module. Temporale Abhängigkeiten, bei dem das Modul in der richtigen Reihenfolge genutzt werden muss, werden vermieden.
 - **Kontinuität** (continuity): Kleine Änderungen im System betreffen nur eines oder wenige Module. Insbesondere ist keine strukturelle Änderung der Verbindungen der Module - d.h. der Architektur - erforderlich.
-- **Fehlerabgrenzung** (protection): Fehler betreffen ein Modul oder  nur wenige Nachbarn. Fehler lassen sich nicht ausschließen. Ziel ist es, die _Ausbreitung (Propagation)_ von Fehlern zu minimieren.
+- **Fehlerabgrenzung** (protection): Fehler betreffen ein Modul oder  nur wenige Nachbarn. Fehler lassen sich nicht ausschließen. Ziel ist es, die _Ausbreitung (Propagation)_ von Fehlern zu minimieren.[^1]
 
 ### Fünf Prinzipien für Modularität
 
@@ -83,3 +83,5 @@ Ziel ist es, dass ein Modul **gleichzeitig offen und geschlossen** ist. Dazu ist
 - Gutes objektorientiertes Design ist die Strategie, bewusst zu entscheiden, gegen welche Art von Erweiterungen ein Modul geschlossen sein soll, und schafft die dafür nötigen Abstraktionen.
 
 Im nächsten Teil werde ich weiter auf die Auswirkungen des Open-Closed-Prinzips auf objektorientierte Entwicklung eingehen. Es wird beantwortet, warum der Top-Down-Ansatz in einem _"teile und verzweifle"_ enden kann, und warum man nicht zuerst fragen sollte, was ein System tut, sondern was es dazu befähigt, es zu tun.
+
+[^1]: Michael T. Nygard geht in seinem Buch _"Release It!: Design and Deploy Production-Ready Software"_ darauf ein, wie robuste Software konstruiert wird. Es geht um konkrete Strategien, die verhindern, dass lokale Fehler und Ausfälle sich ausbreiten und das Gesamtsystem lahmlegen. Dazu gibt es beizeiten Takeaways, sobald ich die Lektüre verdaut habe.

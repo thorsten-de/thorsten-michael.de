@@ -33,7 +33,7 @@ config :swoosh, :api_client, false
 
 # Configure esbuild (the version is required)
 config :esbuild,
-  version: "0.14.29",
+  version: "0.17.18",
   default: [
     args:
       ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
@@ -42,7 +42,7 @@ config :esbuild,
   ]
 
 config :dart_sass,
-  version: "1.49.11",
+  version: "1.61.0",
   default: [
     args: ~w(--load-path=../deps/bulma css/app.scss ../priv/static/assets/app.css),
     cd: Path.expand("../assets", __DIR__)
