@@ -1,9 +1,10 @@
 %{
-  title: "Takeaways aus \"Objektorientierte Softwarekonstruktion\", Teil 1",
+  title: "Takeaways aus \"Objektorientierte Softwarekonstruktion\", Teil 1: Modularität",
   tags: ~w(OOP Softwareentwicklung Modularität Open-Closed-Prinzip),
-  abstract: "In ersten Teil seines Buches \"Object-orientated Software Construction\" prägt Bertrand Meyer im Jahr 1988 das aus \"SOLID\" berühmte Open-Closed-Prinzip. Er begründet aber vor allem, warum objektorientierte Programmiersprachen überhaupt nötig waren. In Teil 1 geht es um Qualitätsmerkmale und Modularität.",
+  abstract: "In ersten Teil seines Buches \"Object-orientated Software Construction\" prägt Bertrand Meyer im Jahr 1988 das aus \"SOLID\" berühmte Open-Closed-Prinzip (OCP). Er begründet aber vor allem, warum objektorientierte Programmiersprachen überhaupt nötig waren. In Teil 1 geht es darum, wie externe Qualitätsmerkmale und Modularität zum OCP führen.",
   language: "de",
-  estimated_reading_time: 9,
+  estimated_reading_time: 10,
+  image: "modular-systems"
 }
 ---
 
@@ -64,12 +65,14 @@ Ein Modul ist **geschlossen**, sobald es durch seine Schnittstelle von anderen M
 - Die Schnittstelle ist stabil und wohldefiniert
 - Es ist als Paket / Bibliothek kompiliert und verteilbar
 
-Ziel ist es, dass ein Modul **gleichzeitig offen und geschlossen** ist. Meyer kommt zu dem Schluss, dass die klassischen Ansätze seinerzeit (1988) genau dafür keine Lösung geboten haben. Hier ist eine der drei Säulen objektorientierter Programmierung gefordert: _Vererbung_ ermöglicht es, die Klassen aus einem geschlossenen Modul woanders zu erweitern. Wenn ein Modul dem Open-Closed-Prinzip entspricht, kann es erweitert werden,
+Ziel ist es, dass ein Modul **gleichzeitig offen und geschlossen** ist. Dazu ist _Abstraktion_ nötig. Wenn ein Modul dem Open-Closed-Prinzip entspricht, kann es erweitert werden,
 
 - ohne den _Quelltext_ des Moduls anzupassen
 - ohne es neu zu _kompilieren_
 - und somit ohne abhängige Module neu zu kompilieren
 - oder abhängige Komponenten anzupassen, um sie kompatibel zu halten.
+
+ Meyer kommt zu dem Schluss, dass die klassischen Ansätze seinerzeit (1988) genau dafür keine Lösung geboten haben. Hieraus ergibt sich eine der drei Säulen objektorientierter Programmierung: _Vererbung_ ermöglicht es, die abstrakten Klassen/Interfaces aus einem geschlossenen Modul woanders zu implementieren und zu erweitern. Das Verhalten wird geändert, indem _neuer Code hinzugefügt wird_, anstatt bestehenden Code zu ändern.
 
 ## Meine Takeaways
 
@@ -77,5 +80,6 @@ Ziel ist es, dass ein Modul **gleichzeitig offen und geschlossen** ist. Meyer ko
 - Modulare Software wird nicht durch einen rigorosen divide-and-conquer oder Top-Down-Ansatz auf Systemebene erreicht. Hier muss die Zerlegbarkeit mit anderen Kriterien für Modularität in Einklang gebracht werden.
 - Das Ziel objektorientierter Softwareentwicklung ist das Bereitstellen von eigenständigen Modulen, die im System auf unterschiedliche Weise genutzt und erweitert werden. Somit fördert objektorientierte Entwicklung eher einen Bottom-Up-Ansatz.
 - Programmiere gegen die öffentliche Schnittstelle, nicht gegen die aktuelle interne Implementierung. Das (nicht-spezifizierte) Verhalten wird sich ändern!
+- Gutes objektorientiertes Design ist die Strategie, bewusst zu entscheiden, gegen welche Art von Erweiterungen ein Modul geschlossen sein soll, und schafft die dafür nötigen Abstraktionen.
 
-Im nächsten Teil werde ich weiter darauf eingehen, warum der Top-Down-Ansatz für objektorientierte Entwicklung in einem _"teile und verzweifle"_ enden kann, und warum man nicht zuerst fragen sollte, was ein System tut, sondern was es dazu befähigt, es zu tun.
+Im nächsten Teil werde ich weiter auf die Auswirkungen des Open-Closed-Prinzips auf objektorientierte Entwicklung eingehen. Es wird beantwortet, warum der Top-Down-Ansatz in einem _"teile und verzweifle"_ enden kann, und warum man nicht zuerst fragen sollte, was ein System tut, sondern was es dazu befähigt, es zu tun.
