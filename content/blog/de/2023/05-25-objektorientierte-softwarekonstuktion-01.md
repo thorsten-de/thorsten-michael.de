@@ -35,8 +35,8 @@ Meyer definiert fünf Kriterien oder unabhängige Merkmale, die ein modulares Sy
 - **Zerlegbarkeit** (decomposability): Ein komplexes Problem oder System wird in Teile zerlegt, die für sich betrachtet einfacher zu lösen sind. Das ist die Grundlage, um Aufgaben in der Softwareentwicklung aufzuteilen. Auf algorithmischer Ebene entspricht das dem Prinzip _"teile und herrsche" (divide and conquer)_, auf Ebene dem _Top-Down_-Ansatz.
 - **Zusammensetzbarkeit** (composability): Das Gegenteil zur Zerlegbarkeit bedeutet, dass sich ein System aus kleinen, wiederverwendbaren Bausteinen konstruiert ist. Wohldefinierte Aufgaben werden wie Legos in ganz verschiedenen Kontexten kombiniert. Das entspricht dem _Bottom-Up_-Ansatz.
 - **Verständlichkeit** (understandability): Das Modul erschließt sich dem Betrachter für sich allein, oder mit dem Blick auf nur wenige, benachbarte Module. Temporale Abhängigkeiten, bei dem das Modul in der richtigen Reihenfolge genutzt werden muss, werden vermieden.
-- **Durchgängigkeit** (continuity): Kleine Änderungen im System betreffen nur eines oder wenige Module. Insbesondere ist keine strukturelle Änderung der Verbindungen der Module - d.h. der Architektur - erforderlich.
-- **Fehlertoleranz** (protection): Fehler betreffen ein Modul oder  nur wenige Nachbarn. Fehler lassen sich nicht ausschließen. Ziel ist es,  die _Ausbreitung (Propagation)_ von Fehlern zu minimieren.
+- **Kontinuität** (continuity): Kleine Änderungen im System betreffen nur eines oder wenige Module. Insbesondere ist keine strukturelle Änderung der Verbindungen der Module - d.h. der Architektur - erforderlich.
+- **Fehlerabgrenzung** (protection): Fehler betreffen ein Modul oder  nur wenige Nachbarn. Fehler lassen sich nicht ausschließen. Ziel ist es, die _Ausbreitung (Propagation)_ von Fehlern zu minimieren.
 
 ### Fünf Prinzipien für Modularität
 
