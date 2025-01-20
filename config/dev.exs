@@ -24,6 +24,7 @@ config :tmde, TmdeWeb.Endpoint,
   code_reloader: true,
   reloadable_apps: [:tmde, :bulma_liveview],
   debug_errors: true,
+  reloadable_args: ["--no-all-warnings"],
   secret_key_base: "nTOZQDPLW2DQb1Xb1Y480vR/eFdKb3rhxu2NpPzZ3561Be8jS+3eZPpkVhqy2GUL",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)

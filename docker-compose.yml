@@ -1,7 +1,4 @@
 # composing Docker development environment
-
-version: '3.8'
-
 services:
   db:
     build: docker/localized_postgres/.
@@ -24,7 +21,7 @@ services:
       - seccomp=./chrome.json
     environment:
       - DATABASE_URL=ecto://postgres:postgres@db/tmde_dev
-      - SECRET_KEY_BASE=PtApWjeuuk6XNDIxpNc9HBQRKowJv/LOgkNjR9z2rxiIvwm3+FDzSNtypGe1/+tq      
+      - SECRET_KEY_BASE=PtApWjeuuk6XNDIxpNc9HBQRKowJv/LOgkNjR9z2rxiIvwm3+FDzSNtypGe1/+tq
       - PHX_HOST=localhost
       - DOCUMENT_ROOT=/documents
     depends_on:
@@ -39,5 +36,3 @@ services:
 
 volumes:
   db_data:
-
-
