@@ -72,7 +72,7 @@ Ziel ist es, dass ein Modul **gleichzeitig offen und geschlossen** ist. Dazu ist
 - und somit ohne abhängige Module neu zu kompilieren
 - oder abhängige Komponenten anzupassen, um sie kompatibel zu halten.
 
- Meyer kommt zu dem Schluss, dass die klassischen Ansätze seinerzeit (1988) genau dafür keine Lösung geboten haben. Hieraus ergibt sich eine der drei Säulen objektorientierter Programmierung: _Vererbung_ ermöglicht es, die abstrakten Klassen oder Interfaces aus einem geschlossenen Modul woanders zu implementieren und zu erweitern. Um das Verhalten anzupassen _fügt man neuen Code hinzu_,statt bestehenden Code zu verändern.
+ Meyer kommt zu dem Schluss, dass die klassischen Ansätze seinerzeit (1988) genau dafür keine Lösung geboten haben. Hieraus ergibt sich eine der drei Säulen objektorientierter Programmierung: _Vererbung_ ermöglicht es, die abstrakten Klassen oder Interfaces aus einem geschlossenen Modul woanders zu implementieren und zu erweitern. Um das Verhalten anzupassen _fügt man neuen Code hinzu_, statt bestehenden Code zu verändern.
 
 ## Meine Takeaways
 
