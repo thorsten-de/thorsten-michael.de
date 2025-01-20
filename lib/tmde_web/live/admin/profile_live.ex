@@ -1,4 +1,5 @@
 defmodule TmdeWeb.Admin.ProfileLive do
+alias Tmde.Jobs.CV.Entry.Company
   use TmdeWeb, :live_view
   use Bulma
   alias Tmde.Jobs
@@ -48,6 +49,23 @@ defmodule TmdeWeb.Admin.ProfileLive do
   def handle_event("update_links", %{"job_seeker" => params}, socket) do
     socket
     |> do_user_update(params, editor_id: "links_editor")
+  end
+
+  def handle_event("update_links", %{"job_seeker" => params}, socket) do
+    socket
+    |> do_user_update(params, editor_id: "links_editor")
+  end
+
+  def handle_event("add_cv_entry", _, socket) do
+    job_seeker = socket.assigns.current_user
+
+    job_seeker
+    |> Jobs.create_cv_entry(%{
+      type: :projects,
+      company: %{name: "Company name", location: "Anywhere"}
+    })
+
+    {:noreply, assign_cv(socket) }
   end
 
   defp do_user_update(socket, params, opts) do

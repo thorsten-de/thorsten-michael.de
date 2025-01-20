@@ -42,6 +42,9 @@
 <.section>
   <.container>
     <.title label={gettext("CV")} />
+    <.link class="mt-5 button is-link" phx-click="add_cv_entry" href="#">
+      <%= gettext("add section") %>
+    </.link>
     <%= for {section, entries} <- @cv do %>
       <.title size="4" label={CV.Entry.section_title(section)} />
       <%= for entry <- entries do %>

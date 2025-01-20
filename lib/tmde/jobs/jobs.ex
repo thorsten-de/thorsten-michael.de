@@ -2,6 +2,7 @@ defmodule Tmde.Jobs do
   @moduledoc """
   Context for applications and jobs
   """
+  alias Tmde.Jobs.CV.Entry
   alias Tmde.Jobs.{Application, Skill, JobSeeker, Delivery, CV, PersonalSkill}
   alias Tmde.Contacts.Contact
   alias Tmde.Repo
@@ -97,6 +98,12 @@ defmodule Tmde.Jobs do
     entry
     |> change_cv_entry(params)
     |> Repo.update()
+  end
+
+  def create_cv_entry(job_seeker, params \\ %{}) do
+    %CV.Entry{job_seeker: job_seeker}
+    |> change_cv_entry(params)
+    |> Repo.insert()
   end
 
   @doc """
