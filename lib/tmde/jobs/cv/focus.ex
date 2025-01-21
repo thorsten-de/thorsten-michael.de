@@ -4,6 +4,7 @@ defmodule Tmde.Jobs.CV.Focus do
   """
   use Tmde, :schema
   alias Tmde.Jobs.CV
+  import Ecto.Changeset
 
   schema "cv_focuses" do
     field :url, :string
@@ -12,5 +13,10 @@ defmodule Tmde.Jobs.CV.Focus do
     belongs_to :entry, CV.Entry
     translation_field(:abstract)
     timestamps()
+  end
+
+  def changeset(focus, params \\ %{}) do
+    focus
+    |> cast(params, [:url])
   end
 end

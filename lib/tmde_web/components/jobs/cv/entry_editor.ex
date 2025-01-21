@@ -25,6 +25,7 @@ defmodule TmdeWeb.Components.Jobs.CV.EntryEditor do
     ~H"""
     <div class="entry-editor">
       <.entry entry={@entry} />
+      <.button icon="plus" label={gettext("Focus")} click="add-focus" target={@myself}/>
       <.form let={f} for={@changeset} phx-submit="update-entry" phx-target={@myself}>
         <.editor_card target={@myself} edit?={@edit?} header={"#{gettext("Master Data")}: #{@entry.company.name}"}>
           <:editor>
@@ -54,6 +55,20 @@ defmodule TmdeWeb.Components.Jobs.CV.EntryEditor do
 
   def handle_event("toggle-editor", _params, socket), do: {:noreply, toggle(socket, :edit?)}
 
+  def handle_event("add-focus", _params, socket) do
+    case Jobs.add_focus_to_entry(socket.assigns.entry) do
+      {:ok, entry} ->
+        {:noreply,
+         socket
+         |> assign(entry: entry)
+         |> assign_changeset()}
+
+      {:error, changeset} ->
+        {:noreply, assign(socket, changeset: changeset)}
+
+      end
+  end
+
   def handle_event("update-entry", %{"entry" => params}, socket) do
     case Jobs.update_cv_entry(socket.assigns.entry, params) do
       {:ok, entry} ->
@@ -66,4 +81,5 @@ defmodule TmdeWeb.Components.Jobs.CV.EntryEditor do
         {:noreply, assign(socket, changeset: changeset)}
     end
   end
+
 end

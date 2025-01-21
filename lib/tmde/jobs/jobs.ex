@@ -100,6 +100,13 @@ defmodule Tmde.Jobs do
     |> Repo.update()
   end
 
+  def add_focus_to_entry(entry) do
+    params = %{focuses: [%{}|entry.focuses]}
+    entry
+    |> change_cv_entry(params)
+    |> Repo.update()
+  end
+
   def create_cv_entry(job_seeker, params \\ %{}) do
     %CV.Entry{job_seeker: job_seeker}
     |> change_cv_entry(params)
