@@ -41,6 +41,19 @@ defmodule TmdeWeb.Components.Content.TranslationEditor do
       |> Content.update_translations(field, params)
       |> success_or_error(socket, edit?: false)
 
+
+  def handle_event(
+        "add-translation",
+        %{"lang" => lang},
+        %{assigns: %{obj: obj, field: field}} = socket
+      ) do
+    new_content = %{text: "Text", lang: lang}
+
+    obj
+    |> Content.add_translation(field, new_content)
+    |> success_or_error(socket, edit?: true)
+  end
+
   def handle_event(
         "add-translation",
         %{"lang" => lang},
