@@ -4,7 +4,7 @@
       <:header label={@header}>
         <.dropdown id={@id} items={@languages} let={item}>
           <:trigger>
-            <a class="card-header-icon"><.label icon_set="solid" icon="language" label="Add"/></a>
+            <a class="card-header-icon"><.label icon="language" label="Add"/></a>
           </:trigger>
           <Dropdown.item label={item} icon="flag" click="add-translation" target={@myself} values={[lang: item]}/>
         </.dropdown>
@@ -20,7 +20,7 @@
       </:footer>
       <.property_list data={@translations} key={:lang} let={item}>
         <.content>
-          <a phx-click="remove-translation" phx-value-id={item.id} phx-target={@myself}><.label icon="trash" /></a>
+          <a phx-click="remove-translation" phx-value-id={item.id} phx-target={@myself}><.label icon="trash"/></a>
           <%= item %> 
         </.content>
       </.property_list>
