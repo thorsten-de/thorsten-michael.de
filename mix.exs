@@ -69,7 +69,7 @@ defmodule Tmde.MixProject do
       {:nimble_publisher, "~>1.0"},
       {:makeup_elixir, "~> 0.1"},
       {:makeup_erlang, "~> 0.1"},
-      {:chromic_pdf, "~> 1.2"},
+      # {:chromic_pdf, "~> 1.2"},
       {:qr_code, "~> 3.0"},
       {:timex, "~>3.7"},
       {:remote_ip, "~>1.0"},

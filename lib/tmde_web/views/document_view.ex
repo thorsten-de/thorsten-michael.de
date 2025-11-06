@@ -32,15 +32,15 @@ defmodule TmdeWeb.DocumentView do
         )
       )
 
-    {:html, html}
-    |> ChromicPDF.print_to_pdfa(
-      Keyword.merge(
-        options[:print],
-        output: filename
-      )
-    )
+    # {:html, html}
+    # |> ChromicPDF.print_to_pdfa(
+    #   Keyword.merge(
+    #     options[:print],
+    #     output: filename
+    #   )
+    # )
 
-    {:ok, filename, html}
+    {:ok, filename, "<h1>Not implemented</h1>"}
   end
 
   defp mm(l), do: l / 25.4

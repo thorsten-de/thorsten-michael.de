@@ -73,7 +73,7 @@ RUN mix release
 FROM ${RUNNER_IMAGE}
 
 RUN apt-get update -y && apt-get install -y libstdc++6 openssl libncurses5 locales \ 
-  poppler-utils chromium ghostscript imagemagick\
+  poppler-utils ghostscript imagemagick\
   && apt-get clean && rm -f /var/lib/apt/lists/*_*
 
 # Set the locale

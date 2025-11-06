@@ -18,7 +18,7 @@ defmodule Tmde.Application do
       TmdeWeb.Endpoint,
       # Start a worker by calling: Tmde.Worker.start_link(arg)
       # {Tmde.Worker, arg}
-      ChromicPDF
+      # ChromicPDF
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
